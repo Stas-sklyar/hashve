@@ -1,0 +1,252 @@
+<app-header
+  [slider]="slider"
+  [store]="store"
+  [showMobileMenu]="showMobileMenu"
+  [showSlider]="showSlider"
+></app-header>
+<main>
+  <div class="st-width-full">
+    <h1 class="d-md-none">{{ store.seo.h1[curLang] }}</h1>
+
+    <!-- <div *ngIf="!data?.store?.payments?.length" class="css-nopaments" [innerHTML]=" 'storepage.noPaymentMethods' | translate: {phone: store.tel} ">
+
+        </div> -->
+
+    <app-shop-about
+      [store]="store"
+      (scrollTo)="scrollTo($event)"
+    ></app-shop-about>
+    <app-catalog-menu
+      [categories]="categories"
+      [storelink]="storelink"
+      [isShopPage]="isShopPage"
+    ></app-catalog-menu>
+    <app-store-popup
+      *ngIf="closePopup || !store.adminActive"
+      (onClosePopup)="onClosePopup()"
+    ></app-store-popup>
+    <!------------------------------- fixed store panel start ------------------------------------------------------------>
+
+    <div
+      class="shop-scroll fixed d-none d-md-block"
+      id="shop-scroll"
+      [@storeBarSowed]="menuHidden"
+    >
+      <div class="shop-scroll__header">
+        <div class="shop-header__info">
+          <div class="shop-header__name">{{ store.name[curLang] }}</div>
+          <div class="shop-header__address">{{ store.address[curLang] }}</div>
+        </div>
+
+        <div class="header-top__user">
+          <app-card></app-card>
+          <app-search-button></app-search-button>
+          <!-- <a href="#" class="header-icon header-icon--price d-xs-none"><span class="header-icon__count">2</span></a> -->
+          <!--<div class="header-user"><a href="#" class="header-user__icon"></a></div>-->
+          <a
+            ClickStopPropagation
+            (click)="onMenuClicked()"
+            class="header-icon header-icon--hamburger header-icon--last d-none d-xs-block d-sm-block"
+          ></a>
+        </div>
+      </div>
+      <swiper
+        [ngClass]="'catalog-menu-wrap js-catalog-menu swiper-container'"
+        [config]="configMenu"
+      >
+        <a
+          [routerLink]="
+            '/' + store.ind + '-' + store.name[curLang] | spaceToUnderscore
+          "
+          [ngClass]="isShopPage ? 'active' : ''"
+          class="catalog-menu__main d-none d-xs-block"
+        ></a>
+        <div class="swiper-wrapper">
+          <ul class="catalog-menu swiper-slide">
+            <li
+              class="catalog-menu__item d-xs-none"
+              [ngClass]="isShopPage ? 'catalog-menu__item--main active' : ''"
+            >
+              <a
+                [routerLink]="
+                  '/' + store.ind + '-' + store.name[curLang]
+                    | spaceToUnderscore
+                "
+                >{{ "catalogMenu.homeLink" | translate }}</a
+              >
+            </li>
+            <li
+              class="catalog-menu__item"
+              *ngFor="let category of categories"
+              [ngClass]="category.active ? 'active' : ''"
+            >
+              <a
+                [routerLink]="
+                  '/' + store.ind + '-' + store.name[curLang]
+                    | spaceToUnderscore
+                "
+                >{{ category.name[curLang] }}</a
+              >
+            </li>
+          </ul>
+        </div>
+      </swiper>
+    </div>
+
+    <!-- <a href="#" [@callButtonSowed]="menuHidden" class="btn-call-scroll fixed d-none d-md-inline-block" id="btn-call-scroll"></a> -->
+
+    <div id="position-fixedshop"></div>
+
+    <!------------------------------- fixed store panel end ------------------------------------------------------------>
+
+    <section class="offers">
+      <div class="info-block">
+        <div class="tag">דיל יומי</div>
+
+        <div class="good-day-slider-wrap">
+          <swiper
+            [config]="productDayConfig"
+            [classes]="'good-day-slider js-good-day-slider'"
+            *ngIf="productDayConfig !== null"
+          >
+            <div class="swiper-wrapper">
+              <div
+                class="good-day-slider__item swiper-slide"
+                *ngFor="let item of dailyDeal"
+              >
+                <app-daily-deal [store]="store" [item]="item"></app-daily-deal>
+              </div>
+            </div>
+
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </swiper>
+        </div>
+        <a
+          [routerLink]="'/' + store.ind + '-' + store.link + '/דיל_יומי'"
+          class="info-block__more"
+          >{{ "homepage.additionalDeal" | translate }}</a
+        >
+      </div>
+      <!-- end info-block -->
+      <div class="info-block">
+        <div class="tag tag--red">{{ "citySearch.item.sale" | translate }}</div>
+
+        <div class="catalog-list">
+          <div class="catalog-list__item-wrap" *ngFor="let item of saleDeal">
+            <div class="catalog-list__item">
+              <app-item [store]="store" [item]="item"></app-item>
+            </div>
+          </div>
+        </div>
+        <!-- end catalog-list -->
+
+        <a
+          [routerLink]="'/' + store.ind + '-' + store.link + '/מבצעים_חמים'"
+          class="info-block__more"
+          >{{ "homepage.additionalSale" | translate }}</a
+        >
+      </div>
+      <!-- end info-block -->
+
+      <!--<div class="info-block info-block&#45;&#45;lg-full">
+
+
+        <app-package [pack]="curPack" [count]="packCount"></app-package>
+
+        <a href="#" class="info-block__more">ראו את כל החבילות</a>
+      </div>-->
+      <!-- end info-block -->
+
+      <div class="h2 d-none d-md-block">
+        {{ "homepage.categoryblock" | translate }}
+      </div>
+
+      <div class="info-block info-block--lg-full" style="width: 100%">
+        <div class="gifts">
+          <div class="h2 d-md-none">
+            {{ "homepage.categoryblock" | translate }}
+          </div>
+
+          <div class="gifts__list">
+            <div
+              class="gifts__item"
+              [ngClass]="{ 'd-md-none': i > 3 }"
+              *ngFor="let category of categoriesInList; let i = index"
+            >
+              <app-category
+                [store]="store"
+                [category]="category"
+              ></app-category>
+            </div>
+          </div>
+        </div>
+        <a
+          [routerLink]="'/' + store.ind + '-' + store.link + '/כל_המוצרים'"
+          class="info-block__more"
+          >{{ "homepage.all_categories" | translate }}</a
+        >
+      </div>
+      <!-- end info-block -->
+    </section>
+
+    <section class="handbill">
+      <img src="/assets/img/info-flower.jpg" alt="" class="handbill__img" />
+
+      <div class="handbill__content">
+        <div class="handbill__text-wrap">
+          <div class="handbill__head">
+            {{ "banners.allOffers.header" | translate }}
+          </div>
+          <div class="handbill__text">
+            {{ "banners.allOffers.subHeader" | translate }}
+          </div>
+        </div>
+
+        <a
+          [routerLink]="'מבצעים_חמים'"
+          class="btn btn--big btn--purple d-sm-none"
+          >{{ "banners.allOffers.button" | translate }}</a
+        >
+      </div>
+
+      <a
+        [routerLink]="'מבצעים_חמים'"
+        class="btn btn--big btn--purple d-none d-sm-inline-block"
+        >{{ "banners.allOffers.button" | translate }}</a
+      >
+
+      <!--<a href="#" class="handbill__close">X</a>-->
+    </section>
+
+    <app-accelerate-sales [store]="store"></app-accelerate-sales>
+
+    <a
+      [routerLink]="
+        city ? ('/פרחים_' + city.name[curLang] | spaceToUnderscore) : '/'
+      "
+      class="btn btn--block"
+      >{{
+        "storepage.show-all"
+          | translate: { city: city ? city.name[curLang] : "" }
+      }}</a
+    >
+
+    <app-comments-list
+      id="comments-list"
+      [type]="1"
+      [itemId]="store._id"
+      [rating]="store.rating"
+      [reviewCount]="store.reviewsCount"
+    ></app-comments-list>
+
+    <app-shop-about-description
+      [store]="store"
+      [mapEnable]="true"
+    ></app-shop-about-description>
+
+    <app-popular-cities></app-popular-cities>
+    <app-analytics-item></app-analytics-item>
+  </div>
+</main>
+<app-footer></app-footer>

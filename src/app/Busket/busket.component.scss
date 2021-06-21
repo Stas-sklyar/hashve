@@ -1,0 +1,19 @@
+.red{
+  color:red;
+}
+.h1mini{
+  font-size:15px;
+}
+.set{
+  margin-bottom: 30px;
+}
+
+@media(min-width: 1279px){
+
+.btn1{
+  width: 200px;
+  height: 50px;
+  padding-top: 8px;
+  font-size: 25px;
+}
+}

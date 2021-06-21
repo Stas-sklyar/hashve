@@ -1,0 +1,59 @@
+.form-site-criterion__list {
+    padding-right: 5px;
+}
+
+.red {
+    color: red;
+}
+
+.deliveryDateNotice {
+    margin-right: 20px;
+}
+
+.mat-form-field {
+    margin-right: 8px;
+}
+
+.input-time__head::after {
+    left: unset !important;
+}
+
+.input-time__head-text {
+    width: unset;
+    padding: 0 7px 0 5px;
+}
+
+.select {
+    width: auto;
+}
+
+.select__cur {
+    font-weight: bold;
+}
+
+.form-site__field-city {
+    margin-top: 10px;
+}
+
+.textarea-block textarea {
+    text-indent: 140px;
+}
+
+.select__list {
+    width: max-content;
+}
+
+.mobile-indent {
+    text-indent: 30px;
+}
+
+mat-form-field {
+    width: 140px;
+}
+
+mat-label {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #494949;
+}

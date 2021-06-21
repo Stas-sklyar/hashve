@@ -1,0 +1,46 @@
+<div class="popup">
+    <div class="popup__bg"></div>
+
+    <div class="popup__content-wrap" style="width: 367px;">
+        <div class="popup__close">X</div>
+
+        <div class="popup__content">
+            <div class="auth">
+                <div class="auth__tabs">
+                    <a href="#" class="auth__tabs-item active">{{ "authorization.login" | translate}}</a>
+                    <a href="#" class="auth__tabs-item">{{ "authorization.registration" | translate}}</a>
+                </div>
+
+                <div class="auth__head">{{ "authorization.accountLogin" | translate}}</div>
+
+                <div class="auth__content">
+                    <div class="auth__social">
+                        <a href="#" class="auth__social-item"><img src="img/auth-fb.png" alt=""></a>
+                        <a href="#" class="auth__social-item"><img src="img/auth-google.png" alt=""></a>
+                    </div>
+
+                    <div class="auth__line"><span>או</span></div>
+
+                    <form method="get" class="form-site">
+                        <div class="form-site__field">
+                            <span class="form-site__icon form-site__icon--mail"></span>
+                            <label for="email" class="form-site__label">{{ "authorization.email" | translate}}</label>
+                            <input type="email" placeholder="kivi@gmail.com" id="email">
+                        </div>
+
+                        <div class="form-site__field">
+                            <span class="form-site__icon form-site__icon--phone"></span>
+                            <label for="password" class="form-site__label">{{ "authorization.pass" | translate}}</label>
+                            <input type="password" id="password">
+                        </div>
+
+                        <input type="submit" class="btn" value="התחברות">
+                    </form>
+
+                    <a href="#" class="auth__foget">{{ "authorization.forgotPass" | translate}}</a>
+                    <div class="auth__polit" [innerHTML]="'authorization.authPolit' | translate"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

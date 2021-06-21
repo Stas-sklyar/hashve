@@ -1,0 +1,542 @@
+/*----------- form-site -------------*/
+.form-site{
+	padding: 39px 30px;
+	font-family: $font-assistant;
+	background: #fff;
+
+	&__head{
+		@include font(normal, bold, 20px, 23px, $color-text);
+	}
+
+	&__text{
+		@include font(normal, 600, 14px, 16px, $color-text);
+		margin-bottom: 20px;
+	}
+
+	&__fields-wrap{
+		display: flex;
+	}
+
+	&__field{
+		display: flex;
+		margin-bottom: 17px;
+		position: relative;
+	}
+
+	&__label{
+		@include font(normal, 600, 18px, 29px, $color-text);
+		margin-bottom: 0;
+		border-bottom: 1px solid rgba(40,40,40,0.2);
+		min-width: 38px;
+		white-space: nowrap;
+	}
+
+	&__label--long{
+		min-width: 140px;
+	}
+
+	&__field--street{
+		width: 60%;
+	}
+
+	&__field--house{
+		width: 40%;
+	}
+
+	input[type="text"],
+	input[type="email"],
+	input[type="password"],
+	textarea{
+		height: 30px;
+		width: 100%;
+		min-width: 0;
+		outline: none;
+		border: 0;
+		border-bottom: 1px solid rgba(40,40,40,0.2);
+		border-radius: 0;
+		background: transparent;
+		font-family: $font-assistant;
+		@include font(normal, normal, 18px, 30px, #6d6d6d);
+		padding: 0;
+		padding-right: 10px;
+	}
+
+  .error{
+    color: #db0100;
+  }
+
+  .success{
+    color: #4dc314;
+  }
+
+	input[type="text"].error,
+	input[type="email"].error,
+	input[type="password"].error,
+	textarea.error{
+		border-color: #db0100;
+	}
+
+	&__error{
+		@include font(normal, normal, 13px, 18px, #db0100);
+		position: absolute;
+		top: 100%;
+		left: 0;
+	}
+
+	&__req{
+		color: #db0100;
+	}
+
+	textarea{
+		height: 144px;
+		overflow: hidden;
+		padding-right: 0;
+	}
+
+	&__btn{
+		display: flex;
+		justify-content: space-around;
+		margin-top: 6px;
+	}
+
+	&__icon{
+		display: inline-block;
+		width: 25px;
+		height: 25px;
+	}
+
+	&__icon--mail{
+		background: url(#{$path-icon}/ic-mail.svg) no-repeat center;
+	}
+
+	&__icon--phone{
+		background: url(#{$path-icon}/ic-phone.svg) no-repeat center;
+	}
+
+	&__tooltip{
+		@include font(normal, 600, 13px, 30px, #4dc314);
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	&__sect{
+		padding: 20px 0;
+	}
+
+	&__sect:not(:last-child){
+		border-bottom: 1px dashed rgba(73,73,73,0.35);
+	}
+
+	&__notice{
+		@include font(normal, bold, 18px, 20px, #494949);
+		padding: 7px;
+		background: rgba(220,238,211,0.3);
+	}
+
+	&__date,
+	&__time{
+		// width: 50%;
+		width: auto;
+		margin-bottom: 20px;
+	}
+
+	&__limit{
+		text-align: left;
+		@include font(normal, 600, 16px, 20px, #000);
+		margin-top: -20px;
+	}
+
+	&__limit span{
+		color: #494949;
+	}
+
+	&__inscript{
+		@include font(normal, 600, 13px, 18px, #000);
+		text-align: center;
+		margin-top: 6px;
+	}
+
+	&__explan{
+		@include font(normal, 600, 12px, 14px, #494949);
+		text-align: left;
+		margin-top: -15px;
+	}
+
+	&__comment{
+		@include font(italic, 600, 12px, 14px, #494949);
+		margin-top: 35px;
+	}
+
+	&__column-wrap{
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+	}
+
+	&__column &__field:last-child{
+		margin-bottom: 0;
+	}
+
+	&--inactive{
+		opacity: 0.4;
+	}
+
+
+
+// 	input[type="text"]::placeholder,
+// 	input[type="email"]::placeholder,
+// 	textarea::placeholder{
+// 		color: $color-grey;
+// 	}
+
+// 	.btn{
+// 		width: 100%;
+// 	}
+
+}
+
+
+.form-foget{
+	.form-site{
+		width: 295px;
+		background: transparent;
+		padding: 0;
+		margin-top: 38px;
+	}
+
+	.form-site__head{
+		font-weight: 600;
+		font-size: 18px;
+		margin-bottom: 15px;
+	}
+
+	input[type="email"],
+	input[type="text"]{
+		padding-right: 20px;
+	}
+
+	.btn{
+		margin: 15px auto 0;
+		min-width: 230px;
+	}
+}
+
+.input-time{
+	position: relative;
+
+	&__head{
+		@include font(normal, 600, 16px, 30px, #494949);
+		height: 30px;
+		position: relative;
+		cursor: pointer;
+		padding-right: 30px;
+	}
+
+	&__head::before{
+		content: '';
+		display: inline-block;
+		width: 24px;
+		height: 24px;
+		background: url(#{$path-icon}/ic-clock.svg) no-repeat center;
+		position: absolute;
+		right: 5px;
+		@include top-center;
+	}
+
+	&__head::after{
+		content: '';
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 5px 6px 0 6px;
+		border-color: #919191 transparent transparent transparent;
+		position: absolute;
+		left: 0;
+		@include top-center;
+	}
+
+	&__head-text{
+		display: inline-block;
+		width: 100%;
+		border-bottom: 1px solid rgba(40, 40, 40, 0.2);
+		padding: 0 7px 0 15px;
+	}
+
+	&__content{
+		display: none;
+		@include font(normal, 600, 14px, 14px, $color-text);
+		background: #fff;
+		border: 1px solid #9d9d9d;
+		padding: 6px 8px;
+		position: absolute;
+		top: 100%;
+		right: 0;
+		z-index: 10;
+		margin-right: 40px;
+	}
+
+	&__item{
+		padding: 8px;
+		cursor: pointer;
+	}
+
+	&__item:hover,
+	&__item.active{
+		background: #494949;
+		color: #fff;
+	}
+
+	&:hover &__content{
+		display: block;
+	}
+
+	&__label{
+		padding: 0 8px;
+		margin-top: 8px;
+	}
+}
+
+.input-date{
+	height: 30px;
+	@include font(normal, 600, 18px, 30px, $color-text);
+	position: relative;
+	cursor: pointer;
+
+	&::after{
+		content: '';
+		display: inline-block;
+		width: 35px;
+		height: 2px;
+		background: #fff;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+	}
+
+	input{
+		padding-right: 150px!important;
+		position: relative;
+	}
+
+	input[type="text"]{
+		padding: 0;
+		width: 100%;
+	}
+
+	input[type="date"] {
+		color:#FFF;
+		border: 0;
+		outline: 0;
+		padding: 0;
+		background: transparent;
+		height: 30px;
+		font-family: $font-assistant;
+		@include font(normal, 600, 18px, 30px, $color-text);
+		border-bottom: 1px solid rgba(40, 40, 40, 0.2);
+		vertical-align: top;
+
+		&:before {
+			font-weight: normal;
+			color: #535353;
+			content: attr(placeholder);
+		}
+
+		&:focus, &:valid {
+			color: #535353;
+			width: 100%;
+
+			&:before {
+				content: "" !important;
+			}
+		}
+	}
+
+	&::before{
+		content: '';
+		display: inline-block;
+		width: 28px;
+		height: 28px;
+		background: url(#{$path-icon}/ic-calendar-grey.svg) no-repeat center;
+		position: absolute;
+		right: 0;
+		@include top-center;
+	}
+
+	&__label{
+		@include font(normal, 600, 18px, 30px, $color-text);
+		position: absolute;
+		top: 0;
+		right: 35px;
+	}
+
+	.calendar{
+		display: none;
+		position: absolute;
+		z-index: 10;
+		border: 1px solid #9d9d9d;
+	}
+
+	&:hover .calendar{
+		display: block;
+	}
+}
+
+.textarea-block{
+	position: relative;
+	width: 100%;
+
+	&__label{
+		@include font(normal, 600, 18px, 37px, $color-text);
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+
+	textarea{
+		width: 100%;
+		text-indent: 55px;
+		line-height: 37px;
+
+		background:linear-gradient(
+		rgba(255,255,255, 0) 1.9em, rgba(40, 40, 40, 0.2) 2em)
+		0 0;
+		background-size: 2em 2em;
+		border-bottom: 0;
+	}
+}
+
+.select{
+	width: 100%;
+	position: relative;
+
+	&__cur{
+		@include font(normal, 600, 18px, 30px, #6d6d6d);
+		height: 30px;
+		border-bottom: 1px solid rgba(40, 40, 40, 0.2);
+		position: relative;
+		cursor: pointer;
+		padding: 0 7px 0 20px;
+	}
+
+	&__cur::after{
+		content: '';
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 5px 6px 0 6px;
+		border-color: #919191 transparent transparent transparent;
+		position: absolute;
+		left: 0;
+		@include top-center;
+	}
+
+	&__list{
+		display: none;
+		@include font(normal, 600, 14px, 14px, $color-text);
+		background: #fff;
+		border: 1px solid #9d9d9d;
+		padding: 6px 8px;
+		position: absolute;
+		top: 100%;
+		right: 0;
+		z-index: 10;
+		width: 100%;
+	}
+
+	&__item{
+		padding: 8px;
+		cursor: pointer;
+	}
+
+	&__item:hover,
+	&__item.active{
+		background: #494949;
+		color: #fff;
+	}
+
+	&:hover &__list{
+		display: block;
+	}
+
+	&--border &__cur{
+		border: 1px solid rgba(127,127,127,0.75);
+	}
+
+	&--border &__cur::after{
+		border-width: 7px 5px 0 5px;
+		left: 5px;
+	}
+
+	&--border &__cur::before{
+		content: '';
+		display: inline-block;
+		width: 1px;
+		height: 80%;
+		background: rgba(0,0,0,0.3);
+		position: absolute;
+		left: 20px;
+		@include top-center;
+	}
+
+	&--inactive:hover &__list{
+		display: none;
+	}
+}
+
+.form-site-criterion{
+	&__head{
+		@include font(normal, bold, 18px, 24px, #494949);
+		margin-bottom: 10px;
+	}
+
+	&__item{
+		@include font(normal, 600, 16px, 20px, #ed0101);
+		margin-bottom: 10px;
+	}
+
+	&__item--true{
+		color: #494949;
+	}
+
+	&__item--true &__tick{
+		color: #4dc314;
+	}
+}
+
+@media (max-width: 991px) {
+	.form-foget{
+		display: table;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.form-site{
+		&__column-wrap{
+			display: block;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.input-date{
+		input{
+			padding-right: 40px!important;
+		}
+
+		&__label{
+			top: -15px;
+			right: 40px;
+			font-size: 13px;
+			line-height: 18px;
+		}
+	}
+}
+
+@media (max-width: 420px) {
+	.input-date{
+		input[type="text"]{
+			font-size: 16px;
+		}
+	}
+}

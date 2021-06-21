@@ -1,0 +1,451 @@
+<div class="search-city__item">
+    <div class="search-city__card">
+        <div class="search-city__desc">
+            <div class="search-city__img d-sm-none">
+
+                <img src="{{pic}}" alt="" (click)="saveOfferAndRedirectToProduct(curItem, offerStore[0].store._id)">
+
+                <!-- improve price mobile start -->
+                <ng-container *ngIf="!curItem.isSale() && !curItem.isDayDeal()">
+                    <div class="warning d-none d-md-block" *ngIf="!curItem.improvePriceRequest">
+                        <div class="warning__sticker">
+                            <div class="warning__img">
+                                <img src="{{host}}/assets/img/icon-info.png" alt="">
+
+                                <div class="warning__popup">
+                                    {{ "banners.priceImprove.popupText" | translate }}
+                                    <div class="warning__close">X</div>
+                                </div>
+                            </div>
+
+                            <div class="warning__text" (click)="startImprovingPrice()">
+                                <div class="warning__title">{{ "citySearch.item.priceImprove" | translate }}</div>
+                                <div class="warning__sub-title">{{ "citySearch.item.takeOwenOffer" | translate }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="warning-clock d-none d-md-inline-flex" *ngIf="curItem.isPriceImproveValid()">
+                        <img src="{{host}}/assets/img/icon-clock.png" alt="" class="warning-clock__img">
+
+                        <div class="warning-clock__text">
+                            <div class="warning-clock__title">{{ "priceImprove.offerWillExpired" | translate}}</div>
+                            <div class="warning-clock__time">{{state.minutes}} {{ "citySearch.item.improvePrice.minutes" | translate }} {{state.seconds}} {{ "citySearch.item.improvePrice.seconds" | translate }}</div>
+                        </div>
+                    </div>
+                    <div class="warning-clock warning-clock-line--red d-none d-md-inline-flex" *ngIf="!curItem.isPriceImproveValid() && curItem.improvePriceRequest">
+                        <div class="best-price__old-price" *ngIf="curItem.isDayDeal() || curItem.isSale() || curItem.isPriceImproveValid()">₪{{minPrice}}</div>
+                        <img src="{{host}}/assets/img/icon-clock.png" alt="" class="warning-clock__img">
+
+                        <div class="warning-clock__text">
+                            <span class="warning-clock__title">{{ "priceImprove.offerExpired" | translate}}</span>
+                        </div>
+                    </div>
+                </ng-container>
+                <!-- improve price mobile end -->
+                <div class="search-city-param__icons d-none d-md-inline-flex">
+                    <a (click)="addToWishList()" class="search-city-param__icon search-city-param__icon--wish" [ngClass]="{active: isWished()}"></a>
+                </div>
+
+                <div class="sticker d-md-none">
+                    <div class="sticker__label">{{ "citySearch.item.size" | translate }}</div>
+                    <div class="sticker__text">{{ "product.size.normal" | translate }}</div>
+                </div>
+
+                <!-- mobile day deal and sale tag start -->
+                <div class="search-city-param__label d-none d-md-block" *ngIf="curItem.isDayDeal()">
+                    <div class="tag tag--small">{{ 'citySearch.item.dayDeal' | translate }}</div>
+                </div>
+
+                <div class="search-city-param__label search-city-param__label--red d-none d-md-block" *ngIf="curItem.isSale()">
+                    <div class="tag tag--small tag--red">{{ 'citySearch.item.sale' | translate }}</div>
+                </div>
+                <!-- mobile day deal and sale tag end -->
+            </div>
+
+            <div class="search-city__content">
+                <div class="search-city__param-list">
+                    <div class="search-city-param">
+                        <div class="search-city-param__content-wrap">
+                            <div class="search-city-param__img d-none d-sm-block">
+                                <img src="{{pic}}" alt="" (click)="saveOfferAndRedirectToProduct(curItem, offerStore[0].store._id)">
+                                <div class="search-city-param__icons">
+                                    <a (click)="addToWishList()" class="search-city-param__icon search-city-param__icon--wish" [ngClass]="{active: isWished()}"></a>
+                                </div>
+                            </div>
+
+                            <div class="search-city-param__content">
+                                <div class="search-city-param__head">
+                                    <div class="search-city-param__name-wrap">
+                                        <h2 class="search-city-param__name" (click)="saveOfferAndRedirectToProduct(curItem, offerStore[0].store._id)">{{ "citySearch.item.code" | translate }} {{curItem.code}}</h2>
+
+                                        <div class="sticker-wrap d-none d-md-flex">
+                                            <div class="sticker-wrap__label">{{ "citySearch.item.size" | translate}}</div>
+                                            <div class="sticker">
+                                                <div class="sticker__text">{{ "product.size.normal" | translate}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="search-city-param__count">{{curItem.name[curLang]}}</div>
+                                </div>
+
+                                <div class="search-city-param__text-wrap">
+                                    <div class="search-city-param__text" [innerHTML]="curItem.description[curLang]"></div>
+
+                                    <!-- desktop day deal and sale tag start -->
+
+                                    <div class="search-city-param__label d-md-none" *ngIf="curItem.isDayDeal()">
+                                        <div class="tag tag--small">{{ 'citySearch.item.dayDeal' | translate }}</div>
+                                    </div>
+
+                                    <div [ngClass]="{animate: startAnimate}" class="progress">
+                                        <div class="sk-fading-circle">
+                                            <div class="sk-circle sk-circle-1"></div>
+                                            <div class="sk-circle sk-circle-2"></div>
+                                            <div class="sk-circle sk-circle-3"></div>
+                                            <div class="sk-circle sk-circle-4"></div>
+                                            <div class="sk-circle sk-circle-5"></div>
+                                            <div class="sk-circle sk-circle-6"></div>
+                                            <div class="sk-circle sk-circle-7"></div>
+                                            <div class="sk-circle sk-circle-8"></div>
+                                            <div class="sk-circle sk-circle-9"></div>
+                                            <div class="sk-circle sk-circle-10"></div>
+                                            <div class="sk-circle sk-circle-11"></div>
+                                            <div class="sk-circle sk-circle-12"></div>
+                                        </div>
+
+                                        <div class="progress__text-wrap">
+                                            <div class="progress__text progress__text_1">{{ "priceImprove.fixStepOne" | translate}}</div>
+                                            <div class="progress__text progress__text_2">{{ "priceImprove.fixStepTwo" | translate}}</div>
+                                            <div class="progress__text progress__text_3">{{ "priceImprove.fixStepThree" | translate}}</div>
+                                        </div>
+                                    </div>
+
+                                    <ng-container *ngIf="!curItem.isSale() && !curItem.isDayDeal() && startAnimate === false">
+                                        <div class="search-city-param__warning d-md-none">
+                                            <div class="warning" *ngIf="!curItem.improvePriceRequest">
+                                                <div class="warning__sticker">
+                                                    <div class="warning__img">
+                                                        <img src="{{host}}/assets/img/icon-info.png" alt="">
+
+                                                        <div class="warning__popup">
+                                                            {{ "banners.priceImprove.popupText" | translate }}
+                                                            <div class="warning__close">X</div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="warning__text" (click)="startImprovingPrice()">
+                                                        <div class="warning__title">{{ "banners.priceImprove.header" | translate }}</div>
+                                                        <div class="warning__sub-title">{{ "banners.priceImprove.subheader" | translate }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="warning-clock" *ngIf="curItem.isPriceImproveValid()">
+                                                <img src="{{host}}/assets/img/icon-clock.png" alt="" class="warning-clock__img">
+
+                                                <div class="warning-clock__text">
+                                                    <div class="warning-clock__title">{{ "priceImprove.offerWillExpired" | translate }}</div>
+                                                    <div class="warning-clock__time">{{state.minutes}} {{ "payment.min" | translate }} {{state.seconds}} {{ "payment.sec" | translate }}</div>
+                                                </div>
+                                            </div>
+                                            <div class="warning-clock warning-clock-line--red" *ngIf="!curItem.isPriceImproveValid() && curItem.improvePriceRequest">
+                                                <img src="/assets/img/icon-clock.png" alt="" class="warning-clock__img">
+
+                                                <div class="warning-clock-line__text">
+                                                    <span class="warning-clock__title">{{ "priceImprove.offerExpired" | translate }} </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+
+                                    <div class="search-city-param__label search-city-param__label--red d-md-none" *ngIf="curItem.isSale()">
+                                        <div class="tag tag--small tag--red">{{ 'citySearch.item.sale' | translate }}</div>
+
+                                    </div>
+
+                                    <!-- desktop day deal and sale tag end -->
+
+                                    <div class="search-city-param__explain d-none d-md-flex-column">
+                                        <div class="search-city-param__explain-item">{{ "citySearch.item.firstNotice" | translate }}</div>
+                                        <div class="search-city-param__explain-item">{{ "citySearch.item.secondNotice" | translate }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="search-city-param search-city-param--line">
+                        <div class="search-city-param__head">
+                            <div class="search-city-param__mark">
+                                <span class="search-city-param__mark-item">
+																	<span class="rating-mark">{{curItem.rating}}</span><span class="d-md-none">{{ "citySearch.item.userRate" | translate }}</span>
+                                </span>
+
+                                <span class="search-city-param__mark-item">
+                  <star-rating *ngIf="!serverFlag" [value]="curItem.rating" checkedcolor="#EBB510" uncheckedcolor="#DADADA" size="20px"
+                               readonly="true"></star-rating>
+                </span>
+
+                                <span class="search-city-param__mark-item">
+																	<a
+                                    (click)="onAddOfersClicked(1)">{{curItem.reviewsCount}}{{ "citySearch.item.reviewCount" | translate }}</a>
+																</span>
+
+                                <span class="product-card__count-item"> {{ "productItem.saledCount" | translate }} {{curItem.saledCount}}</span>
+                            </div>
+                        </div>
+
+                        <div class="search-city-param__content d-md-none">
+                            <div class="search-city-param__action">
+                                <div class="search-city-param__explain">
+                                    <div class="search-city-param__explain-item">{{ "citySearch.item.firstNotice" | translate }}</div>
+                                    <div class="search-city-param__explain-item">{{ "citySearch.item.secondNotice" | translate }}</div>
+                                </div>
+
+                                <div class="search-city-param__icons">
+                                    <a (click)="addToWishList()" class="search-city-param__icon search-city-param__icon--wish" [ngClass]="{active: isWished()}"></a>
+                                    <a href="#" class="search-city-param__icon search-city-param__icon--share"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="best-price d-none d-md-flex">
+                    <ng-container *ngIf="!curItem.isSale() && !curItem.isDayDeal()">
+                        <div class="warning d-none d-sm-flex" *ngIf="!curItem.improvePriceRequest">
+                            <div class="warning__sticker">
+                                <div class="warning__img">
+                                    <img src="{{host}}/assets/img/icon-info.png" alt="">
+
+                                    <div class="warning__popup">
+                                        {{ "banners.priceImprove.popupText" | translate }}
+                                        <div class="warning__close">X</div>
+                                    </div>
+                                </div>
+
+                                <div class="warning__text" (click)="startImprovingPrice()">
+                                    <div class="warning__title">{{ "citySearch.item.priceImprove" | translate }}</div>
+                                    <div class="warning__sub-title">{{ "citySearch.item.takeOwenOffer" | translate }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="warning-clock d-none d-sm-inline-flex" *ngIf="curItem.isPriceImproveValid()">
+                            <img src="{{host}}/assets/img/icon-clock.png" alt="" class="warning-clock__img">
+
+                            <div class="warning-clock__text">
+                                <div class="warning-clock__title">{{ "priceImprove.offerWillExpired" | translate }}</div>
+                                <div class="warning-clock__time">{{state.minutes}} {{ "payment.min" | translate }} {{state.seconds}} {{ "payment.sec" | translate }}</div>
+                            </div>
+                        </div>
+                        <div class="warning-clock d-none warning-clock-line--red" *ngIf="!curItem.isPriceImproveValid() && curItem.improvePriceRequest">
+                            <img src="/assets/img/icon-clock.png" alt="" class="warning-clock__img">
+
+                            <div class="warning-clock-line__text">
+                                <span class="warning-clock__title">{{ "priceImprove.offerExpired" | translate }}</span>
+                            </div>
+                        </div>
+                    </ng-container>
+
+                    <ng-container *ngIf="curItem.isDayDeal()">
+                        <div class="search-city-param__label d-none d-sm-block">
+                            <div class="tag tag--small">{{ "citySearch.item.dayDeal" | translate }}</div>
+                        </div>
+                    </ng-container>
+
+                    <ng-container *ngIf="curItem.isSale()">
+                        <div class="search-city-param__label search-city-param__label--red d-none d-sm-block">
+                            <div class="tag tag--small tag--red">{{ "citySearch.item.sale" | translate }}</div>
+                        </div>
+                    </ng-container>
+
+
+                    <div class="best-price__content">
+                        <div class="best-price__sticker" *ngIf="curItem.isPriceImproveValid()">{{ "citySearch.item.improvePrice2" | translate }}<span class="best-price__sticker-price">₪{{minPrice}}</span></div>
+                        <div class="best-price__label">
+
+                            <div class="best-price__old-price" *ngIf="curItem.isDayDeal() || curItem.isSale() || curItem.isPriceImproveValid()">₪{{minPrice}}</div>
+
+                            <div class="best-price__cur-price"><span class="best-price__num">₪{{minPriceWithDiscount}}</span><span class="delivery__text"> {{ "citySearch.item.withDelivery" | translate }}</span></div>
+                        </div>
+                        <div class="best-price__link"><a (click)="onAddOfersClicked(2)">{{ "citySearch.item.countOfOffers" | translate:{count: offerStore.length} }}</a>
+                        </div>
+                    </div>
+
+                    <a (click)="saveOfferAndRedirectToProduct(curItem, offerStore[0].store._id)" class="btn">
+            {{ "citySearch.show" | translate }}
+          </a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="search-city__info d-md-none">
+
+
+            <div class="best-price">
+                <div class="best-price__top">
+                    <div class="best-price__content">
+                        <div class="best-price__link">
+                            <a (click)="onAddOfersClicked(2)">{{ "citySearch.item.countOfOffers" | translate:{count: offerStore.length} }}</a>
+                        </div>
+
+                        <div class="best-price__text best-price__text--red" *ngIf="!curItem.isDayDeal() && !curItem.isSale() && !curItem.isPriceImproveValid()">
+                            ההצעה הזולה ביותר
+                        </div>
+                        <div class="best-price__text best-price__text--red" *ngIf="curItem.isDayDeal()">{{ "citySearch.item.dayDealNotice2" | translate }}</div>
+                        <!-- <div class="best-price__text best-price__text--orange"
+                *ngIf="curItem.isDayDeal()">{{ "citySearch.item.dayDealNotice2" | translate }}</div> -->
+                        <div class="best-price__text best-price__text--red" *ngIf="curItem.isSale()">{{ "citySearch.item.saleNotice" | translate }}</div>
+                        <div class="best-price__text best-price__text--red" *ngIf="curItem.isPriceImproveValid()">{{ "citySearch.item.improvePrice2" | translate }}</div>
+                    </div>
+                </div>
+
+                <div (click)="saveOfferAndRedirectToProduct(curItem, offerStore[0].store._id)" class="best-price__bottom">
+                    <div class="best-price__content">
+                        <div class="best-price__label">
+                            <div class="best-price__old-price" *ngIf="curItem.isDayDeal() || curItem.isSale() || curItem.isPriceImproveValid()">₪{{minPrice}}</div>
+                            <div class="best-price__cur-price" *ngIf="curItem.isPriceImproveValid()"><span class="best-price__num">₪{{minPriceWithDiscount}}</span>{{ "citySearch.item.withDelivery" | translate }}
+                            </div>
+                            <div class="best-price__cur-price" *ngIf="curItem.isDayDeal() || curItem.isSale()"><span class="best-price__num">₪{{minPriceWithDiscount}}</span>{{ "citySearch.item.withDelivery" | translate }}
+                            </div>
+                            <div class="best-price__cur-price" *ngIf="!curItem.isDayDeal() && !curItem.isSale() && !curItem.isPriceImproveValid()">
+                                החל
+                                <span class="best-price__num">₪{{minPrice}}</span>{{ "citySearch.item.withDelivery" | translate }}
+                            </div>
+                        </div>
+
+                        <div class="best-price__cur-price">
+                            מאת: <span class="best-price__text">{{cityStores[0].name[curLang]}}</span>
+                        </div>
+
+                        <span class="btn">{{ "citySearch.show" | translate }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end search-city__card -->
+
+    <div class="search-city-unwrap active">
+        <div class="search-city-unwrap__head" (click)="onAddOfersClicked()">
+            <div class="search-city-unwrap__title">{{ "citySearch.item.buttonPriceComparison" | translate }}<span class="search-city-unwrap__title-arr" [@rotateAnimation]="animateArrow"></span></div>
+        </div>
+
+        <div class="search-city-unwrap__content" [@slideInOut]="additionalOffers">
+            <div class="search-city-tabs">
+                <div class="search-city-tabs__list">
+                    <a (click)="onTabChange(1)" class="search-city-tabs__item" [ngClass]="{ active: tabChanged === 1 }">{{ "commentList.opinion" | translate }}</a>
+                    <a (click)="onTabChange(2)" class="search-city-tabs__item" [ngClass]="{ active: tabChanged === 2 }">{{ "citySearch.item.Suggestions" | translate }}</a>
+                </div>
+
+                <div class="search-city-tabs__content active" *ngIf="tabChanged === 1">
+                    <div class="search-city-tabs__mark">
+                        <div class="rating-mark">{{curItem.rating}}</div>
+
+                        <div class="search-city-tabs__rating">
+                            <star-rating *ngIf="!serverFlag" [value]="curItem.rating" checkedcolor="#EBB510" uncheckedcolor="#DADADA" size="20px" readonly="true"></star-rating>
+                            <div class="search-city-tabs__rating-label">{{ "citySearch.item.userRate" | translate }}</div>
+                        </div>
+
+                        <div class="search-city-tabs__rating-text" [innerHTML]="'citySearch.item.review.reviewExplanation' | translate:{count: curItem.reviewsCount}">
+
+                        </div>
+                    </div>
+
+                    <div class="comment">
+                        <div class="comment__head d-xs-none">{{ "commentList.itemReviews" | translate: {review: curItem.reviewsCount} }}</div>
+
+                        <div class="comment__item" *ngFor="let item of itemReviewList">
+                            <div class="comment__mark-mobile d-none d-xs-flex">
+                                <div class="comment__rating">
+                                    <span class="rating-mark">{{item.rate}}</span>
+                                    <star-rating *ngIf="!serverFlag" [value]="item.rate" checkedcolor="#EBB510" uncheckedcolor="#DADADA" size="20px" readonly="true"></star-rating>
+                                </div>
+                                <div class="comment__date">{{ item.createdAt | date: 'dd.MM.yyyy' }}</div>
+                            </div>
+
+                            <div class="comment__icon" style="background-image: url('/assets/img/icons/user-icon.svg');"></div>
+
+                            <div class="comment__mark">
+                                <div class="comment__rating d-xs-none">
+                                    <span class="rating-mark">{{item.rate}}</span>
+                                    <star-rating *ngIf="!serverFlag" [value]="item.rate" checkedcolor="#EBB510" uncheckedcolor="#DADADA" size="20px" readonly="true"></star-rating>
+                                </div>
+                                <div class="comment__date"><span class="comment__author">{{ item.fullName.split(' ')[0] }}</span>
+                                    <!-- <span class="comment__city d-none d-xs-block">תל אביב</span> -->
+                                    <span class="d-xs-none">{{ item.createdAt | date: 'dd.MM.yyyy' }}</span></div>
+                            </div>
+                            <div class="comment__text">
+                                {{ item.feedback }}
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- end comment -->
+
+                    <div style="font-size: 16px; font-weight: 700">
+                        <a (click)="addComments()">{{ "comments.seeMore" | translate }}</a>
+                    </div>
+                </div>
+
+                <!-- search-city-tabs__content -->
+                <div class="search-city-tabs__content active" *ngIf="tabChanged === 2">
+                    <div class="search-offer">
+                        <div class="search-offer__item" [ngClass]="{active: offer.store.getDeliveryPrice(currentCity._id) + offer.store.getPrice(curItem) === minPriceWithDiscount}" *ngFor="let offer of offerStore">
+                            <div class="search-offer__main">
+                                <div class="search-offer__head">
+                                    <div class="search-offer__name"><a style="color: black" [routerLink]="['/', offer.store.url]">{{offer.store.name[curLang]}}</a></div>
+                                    <div class="search-offer__count"> {{ "productItem.rate" | translate }} <span class="search-offer__rating">{{offer.store.rating}}</span> {{ "citySearch.item.reviews" | translate }} <span class="search-offer__invite">{{offer.store.reviewsCount}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="search-offer__content-wrap">
+                                    <div class="search-offer__content">
+                                        <div class="search-offer__text">
+                                            <!-- {{ "citySearch.item.notice" | translate: {size: "רגיל"} }} -->
+                                        </div>
+                                        <a *ngIf="showOffers" (click)="changeAdditionalDealsState(offer.store._id)" class="search-offer__link">{{ "citySearch.item.additionalDeals" | translate }}</a>
+                                    </div>
+
+                                    <div class="search-offer__price">
+                                        <div class="search-offer__price-label" *ngIf="curItem.isSale() && !curItem.isDayDeal()">{{ "citySearch.item.sale" | translate }}</div>
+                                        <div class="search-offer__price-label" *ngIf="!curItem.isSale() && curItem.isDayDeal()">{{ "citySearch.item.dayDeal" | translate }}</div>
+                                        <div class="search-offer__price-label" *ngIf="curItem.isPriceImproveValid()">{{ "citySearch.item.improvePrice2" | translate }}</div>
+                                        <span class="search-offer__cur-price">₪{{offer.store.getPrice(curItem) + offer.store.getDeliveryPrice(currentCity._id)}}</span>
+                                        <span *ngIf="curItem.isPriceImproveValid() || curItem.isSale() || curItem.isDayDeal()" class="search-offer__old-price">₪{{offer.offer.price + offer.store.getDeliveryPrice(currentCity._id)}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="search-offer__btn">
+                                    <div class="search-offer__price d-none d-sm-inline-block">
+                                        <span class="search-offer__cur-price">₪{{offer.offer.price + offer.store.getDeliveryPrice(currentCity._id)}}</span>
+                                    </div>
+                                    <a (click)="saveOfferAndRedirectToProduct(curItem, offer.store._id)" class="btn"> {{ "citySearch.selectStore" | translate }}</a>
+                                </div>
+                            </div>
+                            <div *ngIf="showOffers" [@slideInOut]="storeAdditionalOffers[offer.store._id]">
+                                <app-additional-store-offers [selectedItem]="curItem" [store]="offer.store" [additionalItems]="_additionalItems"></app-additional-store-offers>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- search-city-tabs__content -->
+            </div>
+
+            <div class="search-city-unwrap__bottom">
+                <a (click)="onAddOfersClicked()" class="search-city-unwrap__close">{{ "citySearch.item.close" | translate }} X</a>
+
+                <!-- <div class="pager">
+                                    <a href="#" class="pager__arr"><</a>
+                                    <span class="pager__text">1-25</span>
+                                    <a href="#" class="pager__arr inactive">></a>
+                                </div> -->
+            </div>
+        </div>
+        <!-- end search-city-unwrap__content -->
+    </div>
+    <!-- end search-city-unwrap -->
+</div>
+<!-- end search-city__item -->

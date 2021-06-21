@@ -1,0 +1,671 @@
+<app-header
+  *ngIf="!isMobile"
+  [itemName]="pack.baseItem.name[curLang]"
+  [showSlider]="showSlider"
+></app-header>
+<app-product-header-mobile
+  *ngIf="isMobile"
+  [itemName]="pack.baseItem.code"
+></app-product-header-mobile>
+<app-order-call-popup
+  *ngIf="callBack"
+  [productOffer]="productOffer"
+  [additionalItems]="additionalItems | filterObjectsByIdArray: pack.addItems"
+  [link]="'/product/' + offerID"
+>
+</app-order-call-popup>
+<main>
+  <div class="st-width-full">
+    <div class="content">
+      <aside class="content__right">
+        <app-hashve-banner></app-hashve-banner>
+      </aside>
+
+      <div class="content__center">
+        <section class="product-card-wrap">
+          <div class="product-action d-none d-md-flex">
+            <div class="product-action__btn">
+              <a
+                *ngIf="pack.baseItem.inStock"
+                (click)="nextToPayment()"
+                class="btn btn--middle"
+                >{{ "product.buyNow" | translate }}</a
+              >
+              <span
+                *ngIf="!pack.baseItem.inStock"
+                class="btn btn--middle btn--orange"
+                >{{ "המוצר לא במלאי" | translate }}</span
+              >
+              <a
+                *ngIf="pack.baseItem.inStock"
+                (click)="addToCard()"
+                class="btn btn--middle btn--orange"
+                >{{ "product.addToCard" | translate }}</a
+              >
+            </div>
+
+            <!-- <a [routerLink]="['/', store.url]" class="product-action__shop">
+              <img src="/assets/img/ic-shop.png" alt="">
+              <span class="product-action__text">לחנות</span>
+            </a> -->
+            <a
+              *ngIf="store.callToStore"
+              [routerLink]="['/', 'product', offerID]"
+              [queryParams]="{ callBack: true }"
+              class="product-card__call"
+            ></a>
+          </div>
+
+          <div class="product-card">
+            <div class="product-card__img-wrap">
+              <div class="product-card__head d-md-none">
+                <div class="tag" *ngIf="pack.baseItem.isDayDeal()">
+                  {{ "productItem.dayDeal" | translate }}
+                </div>
+                <div class="tag tag--red" *ngIf="pack.baseItem.isSale()">
+                  {{ "productItem.sale" | translate }}
+                </div>
+
+                <h2 class="product-card__name">
+                  {{ "citySearch.item.code" | translate
+                  }}{{ pack.baseItem.code }}
+                </h2>
+                <span class="product-card__count">
+                  {{ pack.baseItem.name[curLang] }}
+                </span>
+                <div class="product-card__icons">
+                  <a
+                    (click)="addToWishList()"
+                    [ngClass]="{ active: isWished() }"
+                    class="search-city-param__icon search-city-param__icon--wish"
+                  ></a>
+                  <!--<a href="#" class="product-card__icon product-card__icon&#45;&#45;share"></a>-->
+                </div>
+              </div>
+              <div
+                class="product-card__img"
+                [style.backgroundImage]="
+                  'url(' + host + '/assets/items/' + pack.baseItem.picture + ')'
+                "
+              >
+                <a
+                  *ngIf="store.callToStore"
+                  [routerLink]="['/', 'product', offerID]"
+                  [queryParams]="{ callBack: true }"
+                  class="product-card__call"
+                ></a>
+              </div>
+            </div>
+
+            <div class="product-card__info">
+              <h2
+                class="product-card__seo d-md-none"
+                *ngIf="pack.baseItem.seo.h1"
+              >
+                {{ pack.baseItem.seo.h1[curLang] }}
+              </h2>
+
+              <div class="product-card__info-mob-top">
+                <div class="product-card__mark">
+                  <span class="product-card__mark-item">
+                    <span class="rating-mark">{{ pack.baseItem.rating }}</span>
+                    <span
+                      style="display: inline-block; margin-right: 10px"
+                      dir="rtl"
+                    >
+                      <star-rating
+                        [value]="pack.baseItem.rating"
+                        checkedcolor="#EBB510"
+                        uncheckedcolor="#DADADA"
+                        size="20px"
+                        readonly="true"
+                      ></star-rating>
+                    </span>
+                  </span>
+                  <span class="product-card__mark-item">
+                    <a (click)="showReview('comments-list')"
+                      >{{ pack.baseItem.reviewsCount }} חוות דעת</a
+                    >
+                  </span>
+                  <span class="product-card__count-item"> {{ "productItem.saledCount" | translate }} {{pack.baseItem.saledCount}}</span>
+                </div>
+
+                <div class="product-card__icons d-none d-md-inline-flex">
+                  <a
+                    (click)="addToWishList()"
+                    [ngClass]="{ active: isWished() }"
+                    class="product-card__icon product-card__icon--wish"
+                  ></a>
+
+                  <!--<a href="#" class="product-card__icon product-card__icon&#45;&#45;share"></a>-->
+                </div>
+              </div>
+
+              <div class="d-none d-md-block">
+                <div class="tag" *ngIf="pack.baseItem.isDayDeal()">
+                  דיל יומי
+                </div>
+                <div class="tag tag--red" *ngIf="pack.baseItem.isSale()">
+                  במבצע
+                </div>
+              </div>
+
+              <div class="choose-size">
+                <div class="choose-size__head">
+                  {{ "product.sizeTitle" | translate }}
+                </div>
+                <!-- <div class="choose-size__text">{{ "product.sizeSubTitle" | translate }}”גדול“</div> -->
+
+                <div class="choose-size__list">
+                  <div class="choose-size__item">
+                    <div class="choose-size__label">
+                      {{ "product.size.normal" | translate }}
+                    </div>
+                    <div class="input-check">
+                      <input
+                        type="checkbox"
+                        id="checkbox-size-1"
+                        [checked]="itemSize[0]"
+                        (change)="onSizeChanged(0)"
+                      />
+                      <label for="checkbox-size-1" class="input-check__label"
+                        ><span class="input-check__mark"></span
+                      ></label>
+                    </div>
+                  </div>
+
+                  <div class="choose-size__item choose-size__item--blue">
+                    <div class="choose-size__label">
+                      {{ "product.size.large" | translate }}
+                    </div>
+                    <div class="input-check">
+                      <input
+                        type="checkbox"
+                        id="checkbox-size-2"
+                        [checked]="itemSize[1]"
+                        (change)="onSizeChanged(1)"
+                      />
+                      <label for="checkbox-size-2" class="input-check__label"
+                        ><span class="input-check__mark"></span
+                      ></label>
+                    </div>
+                  </div>
+
+                  <div class="choose-size__item choose-size__item--purple">
+                    <div class="choose-size__label">
+                      {{ "product.size.extra" | translate }}
+                    </div>
+                    <div class="input-check">
+                      <input
+                        type="checkbox"
+                        id="checkbox-size-3"
+                        [checked]="itemSize[2]"
+                        (change)="onSizeChanged(2)"
+                      />
+                      <label for="checkbox-size-3" class="input-check__label"
+                        ><span class="input-check__mark"></span
+                      ></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="product-card-delivery">
+                <!-- <div class="product-card-delivery__head">כולל משלוח <a href="#"
+                                                                          class="product-card-delivery__city">ב{{city.name[curLang]}}</a>:
+                    ₪{{ store.getDeliveryPrice(city._id) }}
+                  </div> -->
+                <!-- <div class="product-card-delivery__desc"><span
+                    class="product-card-delivery__text">{{ "product.shippingNotice" | translate }}
+                    "{{ store.name[curLang] }}
+                     "</span></div> -->
+                <div class="product-card-delivery__top">
+                  <div class="product-card__price-info">
+                    <div class="product-card__price-content">
+                      <!-- <div class="product-card__price-wrap">
+                            <div class="product-card__price">₪{{store.getPackagePriceWithDelivery(pack, city._id)}}</div>
+                            <div class="product-card__link"><a href="#">מתוך {{offerCount}} הצעות</a></div>
+                          </div> -->
+                      <div class="product-card__price-wrap">
+                        <div
+                          class="best-price__old-price"
+                          *ngIf="
+                            pack.baseItem.isDayDeal() ||
+                            pack.baseItem.isSale() ||
+                            pack.baseItem.isPriceImproveValid()
+                          "
+                        >
+                          {{
+                            store.getPriceOfPackWithoutDiscountWithDelivery(
+                              pack,
+                              city._id
+                            )
+                          }}
+                          ₪
+                        </div>
+                        <div class="product-card__price">
+                          ₪{{
+                            store.getPackagePriceWithDelivery(pack, city._id)
+                          }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="product-card-delivery__head">
+                    כולל משלוח
+                    <div
+                      class="filter__item"
+                      (click)="openCityList2 = !openCityList2"
+                    >
+                      <div class="filter__head">ב{{ city.name[curLang] }}</div>
+                      <div
+                        class="filter__option"
+                        [ngStyle]="{
+                          display: openCityList2 ? 'block' : 'none'
+                        }"
+                      >
+                        <div
+                          (click)="changeCity(tmpCity)"
+                          class="filter__param"
+                          *ngFor="let tmpCity of listCity"
+                        >
+                          {{ tmpCity.name[curLang] }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- improve price start -->
+                <div class="progress" [ngClass]="{ animate: startAnimate }">
+                  <div class="sk-fading-circle">
+                    <div class="sk-circle sk-circle-1"></div>
+                    <div class="sk-circle sk-circle-2"></div>
+                    <div class="sk-circle sk-circle-3"></div>
+                    <div class="sk-circle sk-circle-4"></div>
+                    <div class="sk-circle sk-circle-5"></div>
+                    <div class="sk-circle sk-circle-6"></div>
+                    <div class="sk-circle sk-circle-7"></div>
+                    <div class="sk-circle sk-circle-8"></div>
+                    <div class="sk-circle sk-circle-9"></div>
+                    <div class="sk-circle sk-circle-10"></div>
+                    <div class="sk-circle sk-circle-11"></div>
+                    <div class="sk-circle sk-circle-12"></div>
+                  </div>
+
+                  <div class="progress__text-wrap">
+                    <div class="progress__text progress__text_1">
+                      {{ "priceImprove.fixStepOne" | translate }}
+                    </div>
+                    <div class="progress__text progress__text_2">
+                      {{ "priceImprove.fixStepTwo" | translate }}
+                    </div>
+                    <div class="progress__text progress__text_3">
+                      {{ "priceImprove.fixStepThree" | translate }}
+                    </div>
+                  </div>
+                </div>
+
+                <ng-container
+                  *ngIf="
+                    !pack.baseItem.isSale() &&
+                    !pack.baseItem.isDayDeal() &&
+                    startAnimate === false
+                  "
+                >
+                  <div class="warning-wrap">
+                    <div
+                      class="warning"
+                      *ngIf="!pack.baseItem.improvePriceRequest"
+                    >
+                      <div class="warning__sticker">
+                        <div class="warning__img">
+                          <img
+                            src="{{ host }}/assets/img/icon-info.png"
+                            alt=""
+                          />
+
+                          <div class="warning__popup">
+                            {{ "banners.priceImprove.popupText" | translate }}
+                            <div class="warning__close">X</div>
+                          </div>
+                        </div>
+
+                        <div
+                          class="warning__text"
+                          (click)="startImprovingPrice()"
+                        >
+                          <div class="warning__title">
+                            {{ "citySearch.item.priceImprove" | translate }}
+                          </div>
+                          <div class="warning__sub-title">
+                            {{ "citySearch.item.takeOwenOffer" | translate }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="warning-clock"
+                      *ngIf="
+                        pack.baseItem.improvePriceRequest &&
+                        pack.baseItem.isPriceImproveValid()
+                      "
+                    >
+                      <img
+                        src="{{ host }}/assets/img/icon-clock.png"
+                        alt=""
+                        class="warning-clock__img"
+                      />
+                      <div class="warning-clock__text">
+                        <div class="warning-clock__title">
+                          {{ "priceImprove.offerWillExpired" | translate }}
+                        </div>
+                        <div class="warning-clock__time">
+                          {{ state.minutes }} {{ "payment.min" | translate }}
+                          {{ state.seconds }} {{ "payment.sec" | translate }}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      class="warning-clock warning-clock-line&#45;&#45;red"
+                      *ngIf="
+                        pack.baseItem.improvePriceRequest &&
+                        !pack.baseItem.isPriceImproveValid()
+                      "
+                    >
+                      <img
+                        src="/assets/img/icon-clock.png"
+                        alt=""
+                        class="warning-clock__img"
+                      />
+                      <div class="warning-clock-line__text">
+                        <span class="warning-clock__title"
+                          >{{ "priceImprove.offerExpired" | translate }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+                <!-- improve price end -->
+                <span
+                class="instock__text"
+                *ngIf="
+                  pack.baseItem.inStock && store.inStock(pack.baseItem._id)
+                "
+              >
+              {{ "productItem.inStock" | translate }}
+              </span>
+              <span
+                class="instock__text"
+                *ngIf="
+                  !pack.baseItem.inStock ||
+                  !store.inStock(pack.baseItem._id)
+                "
+              >
+              {{ "productItem.outOfStock" | translate }}
+              </span>
+                <div class="product-card-delivery__desc">
+                  <span class="product-card-delivery__text"
+                    >{{ "product.bestOffer" | translate }}
+                    {{ store.name[curLang] }}</span>
+                </div>
+              </div>
+
+              <div class="product-card__link" *ngIf="store">
+                <a (click)="showReview('price-compare')"
+                  >מתוך {{ offerCount }}
+                  {{ "breadcrumbs.offers" | translate }}</a
+                >
+              </div>
+
+              <div class="h4">פרטים נוספים:</div>
+              <div
+                class="product-card__desc"
+                [innerHTML]="pack.baseItem.description[curLang]"
+              ></div>
+              <p>{{ "product.vaseNotice" | translate }}</p>
+            </div>
+          </div>
+          <!-- end product-card -->
+          <div class="add-element">
+            <div class="h2">
+              {{ "product.additionalItemsTitle" | translate }}
+            </div>
+            <swiper
+              [config]="config"
+              [classes]="'add-element__list js-add-element-list'"
+            >
+              <div class="swiper-wrapper">
+                <div
+                  class="add-element__item swiper-slide"
+                  [ngClass]="{ active: additionalItemDict[addItem._id] }"
+                  *ngFor="let addItem of additionalItems; let i = index"
+                >
+                  <img
+                    src="{{ host + '/assets/items/' + addItem.picture }}"
+                    alt=""
+                    class="add-element__img"
+                  />
+                  <div class="add-element__name">
+                    {{ addItem.name[curLang] }}
+                  </div>
+                  <div class="add-element__price">
+                    ₪{{ store.getPrice(addItem) }}
+                  </div>
+
+                  <div class="add-element__check">
+                    <div class="input-check input-check--green">
+                      <input
+                        type="checkbox"
+                        id="checkbox{{ i }}"
+                        [checked]="additionalItemDict[addItem._id]"
+                        (change)="onAdditionalItemsChanged(addItem._id, i)"
+                      />
+                      <label for="checkbox{{ i }}" class="input-check__label"
+                        ><span class="input-check__mark"></span
+                      ></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </swiper>
+          </div>
+          <!-- end add-element -->
+
+          <!-- <div class="product-card-wrap__btn d-md-none">
+            <a (click)="nextToPayment()" class="btn btn--middle">{{ "product.buyNow" | translate }}</a>
+            <a (click)="addToCard()" class="btn btn--middle btn--orange">{{ "product.addToCard" | translate }}</a>
+          </div> -->
+        </section>
+
+        <div class="info-block">
+          <div class="low-price">
+            <div class="low-price__top">
+              ההצעה הטובה ביותר&nbsp;<span class="low-price__num"
+                >₪{{ store.getPackagePriceWithDelivery(pack, city._id) }}
+              </span>
+              <div class="low-price__filter">
+                כולל משלוח:
+
+                <div
+                  class="filter__item"
+                  (click)="openCityList = !openCityList"
+                >
+                  <div class="filter__head">{{ city.name[curLang] }}</div>
+                  <div
+                    class="filter__option"
+                    [ngStyle]="{ display: openCityList ? 'block' : 'none' }"
+                  >
+                    <div
+                      (click)="changeCity(tmpCity)"
+                      class="filter__param"
+                      *ngFor="let tmpCity of listCity"
+                    >
+                      {{ tmpCity.name[curLang] }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--<a href="#" class="low-price__link">מתוך 3 חנויות</a>-->
+            </div>
+
+            <div class="low-price__param">
+              <div class="low-price__shop">
+                חנות רשמית -
+                <a
+                  [routerLink]="['/', store.url]"
+                  class="low-price__shop-name"
+                  >{{ store.name[curLang] }}</a
+                >
+              </div>
+
+              <div class="low-price-count">
+                <div class="low-price-count__item">
+                  <span class="low-price-count__val">{{
+                    store.items.length
+                  }}</span>
+                  <span class="low-price-count__label">
+                    {{ "productItem.products" | translate }}
+                  </span>
+                </div>
+
+                <div class="low-price-count__item">
+                  <span class="low-price-count__val">{{
+                    store.reviewsCount
+                  }}</span>
+                  <span class="low-price-count__label">
+                    {{ "productItem.placedOrders" | translate }}</span
+                  >
+                </div>
+
+                <div class="low-price-count__item">
+                  <span class="low-price-count__val">{{ store.rating }}</span>
+                  <span class="low-price-count__label">
+                    {{ "productItem.rate" | translate }}
+                  </span>
+                </div>
+              </div>
+
+              <a href="#" class="btn-exclusive d-none d-md-flex">
+                <img
+                  src="/assets/img/btn-exclusive.png"
+                  alt=""
+                  class="btn-exclusive__img"
+                />
+
+                <span class="btn-exclusive__content">
+                  <span class="btn-exclusive__head">
+                    {{ "productItem.benefits" | translate }}</span
+                  >
+                  <span class="btn-exclusive__text">{{
+                    "productItem.orderFromSite" | translate
+                  }}</span>
+                </span>
+              </a>
+            </div>
+
+            <div class="css-time-over" *ngIf="!store.adminActive">
+              לקוחות יקרים! החנות אינה זמינה לקבלת הזמנות.
+            </div>
+            <div class="low-price__btn d-md-none" *ngIf="store.adminActive">
+              <!-- <a href="#" class="btn-exclusive d-md-none">
+                <img src="/assets/img/btn-exclusive.png" alt="" class="btn-exclusive__img">
+
+                <span class="btn-exclusive__content">
+												<span class="btn-exclusive__head">ההטבות בלעדיות</span>
+												<span class="btn-exclusive__text">למזמינים דרך האתר</span>
+											</span>
+              </a> -->
+
+              <a
+                *ngIf="
+                  pack.baseItem.inStock &&
+                  store?.payments?.length &&
+                  store?.inStock(pack.baseItem._id)
+                "
+                (click)="nextToPayment()"
+                class="btn btn--middle"
+                >{{ "product.buyNow" | translate }}</a
+              >
+              <span
+                *ngIf="
+                  !pack.baseItem.inStock || !store?.inStock(pack.baseItem._id)
+                "
+                class="btn btn--middle btn--orange"
+                >{{ "המוצר לא במלאי" | translate }}</span
+              >
+              <a
+                *ngIf="
+                  pack.baseItem.inStock &&
+                  store?.payments?.length &&
+                  store?.inStock(pack.baseItem._id)
+                "
+                (click)="addToCard()"
+                class="btn btn--middle btn--orange"
+                >{{ "product.addToCard" | translate }}</a
+              >
+              <div
+                *ngIf="!store?.payments?.length"
+                class="css-nopaments"
+                [innerHTML]="
+                  'storepage.noPaymentMethods' | translate: { phone: store.tel }
+                "
+              ></div>
+              <a
+                *ngIf="store.callToStore"
+                [routerLink]="['/', 'product', offerID]"
+                [queryParams]="{ callBack: true }"
+                class="btn-call"
+              >
+                <span class="btn-call__icon"></span
+                >{{ "productItem.orderByPhone" | translate }}
+              </a>
+            </div>
+          </div>
+
+          <a [routerLink]="['/', store.url]" class="info-block__more d-md-none"
+            >לחנות</a
+          >
+
+          <app-price-compare
+            id="price-compare"
+            (onStoreChanged)="changeStore($event)"
+            (onOfferCountChanged)="setOfferCount($event)"
+            [item]="pack"
+            [openned]="true"
+            [currentPrice]="
+              store.getDeliveryPrice(city._id) +
+              store.getPrice(pack.baseItem) +
+              pack.size
+            "
+          >
+          </app-price-compare>
+        </div>
+
+        <app-comments-list
+          id="comments-list"
+          [type]="0"
+          [itemId]="pack.baseItem._id"
+          [rating]="pack.baseItem.rating"
+          [reviewCount]="pack.baseItem.reviewsCount"
+          [reviews]="itemRates"
+        ></app-comments-list>
+
+        <app-review-slider></app-review-slider>
+        <app-watched-list></app-watched-list>
+      </div>
+
+      <aside class="content__left">
+        <ng-container *ngFor="let item of banners">
+          <div class="header-bottom__notice" app-notice [banner]="item"></div>
+        </ng-container>
+      </aside>
+    </div>
+  </div>
+</main>
+<app-footer></app-footer>

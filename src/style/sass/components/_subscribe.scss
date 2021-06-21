@@ -1,0 +1,50 @@
+﻿/*----------- subscribe -------------*/
+.subscribe{
+	background: #595959;
+	padding: 20px 0 35px;
+	font-family: $font-arial;
+
+	&__form{
+		width: 442px;
+		max-width: 100%;
+		margin: 0 auto;
+	}
+
+	&__content{
+		display: flex;
+	}
+
+	&__text{
+		@include font(normal, normal, 13px, 18px, #eee);
+		letter-spacing: -0.1px;
+		margin-bottom: 6px;
+	}
+
+	input[type="text"],
+	input[type="email"]{
+		height: 40px;
+		width: 100%;
+		min-width: 0;
+		outline: none;
+		border: 0;
+		border-radius: 0;
+		background: #fff;
+		@include font(normal, normal, 13px, 38px, #000);
+		padding: 0 20px;
+	}
+
+	input[type="submit"].btn{
+		border: 1px solid #fff;
+		height: 40px;
+		line-height: 38px;
+		padding: 0 18px;
+	}
+}
+
+@media (max-width: 767px) {
+	.subscribe{
+		&__form{
+			width: 460px;
+		}
+	}
+}

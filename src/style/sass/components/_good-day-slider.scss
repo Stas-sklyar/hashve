@@ -1,0 +1,112 @@
+﻿/*----------- good-day-slider -------------*/
+.good-day-slider{
+	width: 100%;
+	// height: 592px;
+	overflow: hidden;
+	font-family: $font-assistant;
+
+	&__img{
+		display: block;
+		width: 100%;
+		height: 370px;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+		margin-bottom: 17px;
+	}
+
+	&__content{
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	&__rating{
+		display: flex;
+		align-items: center;
+		margin-bottom: 4px;
+	}
+
+	.rating-mark{
+		margin-left: 5px;
+	}
+
+	&__text{
+		@include font(normal, 600, 14px, 18px, #6e6e6e);
+		margin-top: 4px;
+	}
+
+	&__price{
+		display: flex;
+		align-items: flex-end;
+		margin-top: 8px;
+	}
+
+	&__old-price{
+		@include font(normal, 600, 18px, 21px, #494949);
+		text-decoration: line-through;
+		margin-left: 8px;
+	}
+
+	&__cur-price{
+		@include font(normal, bold, 25px, 25px, #000);
+	}
+
+	&__link{
+		@include font(normal, bold, 16px, 20px, $color-green);
+	}
+
+	.swiper-button-disabled{
+		display: none;
+	}
+
+	&.swiper-container-rtl .swiper-button-prev,
+	&.swiper-container-rtl .swiper-button-next{
+		width: 53px;
+		height: 53px;
+		opacity: 0.8;
+	}
+
+	&.swiper-container-rtl .swiper-button-next{
+		background: url(#{$path-icon}/ic-prev.svg) no-repeat center;
+	}
+
+	&.swiper-container-rtl .swiper-button-prev{
+		background: url(#{$path-icon}/ic-next.svg) no-repeat center;
+	}
+
+	&.swiper-container-rtl .swiper-button-prev:hover,
+	&.swiper-container-rtl .swiper-button-next:hover{
+		opacity: 1;
+	}
+}
+
+@media (max-width: 767px) {
+	.good-day-slider{
+		&__img{
+			height: 263px;
+		}
+	}
+}
+
+@media (max-width: 479px) {
+	.good-day-slider{
+		&__img{
+			margin-top: 8px;
+		}
+
+		&__content{
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		&__text{
+			font-size: 12px;
+			line-height: 14px;
+			margin-top: 6px;
+		}
+
+		&__price{
+			margin-top: 10px;
+		}
+	}
+}

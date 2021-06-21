@@ -1,0 +1,6 @@
+<div class="sticker" [ngClass]="{'sticker--blue': _itemSize.large === size, 'sticker--purple': _itemSize.extralarge === size}">
+  <div class="sticker__label d-md-none">{{ "citySearch.item.size" | translate }}</div>
+  <div class="sticker__text" *ngIf="size === _itemSize.normal">{{ "product.size.normal" | translate }}</div>
+  <div class="sticker__text" *ngIf="size === _itemSize.large">{{ "product.size.large" | translate }}</div>
+  <div class="sticker__text" *ngIf="size === _itemSize.extralarge">{{ "product.size.extra" | translate }}</div>
+</div>

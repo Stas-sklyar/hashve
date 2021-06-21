@@ -1,0 +1,143 @@
+﻿/*----------- catalog-menu -------------*/
+.catalog-menu-wrap{
+	background: rgba(255,255,255,0.6);
+	height: 44px;
+	margin-bottom: 25px;
+
+	.swiper-wrapper{
+		box-sizing: border-box;
+	}
+
+	.swiper-container {
+		width: 100%;
+		height: 100%;
+	}
+
+	.swiper-slide {
+		// width: 100%;
+		width: auto;
+	}
+}
+
+.catalog-menu{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	padding: 13px 0;
+
+	&__item,
+	&__item a{
+		display: inline-block;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		@include font(normal, 600, 18px, 18px, $color-text);
+		text-decoration: none;
+	}
+
+	&__item a{
+		padding: 0 10px;
+		position: relative;
+	}
+
+	&__item:not(:last-child){
+		border-left: 1px solid #c4c4c4;
+	}
+
+	&__item a::after{
+		content: '';
+		display: none;
+		width: 100%;
+		height: 3px;
+		background: $color-green;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		margin-top: 10px;
+	}
+
+	&__item a:hover,
+	&__item.active a{
+		color: $color-green;
+	}
+
+	&__item a:hover::after,
+	&__item.active a::after{
+		display: block;
+	}
+
+	&__item{
+		white-space: nowrap;
+	}
+}
+
+@media (max-width: 991px) {
+	.catalog-menu-wrap{
+		margin: -22px -10px 0;
+		background: #fff;
+		border-bottom: 1px solid #939393;
+
+		.swiper-slide{
+			padding-right: 40px;
+		}
+	}
+
+	.catalog-menu{
+		&__main{
+			position: absolute;
+			right: 0;
+			@include top-center;
+			z-index: 10;
+		}
+
+		&__item--main a,
+		&__main{
+			font-size: 0;
+			height: 21px;
+			width: 41px;
+			background: #fff url(#{$path-icon}/ic-shop.svg) no-repeat center;
+		}
+
+		&__item--main a:hover,
+		&__item--main.active a,
+		&__main:hover,
+		&__main.active{
+			background-image: url(#{$path-icon}/ic-shop-green.svg);
+		}
+
+		&__main::after{
+			content: '';
+			display: none;
+			width: 100%;
+			height: 3px;
+			background: #58b32d;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			margin: 8px auto 0;
+		}
+
+		&__main:hover::after,
+		&__main.active::after{
+			display: block;
+		}
+
+		&__item a::after{
+			margin-top: 9px;
+		}
+
+		&__item--main a::after{
+			margin-top: 10px;
+		}
+
+		&__item:not(:last-child){
+			border-left: 0;
+		}
+	}
+}

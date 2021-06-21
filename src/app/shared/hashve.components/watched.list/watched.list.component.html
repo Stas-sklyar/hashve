@@ -1,0 +1,27 @@
+<section class="last-seen">
+    <div class="h2">{{ "citySearch.item.lastSeen" | translate }}</div>
+
+
+    <swiper [config]="sliderConfig" [classes]="'last-seen__list js-last-seen-list'">
+        <div class="swiper-wrapper">
+
+            <div class="last-seen__item swiper-slide" *ngFor="let item of WATCHED_LIST" [routerLink]="'/product/' + item.id">
+                <div class="last-seen__img" [style.backgroundImage]="'url(' + pic + item.pic + ')'"></div>
+
+                <div class="last-seen__head">
+                    <div class="last-seen__name">{{item.name[curLang]}}</div>
+                    <div class="last-seen__delivery">{{ "header.send_to" | translate }} {{item.city.name[curLang]}}</div>
+                </div>
+
+                <div class="last-seen__price"><span class="last-seen__price-main">₪{{item.price + item.deliveryPrice}}</span> {{ "citySearch.item.withDelivery" | translate }}
+                </div>
+            </div>
+
+        </div>
+
+        <div class="swiper-pagination d-md-none"></div>
+        <div class="swiper-button-prev d-md-none"></div>
+        <div class="swiper-button-next d-md-none"></div>
+    </swiper>
+</section>
+<!-- end last-seen -->

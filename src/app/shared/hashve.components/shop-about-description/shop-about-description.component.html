@@ -1,0 +1,20 @@
+<section class="unwrap-block unwrap-block--col-3 " (click)="_open = !_open" [ngClass]="{'opened':_open}">
+    <div class="unwrap-block__head">
+        <div class="h2" id="about">{{_store.seo.keywords[curLang]}}</div>
+        <div class="unwrap-block__arr"></div>
+    </div>
+    <div class="unwrap-block__content">
+        <div class="shop-map">
+            <div class="shop-map__content">
+                <div class="shop-map__text" [innerHTML]="_store.description[curLang]"></div>
+                <div class="about-shop-gallery d-none d-md-flex">
+                    <div class="about-shop-gallery__item" [style.backgroundImage]="'url('+img+')'" *ngFor="let img of _store.pic"></div>
+                </div>
+                <div class="shop-map__map-wrap" *ngIf="_mapEnable">
+                    <div class="h3">{{ "shopAbout.storePlaced" | translate }}</div>
+                    <div #mapElement class="map"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

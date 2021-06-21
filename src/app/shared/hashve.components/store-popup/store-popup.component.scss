@@ -1,0 +1,53 @@
+.store-popup {
+    text-align: center;
+    padding: 20px;
+}
+
+.store-popup__content-wrap {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: relative;
+    max-width: 50%;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    height: 90%;
+    max-height: auto;
+}
+
+.store-popup__head p {
+    font-size: 25px;
+}
+
+.store-popup__head {
+    padding-bottom: 15px;
+    border-bottom: 1px solid grey;
+}
+
+.store-popup__content p {
+    font-size: 20px;
+    padding: 15px 0;
+}
+
+.store-popup__content {
+    padding-top: 15px;
+}
+
+.store-popup__btn {
+    font-size: 20px;
+}
+
+@media (max-width: 479px) {
+    .store-popup__content-wrap {
+        max-width: 80%;
+    }
+}

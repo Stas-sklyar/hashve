@@ -1,0 +1,29 @@
+.form-site input[type="text"] {
+  padding-right: 40px;
+}
+
+:host {
+  .city-history-block {
+    display: inline-block;
+    border-radius: 5px;
+    border: 1px solid #acb2c3;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 10px;
+    color: #52576a;
+    text-align: center;
+    margin-right: 5px;
+    margin-bottom: 2px;
+    padding: 4px;
+  }
+
+  .city-history-close {
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .city-history-name {
+    padding: 5px 10px;
+  }
+}

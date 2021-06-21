@@ -1,0 +1,233 @@
+.history-card__blessing {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    color: #494949;
+}
+
+.history-card__name-container{
+    display: none;
+}
+
+.history-card__time-wrap,
+.history-card__recipient {
+    text-align: right;
+    padding: 5px 10px;
+}
+
+.history-card__recipient {
+    padding: 0;
+}
+
+.history-card__head-top {
+    display: -webkit-box;
+    display: block;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 13px 0 10px;
+}
+
+.history-card {
+    margin-top: 0;
+}
+
+.order-history__sub-title {
+    padding: 10px 10px 0 0;
+}
+
+.history-step__head {
+    font-size: 20px;
+}
+
+.history-step {
+    align-items: end;
+}
+
+@media (max-width: 380px) {
+    .history-step__list {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 479px) {
+    .history-card {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .history-card__time-wrap {
+        text-align: right !important;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .order-history__title {
+        padding: 0 10px !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .history-card__product-phone img {
+        width: 35px;
+        height: 35px;
+    }
+    .history-step {
+        justify-content: center;
+    }
+    .desctop-phone {
+        display: none;
+    }
+    .history-step__head {
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        padding: 5px 10px;
+        font-size: 20px;
+        align-self: center;
+    }
+    .history-card__recipient {
+        text-align: right;
+    }
+    .history-step__item--circle {
+        width: 44px;
+        height: 44px;
+    }
+    .history-step__item--circle img {
+        max-height: 18px;
+        min-height: auto;
+    }
+    .history-step__text {
+        font-size: 10px;
+        line-height: 8px;
+        margin-top: 3px;
+    }
+    .history-card__recipient {
+        padding: 0;
+    }
+    .history-card__head-top {
+        display: block !important;
+    }
+    .history-card__time-wrap {
+        text-align: right;
+        padding-left: 10px;
+    }
+}
+
+@media (min-width: 992px) {
+    .desctop-phone {
+        display: inline;
+    }
+}
+
+.order-history__title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 25px;
+    color: #58b32d;
+    padding: 20px 0;
+}
+
+@media (max-width: 1530px) {
+    .history-card__desc,
+    .history-card__step-wrap,
+    .history-card__info-product {
+        width: 100%;
+    }
+}
+
+.desctop-phone-text {
+    font-size: 20px;
+}
+
+.desctop-phone-num {
+    font-size: 25px;
+    font-weight: bold;
+    color: #019eef;
+    padding: 0 5px;
+}
+
+.history-card__product-address {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 20px;
+    color: #019eef;
+}
+
+.desctop-phone-num::after {
+    content: "";
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: url('../../../../assets/img/ic-form-phone.png') no-repeat center;
+}
+
+.history-card__product-address::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 25px;
+    background: url('../../../../assets/img/icons/ic-map-mark-small.svg') no-repeat center;
+}
+
+.shop-info__popup-order {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: #fff;
+    border: 1px solid #909090;
+    padding: 15px;
+    z-index: 20;
+    width: 295px;
+}
+
+.history-card__product-phone:hover .shop-info__popup-order {
+    display: block !important;
+}
+
+.shop-info__popup-order::after {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 10px 10px;
+    border-color: transparent transparent #fff;
+    position: absolute;
+    top: -8px;
+    margin: 0 auto;
+}
+
+.shop-info__popup-order::before {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 10px 10px;
+    border-color: transparent transparent #909090;
+    position: absolute;
+    top: -10px;
+    margin: 0 auto;
+}
+
+@media (max-width: 991px) {
+    .history-card__product-address::before {
+        display: none;
+    }
+
+    .history-card__info-product{
+        display: flex;
+    }
+
+    .history-card__product-phone{
+        margin-left: 10px;
+    }
+
+    .history-card__name-container{
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 50px;
+    }
+}

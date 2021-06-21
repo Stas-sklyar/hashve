@@ -1,0 +1,19 @@
+<div class="content">
+  <aside class="content__right">
+
+  </aside>
+
+  <div class="content__center">
+    <div class="order-history">
+
+      <div *ngIf="financeResult === true" class="order-history__title">{{ "orderHistory.cardSuccess" | translate }}</div>
+
+      <div *ngIf="financeResult === false" style="color: red;" class="order-history__title">{{ "orderHistory.cardFail" | translate }}</div>
+      <div *ngIf="financeResult === false" class="order-history__sub-title d-md-none">{{ "orderHistory.explanation" | translate }}</div>
+    </div>
+  </div>
+
+  <aside class="content__left">
+
+  </aside>
+</div>

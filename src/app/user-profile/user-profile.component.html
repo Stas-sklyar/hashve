@@ -1,0 +1,559 @@
+<app-header [showSlider]="showSlider"></app-header>
+<main>
+    <div class="st-width-full">
+        <div class="content">
+
+
+            <div class="content__center">
+                <div class="profile">
+                    <div class="profile__title">החשבון שלך בהשווה</div>
+
+                    <div class="profile-card">
+                        <div class="profile-card__sect">
+                            <!-- <div class="profile-card__title d-md-none">תמונה</div> -->
+
+                            <div class="profile-card__content">
+                                <div class="profile-card__personal">
+                                    <!-- <div class="profile-card__avatar" style="background-image: url(img/avatar.jpg);">
+                                        <span class="profile-card__edit"></span>
+                                    </div> -->
+
+                                    <form class="form-site d-md-none" [formGroup]="formUserInfos">
+                                        <!-- <div class="form-site__column-wrap">
+                                            <div class="form-site__column"> -->
+                                        <div class="form-site__field">
+                                            <label for="name" class="form-site__label">שם מלא:</label>
+                                            <input type="text" formControlName="fullName" name="fullName" id="name">
+                                        </div>
+
+                                        <div class="form-site__field">
+                                            <label for="phone" class="form-site__label">טלפון נייד:</label>
+                                            <input type="text" formControlName="phone" name="phone" id="phone">
+                                        </div>
+
+                                        <div class="form-site__field">
+                                            <label for="mail" class="form-site__label">דוא“ל:</label>
+                                            <input type="text" formControlName="email" name="email" id="email">
+                                        </div>
+                                        <!-- </div> -->
+
+                                        <!-- <div class="form-site__column"> -->
+                                        <div class="form-site__field">
+                                            <label for="birthday" class="form-site__label">יומולדת:</label>
+                                            <input type="date" id="birthday" formControlName="birthday" style="border: 0px; border-bottom: 1px;" name="birthday">
+                                        </div>
+
+                                        <div class="form-site__field">
+                                            <label for="mobile" class="form-site__label">עיר:</label>
+                                            <select class="select" formControlName="city" name="city" style="border: 0px; border-bottom: 1px;">
+                                                        <option value="">Select city </option>
+                                                        <option *ngFor="let city of cities" [value]="city._id"
+                                                            class="select__item active">{{city.name.heb}}</option>
+                                                    </select>
+                                        </div>
+                                        <!-- </div>
+                                        </div> -->
+                                        <button href="#" class="btn" (click)="saveUserInfosData()">Save</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+                        <!-- <div class="profile-card__sect">
+                            <div class="profile-card__title">סיסמה</div>
+
+                            <div class="profile-card__content">
+                                <div class="profile-card__change-psw">
+                                    <span class="profile-card__change-psw-text">אם תרצו לשנות את סיסמתכם, לחצו על הכפתור
+                                        ואנו נשלח קישור לאימייל באזרתו ניתן לאתחל את הסיסמה.</span><a href="#" class="btn">אתחל סיסמה</a>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="profile-card__sect">
+                            <div class="profile-card__title">העדפות SMS</div>
+
+                            <div class="profile-card__content">
+                                <div class="profile-card__sms">
+                                    <div class="input-check">
+                                        <input type="checkbox" id="checkbox1" [checked]="_customer?.managment?.enableSMS">
+                                        <label for="checkbox1" class="input-check__label"><span
+                                                class="input-check__mark"></span><span class="input-check__text">קבלת
+                                                SMS למס‘ 4855576450. קבלו <b>תזכורת על מבצעים והדילים </b>הטוביום ביותר
+                                                שלנו</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+
+                    <div class="profile__title d-none d-md-block">פרטים אישיים</div>
+
+                    <div class="profile-card d-none d-md-block">
+                        <form class="form-site" [formGroup]="formUserInfos">
+                            <div class="form-site__column-wrap">
+                                <div class="form-site__column">
+                                    <div class="form-site__field">
+                                        <label for="name" class="form-site__label">שם מלא:</label>
+                                        <input type="text" formControlName="fullName" name="fullName" id="name">
+                                    </div>
+
+                                    <div class="form-site__field">
+                                        <label for="phone" class="form-site__label">טלפון נייד:</label>
+                                        <input type="text" formControlName="phone" name="phone" id="phone">
+                                    </div>
+
+                                    <div class="form-site__field">
+                                        <label for="email" class="form-site__label">דוא“ל:</label>
+                                        <input type="text" formControlName="email" name="email" id="email">
+                                    </div>
+                                </div>
+
+                                <div class="form-site__column">
+                                    <div class="form-site__field">
+                                        <label for="birthday" class="form-site__label">יומולדת:</label>
+                                        <input type="date" id="birthday" formControlName="birthday" style="border: 0px; border-bottom: 1px;" name="birthday">
+                                    </div>
+
+                                    <div class="form-site__field">
+                                        <label for="mobile" class="form-site__label">עיר:</label>
+                                        <select class="select" formControlName="city" style="border: 0px; border-bottom: 1px;" name="city" style="border:0px">
+                                            <option value="">Select city </option>
+                                            <option *ngFor="let city of cities" [value]="city._id"
+                                                class="select__item active">{{city.name.heb}}</option>
+                                        </select>
+                                    </div>
+                                    <button href="#" class="btn" (click)="saveUserInfosData()">Save</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="profile__title"> Change password</div>
+                    <div class="profile-card">
+                        <div class="profile-card__sect">
+
+                            <div class="profile-card__content">
+
+                                <!-- <div class="profile-card__avatar" style="background-image: url(img/avatar.jpg);">
+                                <span class="profile-card__edit"></span>
+                            </div> -->
+
+
+                                <form class="form-site  d-md-block" [formGroup]="formPassword">
+                                    <!-- <div class="form-site__column-wrap">
+                                        <div class="form-site__column">-->
+                                    <div class="form-site__field">
+                                        <label for="password" class="form-site__label">password:</label>
+                                        <input type="password" formControlName="password" name="password" id="password">
+                                    </div>
+
+                                    <div class="form-site__field">
+                                        <label for="newPassword" class="form-site__label">new:</label>
+                                        <input type="password" formControlName="newPassword" name="newPassword" id="newPassword">
+                                    </div>
+
+                                    <!-- </div>
+                                    </div> -->
+                                    <button href="#" class="btn" (click)="changePassword()">Save</button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile__title">כתובות למשלוח
+                        <button href="#" class="btn" (click)="showAddressForm()">הוסף כתובת חדשה</button>
+
+                    </div>
+
+                    <!-- <div class="profile-address" *ngIf="isNewAddress">
+                        <div class="profile-address__form">
+                            <div class="profile-address__title">כתובת ראשית למשלוח נוכחי</div>
+
+                            <form class="form-site" [formGroup]="formAddress">
+                                <div class="form-site__field">
+                                    <label for="name" class="form-site__label">שם מלא: </label>
+                                    <input type="text" formControlName="fullName" name="fullName" placeholder="רומן קונטרג‘י" id="name">
+                                </div>
+
+                                <div class="form-site__field">
+                                    <label for="mobile" class="form-site__label">טלפון נייד:</label>
+                                    <input type="text" formControlName="phone" name="phone" placeholder="054-6375879" id="mobile">
+                                </div>
+
+                                <div class="payment-office">
+                                    <div class="input-check">
+                                        <input type="checkbox" id="checkbox2" formControlName="destinationType" name="destinationType">
+                                        <label for="checkbox2" class="input-check__label"><span
+                                                class="input-check__mark"></span>
+                                            <span class="input-check__text">פרטי</span>
+                                        </label>
+                                    </div>
+
+                                    <div class="input-check">
+                                        <input type="checkbox" id="checkbox3" formControlName="destinationType" name="destinationType" checked="checked">
+                                        <label for="checkbox3" class="input-check__label"><span
+                                                class="input-check__mark"></span>
+                                            <span class="input-check__text">משרד:</span></label>
+                                    </div>
+
+                                    <div class="form-site__field">
+                                        <input type="text" placeholder="שם המשרד" formControlName="companyName" name="companyName" id="office">
+                                    </div>
+                                </div>
+
+                                <div class="form-site__field">
+                                    <label for="mobile" class="form-site__label">עיר:</label>
+                                    <select class="select" formControlName="city" name="city">
+                                        <option value="">Select city </option>
+                                        <option *ngFor="let city of cities" class="select__item active">
+                                            {{city.name.heb}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-site__field">
+                                    <label for="street" class="form-site__label">רחוב:</label>
+                                    <input type="text" formControlName="street" name="street" placeholder="רוטשילד" id="street">
+                                </div>
+
+                                <div class="form-site__fields-wrap">
+                                    <div class="form-site__field">
+                                        <label for="house" class="form-site__label">מס‘:</label>
+                                        <input type="text" formControlName="house" name="house" placeholder="15" id="house">
+                                    </div>
+
+                                    <div class="form-site__field">
+                                        <label for="floor" class="form-site__label">קומה: </label>
+                                        <input type="text" formControlName="floor" name="floor" placeholder="6" id="floor">
+                                    </div>
+
+                                    <div class="form-site__field">
+                                        <label for="flat" class="form-site__label">דירה:</label>
+                                        <input type="text" formControlName="apartment" name="apartment" placeholder="15" id="flat">
+                                    </div>
+                                </div>
+
+                                <div class="form-site__field">
+                                    <input type="text" formControlName="instructions" name="instructions" placeholder="הנחיות נוספות לכתובת" id="instruction">
+                                </div>
+
+                            </form>
+                        </div>
+
+                        <!-- <div class="profile-address__form d-md-none">
+                            <div class="profile-address__btn"><a href="#" class="btn">הגדר כראשי</a></div>
+
+                            <form [formGroup]="formAddress" class="form-site form-site--inactive">
+                                <div class="form-site__field">
+                                    <label for="name" class="form-site__label">שם מלא: </label>
+                                    <input type="text" placeholder="רומן קונטרג‘י" formControlName="fullName" name="fullName" disabled="disabled">
+                                </div>
+
+                                <div class="form-site__field">
+                                    <label for="mobile" class="form-site__label">טלפון נייד:</label>
+                                    <input type="text" placeholder="054-6375879" formControlName="phone" name="phone" disabled="disabled">
+                                </div>
+
+                                <div class="payment-office">
+                                    <div class="input-check">
+                                        <input type="checkbox" id="checkbox4" formControlName="destinationType" name="destinationType" checked="checked" disabled="disabled">
+                                        <label for="checkbox4" class="input-check__label"><span
+                                                class="input-check__mark"></span>
+                                            <span class="input-check__text">פרטי</span>
+                                        </label>
+                                    </div>
+
+                                    <div class="input-check">
+                                        <input type="checkbox" id="checkbox5" formControlName="destinationType" name="destinationType" checked="checked" disabled="disabled">
+                                        <label for="checkbox5" class="input-check__label"><span
+                                                class="input-check__mark"></span>
+                                            <span class="input-check__text">משרד:</span></label>
+                                    </div>
+
+                                    <div class="form-site__field">
+                                        <input type="text" placeholder="שם המשרד" formControlName="companyName" name="companyName" id="office" disabled="disabled">
+                                    </div>
+                                </div>
+
+                                <div class="form-site__field">
+                                    <label for="mobile" class="form-site__label">עיר:</label>
+                                    <div class="select select--inactive">
+                                        <div class="select__cur">פתח תקוה</div>
+                                        <div class="select__list">
+                                            <div class="select__item active">פתח תקוה</div>
+                                            <div class="select__item">רובת</div>
+                                            <div class="select__item">דוד רהדת</div>
+                                            <div class="select__item">הליהת</div>
+                                            <div class="select__item">רות</div>
+                                            <div class="select__item">חופת</div>
+                                            <div class="select__item">ךנעת</div>
+                                            <div class="select__item">םוחנת</div>
+                                            <div class="select__item">רעונה תועונת</div>
+                                            <div class="select__item">רמת</div>
+                                            <div class="select__item">קחצי לת</div>
+                                            <div class="select__item">יח לת</div>
+                                            <div class="select__item">ביבא לת</div>
+                                            <div class="select__item">תות</div>
+                                            <div class="select__item">בהז ירות</div>
+                                            <div class="select__item">הדובעו הרות</div>
+                                            <div class="select__item">בהזה רות</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-site__field">
+                                    <label for="street" class="form-site__label">רחוב:</label>
+                                    <input type="text" placeholder="רוטשילד" formControlName="street" name="street" id="street" disabled="disabled">
+                                </div>
+
+                                <div class="form-site__fields-wrap">
+                                    <div class="form-site__field">
+                                        <label for="house" class="form-site__label">מס‘:</label>
+                                        <input type="text" placeholder="15" formControlName="house" name="house" id="house" disabled="disabled">
+                                    </div>
+
+                                    <div class="form-site__field">
+                                        <label for="floor" class="form-site__label">קומה: </label>
+                                        <input type="text" placeholder="6" id="floor" formControlName="floor" name="floor" disabled="disabled">
+                                    </div>
+
+                                    <div class="form-site__field">
+                                        <label for="flat" class="form-site__label">דירה:</label>
+                                        <input type="text" placeholder="15" id="flat" formControlName="apartment" name="apartment" disabled="disabled">
+                                    </div>
+                                </div>
+
+                                <div class="form-site__field">
+                                    <input type="text" formControlName="instructions" name="instructions" placeholder="הנחיות נוספות לכתובת" id="instruction" disabled="disabled">
+                                </div>
+                            </form>
+                        </div> 
+                    </div> -->
+
+                    <!--<div class="profile-address">
+                         <div class="profile-address__form">
+                            <div class="profile-address__title">כתובת ראשית למשלוח נוכחי</div>
+
+                            <form class="form-site" *ngFor="let formAdd of ListformAddress" [formGroup]="formAdd" (submit)="saveAddressForm(formAdd.value._id)">
+                                <div class="form-site__field">
+                                    <label for="name" class="form-site__label">שם מלא: </label>
+                                    <input type="text" formControlName="fullName" name="fullName" placeholder="רומן קונטרג‘י" id="name">
+                                </div>
+
+                                <div class="form-site__field">
+                                    <label for="mobile" class="form-site__label">טלפון נייד:</label>
+                                    <input type="text" formControlName="phone" [value]="formAdd.value.phone" name="phone" placeholder="054-6375879" id="mobile">
+                                </div>
+
+                                <div class="payment-office">
+                                    <div class="input-check">
+                                        <input type="checkbox" id="checkbox2" [value]="formAdd.value.destinationType" formControlName="destinationType" name="destinationType">
+                                        <label for="checkbox2" class="input-check__label"><span
+                                                class="input-check__mark"></span>
+                                            <span class="input-check__text">פרטי</span>
+                                        </label>
+                                    </div>
+
+                                    <div class="input-check">
+                                        <input type="checkbox" id="checkbox3" [value]="formAdd.value.destinationType" formControlName="destinationType" name="destinationType" checked="checked">
+                                        <label for="checkbox3" class="input-check__label"><span
+                                                class="input-check__mark"></span>
+                                            <span class="input-check__text">משרד:</span></label>
+                                    </div>
+
+                                    <div class="form-site__field">
+                                        <input type="text" placeholder="שם המשרד" [value]="formAdd.value.companyName" formControlName="companyName" name="companyName" id="office">
+                                    </div>
+                                </div>
+
+                                <div class="form-site__field">
+                                    <label for="mobile" class="form-site__label">עיר:</label>
+                                    <select class="select" formControlName="city" [value]="formAdd.value.city" name="city">
+                                        <option value="">Select city </option>
+                                        <option [value]="city._id" *ngFor="let city of cities" class="select__item active">
+                                            {{city.name.heb}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-site__field">
+                                    <label for="street" class="form-site__label">רחוב:</label>
+                                    <input type="text" formControlName="street" [value]="formAdd.value.street" name="street" placeholder="רוטשילד" id="street">
+                                </div>
+
+                                <div class="form-site__fields-wrap">
+                                    <div class="form-site__field">
+                                        <label for="house" class="form-site__label">מס‘:</label>
+                                        <input type="text" formControlName="house" name="house" [value]="formAdd.value.house" placeholder="15" id="house">
+                                    </div>
+
+                                    <div class="form-site__field">
+                                        <label for="floor" class="form-site__label">קומה: </label>
+                                        <input type="text" formControlName="floor" name="floor" [value]="formAdd.value.floor" placeholder="6" id="floor">
+                                    </div>
+
+                                    <div class="form-site__field">
+                                        <label for="flat" class="form-site__label">דירה:</label>
+                                        <input type="text" formControlName="apartment" name="apartment" [value]="formAdd.value.apartment" placeholder="15" id="flat">
+                                    </div>
+                                </div>
+
+                                <div class="form-site__field">
+                                    <input type="text" formControlName="instructions" name="instructions" [value]="formAdd.value.instructions" placeholder="הנחיות נוספות לכתובת" id="instruction">
+                                </div>
+                                <button class="btn" type="submit">Save</button>
+                            </form>
+                        </div> -->
+
+                    <!-- <div class="profile-address__form d-md-none">
+                            <div class="profile-address__btn">
+                                <button class="btn">הגדר כראשי</button>
+                                <button class=" btn btn-danger">Remove</button>
+
+                            </div>
+
+                            <form method="get" [formGroup]="formAddress" class="form-site form-site--inactive">
+                                <div class="form-site__field">
+                                    <label for="name" class="form-site__label">שם מלא: </label>
+                                    <input type="text" placeholder="רומן קונטרג‘י" [value]="formAdd.value.fullName" formControlName="fullName" name="fullName" disabled="disabled">
+                                </div>
+
+                                <div class="form-site__field">
+                                    <label for="mobile" class="form-site__label">טלפון נייד:</label>
+                                    <input type="text" placeholder="054-6375879" formControlName="phone" [value]="formAdd.value.phone" name="phone" disabled="disabled">
+                                </div>
+
+                                <div class="payment-office">
+                                    <div class="input-check">
+                                        <input type="checkbox" id="checkbox4" formControlName="destinationType" [value]="formAdd.value.destinationType" name="destinationType" checked="checked" disabled="disabled">
+                                        <label for="checkbox4" class="input-check__label"><span
+                                                class="input-check__mark"></span>
+                                            <span class="input-check__text">פרטי</span>
+                                        </label>
+                                    </div>
+
+                                    <div class="input-check">
+                                        <input type="checkbox" id="checkbox5" formControlName="destinationType" [value]="formAdd.value.destinationType" name="destinationType" checked="checked" disabled="disabled">
+                                        <label for="checkbox5" class="input-check__label"><span
+                                                class="input-check__mark"></span>
+                                            <span class="input-check__text">משרד:</span></label>
+                                    </div>
+
+                                    <div class="form-site__field">
+                                        <input type="text" placeholder="שם המשרד" formControlName="companyName" [value]="formAdd.value.companyName" name="companyName" id="office" disabled="disabled">
+                                    </div>
+                                </div>
+
+                                <div class="form-site__field">
+                                    <label for="mobile" class="form-site__label">עיר:</label>
+                                    <select class="select" formControlName="city" [value]="formAdd.value.city" name="city">
+                                        <option value="">Select city </option>
+                                        <option *ngFor="let city of cities" class="select__item active">
+                                            {{city.name.heb}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-site__field">
+                                    <label for="street" class="form-site__label">רחוב:</label>
+                                    <input type="text" placeholder="רוטשילד" formControlName="street" [value]="formAdd.value.street" name="street" id="street" disabled="disabled">
+                                </div>
+
+                                <div class="form-site__fields-wrap">
+                                    <div class="form-site__field">
+                                        <label for="house" class="form-site__label">מס‘:</label>
+                                        <input type="text" placeholder="15" formControlName="house" name="house" [value]="formAdd.value.house" id="house" disabled="disabled">
+                                    </div>
+
+                                    <div class="form-site__field">
+                                        <label for="floor" class="form-site__label">קומה: </label>
+                                        <input type="text" placeholder="6" id="floor" formControlName="floor" [value]="formAdd.value.floor" name="floor" disabled="disabled">
+                                    </div>
+
+                                    <div class="form-site__field">
+                                        <label for="flat" class="form-site__label">דירה:</label>
+                                        <input type="text" placeholder="15" id="flat" formControlName="apartment" [value]="formAdd.value.apartment" name="apartment" disabled="disabled">
+                                    </div>
+                                </div>
+
+                                <div class="form-site__field">
+                                    <input type="text" formControlName="instructions" name="instructions" [value]="formAdd.value.instructions" placeholder="הנחיות נוספות לכתובת" id="instruction" disabled="disabled">
+                                </div>
+
+                            </form>
+                        </div>
+                    </div> -->
+
+
+                    <section style="cursor: pointer;" (click)=" showAddressForm(address._id); " class="unwrap-block" *ngFor="let address of _customer.address">
+                        <div class="unwrap-block__head">
+                            {{address.fullName}},{{getCity(address.city)}} {{address.street}} {{address.house}}
+
+                            <div>
+                                <span style="color:#6d6d6d; font-style:italic" *ngIf="address?.active===true">  principal </span>
+                                <a style="color: red;" (click)="$event.preventDefault(); $event.stopPropagation();deleteAddress(address?._id)">delete</a>
+                                <button (click)="$event.preventDefault(); $event.stopPropagation();setPrincipalAddress(address?._id)" *ngIf="address.active === false" class="btn">הגדר כראשי</button>
+
+                            </div>
+
+                        </div>
+                    </section>
+
+
+                    <app-form-user-address [customer]="selectedAddress" *ngIf="ifShowFormAddress" (onClose)="closeRegistrationForm()"></app-form-user-address>
+                    <!-- end unwrap-block -->
+
+                    <!-- <section class="unwrap-block d-none d-md-block">
+                        <div class="unwrap-block__head">
+                            דנה מורן, פתח תקוה<a href="#" class="btn">הגדר כראשי</a>
+                        </div>
+                        <div class="unwrap-block__content">
+                            <div class="unwrap-block__text">
+                                <div class="h3">תת כותרת H3</div>
+
+                                <p>תונחמ תורישי םיחרפ יחולשמ םישפחמ תורישי םיעצבתמ ונלצא םיחרפ יחולשמ הבורקה</p>
+
+                                <p> הדיפקב ורחבנש ץראה יבחר לכמ תויונח ידי לע תורישי םיעצבתמ ונלצא םיחרפ יחולשמ ידוחיי עונמ ונחתפ םכתויחונל .םישלוגה ידי לע םיגרודמו תעד תווח יפ לע וקדבנו .דעיל הבורקה תונחמ רתויב הבוטה העצה לבקלו קוש רקס תושעל רשפאמש האוושהל
+                                    ירז ,םיציצע ,םיבצועמ םיחרפ ירודיס ,םיירט םיחרפ ירז לש בחר ןווגמ ואצמת דימת ןאכ יחולשמתורישי םיעצבתמ ונלצא םיחרפ יחולשמ ןוגכ תודחוימ תובטהו לבא ירז, הלכ יחולשמ םיעצבתמ ונלצא םי <a href="#">המשך</a> םיחרפ יחולשמתורישי
+                                    םיעצבתמ ונלצא םיחרפ הבורקה תונחמ תורישי םיחרפ יחולשמ םישפחמ תורישי םיעצבתמ ונלצא םיחרפ
+                                </p>
+
+                                <div class="h3">תת כותרת</div>
+
+                                <p>.דעיל הבורקה תונחמ רתויב הבוטה העצה לבקלו קוש רקס תושעל רשפאמש האוושהל ירז ,םיציצע ,םיבצועמ םיחרפ ירודיס ,םיירט םיחרפ ירז לש בחר ןווגמ ואצמת דימת ןא</p>
+
+                                <p> הבורקה תונחמ תורישי םיחרפ יחולשמ םישפחמ תורישי םיעצבתמ ונלצא םיחרפ יחולשמ הדיפקב ורחבנש ץראה יבחר לכמ תויונח ידי לע תורישי םיעצבתמ ונלצא םיחרפ יחולשמ האוושהל ידוחיי עונמ ונחתפ םכתויחונל .םישלוגה ידי לע םיגרודמו תעדתווח
+                                    יפ לע וקדבנו קוש רקס תושעל רשפאמ</p>
+
+                                <div class="h3">תת כותרת</div>
+
+                                <p>הבורקה תונחמ תורישי םיחרפ יחולשמ םישפחמ תורישי םיעצבתמ ונלצא םיחרפ יחולשמ םיעצבתמ ונלצא םי המשך םיחרפ יחולשמתורישי םיעצבתמ ונלצא םיחרפ יחולשמתורישי םיעצבתמ ונלצא םיחרפ יחולשמ ןוגכ תודחוימ תובטהו לבא ירז, הלכ ירז ,םיציצע
+                                    ,םיבצועמ םיחרפ ירודיס ,םיירט םיחרפ ירז לש בחר ןווגמ ואצמת דימת ןאכ .דעיל הבורקה תונחמ רתויב הבוטה העצה לבקלו </p>
+
+                                <p>האוושהל ידוחיי עונמ ונחתפ םכתויחונל .םישלוגה ידי לע םיגרודמו תעדתווח יפ לע וקדבנו הדיפקב ורחבנש ץראה יבחר לכמ תויונח ידי לע תורישי םיעצבתמ ונלצא םיחרפ יחולשמ</p>
+
+                                <p>םיעצבתמ ונלצא םי המשך םיחרפ יחולשמתורישי םיעצבתמ ונלצא םיחרפ יחולשמתורישי םיעצבתמ ונלצא םיחרפ יחולשמ ןוגכ תודחוימ תובטהו לבא ירז, הלכ ירז ,םיציצע ,םיבצועמ םיחרפ ירודיס ,םיירט םיחרפ ירז לש בחר ןווגמ ואצמת דימת ןאכ .דעיל
+                                    הבורקה תונחמ רתויב הבוטה העצה לבקלו קוש רקס תושעל רשפאמש האוושהל ידוחיי עונמ ונחתפ םכתויחונל .םישלוגה ידי לע םיגרודמו תעדתווח יפ לע וקדבנו הדיפקב ורחבנש ץראה יבחר לכמ תויונח ידי לע תורישי םיעצבתמ ונלצא םיחרפ יחולשמ</p>
+
+                                <div class="h3">תת כותרת</div>
+
+                                <p>הבורקה תונחמ תורישי םיחרפ יחולשמ םישפחמ תורישי םיעצבתמ ונלצא םיחרפ יחולשמ דימת ןאכ .דעיל הבורקה תונחמ רתויב הבוטה העצה לבקלו קוש רקס תושעל רשפאמש האוושהל ידוחיי עונמ ונחתפ םכתויחונל .םישלוגה ידי לע םיגרודמו תעדתווח יפ לע
+                                    וקדבנו הדיפקב ורחבנש ץראה יבחר לכמ תויונח ידי לע תורישי םיעצבתמ ונלצא םיחרפ יחולשמ
+                                </p>
+                            </div>
+                        </div>
+                    </section> -->
+                    <!-- end unwrap-block -->
+                </div>
+            </div>
+            <!-- end content__center -->
+
+            <aside class="content__left">
+
+            </aside>
+        </div>
+    </div>
+    <!-- end st-width-full -->
+</main>

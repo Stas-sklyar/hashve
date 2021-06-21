@@ -1,0 +1,56 @@
+﻿/*----------- better-price -------------*/
+.better-price{
+	.search-city .best-price{
+		margin-top: 0;
+	}
+
+	.search-city__warning{
+		border-bottom: 0;
+		padding-bottom: 0;
+	}
+
+	.search-city .warning-clock{
+		margin-bottom: 11px;
+	}
+}
+
+@media (max-width: 991px) {
+	.better-price{
+		.best-price{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			padding-left: 0;
+		}
+
+		.best-price .btn {
+			height: 45px;
+			font-size: 23px;
+			line-height: 43px;
+			padding: 0 40px;
+			margin: 5px 0;
+		}
+		
+		.search-city{
+			margin-top: 0;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.better-price{
+		.btn-buy-wrap[_ngcontent-serverApp-c6] .btn[_ngcontent-serverApp-c6]{
+			top: 0;
+		}
+
+		.best-price__content{
+			width: auto;
+			display: inline-flex;
+			flex-direction: column;
+		}
+
+		.best-price .btn{
+			padding: 0 20px;
+		}
+	}
+}

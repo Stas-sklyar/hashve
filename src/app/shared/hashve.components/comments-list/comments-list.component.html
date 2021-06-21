@@ -1,0 +1,59 @@
+<div class="product-tab">
+    <div class="product-tab__head">{{ "commentList.opinion" | translate}} ({{reviewCount}})</div>
+
+    <div class="product-tab__mark d-md-none">
+        <div class="rating-mark">{{rating}}</div>
+
+        <div class="product-tab__rating">
+            <span style="display: inline-block;"><star-rating *ngIf="!serverFlag" [value]="rating" checkedcolor="#EBB510"
+                                                        uncheckedcolor="#DADADA" size="22px"
+                                                        readonly="true"></star-rating></span>
+            <div class="product-tab__rating-label">{{ "commentList.score" | translate}}</div>
+        </div>
+
+        <div class="product-tab__rating-text" [innerHTML]="'commentList.ratingText' | translate: {reviewCount: reviewCount}"></div>
+    </div>
+
+    <div class="comment">
+        <div class="comment__head d-md-none">{{ "commentList.reviewCount" | translate: {reviewCount: reviewCount} }}</div>
+
+        <div class="comment__item" *ngFor="let review of reviews; let i = index">
+            <div class="comment__mark-mobile d-none d-md-flex">
+                <div class="comment__rating">
+                    <span class="rating-mark">{{review.rate}}</span>
+                    <span style="display: inline-block;"><star-rating *ngIf="!serverFlag" [value]="review.rate" checkedcolor="#EBB510"
+                                                            uncheckedcolor="#DADADA" size="20px"
+                                                            readonly="true"></star-rating></span>
+                </div>
+
+                <div class="comment__date">{{review.createdAt | date: 'dd.MM.yyyy'}}</div>
+            </div>
+
+            <div class="comment__icon" style="background-image: url('/assets/img/icons/user-icon.svg');"></div>
+
+            <div class="comment__mark">
+                <div class="comment__rating d-md-none">
+                    <span class="rating-mark">{{review.rate}}</span><span style="display: inline-block;"> <star-rating *ngIf="!serverFlag"
+          [value]="review.rate" checkedcolor="#EBB510" uncheckedcolor="#DADADA" size="20px"
+          readonly="true"></star-rating></span>
+                </div>
+
+                <div class="comment__date"><span class="comment__author">{{review.fullName.split(" ")[0]}}</span><span class="comment__city d-none d-md-block"></span><span class="d-md-none">{{review.createdAt | date: 'dd.MM.yyyy'}}</span></div>
+            </div>
+
+            <div class="comment__text">{{review.feedback}}</div>
+        </div>
+    </div>
+    <!-- end comment -->
+
+    <div class="product-tab__bottom d-md-none">
+
+        <div class="pager">
+            <a (click)="addComments()">{{ "comments.seeMore" | translate }}</a>
+        </div>
+    </div>
+
+    <a (click)="addComments()" class="info-block__more d-none d-md-block">{{ "comments.seeMore" | translate }}</a>
+
+</div>
+<!-- end product-tab -->

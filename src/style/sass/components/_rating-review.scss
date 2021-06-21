@@ -1,0 +1,86 @@
+﻿/*----------- rating-review -------------*/
+.rating-review-wrap{
+	margin-top: 38px;
+
+	.info-block h2,
+	.info-block .h2{
+		padding-right: 10px;
+	}
+}
+
+.rating-review{
+	display: flex;
+	flex-wrap: wrap;
+	margin-left: -20px;
+	margin-right: -20px;
+	padding: 8px 10px;
+
+	&__item{
+		width: calc(33.33% - 40px);
+		margin: 0 20px 20px 20px;
+	}
+
+	&__top{
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+	}
+
+	&__date{
+		@include font(normal, normal, 15px, 18px, #7e7e7e);
+	}
+
+	.rating-mark{
+		margin-left: 10px;
+	}
+
+	&__caption{
+		display: flex;
+		align-items: center;
+		margin-top: 8px;
+	}
+
+	&__avatar{
+		display: inline-block;
+		width: 38px;
+		height: 38px;
+		border-radius: 50%;
+		background: #7e7e7e;
+		overflow: hidden;
+		margin-left: 10px;
+		margin-right: -7px;
+	}
+
+	&__author{
+		width: calc(100% - 48px);
+	}
+
+	&__author-name{
+		@include font(italic, bold, 15px, 18px, $color-text);
+	}
+
+	&__city{
+		@include font(normal, bold, 12px, 16px, #a0a0a0);
+	}
+
+	&__text{
+		@include font(normal, 600, 12px, 15px, #6e6e6e);
+		margin-top: 18px;
+	}
+}
+
+@media (max-width: 991px) {
+	.rating-review{
+		padding: 8px 0;
+		margin: 0;
+
+		&__item{
+			width: 100%;
+			margin: 0 0 20px;
+		}
+
+		&__item:last-child{
+			margin-bottom: 0;
+		}
+	}
+}

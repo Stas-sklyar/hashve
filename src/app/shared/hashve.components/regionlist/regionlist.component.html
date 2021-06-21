@@ -1,0 +1,8 @@
+<section class="countries">
+  <div class="countries__item" *ngFor="let region of regions">
+    <app-regionitem [region]="region"></app-regionitem>
+  </div>
+  <div class="countries__item" *ngFor="let city of cities">
+    <app-regionitem [region]="city" [categories]="categories" [dayDealCount]="dayDealCount"></app-regionitem>
+  </div>
+</section>

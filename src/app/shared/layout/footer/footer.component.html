@@ -1,0 +1,67 @@
+<footer class="footer">
+    <!--<div class="subscribe">
+    <div class="st-width">
+      <form method="get" class="subscribe__form">
+        <div class="subscribe__text">{{ "footer.subscribe__text" | translate }}</div>
+        <div class="subscribe__content">
+          <input type="email" placeholder="{{ 'footer.email_placeholder' | translate }}">
+          <input type="submit" value="הירשמו" class="btn btn--black">
+        </div>
+      </form>
+    </div>
+  </div>-->
+
+    <div class="footer__content">
+        <div class="st-width">
+
+            <div class="footer__item">
+                <div class="footer__head">{{footerBlock3.title[curLang]}}</div>
+
+                <ul class="footer-menu footer-menu--col">
+                    <li class="footer-menu__item" *ngFor="let link of footerBlock3.links"><a [routerLink]="link.link" class="footer-menu__link">{{link.title[curLang]}}</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__item">
+                <div class="footer__head">{{footerBlock2.title[curLang]}}</div>
+
+                <ul class="footer-menu">
+                    <li class="footer-menu__item" *ngFor="let link of footerBlock2.links"><a [routerLink]="link.link" class="footer-menu__link">{{link.title[curLang]}}</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__item">
+                <div class="footer__head">{{footerBlock1.title[curLang]}}</div>
+
+                <ul class="footer-menu">
+                    <li class="footer-menu__item" *ngFor="let link of footerBlock1.links"><a [routerLink]="link.link" class="footer-menu__link">{{link.title[curLang]}}</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__item footer__item--info">
+                <div class="footer__info">
+                    <a [routerLink]="'/'" class="footer__logo"><img src="assets/img/icons/logo-white.svg" alt=""></a>
+
+                    <div class="footer__slogan">
+                        <a href="http://store-admin.hashve.co.il" class="footer__slogan-item">{{ "footer.entranceToSuppliers" | translate }}</a>
+                        <a [routerLink]="'/צור_קשר'" class="footer__slogan-item">{{ "footer.registarStore" | translate }}</a>
+                    </div>
+
+                    <div class="footer__copyright">{{ "footer.copyright" | translate }}</div>
+
+                    <!--<div class="footer__flag">
+            <a href="#" class="footer__flag-item"><img src="assets/img/flag.png" alt=""></a>
+            <a href="#" class="footer__flag-item"><img src="assets/img/flag.png" alt=""></a>
+          </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a target="_blank" href="https://wa.me/97235267470?text=%D7%94%D7%99%D7%99%2C%20%D7%A4%D7%A0%D7%99%D7%95%D7%AA%20%D7%91%D7%A0%D7%95%D7%A9%D7%90%D7%99%D7%9D%3A%20%D7%9E%D7%A9%D7%9C%D7%95%D7%97%D7%99%D7%9D%2C%20%D7%9E%D7%97%D7%99%D7%A8%D7%99%D7%9D%2C%20%D7%A4%D7%A8%D7%99%D7%98%D7%99%D7%9D%2C%20%D7%9E%D7%9C%D7%90%D7%99%2C%20%D7%94%D7%96%D7%9E%D7%A0%D7%95%D7%AA%2C%20%D7%99%D7%99%D7%A2%D7%95%D7%A5%2C%20%D7%94%D7%9B%D7%95%D7%95%D7%A0%D7%94."
+        class="ic-whatsapp">
+        <img src="/assets/img/icons/icons8-whatsapp.svg">
+    </a>
+
+    <div *ngIf="show" (click)="scrollTo('document-top')" class="move-up"></div>
+</footer>

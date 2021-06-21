@@ -1,0 +1,19 @@
+<app-header [showSlider]="showSlider"></app-header>
+<main>
+  <div class="st-width-full">
+    <div class="content">
+      <aside class="content__right">
+      </aside>
+
+      <div class="content__center">
+        <div class="content__head">
+          <h1>{{article.seo.h1[curLang]}}</h1>
+        </div>
+        <app-regionlist [data]="data"></app-regionlist>
+      </div>
+      <aside class="content__left">
+      </aside>
+    </div>
+  </div>
+</main>
+<app-footer></app-footer>

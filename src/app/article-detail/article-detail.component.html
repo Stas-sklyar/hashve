@@ -1,0 +1,56 @@
+<app-header [showSlider]="showSlider"></app-header>
+<main>
+    <div class="st-width-full">
+        <div class="content">
+            <aside class="content__right">
+            </aside>
+
+            <div class="content__center">
+                <div class="breadcrumb d-md-none">
+                    <div class="breadcrumb__item"><a [routerLink]="'/'">{{ "articleDetail.main" | translate }}</a></div>
+                    <div class="breadcrumb__item"><a [routerLink]="'/articles'">{{ "articleDetail.articleDirectory" | translate }}</a></div>
+                    <span class="breadcrumb__item">{{article.header[curLang]}}</span>
+                </div>
+
+
+                <div class="article-detail-wrap">
+                    <article class="article-detail">
+                        <h1>
+                            {{article.header[curLang]}}
+                        </h1>
+                        <!-- <div class="article-detail__subtitle">
+              כותרת משנה
+            </div>
+
+            <div class="article-detail__date">16.3.19</div> -->
+
+                        <section class="article-detail__content">
+                            <div class="article-detail__photo"><img src="{{article.pic}}" alt=""></div>
+                            <div class="article-detail__text" [innerHTML]="article.text[curLang]"></div>
+                        </section>
+
+                    </article>
+
+
+                    <div class="article-detail-other">
+                        <div class="article-detail-other__head">
+                            <div class="article-detail-other__title">{{ "articleDetail.other-head" | translate }}</div>
+                            <a href="#" class="article-detail-other__all d-none d-md-block">{{ "articleDetail.other-link" | translate }}</a>
+                        </div>
+
+                        <section class="article-list article-list--other">
+                            <article class="article-list__item" *ngFor="let lastarticle of lastarticles" app-article-item [article]="lastarticle">
+                            </article>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <!-- end content__center -->
+
+            <aside class="content__left">
+            </aside>
+        </div>
+    </div>
+    <!-- end st-width-full -->
+</main>
+<app-footer></app-footer>

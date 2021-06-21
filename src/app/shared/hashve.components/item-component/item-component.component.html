@@ -1,0 +1,355 @@
+<div class="search-city__item">
+    <div class="search-city__card">
+        <div class="search-city__desc">
+            <div class="search-city__img d-sm-none">
+                <a (click)="saveOfferAndRedirectToProduct(curItem, offerStore[0].store._id)">
+                    <img src="{{pic}}" alt="">
+                </a>
+
+
+                <!-- improve price mobile start -->
+                <ng-container *ngIf="!curItem.isSale() && !curItem.isDayDeal()">
+                    <div class="warning d-none d-md-block" *ngIf="!curItem.improvePriceRequest">
+                        <div class="warning__sticker">
+                            <div class="warning__img">
+                                <img src="{{host}}/assets/img/icon-info.png" alt="">
+
+                                <div class="warning__popup">
+                                    {{ "banners.priceImprove.popupText" | translate }}
+                                    <div class="warning__close">X</div>
+                                </div>
+                            </div>
+
+                            <div class="warning__text" (click)="startImprovingPrice()">
+                                <div class="warning__title">{{ "citySearch.item.priceImprove" | translate }}</div>
+                                <div class="warning__sub-title">{{ "citySearch.item.takeOwenOffer" | translate }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="warning-clock d-none d-md-inline-flex" *ngIf="curItem.isPriceImproveValid()">
+                        <img src="{{host}}/assets/img/icon-clock.png" alt="" class="warning-clock__img">
+
+                        <div class="warning-clock__text">
+                            <div class="warning-clock__title">תוקף ההצעה תפוג <span class="d-md-none">בעוד</span></div>
+                            <div class="warning-clock__time">{{state.minutes}} {{ "citySearch.item.improvePrice.minutes" | translate }} {{state.seconds}} {{ "citySearch.item.improvePrice.seconds" | translate }}</div>
+                        </div>
+                    </div>
+                    <div class="warning-clock warning-clock-line--red d-none d-md-inline-flex" *ngIf="!curItem.isPriceImproveValid() && curItem.improvePriceRequest">
+                        <div class="best-price__old-price" *ngIf="curItem.isDayDeal() || curItem.isSale() || curItem.isPriceImproveValid()">₪{{minPrice}}</div>
+                        <img src="img/icon-clock.png" alt="" class="warning-clock__img">
+
+                        <div class="warning-clock__text">
+                            <span class="warning-clock__title">פג תוקף ההצעה </span>
+                        </div>
+                    </div>
+                </ng-container>
+                <!-- improve price mobile end -->
+                <div class="search-city-param__icons d-none d-md-inline-flex">
+                    <a (click)="addToWishList()" class="search-city-param__icon search-city-param__icon--wish" [ngClass]="{active: isWished()}"></a>
+                </div>
+
+                <div class="sticker d-md-none">
+                    <div class="sticker__label">{{ "citySearch.item.size" | translate }}</div>
+                    <div class="sticker__text">{{ "product.size.normal" | translate }}</div>
+                </div>
+
+                <!-- mobile day deal and sale tag start -->
+                <div class="search-city-param__label d-none d-md-block" *ngIf="curItem.isDayDeal()">
+                    <div class="tag tag--small">{{ 'citySearch.item.dayDeal' | translate }}</div>
+                    {{ 'citySearch.item.dayDealNotice' | translate }}
+                </div>
+
+                <div class="search-city-param__label search-city-param__label--red d-none d-md-block" *ngIf="curItem.isSale()">
+                    <div class="tag tag--small tag--red">{{ 'citySearch.item.sale' | translate }}</div>
+                    {{ 'citySearch.item.saleNotice' | translate }}
+                </div>
+                <!-- mobile day deal and sale tag end -->
+            </div>
+
+            <div class="search-city__content">
+                <div class="search-city__param-list">
+                    <div class="search-city-param">
+                        <div class="search-city-param__content-wrap">
+                            <div class="search-city-param__img d-none d-sm-block">
+                                <img src="{{pic}}" alt="">
+                                <div class="search-city-param__icons">
+                                    <a (click)="addToWishList()" class="search-city-param__icon search-city-param__icon--wish" [ngClass]="{active: isWished()}"></a>
+                                </div>
+                            </div>
+
+                            <div class="search-city-param__content">
+                                <div class="search-city-param__head">
+                                    <div class="search-city-param__name-wrap">
+                                        <h2 class="search-city-param__name">{{curItem.name[curLang]}}</h2>
+
+                                        <div class="sticker-wrap d-none d-md-flex">
+                                            <div class="sticker-wrap__label">גודל</div>
+                                            <div class="sticker">
+                                                <div class="sticker__text">רגיל</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="search-city-param__count">{{curItem.code}} {{ "citySearch.item.code" | translate }}</div>
+                                </div>
+
+                                <div class="search-city-param__text-wrap">
+                                    <div class="search-city-param__text" [innerHTML]="curItem.description[curLang]"></div>
+                                    <!-- <div class="search-city-param__text">{{ "citySearch.item.warningMessage" | translate }}</div> -->
+
+                                    <!-- desktop day deal and sale tag start -->
+
+                                    <div class="search-city-param__label d-md-none" *ngIf="curItem.isDayDeal()">
+                                        <div class="tag tag--small">{{ 'citySearch.item.dayDeal' | translate }}</div>
+                                        {{ 'citySearch.item.dayDealNotice' | translate }}
+                                    </div>
+
+                                    <div class="search-city-param__label search-city-param__label--red d-md-none" *ngIf="curItem.isSale()">
+                                        <div class="tag tag--small tag--red">{{ 'citySearch.item.sale' | translate }}</div>
+                                        {{ 'citySearch.item.saleNotice' | translate }}
+                                    </div>
+
+                                    <!-- desktop day deal and sale tag end -->
+
+                                    <div class="search-city-param__explain d-none d-md-flex">
+                                        <div class="search-city-param__explain-item">{{ "citySearch.item.firstNotice" | translate }}</div>
+                                        <div class="search-city-param__explain-item">{{ "citySearch.item.secondNotice" | translate }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="search-city-param search-city-param--line">
+                        <div class="search-city-param__head">
+                            <div class="search-city-param__mark">
+                                <span class="search-city-param__mark-item">
+																	<span class="rating-mark">{{curItem.rating}}</span><span class="d-md-none">{{ "citySearch.item.userRate" | translate }}</span>
+                                </span>
+
+                                <span class="search-city-param__mark-item">
+                  <star-rating [value]="curItem.rating" checkedcolor="#EBB510" uncheckedcolor="#DADADA" size="20px"
+                               readonly="true"></star-rating>
+                </span>
+
+                                <span class="search-city-param__mark-item">
+																	<a
+                                  (click)="saveOfferAndRedirectToProduct(curItem, offerStore[0].store._id)">{{curItem.reviewsCount}}{{ "citySearch.item.reviewCount" | translate }}</a>
+																</span>
+
+                                <!--<span class="search-city-param__mark-item">9 הוזמנו </span>-->
+                            </div>
+                        </div>
+
+                        <div class="search-city-param__content d-md-none">
+                            <div class="search-city-param__action">
+                                <div class="search-city-param__explain">
+                                    <div class="search-city-param__explain-item">{{ "citySearch.item.firstNotice" | translate }}</div>
+                                    <div class="search-city-param__explain-item">{{ "citySearch.item.secondNotice" | translate }}</div>
+                                </div>
+
+                                <div class="search-city-param__icons">
+                                    <a (click)="addToWishList()" class="search-city-param__icon search-city-param__icon--wish" [ngClass]="{active: isWished()}"></a>
+                                    <a href="#" class="search-city-param__icon search-city-param__icon--share"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-none d-md-flex">
+                    <div [ngClass]="{animate: startAnimate}" class="progress">
+                        <div class="sk-fading-circle">
+                            <div class="sk-circle sk-circle-1"></div>
+                            <div class="sk-circle sk-circle-2"></div>
+                            <div class="sk-circle sk-circle-3"></div>
+                            <div class="sk-circle sk-circle-4"></div>
+                            <div class="sk-circle sk-circle-5"></div>
+                            <div class="sk-circle sk-circle-6"></div>
+                            <div class="sk-circle sk-circle-7"></div>
+                            <div class="sk-circle sk-circle-8"></div>
+                            <div class="sk-circle sk-circle-9"></div>
+                            <div class="sk-circle sk-circle-10"></div>
+                            <div class="sk-circle sk-circle-11"></div>
+                            <div class="sk-circle sk-circle-12"></div>
+                        </div>
+
+
+                        <div class="progress__text-wrap">
+                            <div class="progress__text progress__text_1">{{ "priceImprove.fixStepOne" | translate }}</div>
+                            <div class="progress__text progress__text_2">{{ "priceImprove.fixStepTwo" | translate }}</div>
+                            <div class="progress__text progress__text_3">{{ "priceImprove.fixStepThree" | translate }}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="best-price d-none d-md-flex">
+                    <ng-container *ngIf="!curItem.isSale() && !curItem.isDayDeal()">
+                        <div class="warning d-none d-sm-flex" *ngIf="!curItem.improvePriceRequest">
+                            <div class="warning__sticker">
+                                <div class="warning__img">
+                                    <img src="{{host}}/assets/img/icon-info.png" alt="">
+
+                                    <div class="warning__popup">
+                                        {{ "banners.priceImprove.popupText" | translate }}
+                                        <div class="warning__close">X</div>
+                                    </div>
+                                </div>
+
+                                <div class="warning__text" (click)="startImprovingPrice()">
+                                    <div class="warning__title">{{ "citySearch.item.priceImprove" | translate }}</div>
+                                    <div class="warning__sub-title">{{ "citySearch.item.takeOwenOffer" | translate }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="warning-clock d-none d-sm-inline-flex" *ngIf="curItem.isPriceImproveValid()">
+                            <img src="{{host}}/assets/img/icon-clock.png" alt="" class="warning-clock__img">
+
+                            <div class="warning-clock__text">
+                                <div class="warning-clock__title">תוקף ההצעה תפוג <span class="d-md-none">בעוד</span></div>
+                                <div class="warning-clock__time">{{state.minutes}} דק‘ {{state.seconds}} שניות</div>
+                            </div>
+                        </div>
+                        <div class="warning-clock d-none warning-clock-line--red" *ngIf="!curItem.isPriceImproveValid() && curItem.improvePriceRequest">
+                            <img src="img/icon-clock.png" alt="" class="warning-clock__img">
+
+                            <div class="warning-clock-line__text">
+                                <span class="warning-clock__title">{{ "priceImprove.offerExpired" | translate }}</span>
+                            </div>
+                        </div>
+                    </ng-container>
+
+                    <ng-container *ngIf="curItem.isDayDeal()">
+                        <div class="search-city-param__label d-none d-sm-block">
+                            <div class="tag tag--small">{{ "citySearch.item.dayDeal" | translate}}</div>{{ "citySearch.item.dayDealNotice" | translate }}
+                        </div>
+                    </ng-container>
+
+                    <ng-container *ngIf="curItem.isSale()">
+                        <div class="search-city-param__label search-city-param__label--red d-none d-sm-block">
+                            <div class="tag tag--small tag--red">{{ "citySearch.item.sale" | translate}}</div>{{ "citySearch.item.saleNotice" | translate}}
+                        </div>
+                    </ng-container>
+
+                    <div class="best-price__content">
+                        <div *ngIf="curItem.isPriceImproveValid()" class="best-price__sticker ">{{ "citySearch.item.improvePrice2" | translate}}<span class="best-price__sticker-price">₪{{minPrice}}</span></div>
+                        <div class="best-price__old-price" *ngIf="curItem.isDayDeal() || curItem.isSale()">₪{{minPrice}}</div>
+                        <div class="best-price__label">
+                            <div class="best-price__cur-price"><span class="best-price__num">₪{{minPriceWithDiscount}}</span></div>
+                        </div>
+                        <div class="best-price__link"><a (click)="saveOfferAndRedirectToProduct(curItem, offerStore[0].store._id)">{{ "citySearch.item.countOfOffers" | translate:{count: offerStore.length} }}</a></div>
+                    </div>
+                    <div class="btn-buy-wrap">
+                        <a (click)="saveOfferAndRedirectToProduct(curItem, offerStore[0].store._id)" class="btn orderBtn">{{ "citySearch.item.orederNow" | translate}}</a>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="search-city__info d-md-none">
+            <div [ngClass]="{animate: startAnimate}" class="progress">
+                <div class="sk-fading-circle">
+                    <div class="sk-circle sk-circle-1"></div>
+                    <div class="sk-circle sk-circle-2"></div>
+                    <div class="sk-circle sk-circle-3"></div>
+                    <div class="sk-circle sk-circle-4"></div>
+                    <div class="sk-circle sk-circle-5"></div>
+                    <div class="sk-circle sk-circle-6"></div>
+                    <div class="sk-circle sk-circle-7"></div>
+                    <div class="sk-circle sk-circle-8"></div>
+                    <div class="sk-circle sk-circle-9"></div>
+                    <div class="sk-circle sk-circle-10"></div>
+                    <div class="sk-circle sk-circle-11"></div>
+                    <div class="sk-circle sk-circle-12"></div>
+                </div>
+
+                <div class="progress__text-wrap">
+                    <div class="progress__text progress__text_1">{{ "priceImprove.fixStepOne" | translate}}</div>
+                    <div class="progress__text progress__text_2">{{ "priceImprove.fixStepTwo" | translate}}</div>
+                    <div class="progress__text progress__text_3">{{ "priceImprove.fixStepThree" | translate}}</div>
+                </div>
+            </div>
+
+            <ng-container *ngIf="!curItem.isSale() && !curItem.isDayDeal() && startAnimate === false">
+                <div class="warning" *ngIf="!curItem.improvePriceRequest">
+                    <div class="warning__sticker">
+                        <div class="warning__img">
+                            <img src="{{host}}/assets/img/icon-info.png" alt="">
+
+                            <div class="warning__popup">
+                                {{ "banners.priceImprove.popupText" | translate }}
+                                <div class="warning__close">X</div>
+                            </div>
+                        </div>
+
+                        <div class="warning__text" (click)="startImprovingPrice()">
+                            <div class="warning__title">{{ "banners.priceImprove.header" | translate }}</div>
+                            <div class="warning__sub-title">{{ "banners.priceImprove.subheader" | translate }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="warning-clock" *ngIf="curItem.isPriceImproveValid()">
+                    <img src="{{host}}/assets/img/icon-clock.png" alt="" class="warning-clock__img">
+
+                    <div class="warning-clock__text">
+                        <div class="warning-clock__title">{{ "priceImprove.offerWillExpired" | translate}}</div>
+                        <div class="warning-clock__time">{{state.minutes}} דק‘ {{state.seconds}} שניות</div>
+                    </div>
+                </div>
+                <div class="warning-clock warning-clock-line--red" *ngIf="!curItem.isPriceImproveValid() && curItem.improvePriceRequest">
+                    <img src="/assets/img/icon-clock.png" alt="" class="warning-clock__img">
+
+                    <div class="warning-clock-line__text">
+                        <span class="warning-clock__title">{{ "priceImprove.offerExpired" | translate}} </span>
+                    </div>
+                </div>
+            </ng-container>
+
+            <div class="best-price">
+                <div class="best-price__top">
+                    <div class="best-price__content">
+                        <div class="best-price__link"><a (click)="saveOfferAndRedirectToProduct(curItem, offerStore[0].store._id)">{{ "citySearch.item.countOfOffers" | translate:{count: offerStore.length} }}</a>
+                        </div>
+
+                        <div class="best-price__text best-price__text--red" *ngIf="!curItem.isDayDeal() && !curItem.isSale() && !curItem.isPriceImproveValid()">{{ "citySearch.item.cheapestOffer" | translate}}
+                        </div>
+                        <div class="best-price__text best-price__text--red" *ngIf="curItem.isDayDeal()">{{ "citySearch.item.dayDealNotice2" | translate }}</div>
+                        <!-- <div class="best-price__text best-price__text--orange"
+                *ngIf="curItem.isDayDeal()">{{ "citySearch.item.dayDealNotice2" | translate }}</div> -->
+                        <div class="best-price__text best-price__text--red" *ngIf="curItem.isSale()">{{ "citySearch.item.saleNotice" | translate }}</div>
+                        <div class="best-price__text best-price__text--red" *ngIf="curItem.isPriceImproveValid()">{{ "citySearch.item.improvePrice2" | translate }}</div>
+                    </div>
+                </div>
+
+                <div (click)="saveOfferAndRedirectToProduct(curItem, offerStore[0].store._id)" class="best-price__bottom">
+                    <div class="best-price__content">
+                        <div class="best-price__label">
+                            <div class="best-price__old-price" *ngIf="curItem.isDayDeal() || curItem.isSale() || curItem.isPriceImproveValid()">₪{{minPrice}}</div>
+                            <div class="best-price__cur-price" *ngIf="curItem.isPriceImproveValid()"><span class="best-price__num">₪{{minPriceWithDiscount}}</span>{{ "citySearch.item.withDelivery" | translate}}
+                            </div>
+                            <div class="best-price__cur-price" *ngIf="curItem.isDayDeal() || curItem.isSale()"><span class="best-price__num">₪{{curItem.price}}</span>{{ "citySearch.item.withDelivery" | translate}}
+                            </div>
+                            <div class="best-price__cur-price" *ngIf="!curItem.isDayDeal() && !curItem.isSale() && !curItem.isPriceImproveValid()"><span class="best-price__num">₪{{minPrice}}</span>{{ "citySearch.item.withDelivery" | translate}}
+                            </div>
+                        </div>
+
+                        <div class="best-price__cur-price">
+                            מאת: <span class="best-price__text">{{cityStores[0].name[curLang]}}</span>
+                        </div>
+
+                        <span class="btn orderBtn">{{ "citySearch.item.orederNow" | translate}}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="search-city__close">X</div>
+    </div>
+    <!-- end search-city__card -->
+
+
+</div>
+<!-- end search-city__item -->

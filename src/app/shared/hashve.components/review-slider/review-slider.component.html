@@ -1,0 +1,48 @@
+<section class="review-slider-wrap">
+    <div class="h2">{{ "blocks.shippingReview" | translate }}</div>
+
+    <swiper [config]="configPopularReview" [classes]="'review-slider js-review-slider'">
+        <div class="swiper-wrapper">
+            <div class="review-slider__item swiper-slide" *ngFor="let review of reviews">
+                <div class="review-slider__product">
+                    <div class="review-slider__img" [style.backgroundImage]="'url(' + host + '/assets/items/' + review.item.picture +')'"></div>
+
+                    <div class="review-slider__info">
+                        <a (click)="redirectProductPageByReview(review)" class="review-slider__name">{{review.item.name[curLang]}}</a>
+                        <!--<div class="review-slider__price" *ngIf="review.item.price > 0">{{review.item.price}}₪</div>-->
+                        <!--<div class="review-slider__price" *ngIf="!review.item.price > 0">₪150</div>-->
+                        <!--<div class="review-slider__delivery">תל אביב</div>-->
+                    </div>
+                </div>
+
+                <div class="review-slider__mark-wrap">
+                    <span class="review-slider__mark review-slider__price">₪{{review.price.minPrice}}</span>
+                    <span class="review-slider__count">{{review.item.reviewsCount}} {{ "commentList.opinion" | translate }} </span>
+                </div>
+
+                <div class="review-slider__text" [innerHTML]="review.feedback">
+                </div>
+
+                <div class="review-slider__caption">
+                    <div class="review-slider__avatar"><img src="/assets/img/icons/user-icon.svg" alt=""></div>
+
+                    <div class="review-slider__author">
+                        <div class="review-slider__author-name">{{review.fullName}}</div>
+                        <div class="review-slider__mark-wrap">
+                            <span class="review-slider__mark"><span
+                    class="review-slider__mark-num">{{review.rate}}</span>{{ "commentList.rate" | translate }}</span>
+                            <div class="review-slider__city">{{ "header.send_to" | translate }} {{review.city.name[curLang]}}</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="swiper-pagination d-md-none"></div>
+        <div class="swiper-button-prev d-md-none"></div>
+        <div class="swiper-button-next d-md-none"></div>
+    </swiper>
+    <!-- end review-slider -->
+</section>
+<!-- end review-slider-wrap -->

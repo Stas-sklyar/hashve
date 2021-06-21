@@ -1,0 +1,42 @@
+<section class="offers">
+  <div class="info-block">
+    <div class="h2 d-md-block">{{ "blocks.mostOrdered" | translate }}</div>
+
+    <div class="catalog-list">
+      <div class="catalog-list__item-wrap" *ngFor="let item of saled">
+        <div class="catalog-list__item">
+          <app-item [item]="item" [store]="_store"></app-item>
+        </div>
+      </div>
+    </div>
+    <!-- end catalog-list -->
+
+    <a (click)="redirectToCitySearch()" class="info-block__more">{{
+      "blocks.allItems" | translate
+    }}</a>
+  </div>
+  <!-- end info-block -->
+
+  <div class="h2 d-none d-md-block">
+    {{ "homepage.recommended" | translate }}
+  </div>
+
+  <div class="info-block">
+    <div class="h2 d-md-none">{{ "homepage.recommended" | translate }}</div>
+
+    <div class="catalog-list">
+      <div class="catalog-list__item-wrap" *ngFor="let item of recommndet">
+        <div class="catalog-list__item">
+          <app-item [item]="item" [store]="_store"></app-item>
+        </div>
+      </div>
+    </div>
+    <!-- end catalog-list -->
+
+    <a (click)="redirectToCitySearch()" class="info-block__more">{{
+      "blocks.recommendation" | translate
+    }}</a>
+  </div>
+  <!-- end info-block -->
+</section>
+<!-- end offers -->

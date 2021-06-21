@@ -1,0 +1,148 @@
+﻿/*----------- progress -------------*/
+.progress{
+	$progressDuration: 15s;
+
+	display: none;
+	position: relative;
+	padding-bottom: 5px;
+	width: 100%;
+	margin-bottom: 10px;
+
+	&::after{
+		content: '';
+		display: inline-block;
+		height: 4px;
+		width: 0;
+		border-radius: 2px;
+		background: #58b32d;
+		transition: all 1s ease 0s;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+	}
+
+	&__text-wrap{
+		display: inline-block;
+		width: calc(100% - 50px);
+		margin-right: 10px;
+		position: relative;
+	}
+
+	&__text{
+		display: inline-block;
+		max-width: 100%;
+		font-size: 16px;
+		font-weight: 600;
+		line-height: 18px;
+		position: absolute;
+		right: 0;
+		@include top-center;
+		transition: all 0.3s ease 0s;
+		opacity: 0;
+	}
+
+	&__text_1{
+		opacity: 1;
+	}
+
+	@keyframes line-progress {
+		0% {
+			width: 0;
+		}
+		20% {
+			width: 33%;
+		}
+		50% {
+			width: 66%;
+		}
+		100% {
+			width: 100%;
+		}
+	}
+
+	@keyframes change-words1 {
+		0% {opacity: 1;}
+		20% {opacity: 1;}
+		33% {opacity: 0;}
+		100% {opacity: 0;}
+	}
+
+	@keyframes change-words2 {
+		0% {opacity: 0;}
+		30% {opacity: 0;}
+		33% {opacity: 1;}
+		53% {opacity: 1;}
+		66% {opacity: 0;}
+		100% {opacity: 0;}
+	}
+
+	@keyframes change-words3 {
+		0% {opacity: 0;}
+		63% {opacity: 0;}
+		66% {opacity: 1;}
+		100% {opacity: 1;}
+	}
+
+	&.animate{
+		display: flex;
+		align-items: center;
+		&::after{animation: line-progress $progressDuration 1 ease-out forwards;}
+
+		.progress__text_1{animation: change-words1 $progressDuration 1 ease-out forwards;}
+		.progress__text_2{animation: change-words2 $progressDuration 1 ease-out forwards;}
+		.progress__text_3{animation: change-words3 $progressDuration 1 ease-out forwards;}
+	}
+}
+
+$spinkit-size: 30px !default;
+$spinkit-spinner-color: #58b32d !default;
+
+.sk-fading-circle {
+	$circleCount: 12;
+	$animationDuration: 1.2s;
+  
+	width: $spinkit-size;
+	height: $spinkit-size;
+	position: relative;
+  
+	.sk-circle {
+	  width: 100%;
+	  height: 100%;
+	  position: absolute;
+	  left: 0;
+	  top: 0;
+	}
+  
+	.sk-circle:before {
+	  content: '';
+	  display: block;
+	  margin: 0 auto;
+	  width: 15%;
+	  height: 25%;
+	  background-color: $spinkit-spinner-color;
+	  border-radius: 100%;
+	  animation: sk-fading-circle-delay $animationDuration infinite ease-in-out both;
+	}
+  
+	@for $i from 2 through $circleCount {
+	  .sk-circle-#{$i} {
+		transform: rotate((360deg / $circleCount * ($i - 1)));
+	  }
+	}
+  
+	@for $i from 2 through $circleCount {
+	  .sk-circle-#{$i}:before {
+		animation-delay: (-$animationDuration + $animationDuration / $circleCount * ($i - 1));
+	  }
+	}
+  
+  }
+  
+  @keyframes sk-fading-circle-delay {
+	0%, 39%, 100% {
+	  opacity: 0;
+	}
+	40% {
+	  opacity: 1;
+	}
+  }

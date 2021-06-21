@@ -1,0 +1,709 @@
+{
+    "loading": "Loading",
+    "header": {
+        "registration": "registration",
+        "login": "login",
+        "send_to": "send to"
+    },
+    "footer": {
+        "subscribe__text": "subscribe text",
+        "email_placeholder": "subscribe placeholder"
+    },
+    "auth": {
+        "login": {
+            "title": "Login page",
+            "text": "Enter your correct credentials",
+            "form": {
+                "email": {
+                    "label": "Email",
+                    "errors": {
+                        "required": "Email is required.",
+                        "email": "Incorrect email format."
+                    }
+                },
+                "password": {
+                    "label": "Password",
+                    "errors": {
+                        "required": "Password field can't be empty.",
+                        "pattern": "Incorrect password format. Please, use uppercase, lowercase characters ant numbers",
+                        "minLength": "Incorrect password format. It's not safe!"
+                    }
+                }
+            }
+        },
+        "registration": {
+            "title": "Registration page",
+            "text": "Some text about registration",
+            "form": {
+                "email": {
+                    "label": "Email",
+                    "errors": {
+                        "required": "Email is required.",
+                        "email": "Incorrect email format."
+                    }
+                },
+                "login": {
+                    "label": "Login"
+                },
+                "password": {
+                    "label": "Password",
+                    "errors": {
+                        "required": "Password field can't be empty.",
+                        "pattern": "Incorrect password format. Please, use uppercase, lowercase characters ant numbers.",
+                        "minLength": "Incorrect password format. It's not safe!"
+                    }
+                },
+                "confirm": {
+                    "label": "Confirm password",
+                    "errors": {
+                        "required": "Confirm password field can't be empty.",
+                        "email": "Passwords do not match.  Enter the same password in the \"Password\" and \"Confirm Password\" fields."
+                    }
+                }
+            }
+        }
+    },
+    "home": {
+        "title": "Home page",
+        "text": "This is some text in English at home page"
+    },
+    "mock": {
+        "title": "Mock page",
+        "text": "This is some text in English at mock page"
+    },
+    "back-http": {
+        "title": "Http request page",
+        "text": "This is some text in English at back http page",
+        "delay": "delay back get 3 sec:",
+        "post": "POST request:",
+        "original-url": "Origin URL:"
+    },
+    "not-found": {
+        "title": "Not Found",
+        "text": "Page Not Found"
+    },
+    "buttons": {
+        "login": "Login",
+        "registration": "Registration"
+    },
+    "articlelist": {
+        "head": "Article header"
+    },
+    "articledetail": {
+        "other-head": "Last article",
+        "other-link": "To all articles"
+    },
+
+    "comments": {
+        "seeMore": "See more"
+    },
+    "blocks": {
+        "commonOverview": "Overview of cities",
+        "shippingReview": "Reviews of popular flower deliveries",
+        "mostOrdered": "The most ordered",
+        "recommendation": "For all recommendations",
+        "allItems": "For all the most invited offers",
+        "popularStores": "Popular stores",
+        "categoryFooter": "Find an ideal product"
+    },
+    "category": {
+        "searchResult": "Found <Span class = \" filter__result-num \"> {{count}} </span> bids  {{categoryName}}"
+    },
+    "banners": {
+        "allOffers": {
+            "header": "Exclusive promotions and benefits",
+            "subHeader": "Do not miss the cheapest and most affordable daily deal",
+            "button": "See promotions"
+        },
+        "addNewShop": {
+            "header": "Register your home business",
+            "subHeader": "And gain new customers",
+            "button": "Sign up for the service"
+        },
+        "priceImprove": {
+            "header": "Price improvement",
+            "subheader": "Click for discount",
+            "popupText": "By clicking on the price improvement button, the request is directed to the stores for a discount on the item you have selected"
+        }
+    },
+    "header": {
+        "registration": "registration",
+        "login": "Login",
+        "send_to": "Delivery to",
+        "delivery_city": "Update shipping address",
+        "delivery_city_text": "And you will receive accurate offers",
+        "delivery_city_city": "City:",
+        "delivery_city_street": "Street:",
+        "delivery_number": "Num':",
+        "delivery_change_address": "Look for offers",
+        "delivery_next": "Continue",
+        "category": "Categories",
+        "menuNotLoggedIn": "Hello Guest",
+        "menu": {
+            "allItems": "All the products",
+            "category_header_mobile": "Categories"
+        },
+        "notice_login": "For order tracking recommended to log in "
+    },
+    "citySearch": {
+        "map": "Map",
+        "titleFirstPath": "Flower deliveries at {{value}} -",
+        "titleCityStore": "Flower Shops in {{value}} -",
+        "titleSecondPath": "Compare prices",
+        "showOnTheMap": "Show on map",
+        "show": "Show",
+        "selectStore": "Select a store",
+        "searchResult": "Found <Span class = \" filter__result-num \"> {{count}} </span> {{category}} Price Comparison {{city}} ",
+        "headerFilter": "Filter products by:",
+        "setCity": "(Choose City)",
+        "filter": {
+            "sortBy": "Sort by:",
+            "filterBy": "Order by:"
+        },
+        "item": {
+            "itemDetail": "Product details",
+            "liked": "Liked",
+            "lastSeen": "Recently viewed",
+            "from": "From:",
+            "open": "Opened",
+            "close": "Closed",
+            "reviews": "Reviews",
+            "Suggestions": "Offers",
+            "edit": "Update shopping cart",
+            "editBasket": "Edit the shopping cart",
+            "userRate": "User rating",
+            "reviewCount": " Reviews",
+            "notice": "Product in size '{{size}}'",
+            "additionalDeals": "View more deals",
+            "countOfOffers": "From {{count}} offers",
+            "priceImprove": "Price improvement",
+            "dayDeal": "Daily deal",
+            "withDelivery": "Including shipping",
+            "cheapestOffer": "The cheapest offer",
+            "orederNow": "Order",
+            "bought": "Purchased",
+            "sale": "Sale",
+            "takeOwenOffer": "Get a personalized offer",
+            "warningMessage": "There may be changes in the bouquet specification - if the flowers are not in stock, other flowers will be included in colors that match the image for illustration only.",
+            "firstNotice": "Image for illustration in upgraded size, \" large \"*",
+            "secondNotice": "The price does not include a vase*",
+            "thirdNotice": "Vase for illustration only and not included in the price of the item.*",
+            "fourthNotice": "If some flowers are not in stock, matching flowers will be included.*",
+            "code": "SKU",
+            "dayDealNotice": "We made sure to arrange a deal for you at a guaranteed price",
+            "saleNotice": "Unique benefit from the supplier",
+            "size": "Size",
+            "buttonPriceComparison": "Compare prices",
+            "improvePrice": {
+                "seconds": "Seconds",
+                "minutes": "Min'"
+            },
+            "review": {
+                "reviewExplanation": "Based on <b> {{count}} ratings </b>"
+            },
+            "dayDealNotice2": "Daily deal at an exclusive price",
+            "saleNotice2": "Exclusive discount",
+            "improvePrice2": "Improved price"
+        },
+        "offer": {
+            "baseItem": "Product in size '{{size}}'"
+        }
+    },
+    "product": {
+        "buyNow": "Buy now",
+        "compare": "Compare prices",
+        "addToCard": "Add to cart",
+        "vaseNotice": "Vase for illustration only and not included in the price of the item.*",
+        "size": {
+            "normal": "Regular",
+            "large": "Large",
+            "extra": "Huge"
+        },
+        "free": "Free",
+        "shippingNotice": "Delivery service is performed by - ",
+        "sizeTitle": "The image illustrates a 'large' and upgraded size",
+        "sizeSubTitle": "The image is displayed for illustration in size ",
+        "additionalItemsTitle": "Add ancillary products to order:",
+        "selectCity": "Select a city",
+        "compareCity": "Compare prices",
+        "chooseDeliveryCity": "Updated city for delivery",
+        "withoutDelivery": "Without delivery",
+        "notInStock": "The product is not in stock",
+        "bestOffer": "Best offer:"
+    },
+    "breadcrumbs": {
+        "homePage": "Home",
+        "category": "Categories ",
+        "offers": "Offers"
+    },
+    "rate": {
+        "rateExists": "Rating already exists",
+        "rate": "Product rating",
+        "notice": "Hello {{name}}, on {{date}} Ordering flowers in the store {{store}} Your opinion is important to us, recommend and help the site surfers make a decision.",
+        "rateOrder": " Rate the product:",
+        "feedback": "Opinion - My recommendation: We would be happy if you could elaborate more on the experience"
+    },
+    "priceImprove": {
+        "offerExpired": "The offer has expired",
+        "offerWillExpired": "The offer will expire in ",
+        "fixStepOne": "We sent a request for a price improvement.",
+        "fixStepTwo": "Looking for the best offer….",
+        "fixStepThree": "New price improvement received!"
+    },
+    "payment": {
+        "orderDetails": "Order Details",
+        "orderNotice": "You can contact the store if you receive the order confirmation.",
+        "paymentNotice": "No immediate payment is required to secure the order.*",
+        "deliveryType": "Choose order type:",
+        "offer": "The offer will expire in",
+        "min": "Min‘",
+        "sec": "Seconds",
+        "notice": "Please note that bookings received after 18:00 will be delivered the next day, or at another time you specify in the booking. On Friday and the eve of the holiday, reservations will be accepted until 13.00",
+        "noticeTwo": "According to the guidelines of the Ministry of Health, the shipment will be placed on the doorstep",
+        "isufNotice": "Update us on collection time, when to prepare your order and any request on the subject must be entered in the field: Special requests",
+        "offerClosed": "The offer has expired",
+        "orderDetail": "Order details",
+        "storePerforms": "Executive Store:",
+        "orders": "Orders",
+        "rating": "User rating",
+        "saved": "You saved on this order",
+        "sum": "Total:",
+        "finalSum": "Final Sum",
+        "deliveryBtn": "Shipping",
+        "pickup": "Pickup",
+        "check": "Select:",
+        "delivery": "Shipping: ",
+        "deliveryIncluded": "Including shipping",
+        "phone": "By phone",
+        "creditCard": "Credit card",
+        "phoneNotice": "Leave contact information \n and we will get back to you soon for credit card information.",
+        "creditCardNotice": " The information channel is protected, \n encrypted and secured with advanced technologies and their purchase is insured by the credit card companies.",
+        "deal": "Bonus",
+        "overTime": "<span class='css-time-over'>לקוחות יקרים שימו לב!</span> כרגע ניתן לפנות לחנות בטלפון מס' {{phone}} או בחרו חנות מהרשימה",
+        "storeListButton": "לרשימת החנויות",
+        "form": {
+            "validationErrors": {
+                "requiredCustomerFullName": "Required field Full name",
+                "requiredCustomerPhone": "Required field mobile phone field",
+                "requiredCustomerMail": "Required field Email",
+                "requiredDate": "Collection / delivery date",
+                "requiredHour": "Pickup / delivery time"
+            },
+            "validationText": {
+                "name": "Name of the customer",
+                "tel": "Customer phone",
+                "email": "Customer's email",
+                "blessingText": "Greeting message",
+                "date": "Delivery / collection date",
+                "recipientName": "Recipient full name",
+                "recipientTel": "Recipient mobile phone",
+                "x": "X",
+                "v": "V",
+                "street": "Recipient address and Street number",
+                "house": "Recipient's address and House number",
+                "apartment": "Apartment number"
+            },
+            "formTitle": "Enter details",
+            "subject": "Request subject:",
+            "title": "Title:",
+            "send": "Send",
+            "messageDetails": "Message content:",
+            "customerData": "Costumer details",
+            "creditCardBtn": "Choose a payment method",
+            "creditCardPopup": "Payment is made by phone in front of the store after sending order details",
+            "payPhonePopup": "Payment is made by credit card online through the website",
+            "fullName": "Full name:",
+            "phone": "Phone:",
+            "mobile": "Mobile Phone:",
+            "mail": "Email:",
+            "sendInvoice": "I would like to receive an invoice in the mail to:",
+            "companyName": "Company Name:",
+            "address": "Address:",
+            "dateOfPickup": "Pickup date",
+            "dateOfDelivery": "Date of delivery",
+            "pickupDetails": "Collection details",
+            "additionalRequests": "Special requests:",
+            "pickupNotice": "You can contact the store if you receive the order confirmation.*",
+            "additionalRequestsNotice": "Fill in (up to 100 characters) ",
+            "deliveryDetails": "Delivery details",
+            "blessing": "Write a greeting message:",
+            "blessingNotice": "remains (up to 500 characters must be filled in) ",
+            "receiverDetails": "Recipient details",
+            "receiverAddress": "Recipient's address",
+            "phonePaymentNotice": "To confirm an order, we will get back to you at the above number",
+            "sumForPayment": "Total payment:",
+            "cardPaymentAttention": "Attention:",
+            "submitButton": "Send an order to the store",
+            "deliveryAddress": {
+                "office": "Office:",
+                "officeName": "Name of the office",
+                "owen": "Private",
+                "city": "City:",
+                "street": "Street:",
+                "number": "House No.:",
+                "floor": "Floor:",
+                "apartment": "Apartment:",
+                "additional": "Additional instructions for the address",
+                "selectPaymentType": "Choose a payment method"
+            }
+        }
+    },
+    "orderHistory": {
+        "cardFail": "Sorry, the payment did not go through properly.",
+        "explanation": "You can try to pay by another method of payment.",
+        "cardSuccess": "Thank you, the payment was made successfully",
+        "orderThanks": "Online order tracking",
+        "currentOrder": "Order details",
+        "newOrderMessage": "Your order has been accepted and transferred to the store.",
+        "inProgressMessage": "Your order 'in preparation' and the care of the store",
+        "deliveredMessage": "Your order has been delivered to the recipient!",
+        "thanksMessage": "Thank you for choosing us."
+    },
+    "footer": {
+        "subscribe__text": "Want to get exclusive promotions.? Sign up for our newsletter!",
+        "email_placeholder": "Email Address",
+        "copyright": "All rights reserved, hashve.co.il Fiber 18 PO Box 6854 Petah Tikva",
+        "entranceToSuppliers": "Entrance to suppliers",
+        "registarStore": "Store registration"
+    },
+    "auth": {
+        "login": {
+            "title": "Login page",
+            "text": "Enter your username and password",
+            "form": {
+                "email": {
+                    "label": "Email",
+                    "errors": {
+                        "required": "Email is required.",
+                        "email": "Invalid email format."
+                    }
+                },
+                "password": {
+                    "label": "Password",
+                    "errors": {
+                        "required": "Password cannot be empty.",
+                        "pattern": "The password is too weak. Use uppercase, lowercase letters and numbers",
+                        "minLength": "The password is too short. Not safe!"
+                    }
+                }
+            }
+        },
+        "registration": {
+            "title": "Account creation",
+            "text": "Register",
+            "form": {
+                "email": {
+                    "label": "Email",
+                    "errors": {
+                        "required": "Email is required.",
+                        "email": "Invalid email format."
+                    }
+                },
+                "login": {
+                    "label": "Displayed name"
+                },
+                "password": {
+                    "label": "Password",
+                    "help": "Minimum 6 characters",
+                    "errors": {
+                        "required": "Password cannot be empty.",
+                        "pattern": "The password is too weak. Use uppercase, lowercase letters and numbers",
+                        "minLength": "The password is too short. Not safe!"
+                    }
+                },
+                "confirm": {
+                    "label": "Password confirmation",
+                    "errors": {
+                        "required": "Password confirmation is required to complete registration.",
+                        "email": "Passwords are not matched. Enter the same password in both fields."
+                    }
+                }
+            }
+        }
+    },
+    "homepage": {
+        "h1Note": "Compare prices",
+        "h1MDNone": "Flower deliveries nationwide - H1",
+        "dailyDealNotify": "Bouquet - If the flowers are not in stock, other flowers in matching colors will be included",
+        "package": " For illustration only. There may be changes in the bouquet specification - if the flowers are not in stock, other flowers will be included in matching colors. ",
+        "additionalDeal": "See more deals",
+        "additionalSale": "See more sales",
+        "seeSale": "See sales",
+        "all_packages": "See all packages",
+        "all_categories": "See all categories",
+        "tosalecount": "From {{count}} offers",
+        "categoryblock": "Birthday presents",
+        "recommended": "Recommended",
+        "articles": {
+            "title": "Articles about flowers",
+            "allArticles": "For all articles",
+            "toArticle": "Click here"
+        },
+        "popularCities": {
+            "flowersIn": "Flowers in {{city}}",
+            "min": "From:",
+            "max": "To:",
+            "stores": "Stores {{stores}}"
+        }
+    },
+    "categorypage": {
+        "h1MDNone": "all categories"
+    },
+    "regionpage": {
+        "h1Note": "Popular areas",
+        "offers": "Deals and products",
+        "catTitle": "Categories",
+        "offerTitle": "Packages and sales",
+        "offerName": "Deals on sale",
+        "shopCount": "Flower shops"
+    },
+    "shoplistpage": {
+        "h1Note": "Popular stores",
+        "sortByRegions": "Concentration of branches by regions"
+    },
+    "components": {
+        "deliveryPanel": {
+            "citySearchPlaceholder": "Where to send?",
+            "deliveryCity": "Please fill in the shipping city",
+            "selectCity": "(Select City)",
+            "selectStreet": "(Select Street)"
+        }
+    },
+    "buttons": {
+        "login": "Login",
+        "registration": "Register"
+    },
+    "country": {
+        "name": "Israel"
+    },
+    "storepage": {
+        "lookAll": "See all products in",
+        "lookAt": "Take a look at sieges in",
+        "deliveryCities": "Shops that make deliveries to",
+        "deliveryCitiesTwo": "Stores that provide service to",
+        "reviews": "Opinion",
+        "call": {
+            "btn-text": "Order by phone",
+            "title-popup": "Shortened order by phone",
+            "text-popup": "Callback to me by phone to pay for a current order"
+        },
+        "call-mobile": {
+            "title-popup": "How do you dial the store?",
+            "text-popup": "1. Choose a desired product. 2. Go to the product page. 3. Click on the green dialer icon and you will be linked to the store."
+        },
+        "worktime-text": "Opening Hours",
+        "rating-text": "Opinion",
+        "rating-text-popup": "User rating",
+        "about-text": "About",
+        "show-all": "See all products {{city}}",
+        "review-text": "Opinion",
+        "telCall": "Call to phone",
+        "callText": "1. Choose a desired product. <br> 2. Go to the product page. <br> 3. Click on the green dialer icon and you will be linked to the store.",
+        "shippingDist": "Choose a shipping destination",
+        "noPaymentMethods": "לקוחות יקרים! החנות אינה זמינה לקבלת הזמנות אונליין. מס' טלפון: <span dir='ltr'>{{phone}}</span>"
+    },
+    "articledetail": {
+        "other-head": "Recent Articles",
+        "other-link": "For all articles"
+    },
+    "mainSlider": {
+        "slide1": {
+            "header": "Hot deals and benefits from stores across the country",
+            "text": "Update city for delivery - click on hot deals, and get offers at exclusive prices",
+            "button": "For further details"
+        },
+        "slide2": {
+            "header1": "Compare prices",
+            "header2": "Price improvement",
+            "header3": "Purchase / Shipping",
+            "text": "Select shipping city, compare prices from a variety of items, click on price improvement and get an improvement discount from stores",
+            "button": "For further details"
+        },
+        "slide3": {
+            "header": "How It Works? Why order through Equation?",
+            "text": "Choose a delivery city - click on specials and get deals, flower packages on sale, products at an exclusive price.",
+            "button": "For further details"
+        },
+        "slide4": {
+            "header": "Price improvement - Get a discount from stores",
+            "text": "Price comparison - price improvement - click-through purchase at exclusive prices",
+            "button": "For further details"
+        }
+    },
+    "registration": {
+        "success": {
+            "title": "The message was sent to the email you entered.",
+            "content": "Please confirm email address."
+        }
+    },
+    "seo": {
+        "citySearch": {
+            "h1": "{{category}}: Order online delivery at {{city}} - price comparison",
+            "description": "Looking for {{category}} offers: Shipping in {{city}}? Find an ideal product from a variety of {{category}} offers in {{city}}, compare prices and order online delivery.",
+            "h2": "{{category}} offers: Product shipments in {{city}}",
+            "shitFromLeft": "{{category}}: Looking to order online delivery in {{city}}? You have reached the page where we have gathered for you all the offers of {{category}} that can be sent in {{city}}. Compare site offers {{category}} offers in {{city}} from the best known flower shops in town. The stores will be happy to offer website surfers a comparison service and price improvement for a variety of offers of {{category}}."
+        }
+    },
+    "messages": {
+        "userExists": "This email address already exists",
+        "diffPasswords": "Different passwords",
+        "registeredWithGoogleProvider": "registeredWithGoogleProvider",
+        "registeredWithLocalProvider": "registeredWithLocalProvider",
+        "registeredWithFacebookProvider": "registeredWithFacebookProvider",
+        "unauthorized": "unauthorized"
+    },
+    "pageNotFound": {
+        "header": "Sorry ..",
+        "text": "You have reached a page that does not exist ...",
+        "homeLink": "Back to Hashve >"
+    },
+    "addNewStore": {
+        "addANewStore": "Add your store",
+        "support": "Support",
+        "x": "X",
+        "categories": "Categories",
+        "about": "About Hashve",
+        "faq": "FAQ",
+        "terms": "Site's Policy",
+        "contact": "Contact Us",
+        "addStore": "Add new store",
+        "addBussines": "Store registration",
+        "storeNetwork": "Registering a chain of stores",
+        "name": "Business name:",
+        "city": "City:",
+        "street": "Street:",
+        "house": "No.:",
+        "owner": "Name of business owner / manager:",
+        "tel": "Mobile:",
+        "email": "Email:",
+        "password": "Password:",
+        "passValidation": "The password should:",
+        "words": "Letters",
+        "oneNum": "At least one digit",
+        "v": "V",
+        "wordVelidation": "At least 8 characters",
+        "samePass": "Similar password",
+        "next": "Next",
+        "clear": "Clear",
+        "NumOfStores": "Number of branches:"
+    },
+    "articleDetail": {
+        "main": "Home",
+        "articleDirectory": "Article guide",
+        "other-head": "Recent Articles",
+        "other-link": "For all articles"
+    },
+    "articlelist": {
+        "head": "Article guide",
+        "main": "Home",
+        "articleDirectory": "Article guide"
+    },
+    "betterPrice": {
+        "fixPrice": "Price improvement",
+        "found": "Found:",
+        "choose": "Price improvement offers I chose in",
+        "buissnesName": "Register your store",
+        "newCostumers": "And gain new customers",
+        "singUp": "Sign up for the service",
+        "x": "X"
+    },
+    "busket": {
+        "found": "Found:",
+        "productsIn": "Products in",
+        "busket": "cart"
+    },
+    "itemPage": {
+        "daylyDeal": "Daily deal",
+        "sale": "Sale",
+        "opinion": "opinion",
+        "big": "Large",
+        "more": "More details:"
+    },
+    "productItem": {
+        "products": "Products",
+        "placedOrders": "Reviews",
+        "rate": "Rate",
+        "benefits": "The benefits are exclusive",
+        "orderFromSite": "For customers through the website",
+        "orderByPhone": "Current order by phone",
+        "dayDeal": "Daily deal",
+        "sale": "Sale",
+        "inStock": "In stock",
+        "outOfStock": "Out of stock",
+        "saledCount": "Saled"
+
+    },
+    "authorization": {
+        "login": "Login",
+        "registration": "Register",
+        "accountLogin": "Login",
+        "email": "Email:",
+        "pass": "Password:",
+        "repeat": "Type again:",
+        "forgotPass": "Forgot your password?",
+        "authPolit": "By logging in to your account you agree to our <a href=\"terms\"> Terms of Service and Privacy Policy </a>"
+    },
+    "cityPopup": {
+        "ordered": "Ordered"
+    },
+    "commentList": {
+        "read": "Read",
+        "rate": "Rate",
+        "opinion": "opinion",
+        "score": "User rating",
+        "ratingText": "The rating is based on <b> {{reviewCount}} ratings </b> after ordering",
+        "ratingTextTwo": "The rating is based on <b> {{ rate }} Rank </b> after ordering",
+        "ratingTextThree": "The rating is based on <b> {{ rate }} Rank </b> after ordering",
+        "reviewCount": "Read {{reviewCount}} Reviews:",
+        "itemReviews": "Read {{review}} Reviews:"
+    },
+    "catalogMenu": {
+        "homeLink": "Home page"
+    },
+    "orderCallPopup": {
+        "iconText": "Enter your phone number and when finished, click on the Call me now button. The service is available to dialers from Israel only.",
+        "callTo": "Instant dial to",
+        "writePhone": "Enter your phone number (local calls only)",
+        "callNow": "Call me now",
+        "progressOne": "Connect with the store! Wait for the store representative to answer.",
+        "progressTwo": "Your referral details have been transferred and received at the store.",
+        "progressThree": "If there is no answer on the phone, call again or press a button on the phone, fill in the order details and the store display will get back to you to confirm the order and pay by phone."
+    },
+    "orderView": {
+        "newOrder": "New Order",
+        "instructions": "Additional instructions:",
+        "preparation": "Blessing",
+        "delivered": "Delivered",
+        "orderNum": "Order No.",
+        "name": "Name:",
+        "telNum": "Phone Number:",
+        "date": "Date",
+        "deliveryTime": "Delivery time:",
+        "special": "Special requests:",
+        "blessing": "Blessing:",
+        "costumerDetails": "Recipient details:",
+        "label": "For inquiries about: deliveries, billing confirmation, extras, special requests, updates to current order and inquiries call the store.",
+        "total": "Total:",
+        "paidByCard": "Paid by credit card",
+        "paidByPhone": "Pay order by phone"
+    },
+    "shopAbout": {
+        "shopText": "Did you order flowers up to two hours before the store closes? <br> Delivery will arrive the same day.",
+        "shabatWork": "* On the eve of the holiday, orders are accepted until 12:00 <br> <br> Saturday:",
+        "sunday": "Sunday",
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "storePlaced": "Store location",
+        "goToStore": "Navigation to the store"
+    },
+    "supportPage": {
+        "contactWithHashve": "Contact Customer Service of Hashve Website"
+    },
+    "wishList": {
+        "myWishes": "My favorites",
+        "selected": "Favorite offers I chose in"
+    }
+}

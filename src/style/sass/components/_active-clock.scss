@@ -1,0 +1,75 @@
+﻿/*----------- active-clock -------------*/
+.active-clock{
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: 35px;
+
+	&__item{
+		width: 305px;
+		background: #fff;
+		margin-left: 40px;
+		margin-bottom: 40px;
+		padding: 18px 15px 0;
+	}
+
+	&__top{
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		margin-bottom: 35px;
+	}
+
+	&__day{
+		@include font(normal, 600, 22px, 24px, #494949);
+	}
+
+	&__content{
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	&__field{
+		width: 50%;
+		margin-bottom: 60px;
+	}
+
+	&__label{
+		@include font(normal, 600, 16px, 18px, #717171);
+		margin-bottom: 5px;
+	}
+
+	.input-check__text{
+		margin-left: 0;
+		margin-right: 10px;
+		font-size: 20px;
+		line-height: 20px;
+	}
+
+	.input-check__mark{
+		width: 20px;
+		height: 20px;
+	}
+
+	input[type="checkbox"]:checked + .input-check__label .input-check__mark::after{
+		top: 3px;
+	}
+}
+
+@media (max-width: 991px) {
+	.active-clock{
+		margin-left: -10px;
+		margin-right: -10px;
+
+		&__item{
+			width: calc(100% + 20px);
+			margin-left: 0;
+			margin-bottom: 10px;
+		}
+
+		&__top,
+		&__content{
+			max-width: 305px;
+		}
+	}
+}

@@ -1,0 +1,340 @@
+<header class="header" [ngClass]="{'header--line': !showSlider}">
+    <div class="st-width-full">
+        <div class="header-top" [ngClass]="{open: !closeMenu}">
+            <div class="header-top__logo">
+                <a [routerLink]="'/'"><img src="/assets/img/icons/logo.svg" alt="hashve"></a>
+            </div>
+            <div class="header-top__user-wrap">
+                <div class="header-top__user">
+                    <app-improve-price></app-improve-price>
+                    <app-card></app-card>
+                    <a ClickStopPropagation class="header-icon header-icon--search"></a>
+                    <a ClickStopPropagation (click)="onRegistrationFormOpen('auth')" class="header-icon header-user__icon d-none d-xs-block d-sm-block"></a>
+                    <div class="btn-auth d-sm-none d-xs-none" *ngIf="!Islogged">
+                        <a (click)="onRegistrationFormOpen('auth')">{{ "header.login" | translate}} </a>/
+                        <a (click)="onRegistrationFormOpen('reg')">{{ "header.registration" | translate }}</a>
+                    </div>
+                    <a ClickStopPropagation (click)="onMenuClicked()" class="header-icon header-icon--hamburger header-icon--last d-none d-xs-block d-sm-block"></a>
+                    <div class="header-user">
+                        <!-- <div class="header-user__profile">
+
+                        </div> -->
+
+                        <div class="user-menu">
+                            <div class="user-menu__head" *ngIf="!Islogged">{{ "header.menuNotLoggedIn" | translate }}</div>
+                            <div class="user-menu__head" *ngIf="Islogged">{{ customer?.email?customer?.email:customer?.phone}}</div>
+
+                            <div class="user-menu__list">
+                                <a (click)="redirectToOrders()" class="user-menu__item">
+                                    <span class="user-menu__title">הזמנות</span>
+                                    <span class="user-menu__icon user-menu__icon--cart"></span>
+                                </a>
+
+                                <a href="#" class="user-menu__item">
+                                    <span class="user-menu__title">אהבתי</span>
+                                    <span class="user-menu__icon user-menu__icon--wish"></span>
+                                </a>
+
+                                <a (click)="redirectToProfile()" class="user-menu__item">
+                                    <span class="user-menu__title">פרופיל</span>
+                                    <span class="user-menu__icon user-menu__icon--profile"></span>
+                                </a>
+
+                                <a href="#" class="user-menu__item">
+                                    <span class="user-menu__title">שפה</span>
+                                    <span class="user-menu__icon user-menu__icon--lang" style="background-image: url(assets/img/flag.png);"></span>
+                                </a>
+
+                                <a href="#" class="user-menu__item">
+                                    <span class="user-menu__title user-menu__title--thin">תמיכה</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="mobile-menu">
+                    <div class="mobile-menu__head">
+                        <div class="mobile-menu__user">
+                            <a (click)="onRegistrationFormOpen('auth')" class="mobile-menu__avatar"></a>
+
+                            <span class="mobile-menu__sign-in">
+                <a (click)="onRegistrationFormOpen('auth')">{{ "header.login" | translate}} </a>/
+                <a (click)="onRegistrationFormOpen('reg')">{{ "header.registration" | translate }}</a>
+              </span>
+
+                        </div>
+                    </div>
+
+
+                    <app-delivery-panel></app-delivery-panel>
+
+
+                    <nav class="top-menu d-none d-md-flex" id="top-menu" *ngIf="showMobileMenu">
+                        <a [routerLink]="'category'" class="top-menu__title d-none d-md-block">
+              {{ "header.category" | translate }} <span class="top-menu__title-dots"></span>
+            </a>
+
+                        <swiper [config]="config2" [classes]="'js-top-menu'">
+                            <div class="swiper-wrapper">
+                                <ul class="top-menu__list swiper-slide">
+                                    <li class="top-menu__item top-menu__item__arr d-md-none">
+                                        <a [routerLink]="'/category'" class="top-menu__link current">{{ "header.category" | translate }}</a>
+                                    </li>
+                                    <li class="top-menu__item" *ngFor="let item of topMenu">
+                                        <a (click)="categoryMenuNavigate(item)" class="top-menu__link">{{ item.name[curLang] }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </swiper>
+                    </nav>
+
+                    <div class="mobile-menu__list">
+                        <div class="mobile-menu__item">
+                            <a (click)="redirectToOrders()" class="mobile-menu__link">
+                                <span class="mobile-menu__icon mobile-menu__icon--cart"></span>
+                                <span class="mobile-menu__title">הזמנות</span>
+                            </a>
+                        </div>
+
+                        <div class="mobile-menu__item">
+                            <a href="#" class="mobile-menu__link">
+                                <span class="mobile-menu__icon mobile-menu__icon--price"></span>
+                                <span class="mobile-menu__title">שיפור מחיר</span>
+                            </a>
+                        </div>
+
+                        <div class="mobile-menu__item">
+                            <a href="#" class="mobile-menu__link">
+                                <span class="mobile-menu__icon mobile-menu__icon--wish"></span>
+                                <span class="mobile-menu__title">אהבתי</span>
+                            </a>
+                        </div>
+
+                        <div class="mobile-menu__item">
+                            <a (click)="redirectToProfile()" class="mobile-menu__link">
+                                <span class="mobile-menu__icon mobile-menu__icon--profile"></span>
+                                <span class="mobile-menu__title">הגדרות</span>
+                            </a>
+
+                            <div class="mobile-menu__flag" style="background-image: url(/assets/img/flag.png);"></div>
+                        </div>
+                    </div>
+
+                    <div class="mobile-menu__list">
+                        <div class="mobile-menu__item">
+                            <a href="#" class="mobile-menu__link">
+                                <span class="mobile-menu__icon mobile-menu__icon--home"></span>
+                                <span class="mobile-menu__title">ראשי</span>
+                            </a>
+                        </div>
+
+                        <div class="mobile-menu__item">
+                            <a href="#" class="mobile-menu__link">
+                                <span class="mobile-menu__icon mobile-menu__icon--shop"></span>
+                                <span class="mobile-menu__title">הוסיפו את בית עסק שלכם</span>
+                            </a>
+                        </div>
+
+                        <div class="mobile-menu__item">
+                            <a href="#" class="mobile-menu__link">
+                                <span class="mobile-menu__icon mobile-menu__icon--call"></span>
+                                <span class="mobile-menu__title">תמיכה</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div *ngIf="store" class="shop-header d-none d-md-block">
+            <div class="shop-header__top">
+                <div class="shop-header__info">
+                    <div class="shop-header__name">{{store.name[curLang]}}</div>
+                    <span class="about-shop__status" *ngIf='store.isOpen'>פתוח</span>
+                    <span class="about-shop__status close" *ngIf='!store.isOpen'>סגור</span>
+                    <div class="shop-header__address">{{store.address[curLang]}}</div>
+                </div>
+
+                <div class="about-shop-notice">
+                    <div class="about-shop-notice__text">{{store.message}}</div>
+                    <!--<div class="about-shop-notice__label">אופציונלי. לא מופיע אם אין הודעה</div>-->
+                </div>
+            </div>
+
+            <div class="shop-header__bottom">
+                <div class="shop-info">
+                    <div class="shop-info__item">
+                        <div class="shop-info__head">
+                            <div class="shop-info__img"><img src="/assets/img/shop-ic-call.png" alt=""></div>
+                            <div class="shop-info__text">{{ "storepage.call.btn-text" | translate }}</div>
+                        </div>
+
+                        <div class="shop-info__popup">
+                            <div class="shop-info__popup-head">{{ "storepage.call.title-popup" | translate }}</div>
+                            <div class="shop-info__popup-text">{{ "storepage.call.text-popup" | translate }}</div>
+                        </div>
+                    </div>
+
+                    <div class="shop-info__item">
+                        <div class="shop-info__head" (click)="showWH=!showWH">
+                            <div class="shop-info__img"><img src="/assets/img/shop-ic-clock.png" alt=""></div>
+                            <div class="shop-info__text">{{ "storepage.worktime-text" | translate }}</div>
+                        </div>
+
+                        <div class="shop-info__popup" [ngClass]="{'display-block': showWH}">
+                            <div class="shop-info__popup-text">
+                                הזמנתם פרחים עד שעתיים לפני סגירת החנות?<br> המשלוח יגיע באותו היום.
+                                <div class="shop-info__popup-shedule">
+                                    <div class="shop-info__popup-time">
+                                        א‘ {{store.weekHours.open.hour}}:{{store.weekHours.open.minute | number:'2.0'}} -{{store.weekHours.close.hour}}:{{store.weekHours.close.minute | number:'2.0'}}<br> ב’ {{store.weekHours.open.hour}}:{{store.weekHours.open.minute
+                                        | number:'2.0'}} -{{store.weekHours.close.hour}}:{{store.weekHours.close.minute | number:'2.0'}}<br> ג‘ {{store.weekHours.open.hour}}:{{store.weekHours.open.minute | number:'2.0'}} -{{store.weekHours.close.hour}}:{{store.weekHours.close.minute
+                                        | number:'2.0'}}<br> ד’ {{store.weekHours.open.hour}}:{{store.weekHours.open.minute | number:'2.0'}} -{{store.weekHours.close.hour}}:{{store.weekHours.close.minute | number:'2.0'}}<br> ה‘ {{store.weekHours.open.hour}}:{{store.weekHours.open.minute
+                                        | number:'2.0'}} -{{store.weekHours.close.hour}}:{{store.weekHours.close.minute | number:'2.0'}}<br> ו’ {{store.weekEndHours.open.hour}}:{{store.weekEndHours.open.minute | number:'2.0'}} -{{store.weekEndHours.close.hour}}:{{store.weekEndHours.close.minute
+                                        | number:'2.0'}}
+                                    </div>
+
+                                    <div>
+                                        * בערב חג ההזמנות <br> מתקבלות עד <br> השעה 12:00<br><br> שבת: {{store.shabatHours.open.hour}}:{{store.shabatHours.open.minute | number:'2.0'}} -{{store.shabatHours.close.hour}}:{{store.shabatHours.close.minute
+                                        | number:'2.0'}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="shop-info__item">
+                        <div class="shop-info__head" (click)="showRate = !showRate">
+                            <div class="shop-info__img"><img src="/assets/img/shop-ic-rating.png" alt=""><span class="shop-info__img-text">{{store.rating}}</span></div>
+                            <div class="shop-info__text">{{ "storepage.rating-text" | translate }}</div>
+                        </div>
+
+                        <div class="shop-info__popup" [ngClass]="{'display-block': showRate}">
+                            <div class="shop-info__popup-head">חוות דעת</div>
+                            <div class="shop-info__popup-text">
+                                <div class="shop-info__popup-rating">
+                                    <span class="rating-mark">{{store.rating}}</span>
+                                    <div class="rating-wrap">
+                                        <star-rating [value]="store.rating" checkedcolor="#EBB510" uncheckedcolor="#DADADA" size="20px" readonly="true"></star-rating>
+                                        <div class="rating-wrap__text">{{ "storepage.rating-text-popup" | translate }}</div>
+                                    </div>
+                                </div>
+
+                                <p>הדירוג מבוסס על <b>{{ store.rate?.length || '0' }} מדרגים </b>לאחר הזמנה </p>
+                                <a href="#" class="shop-info__link">קראו {{ store.reviewsCount }} חוות דעת</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="shop-info__item">
+                        <div class="shop-info__head" (click)="navigate(store)">
+                            <div class="shop-info__img"><img src="/assets/img/shop-ic-navigation.png" alt=""></div>
+                            <div class="shop-info__text">ניווט לחנות</div>
+                        </div>
+                    </div>
+
+                    <div class="shop-info__item">
+                        <div class="shop-info__head" (click)="scroll('about')">
+                            <div class="shop-info__img"><img src="/assets/img/shop-ic-market.png" alt=""></div>
+                            <div class="shop-info__text">{{ "storepage.about-text" | translate }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-bottom">
+            <div class="header-delivery active" *ngIf="showDeliveryPanel">
+                <app-delivery-panel></app-delivery-panel>
+            </div>
+
+            <div class="header-bottom__content">
+                <div class="header-bottom__top-menu d-md-none">
+                    <div class="top-menu-wrap">
+                        <nav class="top-menu" id="top-menu">
+                            <a [routerLink]="'/'" class="top-menu__title d-none d-md-block">{{ "header.menu.category_header_mobile" | translate }} <span
+                class="top-menu__title-dots"></span></a>
+
+                            <swiper [config]="config2" [classes]="'js-top-menu'" *ngIf="config2 !== null">
+                                <div class="swiper-wrapper">
+                                    <ul class="top-menu__list swiper-slide swiper-slide-active">
+                                        <li class="top-menu__item top-menu__item--arr d-xs-none">
+                                            <a [routerLink]="'/category'" class="top-menu__link current">
+                        {{ "header.category" | translate }}
+                      </a>
+                                            <div class="top-menu__sub">
+                                                <ul class="top-menu__sub-list">
+                                                    <li class="top-menu__sub-item" *ngFor="let category of categories">
+                                                        <div class="search-menu__head">{{category.name[curLang]}}</div>
+                                                        <ul class="top-menu__sub-listt">
+                                                            <li class="top-menu__sub-item" *ngFor="let cat of category.subcategory">
+                                                                <a *ngIf="!inCity; else cityLink" class="top-menu__sub-link" [routerLink]="'/category/'+cat.name[curLang] | spaceToUnderscore">
+                                  {{cat.name[curLang]}}
+                                </a>
+                                                                <ng-template #cityLink>
+                                                                    <a class="top-menu__sub-link" (click)="categoryMenuNavigate(cat)">
+                                    {{cat.name[curLang]}}
+                                  </a>
+                                                                </ng-template>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="top-menu__item" *ngFor="let cat of topMenu">
+                                            <a *ngIf="!inCity; else cityLink" [routerLink]="'/category/' + cat.name[curLang] | spaceToUnderscore" class="top-menu__link">
+                        {{ cat.name[curLang] }}
+                      </a>
+                                            <ng-template #cityLink>
+                                                <a class="top-menu__link" (click)="categoryMenuNavigate(cat)">
+                          {{cat.name[curLang]}}
+                        </a>
+                                            </ng-template>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </swiper>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="header-bottom__info" *ngIf="config1 !== null && showSlider">
+                    <div class="top-slider">
+                        <app-hashve-slider></app-hashve-slider>
+                    </div>
+
+                    <div *ngIf="!store" app-notice class="header-bottom__notice">
+
+                    </div>
+
+                </div>
+            </div>
+
+            <nav class="top-menu d-none d-md-flex" id="top-menu" *ngIf="showMobileMenu">
+                <a [routerLink]="'category'" class="top-menu__title d-none d-md-block">{{ "header.category" | translate }} <span class="top-menu__title-dots"></span></a>
+                <swiper [config]="config2" [classes]="'js-top-menu'">
+                    <div class="swiper-wrapper">
+                        <ul class="top-menu__list swiper-slide">
+                            <li class="top-menu__item top-menu__item__arr d-md-none"><a [routerLink]="'/category'" class="top-menu__link current">{{ "header.category" | translate }}</a>
+                            </li>
+                            <li class="top-menu__item" *ngFor="let cat of topMenu">
+                                <a *ngIf="!inCity; else cityLink" [routerLink]="'/category/' + cat.name[curLang] | spaceToUnderscore" class="top-menu__link">
+                  {{ cat.name[curLang] }}
+                </a>
+                                <ng-template #cityLink>
+                                    <a class="top-menu__link" (click)="categoryMenuNavigate(cat)">
+                    {{cat.name[curLang]}}
+                  </a>
+                                </ng-template>
+                            </li>
+                        </ul>
+                    </div>
+                </swiper>
+            </nav>
+        </div>
+    </div>
+</header>

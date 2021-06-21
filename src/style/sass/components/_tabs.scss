@@ -1,0 +1,170 @@
+﻿/*----------- tabs -------------*/
+.tabs{
+	&__list{
+		display: flex;
+		align-items: center;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		padding: 13px 0;
+	}
+
+	&__item,
+	&__item a{
+		display: inline-block;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		@include font(normal, bold, 23px, 23px, #5c5c5c);
+		text-decoration: none;
+	}
+
+	&__item a{
+		position: relative;
+	}
+
+	&__item:not(:last-child){
+		margin-left: 38px;
+	}
+
+	&__item a::after{
+		content: '';
+		display: none;
+		width: 100%;
+		height: 5px;
+		background: $color-green;
+		position: absolute;
+		bottom: -10px;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+	}
+
+	&__item a:hover,
+	&__item.active a{
+		color: $color-green;
+	}
+
+	&__item.active a{
+		font-style: italic;
+	}
+
+	&__item a:hover::after,
+	&__item.active a::after{
+		display: block;
+	}
+
+	&__item{
+		white-space: nowrap;
+	}
+
+	&__content{
+		p{
+			line-height: 25px;
+		}
+
+		p:not(:last-child){
+			margin-bottom: 25px;
+		}
+	}
+
+	&__content-item{
+		background: #fff;
+		padding: 16px 22px;
+		display: none;
+	}
+
+	&__content-item--clear{
+		background: transparent;
+		padding: 0;
+	}
+
+	&__content-item.active{
+		display: block;
+	}
+
+	.unwrap-block__head h2,
+	.unwrap-block__head .h2{
+		font-size: 22px;
+	}
+
+	.swiper-wrapper{
+		box-sizing: border-box;
+	}
+
+	.swiper-container {
+		width: 100%;
+		height: 100%;
+	}
+
+	.swiper-slide {
+		width: auto;
+	}
+}
+
+@media (max-width: 991px) {
+	.tabs{
+		.unwrap-block{
+			margin-left: 0;
+			margin-right: 0;
+			padding-left: 22px;
+			padding-right: 22px;
+		}
+
+		&__top{
+			display: flex;
+			align-items: center;
+			background: rgba(255,255,255,0.55);
+		}
+
+		&__title{
+			@include font(normal, 800, 20px, 23px, $color-text);
+			text-decoration: none;
+			margin: 0 20px;
+		}
+
+		&__title:hover{
+			color: $color-green;
+		}
+
+		&__item,
+		&__item a{
+			font-size: 20px;
+		}
+
+		&__item:not(:last-child){
+			margin-left: 16px;
+		}
+
+		&__item a::after{
+			bottom: -18px;
+		}
+
+		&__content-item{
+			padding: 22px;
+		}
+
+		&__content-item--clear{
+			padding: 0;
+		}
+
+		&__list{
+			padding: 13px 0 18px;
+		}
+	}
+}
+
+@media (max-width: 479px) {
+	.tabs{
+		.unwrap-block{
+			margin-left: -10px;
+			margin-right: -10px;
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+
+		&__content-item{
+			padding: 10px;
+		}
+	}
+}

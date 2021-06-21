@@ -1,0 +1,36 @@
+<div class="popup">
+  <div class="popup__bg" (click)="close()"></div>
+  <div class="store-popup__content-wrap">
+    <div class="popup__close" (click)="close()" *ngIf="store.adminActive">
+      X
+    </div>
+
+    <div class="popup__content">
+      <div class="store-popup">
+        <div class="store-popup__head">
+          <p>{{ this.store.name[curLang] }}</p>
+        </div>
+        <div class="store-popup__content">
+          <p *ngIf="store.adminActive">
+            לקוחות יקרים! להזמנות ובירורים ניתן לפנות אלינו בטלפון מס'
+            <a href="tel:{{ store.tel }}">{{ this.store.tel }}</a> או לבחור חנות
+            מהרשימה.
+          </p>
+          <p *ngIf="!store.adminActive">
+            לקוחות יקרים! החנות אינה זמינה לקבלת הזמנות.
+          </p>
+          <a
+            class="store-popup__btn btn"
+            [routerLink]="['/', 'חנויות_פרחים_' + city.name[curLang]]"
+            >בחר חנות בעיר</a
+          >
+        </div>
+        <!-- end map-popup__head -->
+
+        <!-- end popup-product-slide -->
+      </div>
+      <!-- end map-popup -->
+    </div>
+    <!-- end map-popup-wrap -->
+  </div>
+</div>

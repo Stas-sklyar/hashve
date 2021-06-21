@@ -1,0 +1,17 @@
+<a [routerLink]="_article.link" class="article-list__name d-none d-md-block">
+    {{_article.header[curLang]}}
+</a>
+
+<div class="article-list__content">
+  <a [routerLink]="_article.link" class="article-list__photo">
+    <img src="{{_article.pic}}" alt="">
+  </a>
+
+  <a [routerLink]="_article.link" class="article-list__name d-md-none">
+      {{_article.header[curLang]}} 
+  </a>
+
+  <div class="article-list__text">
+    {{_article.shitFromLeft[curLang]}} 
+  </div>
+</div>

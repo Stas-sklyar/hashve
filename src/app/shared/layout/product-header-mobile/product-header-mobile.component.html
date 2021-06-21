@@ -1,0 +1,123 @@
+<!-- <header class="header header--line header--gradient"> -->
+<header class="header header--line">
+    <div class="st-width-full">
+        <div class="header-top" [ngClass]="{open: !closeMenu}">
+            <div class="header-top__logo d-md-none">
+                <a href="#"><img src="/assets/img/logo.svg" alt=""></a>
+            </div>
+            <div (click)="goBack()" class="header-top__info d-none d-md-block">
+                <div class="header-top__head">
+                    <div class="header-top__arr"></div>
+                    {{ "citySearch.item.code" | translate }} {{itemName}}
+                </div>
+            </div>
+            <div class="header-top__user">
+                <app-search-button></app-search-button>
+                <app-improve-price></app-improve-price>
+                <app-card></app-card>
+                <!-- <div class="header-user"><a href="#" class="header-user__icon"></a></div> -->
+                <a ClickStopPropagation (click)="onMenuClicked()" class="header-icon header-icon--hamburger header-icon--last d-none d-xs-block d-sm-block"></a>
+            </div>
+            <div class="mobile-menu">
+                <div class="mobile-menu__head">
+                    <div class="mobile-menu__user">
+                        <!--<a (click)="onRegistrationFormOpen('auth')" class="mobile-menu__avatar"></a>
+
+            <span class="mobile-menu__sign-in">
+              <a (click)="onRegistrationFormOpen('auth')">{{ "header.login" | translate}} </a>/
+              <a (click)="onRegistrationFormOpen('reg')">{{ "header.registration" | translate }}</a>
+            </span>-->
+
+                    </div>
+                </div>
+
+
+                <div class="header-delivery">
+                    <app-delivery-panel></app-delivery-panel>
+                </div>
+
+
+                <nav class="top-menu d-none d-md-flex" id="top-menu" *ngIf="showMobileMenu">
+                    <a [routerLink]="'category'" class="top-menu__title d-none d-md-block">{{ "header.category" | translate }}<span class="top-menu__title-dots"></span></a>
+
+                    <div class="top-menu__swipe">
+                        <swiper [config]="config2" [classes]="'js-top-menu'">
+                            <div class="swiper-wrapper">
+                                <ul class="top-menu__list swiper-slide">
+                                    <li class="top-menu__item top-menu__item__arr d-md-none"><a [routerLink]="'/category'" class="top-menu__link current">{{ "header.category" | translate }}</a>
+                                    </li>
+                                    <li class="top-menu__item" *ngFor="let item of topMenu"><a (click)="categoryMenuNavigate(item)" class="top-menu__link">{{ item.name[curLang] }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </swiper>
+                    </div>
+                </nav>
+
+                <div class="mobile-menu__list">
+                    <!--<div class="mobile-menu__item">
+            <a href="#" class="mobile-menu__link">
+              <span class="mobile-menu__icon mobile-menu__icon&#45;&#45;cart"></span>
+              <span class="mobile-menu__title">הזמנות</span>
+            </a>
+          </div>-->
+
+                    <div class="mobile-menu__item">
+                        <a (click)="navigateToImprovePrice()" class="mobile-menu__link">
+                            <span class="mobile-menu__icon mobile-menu__icon--price"></span>
+                            <span class="mobile-menu__title">{{ "citySearch.item.priceImprove" | translate }}</span>
+                        </a>
+                    </div>
+
+                    <div class="mobile-menu__item">
+                        <a (click)="openWishList()" class="mobile-menu__link">
+                            <span class="mobile-menu__icon mobile-menu__icon--wish"></span>
+                            <span class="mobile-menu__title">{{ "citySearch.item.liked" | translate }}</span>
+                        </a>
+                    </div>
+
+                    <!--<div class="mobile-menu__item">
+            <a href="#" class="mobile-menu__link">
+              <span class="mobile-menu__icon mobile-menu__icon&#45;&#45;profile"></span>
+              <span class="mobile-menu__title">הגדרות</span>
+            </a>
+
+            <div class="mobile-menu__flag" style="background-image: url(assets/img/flag.png);"></div>
+          </div>-->
+                </div>
+
+                <div class="mobile-menu__list">
+                    <div class="mobile-menu__item">
+                        <a (click)="onMenuClicked()" routerLink="/" class="mobile-menu__link">
+                            <span class="mobile-menu__icon mobile-menu__icon--home"></span>
+                            <span class="mobile-menu__title">{{ "breadcrumbs.homePage" | translate }}</span>
+                        </a>
+                    </div>
+
+                    <div class="mobile-menu__item">
+                        <a (click)="onMenuClicked()" routerLink="/הוספת_חנות_חדשה" class="mobile-menu__link">
+                            <span class="mobile-menu__icon mobile-menu__icon--shop"></span>
+                            <span class="mobile-menu__title">{{ "addNewStore.addANewStore" | translate }}</span>
+                        </a>
+                    </div>
+
+                    <div class="mobile-menu__item">
+                        <a (click)="onMenuClicked()" routerLink="/תמיכה" class="mobile-menu__link">
+                            <span class="mobile-menu__icon mobile-menu__icon--call"></span>
+                            <span class="mobile-menu__title">{{ "addNewStore.support" | translate }}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-bottom d-md-none">
+            <app-delivery-panel></app-delivery-panel>
+
+
+            <div class="header-bottom__content">
+                <div class="header-top__head">{{ "citySearch.item.itemDetail" | translate }}</div>
+            </div>
+        </div>
+    </div>
+</header>

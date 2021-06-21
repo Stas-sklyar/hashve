@@ -1,0 +1,164 @@
+﻿/*----------- admin-home -------------*/
+.admin-home{
+	display: flex;
+	justify-content: space-between;
+
+	&__right{
+		width: 175px;
+	}
+
+	&__content{
+		width: calc(100% - 183px);
+		margin-right: 8px;
+	}
+
+	&__head{
+		@include font(normal, 600, 22px, 24px, #494949);
+		margin-bottom: 25px;
+	}
+
+	&__head + .add-gallery{
+		margin-top: -12px;
+	}
+
+	&__text{
+		@include font(normal, 600, 18px, 20px, #494949);
+		margin-bottom: 20px;
+	}
+
+	&__head + &__text{
+		margin-top: -20px;
+	}
+
+	.history-card{
+		max-width: 1077px;
+	}
+
+	.history-dispute__form{
+		max-width: 100%;
+		width: 100%;
+	}
+
+	.history-form__field,
+	.history-form__submit{
+		max-width: 500px;
+	}
+
+	&__status{
+		@include font(normal, 600, 25px, 27px, #4dc314);
+		margin-bottom: 25px;
+	}
+
+	&__status-title{
+		color: #494949;
+	}
+}
+
+.admin-adv{
+	&__item{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 35px 20px;
+		background: #fff;
+	}
+
+	&__item--green{
+		background: rgba(77,195,20,0.15);
+	}
+
+	&__item--blue{
+		background: rgba(44,154,211,0.2);
+	}
+
+	&__item:not(:last-child){
+		margin-bottom: 10px;
+	}
+
+	&__msg{
+		@include font(normal, bold, 20px, 22px, $color-text);
+	}
+
+	&__price-title{
+		@include font(normal, 600, 16px, 18px, $color-text);
+		margin-left: 5px;
+	}
+
+	&__price{
+		@include font(normal, 600, 30px, 30px, $color-text);
+	}
+}
+
+.admin-adv-service{
+	width: 280px;
+
+	&__item{
+		display: flex;
+		justify-content: space-between;
+		@include font(normal, 600, 20px, 22px, $color-text);
+	}
+}
+
+@media (max-width: 991px) {
+	.admin-home{
+		display: block;
+
+		&__right{
+			margin-top: -37px;
+			width: auto;
+			margin-left: -10px;
+			margin-right: -10px;
+			background: #f8f8f8;
+			padding: 20px 0;
+			box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.2);
+			margin-bottom: 20px;
+		}
+
+		&__content{
+			width: 100%;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		&__head{
+			margin-bottom: 15px;
+		}
+
+		&__head + .add-gallery{
+			margin-top: 22px;
+		}
+
+		&__head + &__text{
+			margin-top: -14px;
+		}
+
+		&__text{
+			margin-bottom: 25px;
+		}
+
+		&__status-title{
+			display: block;
+		}
+	}
+
+	.admin-adv{
+		&__item{
+			display: block;
+			padding: 31px 17px;
+			margin-top: 10px;
+		}
+
+		&__price-wrap{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+
+	.admin-adv-service{
+		width: 100%;
+		&__item{
+			margin-bottom: 5px;
+		}
+	}
+}

@@ -1,0 +1,89 @@
+﻿/*----------- sticker -------------*/
+.sticker-wrap{
+	display: flex;
+	align-items: center;
+
+	&__label{
+		@include font(normal, 600, 12px, 12px, #494949);
+		margin-left: 10px;
+	}
+}
+
+.sticker{
+	display: inline-block;
+	width: 54px;
+	height: 54px;
+	background: url(#{$path-icon}/ic-ball-orange.svg) no-repeat center;
+	font-family: $font-assistant;
+	text-align: center;
+	padding-top: 7px;
+
+	&__label{
+		@include font(normal, bold, 13px, 12px, $color-text);
+	}
+
+	&__text{
+		@include font(normal, bold, 22px, 18px, #fff);
+	}
+
+	&--blue{
+		background: url(#{$path-icon}/ic-ball-blue.svg) no-repeat center;
+	}
+
+  &--purple{
+    background: url(#{$path-icon}/ic-ball-purple.svg) no-repeat center;
+  }
+
+	&--small{
+		width: 40px;
+		height: 40px;
+		background: url(#{$path-icon}/ic-ball-orange.svg) no-repeat center;
+		padding-top: 3px;
+	}
+
+	&--small.sticker--blue{
+		background: url(#{$path-icon}/ic-ball-blue.svg) no-repeat center;
+	}
+
+	&--small.sticker--purple{
+		background: url(#{$path-icon}/ic-ball-purple.svg) no-repeat center;
+	}
+
+	&--small &__label{
+		font-style: 11px;
+	}
+
+	&--small &__text{
+		font-size: 17px;
+		line-height: 11px;
+	}
+}
+
+.sticker-small{
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	background: url(#{$path-icon}/ic-ball-blue.svg) no-repeat center;
+	font-family: $font-assistant;
+	@include font(normal, bold, 13px, 14px, #fff);
+	text-align: center;
+
+	&--purple{
+		background: url(#{$path-icon}/ic-ball-purple.svg) no-repeat center;
+	}
+
+  &--orange{
+    background: url(#{$path-icon}/ic-ball-orange.svg) no-repeat center;
+  }
+}
+
+@media (max-width: 767px) {
+	.sticker-small{
+		width: 32px;
+		height: 32px;
+		font-size: 10px;
+		line-height: 11px;
+	}
+}

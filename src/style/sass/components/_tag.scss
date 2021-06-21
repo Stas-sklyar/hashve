@@ -1,0 +1,104 @@
+﻿/*----------- tag -------------*/
+.tag{
+	display: inline-block;
+	vertical-align: middle;
+	height: 37px;
+	background: #f25500;
+	@include font(normal, 600, 25px, 32px, #fff);
+	position: relative;
+	margin-left: 14px;
+	padding: 0 15px 0 95px;
+	white-space: nowrap;
+
+	&::after{
+		content: '';
+		display: inline-block;
+		width: 14px;
+		height: 100%;
+		background: url(#{$path-icon}/ic-tag-orange.svg) no-repeat center;
+		position: absolute;
+		right: 100%;
+		top: 0;
+	}
+
+	&--red{
+		background: #db0100;
+	}
+
+	&--red::after{
+		background-image: url(#{$path-icon}/ic-tag-red.svg);
+	}
+
+	&--pink{
+		background: #fc00a6;
+	}
+
+	&--pink::after{
+		background-image: url(#{$path-icon}/ic-tag-pink.svg);
+	}
+
+	&--purple{
+		background: #8e30e6;
+	}
+
+	&--purple::after{
+		background-image: url(#{$path-icon}/ic-tag-purple.svg);
+	}
+
+	&--blue{
+		background: #2a99f7;
+	}
+
+	&--blue::after{
+		background-image: url(#{$path-icon}/ic-tag-blue.svg);
+	}
+
+	&--small{
+		line-height: 28px;
+		height: 30px;
+		padding-left: 55px;
+	}
+
+	&--small::after{
+		width: 12px;
+		background-image: url(#{$path-icon}/ic-tag-orange.svg);
+		margin-right: -1px;
+	}
+
+	&--small.tag--red::after{
+		background-image: url(#{$path-icon}/ic-tag-red.svg);
+	}
+
+	&--small.tag--pink::after{
+		background-image: url(#{$path-icon}/ic-tag-pink.svg);
+	}
+
+	&--small.tag--purple::after{
+		background-image: url(#{$path-icon}/ic-tag-purple.svg);
+	}
+
+	&--small.tag--blue::after{
+		background-image: url(#{$path-icon}/ic-tag-blue.svg);
+	}
+}
+
+@media (max-width: 767px) {
+	.tag{
+		font-size: 20px;
+		line-height: 28px;
+		height: 30px;
+		padding-left: 55px;
+
+		&::after{
+			width: 12px;
+			margin-right: -1px;
+		}
+	}
+}
+
+@media (max-width: 479px) {
+	.tag{
+		padding-left: 50px;
+		padding-right: 20px;
+	}
+}

@@ -1,0 +1,81 @@
+/*----------- admin-msg -------------*/
+.admin-msg{
+	&__item{
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 10px;
+		background: #fff;
+		padding: 18px 15px;
+		position: relative;
+	}
+
+	&__item--mark::after{
+		content: '';
+		display: inline-block;
+		width: 23px;
+		height: 22px;
+		background: url(#{$path-icon}/ic-star.svg) no-repeat center;
+		position: absolute;
+		top: 5px;
+		right: -14px;
+	}
+
+	&__count,
+	&__count a{
+		@include font(normal, 600, 22px, 24px, #494949);
+	}
+
+	&__count{
+		margin-bottom: 35px;
+	}
+
+	&__no-read{
+		color: $color-orange;
+	}
+
+	&__head{
+		width: 105px;
+		padding-left: 10px;
+		border-left: 1px solid rgba(0,0,0,0.25);
+	}
+
+	&__date{
+		@include font(normal, 600, 25px, 28px,#494949);
+		margin-bottom: 5px;
+	}
+
+	&__text{
+		width: calc(100% - 123px);
+		@include font(normal, 600, 18px, 20px,#494949);
+	}
+
+	&__label{
+		@include font(normal, 600, 14px, 16px,$color-orange);
+	}
+
+	&__label--blue{
+		color: #56bbef;
+	}
+}
+
+@media (max-width: 991px) {
+	.admin-msg{
+		&__item--mark::after{
+			right: -5px;
+			top: -5px;
+		}
+	}
+}
+
+@media (max-width: 375px) {
+	.admin-msg{
+		&__item{
+			padding: 10px;
+		}
+
+		&__text{
+			font-size: 16px;
+			line-height: 18px;
+		}
+	}
+}

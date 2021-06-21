@@ -1,0 +1,295 @@
+<app-header
+  [banner]="banners"
+  [showSlider]="showSlider"
+  [slider]="slider"
+></app-header>
+<main>
+  <div class="st-width-full">
+    <div class="content-head d-md-none">
+      <div class="content-head__title">
+        <h1 style="font-size: 23px">
+          {{ article ? article.seo.h1[curLang] : "" }}
+        </h1>
+      </div>
+      <div
+        class="content-head__text"
+        [innerHTML]="article ? article.shitFromLeft[curLang] : ''"
+      ></div>
+    </div>
+
+        <section class="offers offers--mobile-indent">
+            <div class="info-block">
+                <div class="tag">{{ "citySearch.item.dayDeal" | translate }}</div>
+
+                <div class="good-day-slider-wrap">
+          <swiper
+            [config]="productDayConfig"
+            [classes]="'good-day-slider js-good-day-slider'"
+            *ngIf="productDayConfig !== null"
+          >
+            <div class="swiper-wrapper">
+              <div
+                class="good-day-slider__item swiper-slide"
+                *ngFor="let item of dailyDeal"
+              >
+                <app-daily-deal [item]="item"></app-daily-deal>
+              </div>
+                        </div>
+
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </swiper>
+                </div>
+                <a *ngIf="!isItemRedirect" [routerLink]="'/פרחים_' + curCity.name.heb + '/דיל_יומי'  | spaceToUnderscore" class="info-block__more">{{ "homepage.additionalDeal" | translate }}</a>
+                <a *ngIf="isItemRedirect" [routerLink]="'/category/דיל_יומי'" class="info-block__more">{{ "homepage.additionalDeal" | translate }}</a>
+            </div>
+            <!-- end info-block -->
+            <div class="info-block">
+                <div class="tag tag--red">{{ "citySearch.item.sale" | translate }}</div>
+
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </swiper>
+        </div>
+        <a
+          *ngIf="!isItemRedirect"
+          [routerLink]="
+            '/פרחים_' + curCity.name.heb + '/דיל_יומי' | spaceToUnderscore
+          "
+          class="info-block__more"
+          >{{ "homepage.additionalDeal" | translate }}</a
+        >
+        <a
+          *ngIf="isItemRedirect"
+          [routerLink]="'/category/דיל_יומי'"
+          class="info-block__more"
+          >{{ "homepage.additionalDeal" | translate }}</a
+        >
+      </div>
+      <!-- end info-block -->
+      <div class="info-block">
+        <div class="tag tag--red">{{ "citySearch.item.sale" | translate }}</div>
+
+                </div>
+                <!-- end catalog-list -->
+
+                <a *ngIf="!isItemRedirect" [routerLink]="'/פרחים_' + curCity.name.heb + '/במבצע'  | spaceToUnderscore" class="info-block__more">{{ "homepage.additionalSale" | translate }}</a>
+                <a *ngIf="isItemRedirect" [routerLink]="'/category/במבצע'" class="info-block__more">{{ "homepage.additionalSale" | translate }}</a>
+            </div>
+            <!-- end info-block -->
+        </div>
+        <!-- end catalog-list -->
+
+        <a
+          *ngIf="!isItemRedirect"
+          [routerLink]="
+            '/פרחים_' + curCity.name.heb + '/במבצע' | spaceToUnderscore
+          "
+          class="info-block__more"
+          >{{ "homepage.additionalSale" | translate }}</a
+        >
+        <a
+          *ngIf="isItemRedirect"
+          [routerLink]="'/category/במבצע'"
+          class="info-block__more"
+          >{{ "homepage.additionalSale" | translate }}</a
+        >
+      </div>
+      <!-- end info-block -->
+
+      <!--<div class="info-block info-block&#45;&#45;lg-full">
+
+
+            <div class="h2 d-none d-md-block">{{ "homepage.categoryblock" | translate }}</div>
+
+        <a (click)="redirectByCategory('במבצע')" class="info-block__more">{{ "homepage.all_packages" | translate }}</a>
+      </div>--><!-- end info-block -->
+
+      <div class="h2 d-none d-md-block">
+        {{ "homepage.categoryblock" | translate }}
+      </div>
+
+      <div class="info-block info-block--lg-full" style="width: 100%">
+        <div class="gifts">
+          <div class="h2 d-md-none">
+            {{ "homepage.categoryblock" | translate }}
+          </div>
+
+          <div class="gifts__list">
+            <div
+              class="gifts__item"
+              [ngClass]="{ 'd-md-none': i > 3 }"
+              *ngFor="let category of categories; let i = index"
+            >
+              <app-category [category]="category"></app-category>
+            </div>
+          </div>
+        </div>
+        <a [routerLink]="'/category'" class="info-block__more">{{
+          "homepage.all_categories" | translate
+        }}</a>
+      </div>
+      <!-- end info-block -->
+        </section>
+
+    <section class="handbill">
+      <img src="/assets/img/info-flower.jpg" alt="" class="handbill__img" />
+
+      <div class="handbill__content">
+        <div class="handbill__text-wrap">
+          <div class="handbill__head">
+            {{ "banners.allOffers.header" | translate }}
+          </div>
+          <div class="handbill__text">
+            {{ "banners.allOffers.subHeader" | translate }}
+          </div>
+        </div>
+
+        <a
+          (click)="redirectByCategory('במבצע')"
+          class="btn btn--big btn--purple d-sm-none"
+          >{{ "banners.allOffers.button" | translate }}</a
+        >
+      </div>
+
+      <a
+        (click)="redirectByCategory('במבצע')"
+        class="btn btn--big btn--purple d-none d-sm-inline-block"
+        >{{ "banners.allOffers.button" | translate }}</a
+      >
+
+            <a href="#" class="handbill__close">X</a>
+        </section>
+
+    <div class="h2 d-none d-md-block">
+      {{ "blocks.mostOrdered" | translate }}
+    </div>
+
+        <app-accelerate-sales></app-accelerate-sales>
+        <app-review-slider></app-review-slider>
+
+        <app-popular-cities></app-popular-cities>
+
+        <section class="analytics">
+            <div class="analytics__item d-md-block">
+                <div class="h2">{{ "blocks.popularStores" | translate }}</div>
+
+        <div class="shop-list">
+          <div
+            style="background-color: #cfcfcf; width: calc(33.33% - 16px)"
+            *ngFor="let shop of popularStores"
+            [shop]="shop"
+            class="shop-list__item"
+            [shortOverview]="true"
+            app-shopitem
+          ></div>
+        </div>
+      </div>
+
+      <div class="analytics__switch d-none d-md-flex">
+        <a
+          (click)="changeTab()"
+          class="analytics__switch-item"
+          [ngClass]="{ active: tabActive }"
+          >{{ "blocks.categoryFooter" | translate }}</a
+        >
+        <a
+          (click)="changeTab()"
+          class="analytics__switch-item"
+          [ngClass]="{ active: !tabActive }"
+          >{{ "blocks.commonOverview" | translate }}</a
+        >
+      </div>
+
+      <div class="analytics__item" [ngClass]="{ active: tabActive }">
+        <div class="analytics__head d-md-none">
+          <div class="h2">{{ "blocks.categoryFooter" | translate }}</div>
+        </div>
+
+        <div class="analytics-cat">
+          <div
+            class="gifts__item"
+            *ngFor="let category of footerCategories; let i = index"
+          >
+            <app-category [category]="category"></app-category>
+          </div>
+        </div>
+      </div>
+
+      <div class="analytics__item" [ngClass]="{ active: !tabActive }">
+        <div class="analytics__head d-md-none">
+          <div class="h2">{{ "blocks.commonOverview" | translate }}</div>
+        </div>
+
+        <div class="analytics-city">
+          <div class="analytics-city__item" *ngFor="let city of reviewCity">
+            <div class="analytics-city__name">
+              <a [routerLink]="['/', city.link]">{{ city.name[curLang] }}</a>
+            </div>
+            <div class="analytics-city__num">
+              {{
+                "homepage.popularCities.stores"
+                  | translate: { stores: city.storeCount }
+              }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end analytics -->
+
+    <section class="article">
+      <div class="article__head">
+        <div class="h2">{{ "homepage.articles.title" | translate }}</div>
+        <a [routerLink]="'/articles'" class="article__head-link">{{
+          "homepage.articles.allArticles" | translate
+        }}</a>
+      </div>
+
+      <div class="article__list">
+        <article class="article__item" *ngFor="let article of homePageArticles">
+          <a
+            [routerLink]="['/articles', article.header[curLang]]"
+            class="article__name"
+            >{{ article.header[curLang] }}</a
+          >
+
+          <div class="article__content">
+            <a
+              [routerLink]="['/articles', article.header[curLang]]"
+              style="width: 20%"
+              class="article__img"
+              ><img [src]="host + '/assets/articles/' + article.pic" alt=""
+            /></a>
+
+            <div
+              class="article__text"
+              [innerHTML]="article.shitFromLeft[curLang]"
+            ></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section
+      class="unwrap-block unwrap-block--col-3"
+      id="homepage-article"
+      (click)="toggleArticle()"
+      [ngClass]="{ opened: showArticle }"
+    >
+      <div class="unwrap-block__head">
+        <div class="h2">{{ article.slogan[curLang] }}</div>
+        <div class="unwrap-block__arr"></div>
+      </div>
+      <div class="unwrap-block__content">
+        <div
+          class="unwrap-block__text"
+          [@slideInOut]="deliveryState"
+          [innerHTML]="article ? article.text[curLang] : ''"
+        ></div>
+      </div>
+    </section>
+    <!-- end unwrap-block -->
+  </div>
+</main>
+<app-footer></app-footer>

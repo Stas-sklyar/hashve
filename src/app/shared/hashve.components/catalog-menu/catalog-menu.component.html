@@ -1,0 +1,12 @@
+<swiper [ngClass]="'catalog-menu-wrap js-catalog-menu swiper-container'" [config]="configMenu">
+    <a [routerLink]="'/'+storelink" [ngClass]="_isShopPage ? 'active': ''" class="catalog-menu__main d-none d-xs-block"></a>
+    <div class="swiper-wrapper">
+        <ul class="catalog-menu swiper-slide">
+            <li class="catalog-menu__item d-xs-none" [ngClass]="_isShopPage ? 'catalog-menu__item--main active': ''">
+                <a [routerLink]="'/'+storelink">{{ "catalogMenu.homeLink" | translate}}</a>
+            </li>
+            <li class="catalog-menu__item" *ngFor="let category of categories" [ngClass]="category.active ? 'active': ''">
+                <a [routerLink]="'/' + storelink + '/' + category.link">{{category.name[curLang]}}</a></li>
+        </ul>
+    </div>
+</swiper>

@@ -1,0 +1,44 @@
+<div class="popup">
+    <div class="popup__bg" [routerLink]="link"></div>
+
+    <div class="popup__content-wrap">
+        <div class="popup__close" [routerLink]="link">X</div>
+
+        <div class="popup__content">
+            <div class="map-popup">
+                <div class="map-popup__head">
+
+
+                    <div class="map-popup__proposal"><span [innerHTML]="'citySearch.searchResult' | translate:{category: categoryName, count: filteredItems.length,city: city.name[curLang]}"></span>
+                    </div>
+
+                </div>
+                <!-- end map-popup__head -->
+
+
+                <swiper (inited)="selectedItem($event)" [config]="configSlider" [classes]="'popup-product-slide js-popup-product-slide'" *ngIf="configSlider !== null">
+                    <div class="swiper-wrapper">
+                        <div class="popup-product-slide__item swiper-slide" *ngFor="let item of filteredItems">
+                            <div class="popup-product-slide__img" style="background-repeat: no-repeat; background-position: center; background-size: cover;" [style.backgroundImage]="'url('+host + '/assets/items/' + item.picture+')'"></div>
+
+                            <div class="popup-product-slide__rating">
+                                <star-rating [value]="item.rating" checkedcolor="#EBB510" uncheckedcolor="#DADADA" size="20px" readonly="true"></star-rating>
+                                <span>{{item.reviewsCount}} {{ "cityPopup.ordered" | translate}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </swiper>
+                <!-- end popup-product-slide -->
+                <div class="shop-map">
+                    <div #mapElement class="map"></div>
+                </div>
+
+            </div>
+            <!-- end map-popup -->
+        </div>
+        <!-- end map-popup-wrap -->
+    </div>
+</div>

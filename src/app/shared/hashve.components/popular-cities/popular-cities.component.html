@@ -1,0 +1,27 @@
+<section class="popular-city-wrap">
+  <div class="h2">הערים הפופולריות</div>
+
+  <swiper [config]="configCities" [classes]="'popular-city js-popular-city'">
+    <div class="swiper-wrapper">
+      <div class="popular-city__item swiper-slide" [routerLink]="['/', city.link]" *ngFor="let city of popularCity">
+        <div class="popular-city__img" [style.backgroundImage]="'url(' + host + city.pic+')'"></div>
+
+        <div
+          class="popular-city__head">{{ "homepage.popularCities.flowersIn" | translate:{city: city.name[curLang]}  }}</div>
+
+        <div class="popular-city__text">
+          <!--<span class="popular-city__count">265 הצעות</span>-->
+          <span class="popular-city__count"> {{ "homepage.popularCities.min" | translate }}
+            ₪{{city.minPrice}} </span>
+          -
+          <span class="popular-city__count"> ₪{{city.maxPrice}} </span>
+          <!--<span class="popular-city__usually">{{ "homepage.popularCities.max" | translate }} ₪{{city.maxPrice}}</span>-->
+        </div>
+      </div>
+    </div>
+
+    <div class="swiper-pagination d-md-none"></div>
+    <div class="swiper-button-prev d-md-none"></div>
+    <div class="swiper-button-next d-md-none"></div>
+  </swiper>
+</section>

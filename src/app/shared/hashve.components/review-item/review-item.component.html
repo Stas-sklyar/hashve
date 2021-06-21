@@ -1,0 +1,21 @@
+<div class="rating-review__top">
+  <div class="rating-review__mark">
+    <span class="rating-mark">{{review.rate}}</span>
+     <star-rating [value]="review.rate" checkedcolor="#EBB510" uncheckedcolor="#DADADA" size="20px" readonly="true">
+     </star-rating>
+  </div>
+
+  <div class="rating-review__date">{{review.date | date : "dd.MM.y"}}</div>
+</div>
+
+<div class="rating-review__caption">
+  <div class="rating-review__avatar"><img src="/assets/img/icons/user-icon.svg" alt=""></div>
+
+  <div class="rating-review__author">
+    <div class="rating-review__author-name">{{review.fullName}}</div>
+    <!-- <div class="rating-review__city">תל אביב</div> -->
+  </div>
+</div>
+
+<div class="rating-review__text">{{review.feedback}}
+</div>

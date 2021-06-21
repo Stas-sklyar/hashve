@@ -1,0 +1,211 @@
+<div class="search-city__item">
+    <div class="search-city__card">
+        <div class="search-city__desc">
+
+            <div class="search-city__img">
+                <div class="search-city__tag-wrap">
+                    <div class="search-city__name-wrap">
+                        <span class="search-city__name" *ngIf="offers.package.tmp">{{offers.package.baseItem.name[curLang]}}</span>
+                        <span class="search-city__count">{{offers.package.baseItem.code}} מק“ט</span>
+                    </div>
+
+                    <div class="tag tag--pink" *ngIf="!offers.package.tmp">{{offers.package.name[curLang]}}</div>
+                    <!-- mobile day deal and sale tag start -->
+
+                    <div class="tag tag--small" *ngIf="offers.package.baseItem.isDayDeal() && offers.package.tmp">{{ 'citySearch.item.dayDeal' | translate }}</div>
+
+                    <div class="tag tag--small tag--red" *ngIf="offers.package.baseItem.isSale() && offers.package.tmp">{{ 'citySearch.item.sale' | translate }}</div>
+
+                    <div class="sticker-wrap d-none d-md-flex">
+                        <div class="sticker-wrap__label">גודל</div>
+                        <div class="sticker" [ngClass]="{'sticker--purple': offers.package.size === _ItemSize.extralarge, 'sticker--blue': offers.package.size === _ItemSize.large}">
+                            <div class="sticker__text">{{sizeArray[offers.package.size][curLang]}}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-city__img-wrap d-md-none">
+                    <img src="{{host + '/assets/items/' + offers.package.baseItem.picture}}" alt="" class="set__img">
+
+                    <div class="sticker d-md-none" [ngClass]="{'sticker--purple': offers.package.size === _ItemSize.extralarge, 'sticker--blue': offers.package.size === _ItemSize.large}">
+                        <div class="sticker__label">גודל</div>
+                        <div class="sticker__text">{{sizeArray[offers.package.size][curLang]}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-city__content">
+                <div class="search-city__top">
+                    <!-- <div class="search-city__text d-md-none">{{ "homepage.package" | translate }}</div> -->
+                    <div class="search-city__text d-md-none" [innerHTML]="curItem.description[curLang]"></div>
+
+
+
+
+                    <!-- mobile day deal and sale tag end -->
+                </div>
+
+                <div class="set">
+                    <div class="set__content">
+                        <div class="set__list-wrap">
+                            <a routerLink="/product/{{offers._id}}" class="set__main d-none d-md-block">
+                                <img src="{{host + '/assets/items/' + offers.package.baseItem.picture}}" alt="" class="set__img">
+
+                                <div class="sticker d-md-none" [ngClass]="{'sticker--purple': offers.package.size === _ItemSize.extralarge, 'sticker--blue': offers.package.size === _ItemSize.large}">
+                                    <div class="sticker__label">גודל</div>
+                                    <div class="sticker__text">{{sizeArray[offers.package.size][curLang]}}</div>
+                                </div>
+                            </a>
+
+                            <div class="set__list">
+                                <a href="#" class="set__item" *ngFor="let item of addItem">
+                                    <div class="set__label">{{item.name[curLang]}}</div>
+                                    <img src="{{host + '/assets/items/' + item.picture}}" alt="" class="set__img">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--<div class="set__price">
+            <span class="set__old-price">₪165</span>
+            <span class="set__cur-price">{{curPack.price}}</span>
+          </div>
+  
+          <a href="#" class="set__link">{{ "homepage.tosalecount" | translate: ({count: count} | ParamsTranslate) }}</a>-->
+                </div>
+
+                <div class="search-city-param__explain">
+                    <div class="search-city-param__explain-item">{{ "citySearch.item.firstNotice" | translate }}</div>
+                    <div class="search-city-param__explain-item">{{ "citySearch.item.thirdNotice" | translate }}</div>
+                    <div class="search-city-param__explain-item">{{ "citySearch.item.fourthNotice" | translate }}</div>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="best-price d-none d-md-flex">
+                <div class="best-price-wrap">
+                    <div class="best-price__content">
+                        <div class="best-price__label">
+                            <div class="best-price__old-price" *ngIf="curItem.isDayDeal() || curItem.isSale() || curItem.isPriceImproveValid()">
+                                ₪{{offers.store.getPriceOfPackWithoutDiscount(offers.package, offers.city._id) + offers.store.getDeliveryPrice(offers.city._id)}}</div>
+                            <div class="best-price__cur-price" *ngIf="curItem.isPriceImproveValid()"><span class="best-price__num">₪{{offers.store.getPackagePriceWithDelivery(offers.package, offers.city._id)}} </span>
+                            </div>
+                            <div class="best-price__cur-price" *ngIf="curItem.isDayDeal() || curItem.isSale()"><span class="best-price__num">₪{{offers.store.getPackagePriceWithDelivery(offers.package, offers.city._id)}} </span>
+                            </div>
+                            <div class="best-price__cur-price" *ngIf="!curItem.isDayDeal() && !curItem.isSale() && !curItem.isPriceImproveValid()">
+                                החל
+                                <span class="best-price__num">₪{{offers.store.getPackagePriceWithDelivery(offers.package, offers.city._id)}} </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a routerLink="/payment/{{offers._id}}" class="btn btn1">{{ "product.buyNow" | translate }}</a>
+
+            </div>
+        </div>
+        <div class="search-city__info d-md-none">
+            <!--<ng-container *ngIf="!curItem.isSale() && !curItem.isDayDeal()">
+         <div class="warning" *ngIf="!curItem.improvePriceRequest">
+          <div class="warning__sticker" (click)="startImprovingPrice()">
+            <img src="{{host}}/assets/img/icon-info.png" alt="" class="warning__img">
+
+            <div class="warning__text">
+              <div class="warning__title">{{ "banners.priceImprove.header" | translate }}</div>
+              <div class="warning__sub-title">{{ "banners.priceImprove.subheader" | translate }}</div>
+            </div>
+          </div>
+
+          <div class="warning__popup">
+            {{ "banners.priceImprove.popupText" | translate }}
+            <div class="warning__close">X</div>
+          </div>
+        </div> -->
+
+            <!-- <div class="warning-clock" *ngIf="curItem.isPriceImproveValid()">
+          <img src="{{host}}/assets/img/icon-clock.png" alt="" class="warning-clock__img">
+
+          <div class="warning-clock__text">
+            <div class="warning-clock__title">תוקף ההצעה תפוג בעוד</div>
+            <div class="warning-clock__time">{{state.minutes}} דק‘ {{state.seconds}} שניות</div>
+          </div>
+        </div>
+        <div class="warning-clock warning-clock-line--red"
+             *ngIf="!curItem.isPriceImproveValid() && curItem.improvePriceRequest">
+          <img src="img/icon-clock.png" alt="" class="warning-clock__img">
+
+          <div class="warning-clock-line__text">
+            <span class="warning-clock__title">פג תוקף ההצעה </span>
+          </div>
+        </div>
+      </ng-container>-->
+
+
+            <!-- <div class="tag tag--pink" *ngIf="!offers.package.tmp">{{offers.package.name[curLang]}}</div> -->
+            <!-- mobile day deal and sale tag start -->
+
+            <!-- <div class="tag tag--small"
+           *ngIf="offers.package.baseItem.isDayDeal() && offers.package.tmp">{{ 'citySearch.item.dayDeal' | translate }}</div>
+
+      <div class="tag tag--small tag--red"
+           *ngIf="offers.package.baseItem.isSale() && offers.package.tmp">{{ 'citySearch.item.sale' | translate }}</div> -->
+
+            <!-- mobile day deal and sale tag end -->
+
+            <div class="best-price">
+                <div class="best-price__top">
+                    <div class="best-price__content">
+                        <div class="best-price__link">
+                            <a routerLink="/product/{{offers._id}}">{{ "citySearch.item.editBasket" | translate }}</a>
+                            <!-- <a routerLink="/product/{{offers._id}}">{{ "citySearch.item.edit" | translate }}</a> -->
+                        </div>
+
+                        <div class="best-price__text best-price__text--red" *ngIf="!curItem.isDayDeal() && !curItem.isSale() && !curItem.isPriceImproveValid()">
+                            {{ "citySearch.item.cheapestOffer" | translate }}
+                        </div>
+                        <div class="best-price__text best-price__text--red" *ngIf="curItem.isDayDeal()">{{ "citySearch.item.dayDealNotice2" | translate }}</div>
+                        <!-- <div class="best-price__text best-price__text--orange"
+                *ngIf="curItem.isDayDeal()">{{ "citySearch.item.dayDealNotice2" | translate }}</div> -->
+                        <div class="best-price__text best-price__text--red" *ngIf="curItem.isSale()">{{ "citySearch.item.saleNotice" | translate }}</div>
+                        <div class="best-price__text best-price__text--red" *ngIf="curItem.isPriceImproveValid()">{{ "citySearch.item.improvePrice2" | translate }}</div>
+                    </div>
+                </div>
+
+                <div class="best-price__bottom">
+                    <div class="best-price__content">
+                        <div class="best-price__label">
+                            <div class="best-price__old-price" *ngIf="curItem.isDayDeal() || curItem.isSale() || curItem.isPriceImproveValid()">
+                                ₪{{offers.store.getPriceOfPackWithoutDiscount(offers.package, offers.city._id) + offers.store.getDeliveryPrice(offers.city._id)}}</div>
+                            <div class="best-price__cur-price" *ngIf="curItem.isPriceImproveValid()"><span class="best-price__num">₪{{offers.store.getPackagePriceWithDelivery(offers.package, offers.city._id)}}</span>{{ "item.withDelivery" | translate }}
+                            </div>
+                            <div class="best-price__cur-price" *ngIf="curItem.isDayDeal() || curItem.isSale()"><span class="best-price__num">₪{{offers.store.getPackagePriceWithDelivery(offers.package, offers.city._id)}}</span>{{ "item.withDelivery" | translate }}
+                            </div>
+                            <div class="best-price__cur-price" *ngIf="!curItem.isDayDeal() && !curItem.isSale() && !curItem.isPriceImproveValid()">
+                                {{ "homepage.popularCities.min" | translate }}
+                                <span class="best-price__num">₪{{offers.store.getPackagePriceWithDelivery(offers.package, offers.city._id)}}</span>{{ "citySearch.item.withDelivery" | translate }}
+                            </div>
+
+                            <!-- <div class="filter__item">
+                <div class="filter__head">הרצליה</div>
+                <div class="filter__option">
+                  <div class="filter__param">אריאל</div>
+                  <div class="filter__param">רמת גן</div>
+                </div>
+              </div> -->
+                        </div>
+
+                        <div class="best-price__cur-price">
+                            {{ "citySearch.item.from" | translate }} <span class="best-price__text">{{offers.store.name[curLang]}}</span>
+                        </div>
+
+                        <a routerLink="/payment/{{offers._id}}" class="btn btn1">{{ "product.buyNow" | translate }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end search-city__card -->
+</div>
+<!-- end search-city__item -->

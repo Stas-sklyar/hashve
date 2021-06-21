@@ -1,0 +1,13 @@
+<section class="category">
+  <div class="map-popup__proposal">
+    <div *ngIf="categoryName" [innerHTML]="'category.searchResult' | translate:{count: items.length, categoryName: categoryName }"></div>
+  </div>
+
+  <div class="catalog-list">
+    <div class="catalog-list__item-wrap" *ngFor="let item of items">
+      <div class="catalog-list__item">
+        <app-item [linkToItemPage]="linkToItemPage" [store]="store" [item]="item" [ratingEnable]="true"></app-item>
+      </div>
+    </div>
+  </div>
+</section>

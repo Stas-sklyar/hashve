@@ -1,0 +1,53 @@
+﻿/*----------- switch -------------*/
+.switch{
+	&__field{
+		display: inline-block;
+		vertical-align: top;
+		width: 43px;
+		height: 25px;
+		border-radius: 12.5px;
+		background: #494949;
+		position: relative;
+	}
+
+	&__tip{
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background: #78f23d;
+		position: absolute;
+		@include top-center;
+		right: 3px;
+	}
+
+	&__label{
+		vertical-align: top;
+		@include font(italic, bold, 16px, 25px, #494949);
+		margin-left: 10px;
+	}
+
+	&__explane{
+		@include font(italic, bold, 12px, 18px, #ff0000);
+	}
+
+	&--red &__tip{
+		background: #ff0000;
+		right: auto;
+		left: 3px;
+	}
+}
+
+@media (max-width: 991px) {
+	.switch{
+		&__content{
+			text-align: center;
+		}
+
+		&__label{
+			display: block;
+			margin-left: 0;
+			margin-bottom: 6px;
+		}
+	}
+}

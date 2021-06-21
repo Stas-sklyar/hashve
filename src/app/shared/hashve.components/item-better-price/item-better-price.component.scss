@@ -1,0 +1,29 @@
+@media (max-width: 988px) {
+    .btn-buy-wrap .btn {
+        min-width: 90px;
+        height: 50px;
+        position: relative;
+        top: -20px;
+    }
+}
+
+@media (max-width: 479px) {
+    .btn-buy-wrap {
+        order: 3;
+    }
+    .best-price__content {
+        order: 2;
+    }
+    .btn-buy-wrap .btn {
+        min-width: 90px;
+        height: 50px;
+        position: relative;
+        top: -20px;
+    }
+}
+
+@media (max-width: 991px) {
+    .search-city-param__explain {
+        flex-wrap: wrap;
+    }
+}

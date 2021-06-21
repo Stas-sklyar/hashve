@@ -1,0 +1,25 @@
+@media (max-width: 1530px) {
+    .shop-map-list__item {
+        width: calc(25% - 16px);
+    }
+}
+
+@media (max-width: 767px) {
+    .shop-map-list__item {
+        width: calc(33.33% - 16px);
+    }
+}
+
+@media (max-width: 600px) {
+    .shop-map-list__item {
+        width: calc(50% - 16px);
+    }
+}
+
+@media (max-width: 380px) {
+    .shop-map-list__item {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}

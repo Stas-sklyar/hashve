@@ -1,0 +1,79 @@
+﻿/*----------- add-gallery -------------*/
+.add-gallery{
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: 50px;
+
+	&__item{
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		width: 300px;
+		height: 180px;
+		background-color: rgba(73,73,73,0.4);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		margin-left: 3px;
+		margin-bottom: 3px;
+		position: relative;
+	}
+
+	&__item:hover{
+		background-color: rgba(73,73,73,0.6);
+		cursor: pointer;
+	}
+
+	&__edit{
+		display: inline-block;
+		width: 30px;
+		height: 30px;
+		background: #fff url(#{$path-img}/sprite.png) no-repeat -200px -5px;
+		border: 1px solid #333;
+		position: absolute;
+		right: 3px;
+		bottom: 3px;
+	}
+
+	&__edit:hover{
+		opacity: 0.8;
+	}
+
+	&__text{
+		font-family: $font-arial;
+		text-align: center;
+	}
+
+	&__label{
+		@include font(normal, bold, 18px, 22px, #fff);
+	}
+
+	&__plus{
+		@include font(normal, bold, 55px, 35px, #fff);
+	}
+}
+
+@media (max-width: 767px) {
+	.add-gallery{
+		margin-left: -7.5px;
+		margin-right: -7.5px;
+		margin-bottom: 20px;
+
+		&__item{
+			width: 220px;
+			height: 132px;
+			margin-left: 7.5px;
+			margin-right: 7.5px;
+			margin-bottom: 15px;
+		}
+
+		&__label{
+			font-size: 14px;
+			line-height: 18px;
+		}
+
+		&__plus{
+			font-size: 40px;
+		}
+	}
+}

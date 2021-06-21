@@ -1,0 +1,139 @@
+/*----------- search-mobile -------------*/
+.search-mobile{
+	margin-top: 48px;
+	padding: 0 23px 0 11px;
+
+	&__head{
+		@include font(normal, 600, 20px, 20px, #494949);
+		text-align: center;
+		position: relative;
+	}
+
+	&__head::before{
+		content: '';
+		display: inline-block;
+		width: 84px;
+		height: 112px;
+		background: url(#{$path-icon}/ic-address-black.svg) no-repeat center;
+		position: absolute;
+		bottom: 100%;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		margin-bottom: 8px;
+	}
+
+	&__link{
+		@include font(normal, bold, 16px, 20px, #01a1f3);
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		margin-left: 5px;
+	}
+
+	.form-site{
+		margin-top: 43px;
+		padding: 0;
+	}
+
+	.input-check__label{
+		font-size: 17px;
+	}
+
+	.payment-office .form-site__field{
+		max-width: calc(100% - 175px);
+		margin-bottom: 9px;
+	}
+
+	.form-site__label{
+		min-width: 53px;
+	}
+
+	input[type="submit"].btn{
+		width: 100%;
+		margin-top: 15px;
+		height: 45px;
+		font-size: 26px;
+		line-height: 43px;
+	}
+}
+
+.search-mobile-address{
+	margin-top: 40px;
+
+	&__head{
+		@include font(normal, 600, 20px, 20px, #494949);
+		text-align: center;
+		margin-bottom: 17px;
+	}
+
+	&__list{
+		text-align: center;
+		max-width: 350px;
+		margin: 0 auto;
+	}
+
+	&__item{
+		display: inline-block;
+		@include font(normal, 600, 18px, 20px, #6d6d6d);
+		margin-left: 10px;
+		margin-bottom: 17px;
+	}
+
+	&__item a{
+		color:  #6d6d6d;
+	}
+}
+
+@media (max-width: 479px){
+	.search-mobile{
+		padding: 0 10px;
+
+		&__link{
+			margin-left: -15px;
+		}
+
+		.form-site{
+			margin-top: 25px;
+		}
+
+		.payment-office{
+			flex-wrap: wrap;
+			margin-bottom: 12px;
+		}
+
+		.payment-office .input-check:first-child{
+			margin-left: 0;
+			width: 100%;
+			margin-bottom: 17px;
+		}
+
+		.payment-office .form-site__field{
+			max-width: calc(100% - 75px);
+		}
+
+		.form-site__fields-wrap{
+			flex-wrap: wrap;
+		}
+
+		.form-site__fields-wrap .form-site__field{
+			width: calc(50% - 10px);
+		}
+
+		.form-site__fields-wrap .form-site__field:nth-child(odd){
+			margin-left: 20px;
+		}
+	}
+
+	.search-mobile-address{
+		&__head,
+		&__list{
+			text-align: right;
+		}
+
+		&__list{
+			margin: 0;
+			max-width: 100%;
+		}
+	}
+}

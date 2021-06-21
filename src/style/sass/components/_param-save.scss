@@ -1,0 +1,116 @@
+﻿/*----------- param-save -------------*/
+.param-save{
+	max-width: 998px;
+	margin-bottom: 35px;
+
+	&__switch{
+		display: flex;
+		flex-wrap: wrap;
+		margin-bottom: 13px;
+	}
+
+	.switch{
+		margin-bottom: 15px;
+	}
+
+	.switch:not(:last-child){
+		margin-left: 65px;
+	}
+}
+
+.param-save-form{
+	background: #fff;
+	max-width: 740px;
+	padding: 27px 22px;
+
+	&__icon{
+		margin-left: 18px;
+	}
+
+	&__field{
+		display: flex;
+		align-items: flex-end;
+		border-bottom: 1px solid #949494;
+	}
+
+	&__field:not(:last-child){
+		margin-bottom: 52px;
+	}
+
+	&__label{
+		display: block;
+		@include font(normal, normal, 18px, 24px, #717171);
+		margin-bottom: 3px;
+	}
+
+	input[type="text"],
+	input[type="email"],
+	input[type="password"],
+	textarea{
+		height: 30px;
+		width: 100%;
+		min-width: 0;
+		outline: none;
+		border: 0;
+		border-radius: 0;
+		background: transparent;
+		font-family: $font-assistant;
+		@include font(normal, normal, 20px, 30px, #6d6d6d);
+		padding: 0;
+	}
+
+	textarea{
+		height: 150px;
+	}
+}
+
+@media (max-width: 991px) {
+	.param-save{
+		margin-left: -10px;
+		margin-right: -10px;
+		padding: 40px 10px;
+		background: #fff;
+
+		&__switch{
+			padding: 0 20px;
+		}
+
+		.switch{
+			margin-bottom: 28px;
+		}
+
+		.switch:not(:last-child){
+			margin-left: 50px;
+		}
+
+		.form-site{
+			padding: 0 10px;
+		}
+
+		.form-site__label{
+			min-width: auto;
+			padding-left: 5px;
+		}
+	}
+}
+
+@media (max-width: 380px) {
+	.param-save{
+		&__switch{
+			justify-content: center;
+			padding: 0;
+		}
+
+		.switch:not(:last-child){
+			margin-left: 0;
+		}
+
+		.switch{
+			width: 50%;
+		}
+
+		.switch__explane{
+			text-align: center;
+		}
+	}
+}

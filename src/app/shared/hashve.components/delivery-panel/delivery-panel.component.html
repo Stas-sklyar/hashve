@@ -1,0 +1,110 @@
+<div class="header-delivery__shadow" *ngIf="showShadow"></div>
+<div (click)="changeStateOfDeliveryForm()" class="header-delivery__head-wrap">
+  <div class="header-delivery__head">
+    <span class="header-delivery__address">
+      <span class="header-delivery__street">{{
+        "header.send_to" | translate
+      }}</span>
+      <span class="header-delivery__city">{{
+        findedCity
+          ? findedCity.name[curLang]
+          : ("components.deliveryPanel.selectCity" | translate)
+      }}</span>
+      <span class="header-delivery__city" *ngIf="findedCity">
+        {{
+          !isEmpty(selectedStreet)
+            ? selectedStreet
+            : ("components.deliveryPanel.selectStreet" | translate)
+        }}</span
+      >
+    </span>
+  </div>
+
+  <div
+    (click)="stopPropagation($event)"
+    class="header-delivery__form"
+    [@slideInOut]="deliveryState"
+  >
+    <form method="get" class="form-site">
+      <div class="form-site__head">
+        {{ "header.delivery_city" | translate }}
+      </div>
+      <div class="form-site__text">
+        {{ "header.delivery_city_text" | translate }}
+      </div>
+
+      <div class="form-site__field">
+        <label for="city" class="form-site__label">{{
+          "header.delivery_city_city" | translate
+        }}</label>
+        <input
+          type="text"
+          placeholder="{{
+            'components.deliveryPanel.citySearchPlaceholder' | translate
+          }}"
+          autocomplete="off"
+          [ngClass]="{ error: showHelp }"
+          value="{{ selectedCity ? selectedCity.name[curLang] : '' }}"
+          (focus)="showCityList($event)"
+          (blur)="showCityList($event)"
+          (keyup)="filterCities($event)"
+        />
+        <span class="form-site__error" *ngIf="showHelp">{{
+          "components.deliveryPanel.deliveryCity" | translate
+        }}</span>
+        <div
+          class="select__list"
+          [style.display]="ddlStatus"
+          style="max-height: 250px; overflow: auto"
+        >
+          <ng-container *ngIf="cityFilteredList">
+            <div
+              class="select__item"
+              [ngClass]="{
+                active: tmpCity !== undefined ? tmpCity._id === city._id : false
+              }"
+              (click)="selectCity(city)"
+              *ngFor="let city of cityFilteredList"
+            >
+              {{ city.name[curLang] }}
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="form-site__fields-wrap">
+        <div class="form-site__field form-site__field__street">
+          <label for="street" class="form-site__label">{{
+            "header.delivery_city_street" | translate
+          }}</label>
+          <input type="text" name="street" [(ngModel)]="selectedStreet" />
+        </div>
+
+        <div class="form-site__field form-site__field__house">
+          <label for="house" class="form-site__label">{{
+            "header.delivery_number" | translate
+          }}</label>
+          <input type="text" name="house" [(ngModel)]="selectedNumber" />
+        </div>
+      </div>
+
+      <div>
+        <div class="city-history-block" *ngFor="let city of cityHistoryList">
+          <span class="city-history-close" (click)="closeDiv(city)">x</span>
+          <span class="city-history-name" (click)="setSearchCity(city)">{{
+            city.name[curLang]
+          }}</span>
+        </div>
+      </div>
+
+      <div class="form-site__btn">
+        <input
+          (click)="setCity('save')"
+          type="button"
+          class="btn btn--orange change-addr"
+          value="{{ 'header.delivery_change_address' | translate }}"
+        />
+      </div>
+    </form>
+  </div>
+</div>

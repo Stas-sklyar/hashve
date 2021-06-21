@@ -1,0 +1,25 @@
+<app-header [showSlider]="showSlider"></app-header>
+<div class="content">
+    <aside class="content__right">
+
+    </aside>
+
+    <div class="content__center">
+        <div class="order-history">
+
+
+
+
+            <!--<div class="order-history__text"><a href="#" class="order-history__link">התחברו</a> על מנת לעקוב אחר משלוחים בכל שלב ולצפות בהזמנות קודמות.</div>-->
+            <app-order-view [order]="orders"></app-order-view>
+
+        </div>
+        <div style="margin: 200px"></div>
+    </div>
+
+    <aside class="content__left">
+
+    </aside>
+</div>
+
+<app-footer></app-footer>

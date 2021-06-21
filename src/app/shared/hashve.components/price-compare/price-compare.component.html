@@ -1,0 +1,59 @@
+<div class="search-city-unwrap active">
+    <div class="search-city-unwrap__head" (click)="onAddOfersClicked()" id="compare">
+        <div class="search-city-unwrap__title">{{ "citySearch.item.buttonPriceComparison" | translate }}<span class="search-city-unwrap__title-arr" [@rotateAnimation]="animateArrow"></span></div>
+    </div>
+
+    <div class="search-city-unwrap__content" [@slideInOut]="additionalOffers">
+        <div class="search-city-tabs">
+            <div class="search-city-tabs__content active">
+                <div class="search-offer">
+                    <div class="search-offer__item" [ngClass]="{active: store.getDeliveryPrice(currentCity._id) + store.getPrice(pack.baseItem) + pack.size === currentPrice}" *ngFor="let store of stores">
+                        <div class="search-offer__main">
+                            <div class="search-offer__head">
+                                <div class="search-offer__name"><a style="color: black" [routerLink]="['/', store.url]">{{store.name[curLang]}}</a></div>
+                                <div class="search-offer__count"> {{ "productItem.rate" | translate }} <span class="search-offer__rating">{{store.rating}}</span> {{ "citySearch.item.reviews" | translate }} <span class="search-offer__invite">{{store.reviewsCount}}</span>
+                                </div>
+                            </div>
+
+                            <div class="search-offer__content-wrap">
+                                <div class="search-offer__content">
+
+                                    <a *ngIf="showOffers" (click)="changeAdditionalDealsState(offer.store._id)" class="search-offer__link">{{ "citySearch.item.additionalDeals" | translate }}</a>
+                                </div>
+
+                                <div class="search-offer__price">
+                                    <div class="search-offer__price-label" *ngIf="pack.baseItem.isSale() && !pack.baseItem.isDayDeal()">{{ "citySearch.item.sale" | translate }}</div>
+                                    <div class="search-offer__price-label" *ngIf="!pack.baseItem.isSale() && pack.baseItem.isDayDeal()">{{ "citySearch.item.dayDeal" | translate }}</div>
+                                    <div class="search-offer__price-label" *ngIf="pack.baseItem.isPriceImproveValid()">{{ "citySearch.item.improvePrice2" | translate }}</div>
+                                    <span class="search-offer__cur-price">₪{{store.getPackagePriceWithDelivery(pack, currentCity._id)}}</span>
+                                    <span *ngIf="pack.baseItem.isPriceImproveValid() || pack.baseItem.isSale() || pack.baseItem.isDayDeal()" class="search-offer__old-price">₪{{store.getPriceOfPackWithoutDiscountWithDelivery(pack, currentCity._id)}}</span>
+                                </div>
+                            </div>
+
+                            <div class="search-offer__btn">
+                                <div class="search-offer__price d-none d-sm-inline-block">
+                                    <span class="search-offer__cur-price">₪{{store.getPackagePriceWithDelivery(pack, currentCity._id)}}</span>
+                                </div>
+                                <a (click)="changeStore(store)" class="btn">
+                  {{ "citySearch.selectStore" | translate }}
+                </a>
+                            </div>
+                        </div>
+
+                        <div *ngIf="showOffers" [@slideInOut]="storeAdditionalOffers[offer.store._id]">
+                            <app-additional-store-offers [selectedItem]="curItem" [store]="offer.store" [additionalItems]="_additionalItems"></app-additional-store-offers>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- search-city-tabs__content -->
+        </div>
+
+        <div class="search-city-unwrap__bottom">
+            <a (click)="onAddOfersClicked()" class="search-city-unwrap__close">{{ "citySearch.item.close" | translate }} X</a>
+        </div>
+    </div>
+    <!-- end search-city-unwrap__content -->
+</div>
+<!-- end search-city-unwrap -->

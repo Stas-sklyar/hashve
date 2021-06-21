@@ -1,0 +1,39 @@
+.catalog-list__name {
+    align-items: flex-start;
+}
+
+// .catalog-list__name-with-star{
+//     width : calc(100% - 110px);
+// }
+.rating {
+    width: 115px;
+    background: none;
+    margin-bottom: 15px;
+}
+
+.catalog-list__old-price {
+    color: red;
+}
+
+.delivery__text {
+    font-size: 12px;
+}
+
+.catalog-list__num {
+    line-height: 15px;
+    margin-left: 15px;
+}
+
+.catalog-list__name {
+    flex-direction: unset !important;
+    justify-content: unset;
+}
+
+.catalog-list__count-container {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.catalog-list__count {
+    line-height: 15px;
+}

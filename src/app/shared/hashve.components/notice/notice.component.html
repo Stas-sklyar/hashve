@@ -1,0 +1,18 @@
+<!-- <div class="notice-grey">
+    <div class="notice-grey__title">{{ 'banners.addNewShop.header' | translate}}</div>
+    <div class="notice-grey__label">{{ 'banners.addNewShop.subHeader' | translate}}</div>
+    <a [routerLink]="'/הוספת_חנות_חדשה'" class="btn btn&#45;&#45;white">{{ 'banners.addNewShop.button' | translate }}</a>-->
+<!-- <a [routerLink]="'/צור_קשר'" class="btn btn--white">{{ 'banners.addNewShop.button' | translate }}</a> -->
+<!-- <a href="#" class="notice-grey__close">X</a> -->
+<!-- </div> -->
+<div class="notice-grey">
+  <div class="notice-grey__title">{{ banner.title[curLang] }}</div>
+  <div class="notice-grey__label">
+    {{ banner.subtitle[curLang] }}
+  </div>
+
+  <a [routerLink]="banner.link" class="btn btn--white">{{
+    banner.buttonText[curLang]
+  }}</a>
+  <a href="#" class="notice-grey__close">X</a>
+</div>

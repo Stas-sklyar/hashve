@@ -1,0 +1,28 @@
+<app-header [showSlider]="showSlider"></app-header>
+<main>
+    <div class="st-width-full">
+        <div class="content">
+            <aside class="content__right"></aside>
+
+            <div class="content__center">
+                <div class="breadcrumb d-md-none">
+                    <div class="breadcrumb__item"><a [routerLink]="'/'">{{ "articlelist.main" | translate }}</a></div>
+                    <span class="breadcrumb__item">{{ "articlelist.articleDirectory" | translate }}</span>
+                </div>
+
+                <h1>{{ "articlelist.head" | translate }}</h1>
+                <section class="article-list">
+                    <article class="article-list__item" *ngFor="let article of articles" app-article-item [article]="article">
+                    </article>
+                </section>
+
+
+            </div>
+            <!-- end content__center -->
+
+            <aside class="content__left">
+            </aside>
+        </div>
+    </div>
+</main>
+<app-footer></app-footer>

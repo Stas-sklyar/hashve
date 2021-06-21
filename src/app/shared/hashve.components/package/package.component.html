@@ -1,0 +1,22 @@
+<div class="tag tag--pink">{{curPack.name[curLang]}}</div>
+<div class="set">
+  <div class="set__list-wrap">
+    <a href="#" class="set__main"><img src="{{host + '/assets/items/' + curPack.baseItem.picture}}" alt="" class="set__img"></a>
+
+    <div class="set__list">
+      <a href="#" class="set__item" *ngFor="let item of curPack.addItems">
+        <div class="set__label">{{item.name[curLang]}}</div>
+        <img src="{{host + '/assets/items/' + item.picture}}" alt="" class="set__img">
+      </a>
+    </div>
+  </div>
+
+  <div class="set__text">{{ "homepage.package" | translate }}</div>
+
+  <div class="set__price">
+    <span class="set__old-price">₪165</span>
+    <span class="set__cur-price">{{curPack.price}}</span>
+  </div>
+
+  <a href="#" class="set__link">{{ "homepage.tosalecount" | translate: ({count: count} | ParamsTranslate) }}</a>
+</div>

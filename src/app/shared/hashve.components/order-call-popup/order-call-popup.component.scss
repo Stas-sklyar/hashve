@@ -1,0 +1,50 @@
+.call-shop-popup__call-icon {
+    background-image: url(../../../../assets/img/icons/ic-call-full.svg);
+    background-repeat: no-repeat;
+    background-size: 30px;
+    width: 35px;
+}
+
+.israel-flag {
+    background-image: url(../../../../assets/img/flag.png);
+    background-repeat: no-repeat;
+    background-size: 30px;
+    width: 35px;
+}
+
+.call-shop-popup__text {
+    display: flex;
+    justify-content: end;
+}
+
+.form-site__explan {
+    text-align: right;
+    margin-right: 40px;
+}
+
+.call-shop-input__text {
+    height: 35px;
+    font-size: 25px;
+    line-height: 35px;
+    padding: 0;
+    letter-spacing: 1.5px;
+    color: #6d6d6d;
+    font-family: "Assistant", Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+}
+
+.call-shop-popup .form-site input[type=text] {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.call-shop-popup {
+    padding-right: 27px;
+}
+
+@media (max-width: 767px) {
+    .call-shop-popup {
+        padding-right: 10px;
+    }
+}

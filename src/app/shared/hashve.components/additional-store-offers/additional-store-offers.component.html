@@ -1,0 +1,38 @@
+<div class="search-offer__dif">
+  <div class="search-offer__dif-item" *ngFor="let pack of packArray">
+    <div class="search-offer__content">
+      <div class="search-offer-set">
+        <div class="search-offer-set__img" *ngIf="packArray.length>0">
+          <div class="search-offer-set__img-item search-offer-set__img-item--sticker"><img src="{{path + pack.baseItem.picture}}" alt="">
+            <span class="sticker-small" [ngClass]="{'sticker-small--orange': pack.size === _ItemSize.normal, 'sticker-small--purple': pack.size === _ItemSize.extralarge}">{{pack.size === _ItemSize.normal ? sizesName.normal[curLang] : (pack.size === _ItemSize.large ? sizesName.large[curLang] : sizesName.extraLarge[curLang])}}</span>
+          </div>
+          <div class="search-offer-set__img-item" *ngFor="let addItm of pack.addItems"><img src="{{path + addItm.picture}}" alt=""></div>
+        </div>
+
+        <div class="search-offer-set__text d-md-none">
+          <b> {{ "citySearch.offer.baseItem" | translate:{"size": pack.size === _ItemSize.normal ? sizesName.normal[curLang] : (pack.size === _ItemSize.large ? sizesName.large[curLang] : sizesName.extraLarge[curLang])} }} </b>
+          <b *ngIf="pack.addItems.length > 0"> + </b>
+          <b *ngFor="let addItm of pack.addItems; let i = index;">{{ addItm.name[curLang] }} {{pack.addItems.length-1 !== i ? " + " : ""}} </b>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-offer__price-wrap">
+      <div class="search-offer-set__text d-none d-md-block">
+        <b> {{ "citySearch.offer.baseItem" | translate:{"size": pack.size === _ItemSize.normal ? sizesName.normal[curLang] : (pack.size === _ItemSize.large ? sizesName.large[curLang] : sizesName.extraLarge[curLang])} }} </b>
+        <b *ngIf="pack.addItems.length > 0"> + </b>
+        <b *ngFor="let addItm of pack.addItems; let i = index;">{{ addItm.name[curLang] }} {{pack.addItems.length-1 !== i ? " + " : ""}} </b>
+
+      </div>
+
+      <div class="search-offer__price d-xs-inline-block">
+        <span class="search-offer__cur-price">₪{{_store.getPackagePrice(pack) + _store.getDeliveryPrice(currentCity._id)}}</span>
+      </div>
+    </div>
+
+    <div class="search-offer__btn">
+      <div class="search-offer__price d-none d-sm-inline-block"><span class="search-offer__cur-price">₪{{_store.getPackagePrice(pack) + _store.getDeliveryPrice(currentCity._id)}}</span></div>
+      <a (click)="saveOfferAndRedirectToProduct(pack)" class="btn">{{ "citySearch.show" | translate }}</a>
+    </div>
+  </div>
+</div>

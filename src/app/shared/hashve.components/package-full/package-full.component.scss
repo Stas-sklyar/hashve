@@ -1,0 +1,73 @@
+.tag1{
+  color:white;
+  padding-right: 10px;
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 10% 50%, 0% 0%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 10% 50%, 0% 0%);
+}
+
+@media (min-width: 1530px) {
+    .search-city-set{
+      padding-top: 30px;
+    }
+    .search-city-set__item{
+      width:115px;
+    }
+  }
+
+  @media (min-width: 1279px) {
+    .search-city-set{
+      padding-top: 30px;
+    }
+    .search-city-set__item{
+      width:115px;
+    }
+  }
+
+  @media (max-width: 1279px) {
+    .search-city-set{
+      padding-top: 30px;
+    }
+    .search-city-set__item{
+      width:115px;
+    }
+  }
+
+  .small{
+    font-size: 20px;
+  }
+
+  .storeText{
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .delivery-text{
+    font-size: 10px;
+  }
+
+
+  @media (max-width: 988px){
+    .btn1{
+      min-width: 90px;
+
+      position: relative;
+
+    }
+  }
+  @media (max-width: 479px) {
+
+    .btn1{
+      order: 3;
+    }
+
+    .btn1{
+      min-width: 90px;
+
+      position: relative;
+
+    }
+  }
+
+
+
+

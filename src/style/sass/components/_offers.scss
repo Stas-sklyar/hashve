@@ -1,0 +1,57 @@
+﻿/*----------- offers -------------*/
+.offers{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	.info-block{
+		width: calc(50% - 12.5px);
+	}
+
+	.info-block .catalog-list{
+		padding: 36px 20px 0;
+	}
+
+	.catalog-list__item-wrap{
+		width: 50%;
+	}
+}
+
+@media (max-width: 1279px) {
+	.offers{
+		.info-block--lg-full{
+			width: 100%;
+		}
+	}
+}
+
+@media (max-width: 991px) {
+	.offers{
+		margin-left: -10px;
+		margin-right: -10px;
+
+		.info-block{
+			width: 100%;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		&--mobile-indent{
+			margin-top: -22px;
+		}
+
+		& > h2,
+		& > .h2{
+			padding: 0 10px;
+		}
+
+		.info-block .catalog-list{
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		.info-block .catalog-list--no-ident{
+			padding-top: 0;
+		}
+	}
+}

@@ -1,0 +1,98 @@
+﻿/*----------- info-block -------------*/
+.info-block{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	position: relative;
+	background: #fff;
+	padding: 11px 10px 0;
+	border-bottom: 1px solid #939393;
+	font-family: $font-assistant;
+	margin-bottom: 38px;
+
+	&__more{
+		display: block;
+		padding: 10px 0 12px 20px;
+		border-top: 1px solid #bebebe;
+		@include font(normal, bold, 14px, 16px, $color-text);
+		text-decoration: none;
+		margin-top: 10px;
+		position: relative;
+	}
+
+	&__more::after{
+		content: '';
+		display: inline-block;
+		width: 10px;
+		height: 18px;
+		background: url(#{$path-icon}/ic-arr-left-green.svg) no-repeat center;
+		position: absolute;
+		left: 0;
+		@include top-center;
+	}
+
+	&__more:hover{
+		color: $color-green;
+	}
+
+	.tag{
+		position: absolute;
+		top: 5px;
+		right: 0;
+		z-index: 10;
+	}
+
+	.good-day-slider-wrap{
+		padding-top: 31px;
+	}
+
+	h2 + .catalog-list,
+	.h2 + .catalog-list{
+		padding-top: 0;
+	}
+
+	.set{
+		padding: 62px 18px 0;
+	}
+
+	.search-city-unwrap{
+		margin-left: -10px;
+		margin-right: -10px;
+	}
+}
+
+@media (max-width: 767px) {
+	.info-block{
+		margin-bottom: 12px;
+		margin-left: -10px;
+		margin-right: -10px;
+
+		.tag{
+			top: 13px;
+		}
+
+		.good-day-slider-wrap{
+			padding-top: 0;
+		}
+
+		.set{
+			padding: 35px 0 0;
+		}
+	}
+}
+
+@media (max-width: 479px) {
+	.info-block{
+		&__more{
+			padding: 11px 0 15px 20px;
+		}
+
+		.set{
+			padding-top: 44px;
+		}
+
+		&__more{
+			margin-top: 18px;
+		}
+	}
+}

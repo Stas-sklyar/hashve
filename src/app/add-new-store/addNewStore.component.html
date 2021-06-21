@@ -1,0 +1,277 @@
+<app-header [showMobileMenu]="false" [showSlider]="showSlider"></app-header>
+<div class="wrapper">
+    <header class="header">
+        <div class="st-width d-md-none">
+            <div class="header-top">
+                <div class="header-top__logo d-md-none">
+                    <a href="#"><img src="/assets/img/logo.svg" alt=""></a>
+                </div>
+
+                <div class="header-top-new-shop">
+                    <span class="header-top-new-shop__head d-none d-md-block"></span>
+
+                    <span class="header-top-new-shop__user-wrap">
+            <span class="header-top-new-shop__user" [routerLink]="['/תמיכה']">{{ "addNewStore.support" | translate }}</span>
+                    <span class="header-top-new-shop__close d-none d-md-block">{{ "addNewStore.x" | translate }}</span>
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- <div class="move_left"> -->
+        <div>
+            <!-- <div class="tabs__top"> -->
+            <div class="top-menu top-menu--no-indent">
+                <a [routerLink]="'/category'" class="top-menu__title d-none d-md-block">{{ "addNewStore.categories" | translate }}
+
+            <span class="top-menu__title-dots"></span>
+            </a>
+
+                <div class="tabs__list-wrap js-tabs-list swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-free-mode swiper-container-rtl">
+
+                    <swiper [config]="config2" [classes]="'js-top-menu'">
+                        <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
+
+                            <ul class="tabs__list swiper-slide swiper-slide-active">
+                                <li class="tabs__item" [class.active]="tabStatus2[0]" data-item="tab1">
+                                    <a [routerLink]="['/אודות_השווה']" (click)="onTabClicked(0)">{{ "addNewStore.about" | translate }}</a>
+                                </li>
+                                <li class="tabs__item" [class.active]="tabStatus2[1]" data-item="tab2">
+                                    <a [routerLink]="['/תמיכה']" (click)="onTabClicked(1)">{{ "addNewStore.faq" | translate }}</a>
+                                </li>
+                                <li class="tabs__item" [class.active]="tabStatus2[2]" data-item="tab3">
+                                    <a [routerLink]="['/תקנון_האתר']" (click)="onTabClicked(2)">
+                                      {{ "addNewStore.terms" | translate }}
+                    </a>
+                                </li>
+                                <li class="tabs__item" [class.active]="tabStatus2[3]" data-item="tab4">
+                                    <a [routerLink]="['/צור_קשר']" (click)="onTabClicked(3)">{{ "addNewStore.contact" | translate }}</a>
+                                </li>
+                                <li class="tabs__item active" [class.active]="tabStatus2[4]" data-item="tab5">
+                                    <a [routerLink]="['/add-new-store']" (click)="onTabClicked(4)">{{ "addNewStore.addStore" | translate }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </swiper>
+                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <main>
+
+
+
+        <div class="new-shop">
+
+            <div class="new-shop-check">
+                <div class="st-width">
+                    <div class="new-shop-check__content-wrap">
+                        <div class="new-shop-check__content">
+                            <div class="new-shop-check__head" *ngIf="tabStatus[0]">{{ addNewStore.header[curLang] }}</div>
+                            <div class="new-shop-check__head" *ngIf="tabStatus[1]"> {{ addNewStore.shitFromLeft[curLang] }}</div>
+                            <div class="new-shop-check__text">{{ addNewStore.slogan[curLang] }}</div>
+
+
+                        </div>
+
+                        <div class="new-shop-auth">
+                            <div class="new-shop-auth__tabs">
+                                <a class="new-shop-auth__tabs-item" (click)="onTabClicked(0)" [class.active]="tabStatus[0]" data-item="tab1">{{ "addNewStore.addBussines" | translate }}</a>
+                                <a class="new-shop-auth__tabs-item" (click)="onTabClicked(1)" [class.active]="tabStatus[1]" data-item="tab2">{{ "addNewStore.storeNetwork" | translate }}</a>
+                            </div>
+
+                            <div class="new-shop-auth__content">
+                                <div class="new-shop-auth__content-item active" id="tab1" [class.active]="tabStatus[0]">
+                                    <form method="get" class="form-site" [formGroup]="form" (ngSubmit)="submit()">
+                                        <div class="form-site__field">
+                                            <label for="company" class="form-site__label">{{ "addNewStore.name" | translate }}</label>
+                                            <input type="text" id="company" formControlName="company">
+                                        </div>
+
+                                        <div class="form-site__field">
+                                            <label for="city" class="form-site__label">{{ "addNewStore.city" | translate }}</label>
+                                            <input type="text" id="city" formControlName="city">
+                                        </div>
+
+                                        <div class="form-site__fields-wrap">
+                                            <div class="form-site__field form-site__field--street">
+                                                <label for="street" class="form-site__label">{{ "addNewStore.street" | translate }}</label>
+                                                <input type="text" id="street" formControlName="street">
+                                            </div>
+
+                                            <div class="form-site__field form-site__field--house">
+                                                <label for="house" class="form-site__label">{{ "addNewStore.house" | translate }}</label>
+                                                <input type="text" id="house" formControlName="house">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-site__field">
+                                            <label for="name" class="form-site__label form-site__label--long">{{ "addNewStore.owner" | translate }}</label>
+                                            <input type="text" id="name" formControlName="name">
+                                        </div>
+
+                                        <div class="form-site__field">
+                                            <label for="phone" class="form-site__label">{{ "addNewStore.tel" | translate }}</label>
+                                            <input type="text" id="phone" formControlName="phone">
+                                        </div>
+
+                                        <div class="form-site__field">
+                                            <label for="email" class="form-site__label">{{ "addNewStore.email" | translate }}</label>
+                                            <input type="text" id="email" formControlName="email">
+                                        </div>
+
+                                        <div class="form-site__field">
+                                            <label for="password" class="form-site__label">{{ "addNewStore.password" | translate }}</label>
+                                            <input type="password" id="password" formControlName="password">
+                                        </div>
+
+                                        <div class="form-site__field">
+                                            <label for="passwordTwo" class="form-site__label">{{ "addNewStore.password" | translate }}</label>
+                                            <input type="password" id="passwordTwo" formControlName="passwordTwo">
+                                        </div>
+
+                                        <div class="form-site-criterion">
+                                            <div class="form-site-criterion__head">{{ "addNewStore.passValidation" | translate }}</div>
+
+                                            <div class="form-site-criterion__list">
+                                                <div class="form-site-criterion__item" *ngIf="!hasCharacter(form)">
+                                                    <span class="form-site-criterion__tick">{{ "addNewStore.x" | translate }}</span> {{ "addNewStore.words" | translate }}
+                                                </div>
+
+                                                <div class="form-site-criterion__item form-site-criterion__item--true" *ngIf="hasCharacter(form)">
+                                                    <span class="form-site-criterion__tick ">{{ "addNewStore.v" | translate }}</span> {{ "addNewStore.words" | translate }}
+                                                </div>
+
+                                                <div class="form-site-criterion__item" *ngIf="!hasNumber(form)">
+                                                    <span class="form-site-criterion__tick">{{ "addNewStore.x" | translate }}</span> {{ "addNewStore.oneNum" | translate }}
+                                                </div>
+
+                                                <div class="form-site-criterion__item form-site-criterion__item--true" *ngIf="hasNumber(form)">
+                                                    <span class="form-site-criterion__tick form-site-criterion__item--true">{{ "addNewStore.v" | translate }}</span> {{ "addNewStore.oneNum" | translate }}
+                                                </div>
+
+                                                <div class="form-site-criterion__item" *ngIf="!hasMinLength(form)">
+                                                    <span class="form-site-criterion__tick">{{ "addNewStore.x" | translate }}</span> {{ "addNewStore.wordVelidation" | translate }}
+                                                </div>
+
+                                                <div class="form-site-criterion__item form-site-criterion__item--true" *ngIf="hasMinLength(form)">
+                                                    <span class="form-site-criterion__tick form-site-criterion__item--true">{{ "addNewStore.v" | translate }}</span> {{ "addNewStore.wordVelidation" | translate }}
+                                                </div>
+
+                                                <div class="form-site-criterion__item" *ngIf="!theSame(form)">
+                                                    <span class="form-site-criterion__tick">{{ "addNewStore.x" | translate }}</span> {{ "addNewStore.samePass" | translate }}
+                                                </div>
+
+                                                <div class="form-site-criterion__item form-site-criterion__item--true" *ngIf="theSame(form)">
+                                                    <span class="form-site-criterion__tick form-site-criterion__item--true">{{ "addNewStore.v" | translate }}</span> {{ "addNewStore.samePass" | translate }}
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <button type="submit" class="btn" id="submitBtn1" [disabled]="form.invalid">{{ "addNewStore.next" | translate }}</button>
+                                        <button type="reset" class="btn btn1">{{ "addNewStore.clear" | translate }}</button>
+                                    </form>
+                                </div>
+
+                                <div class="new-shop-auth__content-item" id="tab2" [class.active]="tabStatus[1]">
+                                    <form method="get" class="form-site" [formGroup]="formTwo" (ngSubmit)="submitTwo()">
+                                        <div class="form-site__field">
+                                            <label for="company2" class="form-site__label">{{ "addNewStore.name" | translate }}</label>
+                                            <input type="text" id="company2" formControlName="company">
+                                        </div>
+
+                                        <div class="form-site__field">
+                                            <label for="city2" class="form-site__label">{{ "addNewStore.NumOfStores" | translate }}</label>
+                                            <input type="text" id="city2" formControlName="city">
+                                        </div>
+
+                                        <div class="form-site__field">
+                                            <label for="name2" class="form-site__label form-site__label--long">{{ "addNewStore.owner" | translate }}</label>
+                                            <input type="text" id="name2" formControlName="name">
+                                        </div>
+
+                                        <div class="form-site__field">
+                                            <label for="phone2" class="form-site__label">{{ "addNewStore.tel" | translate }}</label>
+                                            <input type="text" id="phone2" formControlName="phone">
+                                        </div>
+
+                                        <div class="form-site__field">
+                                            <label for="email2" class="form-site__label">{{ "addNewStore.email" | translate }}</label>
+                                            <input type="text" id="email2" formControlName="email">
+                                        </div>
+
+                                        <div class="form-site__field">
+                                            <label for="password2" class="form-site__label">{{ "addNewStore.password" | translate }}</label>
+                                            <input type="password" id="password2" formControlName="password">
+                                        </div>
+
+                                        <div class="form-site__field">
+                                            <label for="passwordTwo2" class="form-site__label">{{ "addNewStore.password" | translate }}</label>
+                                            <input type="password" id="passwordTwo2" formControlName="passwordTwo">
+                                        </div>
+
+                                        <div class="form-site-criterion">
+                                            <div class="form-site-criterion__head">{{ "addNewStore.passValidation" | translate }}</div>
+
+                                            <div class="form-site-criterion__list">
+                                                <div class="form-site-criterion__item" *ngIf="!hasCharacter2(formTwo)">
+                                                    <span class="form-site-criterion__tick">{{ "addNewStore.x" | translate }}</span> {{ "addNewStore.words" | translate }}
+                                                </div>
+
+                                                <div class="form-site-criterion__item form-site-criterion__item--true" *ngIf="hasCharacter2(formTwo)">
+                                                    <span class="form-site-criterion__tick ">{{ "addNewStore.v" | translate }}</span> {{ "addNewStore.words" | translate }}
+                                                </div>
+
+                                                <div class="form-site-criterion__item" *ngIf="!hasNumber2(formTwo)">
+                                                    <span class="form-site-criterion__tick">{{ "addNewStore.x" | translate }}</span> {{ "addNewStore.oneNum" | translate }}
+                                                </div>
+
+                                                <div class="form-site-criterion__item form-site-criterion__item--true" *ngIf="hasNumber2(formTwo)">
+                                                    <span class="form-site-criterion__tick form-site-criterion__item--true">{{ "addNewStore.v" | translate }}</span> {{ "addNewStore.oneNum" | translate }}
+                                                </div>
+
+                                                <div class="form-site-criterion__item" *ngIf="!hasMinLength2(formTwo)">
+                                                    <span class="form-site-criterion__tick">{{ "addNewStore.x" | translate }}</span> {{ "addNewStore.wordVelidation" | translate }}
+                                                </div>
+
+                                                <div class="form-site-criterion__item form-site-criterion__item--true" *ngIf="hasMinLength2(formTwo)">
+                                                    <span class="form-site-criterion__tick form-site-criterion__item--true">{{ "addNewStore.v" | translate }}</span> {{ "addNewStore.wordVelidation" | translate }}
+                                                </div>
+
+                                                <div class="form-site-criterion__item" *ngIf="!theSame2(formTwo)">
+                                                    <span class="form-site-criterion__tick">{{ "addNewStore.x" | translate }}</span> {{ "addNewStore.samePass" | translate }}
+                                                </div>
+
+                                                <div class="form-site-criterion__item form-site-criterion__item--true" *ngIf="theSame2(formTwo)">
+                                                    <span class="form-site-criterion__tick form-site-criterion__item--true">{{ "addNewStore.v" | translate }}</span> {{ "addNewStore.samePass" | translate }}
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <button type="submit" class="btn" [disabled]="formTwo.invalid">{{ "addNewStore.next" | translate }}</button>
+                                        <button type="reset" class="btn btn1">{{ "addNewStore.clear" | translate }}</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="st-width">
+
+                <div class="new-shop__text" [innerHTML]="addNewStore.text[curLang]">
+
+                </div>
+            </div>
+            <!-- end st-width-full -->
+        </div>
+
+    </main>
+</div>
+<app-footer></app-footer>

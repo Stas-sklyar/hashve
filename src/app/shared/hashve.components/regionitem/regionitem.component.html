@@ -1,0 +1,53 @@
+<div class="countries__head">
+  <a [routerLink]="'/' + region.link2" class="countries__name"
+    >{{ region.name[curLang] }},</a
+  ><span class="countries__city">{{ "country.name" | translate }}</span>
+  <div class="countries__count">
+    <a
+      [routerLink]="region.link"
+      class="countries__more"
+      *ngIf="region.storesCount > 0"
+      >{{ region.storesCount }} {{ "regionpage.shopCount" | translate }}</a
+    >
+  </div>
+</div>
+<div class="countries__content" *ngIf="categories && dayDealCount">
+  <div class="countries-list-wrap">
+    <div class="countries-list-wrap__content">
+      <div class="countries-list-wrap__head">
+        {{ "regionpage.catTitle" | translate }}
+      </div>
+
+      <ul class="countries-list">
+        <li
+          class="countries-list__item"
+          *ngFor="let category of categories.slice(0, categories.length / 2)"
+        >
+          <a [routerLink]="region.link2 + '/' + category.link"
+            >{{ category.itemsCount }} {{ category.name[curLang] }}</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="countries-list-wrap">
+    <div class="countries-list-wrap__content">
+      <ul class="countries-list">
+        <li
+          class="countries-list__item"
+          *ngFor="
+            let category of categories.slice(
+              categories.length / 2,
+              categories.length
+            )
+          "
+        >
+          <a [routerLink]="region.link2 + '/' + category.link"
+            >{{ category.itemsCount }} {{ category.name[curLang] }}</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

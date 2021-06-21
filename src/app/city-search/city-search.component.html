@@ -1,0 +1,311 @@
+<app-header
+  *ngIf="!isMobile"
+  [showMobileMenu]="false"
+  [showSlider]="showSlider"
+></app-header>
+
+<app-city-search-header-mobile
+  *ngIf="isMobile"
+  [header]="
+    'citySearch.searchResult'
+      | translate
+        : { category: categoryName, count: filteredItems.length, city: '' }
+  "
+  (onFilterChanged)="sortBy($event)"
+  [selectedSorting]="sorting"
+  [city]="city"
+  [categoryName]="categoryName"
+></app-city-search-header-mobile>
+
+<main>
+  <div class="st-width-full">
+    <app-city-search-popup
+      *ngIf="showMap"
+      [link]="[
+        '/',
+        'פרחים_' + uglify(city.name[curLang]),
+        uglify(categoryName)
+      ]"
+      (byItem)="byItem($event)"
+      [items]="filteredItems"
+      [stores]="stores"
+      [categories]="categories"
+      [categoryName]="categoryName"
+      (onCloseTheModal)="showMap = !$event"
+    ></app-city-search-popup>
+
+    <div class="nav-site d-md-none">
+      <div class="breadcrumb">
+        <div class="breadcrumb__item">
+          <a [routerLink]="'/'">{{ "breadcrumbs.homePage" | translate }}</a>
+        </div>
+        <div class="breadcrumb__item">
+          <a [routerLink]="'/category'">{{
+            "breadcrumbs.category" | translate
+          }}</a>
+        </div>
+
+        <div
+          class="breadcrumb__item"
+          *ngIf="
+            filterResult.categoryFilter._id !== defaultFilterCategory._id;
+            else withoutLink
+          "
+        >
+          <a [routerLink]="link"
+            >{{
+              "citySearch.titleFirstPath"
+                | translate: { value: city.name[curLang] }
+            }}
+            {{ "citySearch.titleSecondPath" | translate }}</a
+          >
+        </div>
+        <ng-template #withoutLink>
+          <div class="breadcrumb__item">
+            {{
+              "citySearch.titleFirstPath"
+                | translate: { value: city.name[curLang] }
+            }}
+            {{ "citySearch.titleSecondPath" | translate }}
+          </div>
+        </ng-template>
+
+        <span
+          *ngIf="filterResult.categoryFilter._id !== defaultFilterCategory._id"
+          class="breadcrumb__item"
+          >{{ filterResult.categoryFilter.name[curLang] }}</span
+        >
+      </div>
+    </div>
+
+    <div class="content">
+      <aside class="content__right">
+        <div class="search-menu-wrap {{ menuFixed }}">
+          <div class="filter-panel-header">
+            {{ "citySearch.headerFilter" | translate }}
+          </div>
+          <div class="search-menu-list">
+            <div
+              class="search-menu"
+              *ngFor="let category of categories; let i = index"
+            >
+              <a
+                class="search-menu__head"
+                *ngIf="i === 0"
+                [routerLink]="[
+                  '/',
+                  'פרחים_' + uglify(city.name[curLang]),
+                  uglify(category.name[curLang])
+                ]"
+                >{{ category.name[curLang] }}</a
+              >
+              <div class="search-menu__head" *ngIf="i > 0">
+                {{ category.name[curLang] }}
+              </div>
+              <ul class="search-menu__list">
+                <li
+                  class="search-menu__item"
+                  [ngClass]="{
+                    active: cat._id === filterResult.categoryFilter._id
+                  }"
+                  *ngFor="let cat of category.subcategory"
+                >
+                  <a
+                    [routerLink]="[
+                      '/',
+                      'פרחים_' + uglify(city.name[curLang]),
+                      uglify(cat.name[curLang])
+                    ]"
+                  >
+                    {{ cat.name[curLang] }}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <div class="content__center">
+        <div class="content-head d-md-none">
+          <div class="content-head__title">
+            <h1 *ngIf="!categoryName">{{ city.seo.h1[curLang] }}</h1>
+            <h1 *ngIf="categoryName">
+              {{
+                "seo.citySearch.h1"
+                  | translate
+                    : { category: categoryName, city: city.name[curLang] }
+              }}
+            </h1>
+          </div>
+
+          <div *ngIf="!categoryName" class="content-head__text">
+            {{ city.seo.keywords[curLang] }}
+          </div>
+          <div *ngIf="categoryName" class="content-head__text">
+            <h2>
+              {{
+                "seo.citySearch.h2"
+                  | translate
+                    : { category: categoryName, city: city.name[curLang] }
+              }}
+            </h2>
+            <p>
+              {{
+                "seo.citySearch.shitFromLeft"
+                  | translate
+                    : { category: categoryName, city: city.name[curLang] }
+              }}
+            </p>
+          </div>
+        </div>
+
+        <div class="filter-wrap d-md-none">
+          <div class="filter">
+            <div class="filter__item" (click)="sortDDLClosed = !sortDDLClosed">
+              <div class="filter__head">
+                <span class="filter__title">{{
+                  "citySearch.filter.filterBy" | translate
+                }}</span
+                >{{ sortLable[sorting][curLang] }}
+              </div>
+              <div
+                class="filter__option"
+                [ngStyle]="{ display: sortDDLClosed ? 'none' : 'block' }"
+              >
+                <div
+                  class="filter__param"
+                  [ngClass]="{ active: sorting === 'count' }"
+                  (click)="
+                    sortBy('count', $event); sortDDLClosed = !sortDDLClosed
+                  "
+                >
+                  {{ sortLable["count"][curLang] }}
+                </div>
+                <div
+                  class="filter__param"
+                  (click)="
+                    sortBy('price', $event); sortDDLClosed = !sortDDLClosed
+                  "
+                >
+                  {{ sortLable["price"][curLang] }}
+                </div>
+                <div
+                  class="filter__param"
+                  [ngClass]="{ active: sorting === 'rate' }"
+                  (click)="
+                    sortBy('rate', $event); sortDDLClosed = !sortDDLClosed
+                  "
+                >
+                  {{ sortLable["rate"][curLang] }}
+                </div>
+              </div>
+            </div>
+
+            <div class="filter__result">
+              <span
+                [innerHTML]="
+                  'citySearch.searchResult'
+                    | translate
+                      : {
+                          category: categoryName,
+                          count: filteredItems.length,
+                          city: city.name[curLang]
+                        }
+                "
+              ></span>
+              <a (click)="selectCity()">
+                {{ "citySearch.setCity" | translate }}
+              </a>
+            </div>
+          </div>
+
+          <a
+            [routerLink]="[
+              '/',
+              'פרחים_' + uglify(city.name[curLang]),
+              uglify(categoryName)
+            ]"
+            [queryParams]="{ showMap: true }"
+            class="open-map d-xs-none"
+          >
+            <div class="open-map__content">
+              <img
+                src="{{ host }}/assets/img/open-map.jpg"
+                alt=""
+                class="open-map__img"
+              />
+              <div class="open-map__text">
+                {{ "citySearch.showOnTheMap" | translate }}
+              </div>
+            </div>
+          </a>
+
+          <!--<div class="search-tabs d-none d-xs-inline-flex">
+            <a href="#" class="search-tabs__item active">רשימה</a>
+            <a href="#" class="search-tabs__item">מפה</a>
+          </div>-->
+        </div>
+
+        <section class="search-city">
+          <div
+            *ngFor="let item of filteredItems"
+            [@fadeIn]="filteredItems.length"
+          >
+            <app-item-search
+              [item]="item"
+              [store]="stores"
+              [additionalItems]="additionalItems"
+            ></app-item-search>
+          </div>
+        </section>
+
+        <app-watched-list></app-watched-list>
+
+        <section
+          *ngIf="!categoryName"
+          class="unwrap-block unwrap-block--col-2"
+          (click)="toggleArticle()"
+          [ngClass]="{ opened: showArticle }"
+        >
+          <div class="unwrap-block__head">
+            <div class="h2">
+              {{
+                "citySearch.titleCityStore"
+                  | translate: { value: city.name[curLang] }
+              }}
+              {{ "citySearch.titleSecondPath" | translate }}
+            </div>
+            <div class="unwrap-block__arr"></div>
+          </div>
+          <div class="unwrap-block__content">
+            <div class="shop-list">
+              <div
+                *ngFor="let shop of filterStores(stores)"
+                [shop]="shop"
+                class="shop-list__item"
+                app-shopitem
+              ></div>
+            </div>
+            <div
+              class="unwrap-block__text"
+              [innerHTML]="city.description[curLang]"
+            ></div>
+          </div>
+        </section>
+
+        <app-accelerate-sales></app-accelerate-sales>
+        <app-popular-cities></app-popular-cities>
+        <app-analytics-item></app-analytics-item>
+      </div>
+
+      <aside class="content__left">
+        <ng-container *ngFor="let item of banners">
+          <div class="header-bottom__notice" app-notice [banner]="item"></div>
+        </ng-container>
+        <app-hashve-banner></app-hashve-banner>
+      </aside>
+    </div>
+  </div>
+</main>
+<app-footer></app-footer>

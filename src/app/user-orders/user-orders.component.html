@@ -1,0 +1,1461 @@
+<app-header [showSlider]="false"></app-header>
+
+<div class="order-history__title" *ngIf="orders?.length === 0">Not Registered Orders</div>
+<div class="wrapper">
+    <main>
+        <div class="st-width-full">
+            <div class="content">
+                <aside class="content__right">
+
+                </aside>
+
+                <div class="content__center">
+
+                    <div class="order-history">
+                        <div *ngFor="let _order of orders">
+
+                            <div class="order-history__title">תודה, הזמנתך התקבלה בהצלחה!</div>
+                            <div class="order-history__sub-title d-md-none">להלן פירטי ההזמנה הנוכחית</div>
+
+                            <div class="history-step d-none d-md-flex">
+                                <div class="history-step__head">מעקב הזמנה:</div>
+
+                                <div class="history-step__list">
+                                    <div class="history-step__item history-step__item--circle
+                                     {{_order.IfOrderAccepted() ? '':' history-step__item--black' }}">
+                                        <img src="/assets/img/ic-check.png" alt="">
+                                        <div class="history-step__text">התקבל</div>
+                                    </div>
+
+                                    <div class="history-step__item">
+                                        <img src="/assets/img/ic-manage-call.svg" alt="">
+                                    </div>
+
+                                    <!-- {{_order.getStatus()}}... {{_order.IfOrderAccepted()}} {{_order.IfOrderPayed()}} {{_order.IfOrderClosed()}}
+                          -->
+                                    <div class="history-step__item history-step__item--circle
+                                    {{ _order.IfOrderPayed() ?'':'  history-step__item--black' }}
+                                    ">
+                                        <img src="/assets/img/ic-flag.png" alt="">
+                                        <div class="history-step__text">אישו החיוב</div>
+                                    </div>
+
+                                    <div class="history-step__item">
+                                        <img src="/assets/img/ic-hands.png" alt="">
+                                    </div>
+
+                                    <div class="history-step__item">
+                                        <img src="/assets/img/ic-delivery.svg" alt="">
+                                    </div>
+
+                                    <div class="history-step__item history-step__item--circle   
+                                    {{ _order.IfOrderClosed()  ? '':' history-step__item--black'}} ">
+                                        <img src="/assets/img/ic-good.png" alt="">
+                                        <div class="history-step__text">נמסר</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="order-history__sub-title d-none d-md-block">להלן פירטי ההזמנה הנוכחית</div>
+
+                            <div class="history-card">
+                                <div class="history-card__head">
+                                    <div class="history-card__head-top">
+                                        <div class="history-card__step-wrap">
+                                            <div class="history-card__label">מס‘ ההזמנה <span class="history-card__label-num">{{_order.orderNumber}}</span>
+                                            </div>
+
+                                            <div class="history-step d-md-none">
+                                                <div class="history-step__head">מעקב הזמנה:</div>
+
+                                                <div class="history-step__list">
+
+                                                    <div class="history-step__item history-step__item--circle {{_order.IfOrderAccepted() ? '':' history-step__item--black' }}">
+                                                        <img src="img/ic-check.png" alt="">
+                                                        <div class="history-step__text">התקבל</div>
+                                                    </div>
+
+                                                    <div class="history-step__item">
+                                                        <img src="img/ic-manage-call.svg" alt="">
+                                                    </div>
+
+                                                    <div class="history-step__item history-step__item--circle {{_order.IfOrderPayed() ? '':' history-step__item--black' }}">
+                                                        <img src="img/ic-flag.png" alt="">
+                                                        <div class="history-step__text">אישו החיוב</div>
+                                                    </div>
+
+                                                    <div class="history-step__item">
+                                                        <img src="img/ic-hands.png" alt="">
+                                                    </div>
+
+                                                    <div class="history-step__item">
+                                                        <img src="img/ic-delivery.svg" alt="">
+                                                    </div>
+
+                                                    <div class="history-step__item history-step__item--circle h{{_order.IfOrderClosed() ? '':' history-step__item--black' }}">
+                                                        <img src="img/ic-good.png" alt="">
+                                                        <div class="history-step__text">נמסר</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="history-card__time-wrap">
+                                            <div class="history-card__date">תאריך: <span class="history-card__date-val">
+                          {{_order?.deliveryDetails?.date | date:'dd/MM/yy' }}</span></div>
+                                            <div class="history-card__time">שעת משלוח: <span class="history-card__time-val">{{_order?.deliveryDetails?.hours}} </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="history-card__head-bottom">
+                                        <div class="history-card__info-product">
+                                            <span class="history-card__product-name">{{_order?.storeName?.heb}}</span>
+                                            <span class="history-card__product-address">{{_order?.productOffer?.store?.address?.heb}}</span>
+                                            <span class="history-card__product-phone">טלפון: <span
+                          class="history-card__product-phone-num">{{_order?.productOffer?.store?.mobile}}</span></span>
+                                        </div>
+
+                                        <div class="history-card__recipient">
+                                            פרטי המקבל: <span class="history-card__recipient-val">
+                        {{_order.recipientFullInfos()}}
+                      </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="history-card__main">
+                                    <div class="history-card__desc">
+                                        <div class="history-card__img d-sm-none">
+                                            <img src="{{_ItemAssetUrl+_order?.productOffer?.package?.baseItem?.picture}}" alt="">
+
+                                            <div class="history-card__icons d-md-none">
+                                                <a href="#" class="history-card__icon history-card__icon--wish"></a>
+                                            </div>
+
+                                            <div class="sticker-wrap">
+                                                <div class="sticker__label d-none d-md-inline-block">גודל</div>
+
+                                                <div class="sticker" [ngClass]="{' sticker--purple': _order?.productOffer?.package?.size === _ItemSize.extralarge,
+                                                ' sticker--blue': _order?.productOffer?.package?.size === _ItemSize.large}">
+                                                    <div class="sticker__label d-md-none">גודל</div>
+                                                    <div class="sticker__text">
+                                                        <span *ngIf="_order?.productOffer?.package?.size === _ItemSize.normal ">רגיל</span>
+                                                        <span *ngIf="_order?.productOffer?.package?.size === _ItemSize.large ">גדול</span>
+                                                        <span *ngIf="_order?.productOffer?.package?.size ===  _ItemSize.extralarge">ענק</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="history-card__count d-md-none">מק“ט {{_order?.productOffer.package?.baseItem?.code}}
+                                            </div>
+                                        </div>
+
+                                        <div class="history-card__content">
+                                            <div class="history-card__tag-wrap d-none d-md-inline-block">
+                                                <div class="tag tag--small tag--pink">{{_order?.productOffer.package?.baseItem?.name?.heb}}
+                                                </div>
+                                                <div class="history-card__count">מק“ט {{_order?.productOffer.package?.baseItem?.code}}</div>
+                                            </div>
+
+                                            <div class="history-card__name d-md-none">{{_order?.productOffer.package?.baseItem?.name?.heb}}
+                                            </div>
+
+                                            <div class="history-card__text d-md-none">יתכנו שינויים במפרט הזר-במידה והפרחים לא נמצאים במלאי ישולבו פרחים אחרים בצבעים תוים התמונה להמחשה בלבד.</div>
+
+                                            <div class="search-city-set-wrap">
+                                                <div class="history-card__img d-none d-sm-block">
+                                                    <img src="{{_ItemAssetUrl+_order?.productOffer?.package?.baseItem?.picture}}" alt="">
+
+                                                    <div class="sticker-wrap">
+                                                        <div class="sticker__label d-none d-md-inline-block" [ngClass]="{' sticker--purple': _order?.productOffer?.package?.size === _ItemSize.extralarge,
+                                                                     ' sticker--blue': _order?.productOffer?.package?.size === _ItemSize.large}">גודל</div>
+
+                                                        <div class="sticker">
+                                                            <div class="sticker__label d-md-none">גודל</div>
+                                                            <div class="sticker__text">
+                                                                <span *ngIf="_order?.productOffer?.package?.size === _ItemSize.normal ">רגיל</span>
+                                                                <span *ngIf="_order?.productOffer?.package?.size === _ItemSize.large ">גדול</span>
+                                                                <span *ngIf="_order?.productOffer?.package?.size ===  _ItemSize.extralarge">ענק</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="search-city-set">
+                                                    <div class="search-city-set__item" *ngFor="let item of _order?.productOffer?.package?.addItems">
+                                                        <div class="search-city-set__name"><span class="search-city-set__plus">+</span>{{item?.name?.heb}}</div>
+
+                                                        <div class="search-city-set__img"><img src="{{_ItemAssetUrl+item?.picture}}" height="50" width="50" alt=""></div>
+                                                    </div>
+                                                    <!-- 
+                                                    <div class="search-city-set__item">
+                                                        <div class="search-city-set__name"><span class="search-city-set__plus">+</span> כ. ברכה
+                                                        </div>
+
+                                                        <div class="search-city-set__img"><img src="img/search-city-set2.jpg" alt=""></div>
+                                                    </div>
+
+                                                    <div class="search-city-set__item">
+                                                        <div class="search-city-set__name"><span class="search-city-set__plus">+</span> שוקולד</div>
+
+                                                        <div class="search-city-set__img"><img src="img/search-city-set3.jpg" alt=""></div>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+
+                                            <div class="history-card__explain d-none d-md-flex">
+                                                <div class="history-card__explain-item"> </div>
+                                            </div>
+
+                                            <!-- <div class="history-card__mark d-none d-md-flex">
+                                                <span class="history-card__mark-item">
+                          <span class="rating-mark">4.5</span><span class="d-md-none">ציון הגולשים</span>
+                                                </span>
+
+                                                <span class="history-card__mark-item">
+                          <span class="rating"><span class="rating__content" style="width: 90%"></span></span>
+                                                </span>
+
+                                                <span class="history-card__mark-item">
+                          <a href="#">8 חוות דעת</a>
+                        </span>
+
+                                                <span class="history-card__mark-item">9 הוזמנו </span>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- end history-card__desc -->
+
+                                    <div class="history-card__info">
+                                        <div class="history-card__info-content">
+                                            <div class="history-card__price-wrap">
+                                                <div class="history-card__price-label">מחיר משופר</div>
+
+                                                <!-- <div class="history-card__old-price">
+                                                    ₪{{_order?.productOffer?.package?.baseItem?.price}}
+                                                </div> -->
+                                                <div class="history-card__cur-price"> ₪{{_order?.itemPrices[0]?.price + _order?.productOffer?.package?.size}}
+                                                    <span class="history-card__price-count d-xs-none">מק”ט
+                            {{_order?.productOffer?.package?.baseItem?.code}}</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="history-price-step">
+                                                <div class="history-price-step__item" *ngFor="let item of _order?.productOffer?.package?.addItems">
+                                                    <div class="history-price-step__title">{{getPrice(item,_order)}}</div>
+                                                    <div class="history-price-step__text">{{item?.name?.heb}}</div>
+                                                </div>
+
+                                                <!-- <div class="history-price-step__item">
+                                                    <div class="history-price-step__title">₪10</div>
+                                                    <div class="history-price-step__text">כ. ברכה</div>
+                                                </div>
+
+                                                <div class="history-price-step__item">
+                                                    <div class="history-price-step__title">₪50</div>
+                                                    <div class="history-price-step__text">שוקולד</div>
+                                                </div> -->
+                                            </div>
+
+                                            <div class="history-card__pay">
+                                                <div class="history-card__delivery"><span class="history-card__delivery-title">משלוח
+                            חינם</span><span class="history-card__delivery-subtitle">סה”כ:</span><span class="history-card__delivery-sum">{{_order.price + _order.deliveryPrice}}</span></div>
+
+                                                <div class="history-card__credit">
+                                                    <span *ngIf="_order.IfOrderPayedByCard()">שולם בכרטיס אשראי</span>
+                                                    <span *ngIf="_order.IfOrderPayedByPhone()"> בטלפון </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <a href="#" class="btn btn--pink" *ngIf="_order.getStatus() == _StatusType.Canceled">Canceled</a>
+                                <a href="#" class="btn btn--blue" *ngIf="_order.getStatus() !== _StatusType.Canceled">הודעה לחנות</a>
+                            </div>
+
+                            <hr class="line-purple">
+
+                        </div>
+                    </div>
+                </div>
+                <!--                      
+                        <div class="order-history__title">תודה, הזמנתך התקבלה בהצלחה!</div>
+                        <div class="order-history__sub-title">להלן פירטי ההזמנה הנוכחית</div>
+
+                        <div class="history-card">
+                            <div class="history-card__head">
+                                <div class="history-card__head-top">
+                                    <div class="history-card__step-wrap">
+                                        <div class="history-card__label">מס‘ ההזמנה <span class="history-card__label-num">245768461</span>
+                                        </div>
+
+                                        <div class="history-step d-md-none">
+                                            <div class="history-step__head">מעקב הזמנה:</div>
+
+                                            <div class="history-step__list">
+                                                <div class="history-step__item history-step__item--circle">
+                                                    <img src="img/ic-check.png" alt="">
+                                                    <div class="history-step__text">התקבל</div>
+                                                </div>
+
+                                                <div class="history-step__item">
+                                                    <img src="img/ic-manage-call.svg" alt="">
+                                                </div>
+
+                                                <div class="history-step__item history-step__item--circle">
+                                                    <img src="img/ic-flag.png" alt="">
+                                                    <div class="history-step__text">אישו החיוב</div>
+                                                </div>
+
+                                                <div class="history-step__item">
+                                                    <img src="img/ic-hands.png" alt="">
+                                                </div>
+
+                                                <div class="history-step__item">
+                                                    <img src="img/ic-delivery.svg" alt="">
+                                                </div>
+
+                                                <div class="history-step__item history-step__item--circle history-step__item--black">
+                                                    <img src="img/ic-good.png" alt="">
+                                                    <div class="history-step__text">נמסר</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="history-card__time-wrap">
+                                        <div class="history-card__date">תאריך: <span class="history-card__date-val"> 6/11/17</span></div>
+                                        <div class="history-card__time">שעת משלוח: <span class="history-card__time-val">13:00-20:00</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="history-card__head-bottom">
+                                    <div class="history-card__info-product">
+                                        <span class="history-card__product-name">פרחי קוליברי</span>
+                                        <span class="history-card__product-address">הרא“ה 133 רמת גן</span>
+                                        <span class="history-card__product-phone">טלפון: <span
+                        class="history-card__product-phone-num">054-5669877</span></span>
+                                    </div>
+
+                                    <div class="history-card__recipient">
+                                        פרטי המקבל: <span class="history-card__recipient-val">קטיה פ. הסתונית 16, פתח תקוה </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="history-card__main">
+                                <div class="history-card__desc">
+                                    <div class="history-card__img d-sm-none">
+                                        <img src="img/search-city.png" alt="">
+
+                                        <div class="history-card__icons d-md-none">
+                                            <a href="#" class="history-card__icon history-card__icon--wish"></a>
+                                        </div>
+
+                                        <div class="sticker-wrap">
+                                            <div class="sticker__label d-none d-md-inline-block">גודל</div>
+
+                                            <div class="sticker">
+                                                <div class="sticker__label d-md-none">גודל</div>
+                                                <div class="sticker__text">רגיל</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="history-card__count d-md-none">מק“ט 65</div>
+                                    </div>
+
+                                    <div class="history-card__content">
+                                        <div class="history-card__tag-wrap d-none d-md-inline-block">
+                                            <div class="tag tag--small tag--pink">חבילה רומנטית במבצע</div>
+                                            <div class="history-card__count">מק“ט 65</div>
+                                        </div>
+
+                                        <div class="history-card__name d-md-none">אלגנטי כפרי</div>
+
+                                        <div class="history-card__text d-md-none">יתכנו שינויים במפרט הזר-במידה והפרחים לא נמצאים במלאי ישולבו פרחים אחרים בצבעים תוים התמונה להמחשה בלבד.</div>
+
+                                        <div class="search-city-set-wrap">
+                                            <div class="history-card__img d-none d-sm-block">
+                                                <img src="img/search-city.png" alt="">
+
+                                                <div class="sticker-wrap">
+                                                    <div class="sticker__label d-none d-md-inline-block">גודל</div>
+
+                                                    <div class="sticker">
+                                                        <div class="sticker__label d-md-none">גודל</div>
+                                                        <div class="sticker__text">רגיל</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="search-city-set">
+                                                <div class="search-city-set__item">
+                                                    <div class="search-city-set__name"><span class="search-city-set__plus">+</span> אגרטל</div>
+
+                                                    <div class="search-city-set__img"><img src="img/search-city-set1.jpg" alt=""></div>
+                                                </div>
+
+                                                <div class="search-city-set__item">
+                                                    <div class="search-city-set__name"><span class="search-city-set__plus">+</span> כ. ברכה</div>
+
+                                                    <div class="search-city-set__img"><img src="img/search-city-set2.jpg" alt=""></div>
+                                                </div>
+
+                                                <div class="search-city-set__item">
+                                                    <div class="search-city-set__name"><span class="search-city-set__plus">+</span> שוקולד</div>
+
+                                                    <div class="search-city-set__img"><img src="img/search-city-set3.jpg" alt=""></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="history-card__explain d-none d-md-flex">
+                                            <div class="history-card__explain-item"> * התמונה להמחשה </div>
+                                        </div>
+
+                                        <div class="history-card__mark d-none d-md-flex">
+                                            <span class="history-card__mark-item">
+                        <span class="rating-mark">4.5</span><span class="d-md-none">ציון הגולשים</span>
+                                            </span>
+
+                                            <span class="history-card__mark-item">
+                        <span class="rating"><span class="rating__content" style="width: 90%"></span></span>
+                                            </span>
+
+                                            <span class="history-card__mark-item">
+                        <a href="#">8 חוות דעת</a>
+                      </span>
+
+                                            <span class="history-card__mark-item">9 הוזמנו </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end history-card__desc 
+
+                                <div class="history-card__info">
+                                    <div class="history-card__info-content">
+                                        <div class="history-card__price-wrap">
+                                            <div class="history-card__price-label">מחיר משופר</div>
+
+                                            <div class="history-card__old-price">₪165</div>
+                                            <div class="history-card__cur-price"> ₪150<span class="history-card__price-count d-xs-none">מק”ט
+                          65</span></div>
+                                        </div>
+
+                                        <div class="history-price-step">
+                                            <div class="history-price-step__item">
+                                                <div class="history-price-step__title">₪100</div>
+                                                <div class="history-price-step__text">אגרטל</div>
+                                            </div>
+
+                                            <div class="history-price-step__item">
+                                                <div class="history-price-step__title">₪10</div>
+                                                <div class="history-price-step__text">כ. ברכה</div>
+                                            </div>
+
+                                            <div class="history-price-step__item">
+                                                <div class="history-price-step__title">₪50</div>
+                                                <div class="history-price-step__text">שוקולד</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="history-card__pay">
+                                            <div class="history-card__delivery"><span class="history-card__delivery-title">משלוח
+                          חינם</span><span class="history-card__delivery-subtitle">סה”כ:</span><span class="history-card__delivery-sum">₪310</span></div>
+
+                                            <div class="history-card__credit">שולם בכרטיס אשראי</div>
+
+                                            <div class="history-card__btn">
+                                                <a href="#" class="btn">הזמן שוב</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="#" class="btn btn--pink">הודעה לחנות</a>
+                        </div>
+
+                        <div class="order-history__sub-title">הזמנות קודמות</div>
+
+                        <div class="history-card">
+                            <div class="history-card__head">
+                                <div class="history-card__head-top">
+                                    <div class="history-card__step-wrap">
+                                        <div class="history-card__label">מס‘ ההזמנה <span class="history-card__label-num">245768461</span>
+                                        </div>
+
+                                        <div class="history-step d-md-none">
+                                            <div class="history-step__head">מעקב הזמנה:</div>
+
+                                            <div class="history-step__list">
+                                                <div class="history-step__item history-step__item--circle">
+                                                    <img src="img/ic-check.png" alt="">
+                                                    <div class="history-step__text">התקבל</div>
+                                                </div>
+
+                                                <div class="history-step__item">
+                                                    <img src="img/ic-manage-call.svg" alt="">
+                                                </div>
+
+                                                <div class="history-step__item history-step__item--circle">
+                                                    <img src="img/ic-flag.png" alt="">
+                                                    <div class="history-step__text">אישו החיוב</div>
+                                                </div>
+
+                                                <div class="history-step__item">
+                                                    <img src="img/ic-hands.png" alt="">
+                                                </div>
+
+                                                <div class="history-step__item history-step__item--circle">
+                                                    <img src="img/ic-good.png" alt="">
+                                                    <div class="history-step__text">נמסר</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="history-card__time-wrap">
+                                        <div class="history-card__date">תאריך: <span class="history-card__date-val"> 21/10/17</span></div>
+                                        <div class="history-card__time">איסוף עצמי בשעה: <span class="history-card__time-val">13:00</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="history-card__head-bottom">
+                                    <div class="history-card__info-product">
+                                        <span class="history-card__product-name">פרחי קוליברי</span>
+                                        <span class="history-card__product-address">הרא“ה 133 רמת גן</span>
+                                        <span class="history-card__product-phone">טלפון: <span
+                        class="history-card__product-phone-num">054-5669877</span></span>
+                                    </div>
+
+                                    <div class="history-card__recipient">
+                                        פרטי המקבל: <span class="history-card__recipient-val">קטיה פ.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="history-card__main">
+                                <div class="history-card__desc">
+                                    <div class="history-card__img d-sm-none">
+                                        <img src="img/search-city.png" alt="">
+
+                                        <div class="history-card__icons d-md-none">
+                                            <a href="#" class="history-card__icon history-card__icon--wish"></a>
+                                        </div>
+
+                                        <div class="sticker-wrap">
+                                            <div class="sticker__label d-none d-md-inline-block">גודל</div>
+
+                                            <div class="sticker">
+                                                <div class="sticker__label d-md-none">גודל</div>
+                                                <div class="sticker__text">רגיל</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="history-card__count d-md-none">מק“ט 65</div>
+                                    </div>
+
+                                    <div class="history-card__content">
+                                        <div class="history-card__tag-wrap d-none d-md-inline-block">
+                                            <div class="tag tag--small tag--pink">חבילה רומנטית במבצע</div>
+                                            <div class="history-card__count">מק“ט 65</div>
+                                        </div>
+
+                                        <div class="history-card__name d-md-none">אלגנטי כפרי</div>
+
+                                        <div class="history-card__text d-md-none">יתכנו שינויים במפרט הזר-במידה והפרחים לא נמצאים במלאי ישולבו פרחים אחרים בצבעים תוים התמונה להמחשה בלבד.</div>
+
+                                        <div class="search-city-set-wrap">
+                                            <div class="history-card__img d-none d-sm-block">
+                                                <img src="img/search-city.png" alt="">
+
+                                                <div class="sticker-wrap">
+                                                    <div class="sticker__label d-none d-md-inline-block">גודל</div>
+
+                                                    <div class="sticker">
+                                                        <div class="sticker__label d-md-none">גודל</div>
+                                                        <div class="sticker__text">רגיל</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="search-city-set">
+                                                <div class="search-city-set__item">
+                                                    <div class="search-city-set__name"><span class="search-city-set__plus">+</span> אגרטל</div>
+
+                                                    <div class="search-city-set__img"><img src="img/search-city-set1.jpg" alt=""></div>
+                                                </div>
+
+                                                <div class="search-city-set__item">
+                                                    <div class="search-city-set__name"><span class="search-city-set__plus">+</span> כ. ברכה</div>
+
+                                                    <div class="search-city-set__img"><img src="img/search-city-set2.jpg" alt=""></div>
+                                                </div>
+
+                                                <div class="search-city-set__item">
+                                                    <div class="search-city-set__name"><span class="search-city-set__plus">+</span> שוקולד</div>
+
+                                                    <div class="search-city-set__img"><img src="img/search-city-set3.jpg" alt=""></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="history-card__explain d-none d-md-flex">
+                                            <div class="history-card__explain-item"> * התמונה להמחשה </div>
+                                        </div>
+
+                                        <div class="history-card__mark d-none d-md-flex">
+                                            <span class="history-card__mark-item">
+                        <span class="rating-mark">4.5</span><span class="d-md-none">ציון הגולשים</span>
+                                            </span>
+
+                                            <span class="history-card__mark-item">
+                        <span class="rating"><span class="rating__content" style="width: 90%"></span></span>
+                                            </span>
+
+                                            <span class="history-card__mark-item">
+                        <a href="#">8 חוות דעת</a>
+                      </span>
+
+                                            <span class="history-card__mark-item">9 הוזמנו </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end history-card__desc 
+
+                                <div class="history-card__info">
+                                    <div class="history-card__info-content">
+                                        <div class="history-card__price-wrap">
+                                            <div class="history-card__price-label">מחיר משופר</div>
+
+                                            <div class="history-card__old-price">₪165</div>
+                                            <div class="history-card__cur-price"> ₪150<span class="history-card__price-count d-xs-none">מק”ט
+                          65</span></div>
+                                        </div>
+
+                                        <div class="history-price-step">
+                                            <div class="history-price-step__item">
+                                                <div class="history-price-step__title">+ ₪100</div>
+                                                <div class="history-price-step__text">אגרטל</div>
+                                            </div>
+
+                                            <div class="history-price-step__item">
+                                                <div class="history-price-step__title">+ ₪10</div>
+                                                <div class="history-price-step__text">כ. ברכה</div>
+                                            </div>
+
+                                            <div class="history-price-step__item">
+                                                <div class="history-price-step__title">+ ₪50</div>
+                                                <div class="history-price-step__text">שוקולד</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="history-card__pay">
+                                            <div class="history-card__delivery"><span class="history-card__delivery-title d-none d-md-inline">משלוח חינם</span><span class="history-card__delivery-subtitle">סה”כ:</span><span class="history-card__delivery-sum">₪310</span></div>
+
+                                            <div class="history-card__credit">תשלום במקום</div>
+                                            <div class="history-card__unavailable">המוצר לא זמין כרגע</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="#" class="btn">ממתין לחוות דעת</a><a href="#" class="btn btn--blue">מחלוקת</a>
+                        </div>
+
+                        <hr class="line-purple">
+
+                        <div class="history-card">
+                            <div class="history-card__head">
+                                <div class="history-card__head-top">
+                                    <div class="history-card__step-wrap">
+                                        <div class="history-card__label">מס‘ ההזמנה <span class="history-card__label-num">245768461</span>
+                                        </div>
+
+                                        <div class="history-step d-md-none">
+                                            <div class="history-step__head">מעקב הזמנה:</div>
+
+                                            <div class="history-step__list">
+                                                <div class="history-step__item history-step__item--circle">
+                                                    <img src="img/ic-check.png" alt="">
+                                                    <div class="history-step__text">התקבל</div>
+                                                </div>
+
+                                                <div class="history-step__item">
+                                                    <img src="img/ic-manage-call.svg" alt="">
+                                                </div>
+
+                                                <div class="history-step__item history-step__item--circle">
+                                                    <img src="img/ic-flag.png" alt="">
+                                                    <div class="history-step__text">אישו החיוב</div>
+                                                </div>
+
+                                                <div class="history-step__item">
+                                                    <img src="img/ic-hands.png" alt="">
+                                                </div>
+
+                                                <div class="history-step__item history-step__item--circle">
+                                                    <img src="img/ic-good.png" alt="">
+                                                    <div class="history-step__text">נמסר</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="history-card__time-wrap">
+                                        <div class="history-card__date">תאריך: <span class="history-card__date-val"> 21/10/17</span></div>
+                                        <div class="history-card__time">איסוף עצמי בשעה: <span class="history-card__time-val">13:00</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="history-card__head-bottom">
+                                    <div class="history-card__info-product">
+                                        <span class="history-card__product-name">פרחי קוליברי</span>
+                                        <span class="history-card__product-address">הרא“ה 133 רמת גן</span>
+                                        <span class="history-card__product-phone">טלפון: <span
+                        class="history-card__product-phone-num">054-5669877</span></span>
+                                    </div>
+
+                                    <div class="history-card__recipient">
+                                        פרטי המקבל: <span class="history-card__recipient-val">קטיה פ.</span>
+                                    </div>
+                                </div>
+                            </div> /
+                            <div class="history-card__main">
+                                <div class="history-card__desc">
+                                    <div class="history-card__img d-sm-none">
+                                        <img src="img/search-city.png" alt="">
+
+                                        <div class="history-card__icons d-md-none">
+                                            <a href="#" class="history-card__icon history-card__icon--wish"></a>
+                                        </div>
+
+                                        <div class="sticker-wrap">
+                                            <div class="sticker__label d-none d-md-inline-block">גודל</div>
+
+                                            <div class="sticker">
+                                                <div class="sticker__label d-md-none">גודל</div>
+                                                <div class="sticker__text">רגיל</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="history-card__count d-md-none">מק“ט 65</div>
+                                    </div>
+
+                                    <div class="history-card__content">
+                                        <div class="history-card__tag-wrap d-none d-md-inline-block">
+                                            <div class="tag tag--small tag--pink">חבילה רומנטית במבצע</div>
+                                            <div class="history-card__count">מק“ט 65</div>
+                                        </div>
+
+                                        <div class="history-card__name d-md-none">אלגנטי כפרי</div>
+
+                                        <div class="history-card__text d-md-none">יתכנו שינויים במפרט הזר-במידה והפרחים לא נמצאים במלאי ישולבו פרחים אחרים בצבעים תוים התמונה להמחשה בלבד.</div>
+
+                                        <div class="search-city-set-wrap">
+                                            <div class="history-card__img d-none d-sm-block">
+                                                <img src="img/search-city.png" alt="">
+
+                                                <div class="sticker-wrap">
+                                                    <div class="sticker__label d-none d-md-inline-block">גודל</div>
+
+                                                    <div class="sticker">
+                                                        <div class="sticker__label d-md-none">גודל</div>
+                                                        <div class="sticker__text">רגיל</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="search-city-set">
+                                                <div class="search-city-set__item">
+                                                    <div class="search-city-set__name"><span class="search-city-set__plus">+</span> אגרטל</div>
+
+                                                    <div class="search-city-set__img"><img src="img/search-city-set1.jpg" alt=""></div>
+                                                </div>
+
+                                                <div class="search-city-set__item">
+                                                    <div class="search-city-set__name"><span class="search-city-set__plus">+</span> כ. ברכה</div>
+
+                                                    <div class="search-city-set__img"><img src="img/search-city-set2.jpg" alt=""></div>
+                                                </div>
+
+                                                <div class="search-city-set__item">
+                                                    <div class="search-city-set__name"><span class="search-city-set__plus">+</span> שוקולד</div>
+
+                                                    <div class="search-city-set__img"><img src="img/search-city-set3.jpg" alt=""></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="history-card__explain d-none d-md-flex">
+                                            <div class="history-card__explain-item"> * התמונה להמחשה </div>
+                                        </div>
+
+                                        <div class="history-card__mark d-none d-md-flex">
+                                            <span class="history-card__mark-item">
+                        <span class="rating-mark">4.5</span><span class="d-md-none">ציון הגולשים</span>
+                                            </span>
+
+                                            <span class="history-card__mark-item">
+                        <span class="rating"><span class="rating__content" style="width: 90%"></span></span>
+                                            </span>
+
+                                            <span class="history-card__mark-item">
+                        <a href="#">8 חוות דעת</a>
+                      </span>
+
+                                            <span class="history-card__mark-item">9 הוזמנו </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end history-card__desc 
+
+                                <div class="history-card__info">
+                                    <div class="history-card__info-content">
+                                        <div class="history-card__price-wrap">
+                                            <div class="history-card__price-label">מחיר משופר</div>
+
+                                            <div class="history-card__old-price">₪165</div>
+                                            <div class="history-card__cur-price"> ₪150<span class="history-card__price-count d-xs-none">מק”ט
+                          65</span></div>
+                                        </div>
+
+                                        <div class="history-price-step">
+                                            <div class="history-price-step__item">
+                                                <div class="history-price-step__title">+ ₪100</div>
+                                                <div class="history-price-step__text">אגרטל</div>
+                                            </div>
+
+                                            <div class="history-price-step__item">
+                                                <div class="history-price-step__title">+ ₪10</div>
+                                                <div class="history-price-step__text">כ. ברכה</div>
+                                            </div>
+
+                                            <div class="history-price-step__item">
+                                                <div class="history-price-step__title">+ ₪50</div>
+                                                <div class="history-price-step__text">שוקולד</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="history-card__pay">
+                                            <div class="history-card__delivery"><span class="history-card__delivery-title d-none d-md-inline">משלוח חינם</span><span class="history-card__delivery-subtitle">סה”כ:</span><span class="history-card__delivery-sum">₪310</span></div>
+
+                                            <div class="history-card__credit">תשלום במקום</div>
+                                            <div class="history-card__unavailable">המוצר לא זמין כרגע</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="history-dispute">
+                                <div class="history-dispute__btn">
+                                    <a href="#" class="btn">ממתין לחוות דעת</a><a href="#" class="btn btn--blue">מחלוקת</a>
+                                </div>
+
+                                <div class="history-dispute__content">
+                                    <div class="history-dispute__form">
+                                        <form method="get" class="history-form">
+                                            <div class="history-form__title">מחלוקת פתוחה </div>
+
+                                            <div class="history-form__field">
+                                                <span class="history-form__label"><span class="history-form__req">*</span> האם קבלתם את המוצר?
+                                                </span>
+
+                                                <div class="input-radio">
+                                                    <input type="radio" id="receive-true" name="receive">
+                                                    <label for="receive-true" class="input-radio__label"><span class="input-radio__text">כן
+                            </span><span class="input-radio__mark"></span></label>
+                                                </div>
+
+                                                <div class="input-radio">
+                                                    <input type="radio" id="receive-false" name="receive">
+                                                    <label for="receive-false" class="input-radio__label"><span
+                              class="input-radio__text">לא</span><span class="input-radio__mark"></span></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="history-form__field history-form__field--nowrap">
+                                                <span class="history-form__label"><span class="history-form__req">*</span> בחר סוג פניה</span>
+
+                                                <div class="select select--border">
+                                                    <div class="select__cur"></div>
+                                                    <div class="select__list">
+                                                        <div class="select__item">זכר</div>
+                                                        <div class="select__item">אישה</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <a href="#" class="history-form__add-img">הוסף תמונה +</a>
+
+                                            <div class="history-form__field">
+                                                <span class="history-form__label">הודעה</span>
+                                                <textarea></textarea>
+                                            </div>
+
+                                            <div class="history-form__submit">
+                                                <input type="submit" class="btn btn--blue" value="שלח">
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="history-dispute__rule d-md-none" dir="ltr">
+                                        <p>How to Open Dispute</p>
+
+                                        <ul>
+                                            <li>
+                                                <p>First Step:</p>
+
+                                                <p>You can choose between two options: Return Goods – this means that you want to return the item and apply for a full refund, or Refund Only – this means that either you did not receive the item and you’re
+                                                    applying for a full refund or you did receive the item and you want a partial refund (without having to send the item back).</p>
+                                            </li>
+
+                                            <li>
+                                                <p>Second Step:</p>
+
+                                                <p>During the dispute process you can discuss the refund terms with the seller. If you and seller can’t come to an agreement, we will step in and help. During this time, you are still free to negotiate a deal
+                                                    with the seller.</p>
+                                            </li>
+
+                                            <li>
+                                                <p>Third Step:</p>
+
+                                                <p>You can choose to accept the seller’s or AliExpress’ proposal. After this, the dispute process is finished, and your refund will be processed.</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="line-purple">
+
+                        <div class="history-card">
+                            <div class="history-card__head">
+                                <div class="history-card__head-top">
+                                    <div class="history-card__step-wrap">
+                                        <div class="history-card__label">מס‘ ההזמנה <span class="history-card__label-num">245768461</span>
+                                        </div>
+
+                                        <div class="history-step d-md-none">
+                                            <div class="history-step__head">מעקב הזמנה:</div>
+
+                                            <div class="history-step__list">
+                                                <div class="history-step__item history-step__item--circle">
+                                                    <img src="img/ic-check.png" alt="">
+                                                    <div class="history-step__text">התקבל</div>
+                                                </div>
+
+                                                <div class="history-step__item">
+                                                    <img src="img/ic-manage-call.svg" alt="">
+                                                </div>
+
+                                                <div class="history-step__item history-step__item--circle">
+                                                    <img src="img/ic-flag.png" alt="">
+                                                    <div class="history-step__text">אישו החיוב</div>
+                                                </div>
+
+                                                <div class="history-step__item">
+                                                    <img src="img/ic-hands.png" alt="">
+                                                </div>
+
+                                                <div class="history-step__item history-step__item--circle">
+                                                    <img src="img/ic-good.png" alt="">
+                                                    <div class="history-step__text">נמסר</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="history-card__time-wrap">
+                                        <div class="history-card__date">תאריך: <span class="history-card__date-val"> 21/10/17</span></div>
+                                        <div class="history-card__time">איסוף עצמי בשעה: <span class="history-card__time-val">13:00</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="history-card__head-bottom">
+                                    <div class="history-card__info-product">
+                                        <span class="history-card__product-name">פרחי קוליברי</span>
+                                        <span class="history-card__product-address">הרא“ה 133 רמת גן</span>
+                                        <span class="history-card__product-phone">טלפון: <span
+                        class="history-card__product-phone-num">054-5669877</span></span>
+                                    </div>
+
+                                    <div class="history-card__recipient">
+                                        פרטי המקבל: <span class="history-card__recipient-val">קטיה פ.</span>
+                                    </div>
+                                </div>
+                            </div> /
+                            <div class="history-card__main">
+                                <div class="history-card__desc">
+                                    <div class="history-card__img d-sm-none">
+                                        <img src="img/search-city.png" alt="">
+
+                                        <div class="history-card__icons d-md-none">
+                                            <a href="#" class="history-card__icon history-card__icon--wish"></a>
+                                        </div>
+
+                                        <div class="sticker-wrap">
+                                            <div class="sticker__label d-none d-md-inline-block">גודל</div>
+
+                                            <div class="sticker">
+                                                <div class="sticker__label d-md-none">גודל</div>
+                                                <div class="sticker__text">רגיל</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="history-card__count d-md-none">מק“ט 65</div>
+                                    </div>
+
+                                    <div class="history-card__content">
+                                        <div class="history-card__tag-wrap d-none d-md-inline-block">
+                                            <div class="tag tag--small tag--pink">חבילה רומנטית במבצע</div>
+                                            <div class="history-card__count">מק“ט 65</div>
+                                        </div>
+
+                                        <div class="history-card__name d-md-none">אלגנטי כפרי</div>
+
+                                        <div class="history-card__text d-md-none">יתכנו שינויים במפרט הזר-במידה והפרחים לא נמצאים במלאי ישולבו פרחים אחרים בצבעים תוים התמונה להמחשה בלבד.</div>
+
+                                        <div class="search-city-set-wrap">
+                                            <div class="history-card__img d-none d-sm-block">
+                                                <img src="img/search-city.png" alt="">
+
+                                                <div class="sticker-wrap">
+                                                    <div class="sticker__label d-none d-md-inline-block">גודל</div>
+
+                                                    <div class="sticker">
+                                                        <div class="sticker__label d-md-none">גודל</div>
+                                                        <div class="sticker__text">רגיל</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="search-city-set">
+                                                <div class="search-city-set__item">
+                                                    <div class="search-city-set__name"><span class="search-city-set__plus">+</span> אגרטל</div>
+
+                                                    <div class="search-city-set__img"><img src="img/search-city-set1.jpg" alt=""></div>
+                                                </div>
+
+                                                <div class="search-city-set__item">
+                                                    <div class="search-city-set__name"><span class="search-city-set__plus">+</span> כ. ברכה</div>
+
+                                                    <div class="search-city-set__img"><img src="img/search-city-set2.jpg" alt=""></div>
+                                                </div>
+
+                                                <div class="search-city-set__item">
+                                                    <div class="search-city-set__name"><span class="search-city-set__plus">+</span> שוקולד</div>
+
+                                                    <div class="search-city-set__img"><img src="img/search-city-set3.jpg" alt=""></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="history-card__explain d-none d-md-flex">
+                                            <div class="history-card__explain-item"> * התמונה להמחשה </div>
+                                        </div>
+
+                                        <div class="history-card__mark d-none d-md-flex">
+                                            <span class="history-card__mark-item">
+                        <span class="rating-mark">4.5</span><span class="d-md-none">ציון הגולשים</span>
+                                            </span>
+
+                                            <span class="history-card__mark-item">
+                        <span class="rating"><span class="rating__content" style="width: 90%"></span></span>
+                                            </span>
+
+                                            <span class="history-card__mark-item">
+                        <a href="#">8 חוות דעת</a>
+                      </span>
+
+                                            <span class="history-card__mark-item">9 הוזמנו </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end history-card__desc 
+
+                                <div class="history-card__info">
+                                    <div class="history-card__info-content">
+                                        <div class="history-card__price-wrap">
+                                            <div class="history-card__price-label">מחיר משופר</div>
+
+                                            <div class="history-card__old-price">₪165</div>
+                                            <div class="history-card__cur-price"> ₪150<span class="history-card__price-count d-xs-none">מק”ט
+                          65</span></div>
+                                        </div>
+
+                                        <div class="history-price-step">
+                                            <div class="history-price-step__item">
+                                                <div class="history-price-step__title">+ ₪100</div>
+                                                <div class="history-price-step__text">אגרטל</div>
+                                            </div>
+
+                                            <div class="history-price-step__item">
+                                                <div class="history-price-step__title">+ ₪10</div>
+                                                <div class="history-price-step__text">כ. ברכה</div>
+                                            </div>
+
+                                            <div class="history-price-step__item">
+                                                <div class="history-price-step__title">+ ₪50</div>
+                                                <div class="history-price-step__text">שוקולד</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="history-card__pay">
+                                            <div class="history-card__delivery"><span class="history-card__delivery-title d-none d-md-inline">משלוח חינם</span><span class="history-card__delivery-subtitle">סה”כ:</span><span class="history-card__delivery-sum">₪310</span></div>
+
+                                            <div class="history-card__credit">תשלום במקום</div>
+                                            <div class="history-card__unavailable">המוצר לא זמין כרגע</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="history-dispute">
+                                <div class="history-dispute__btn">
+                                    <a href="#" class="btn">ממתין לחוות דעת</a><a href="#" class="btn btn--blue">מחלוקת</a>
+                                </div>
+
+                                <div class="history-dispute__content">
+                                    <div class="history-dispute__form">
+                                        <form method="get" class="history-form">
+                                            <div class="history-form__title">שלום ישראל,<br> דעתך חשובה לנו, המלץ/י וסייע/י לגולשי האתר לקבל החלטה.
+                                            </div>
+
+                                            <div class="history-form__action">
+                                                <div class="rating-wrap">
+                                                    <div class="rating-wrap__text"><span class="rating-wrap__req">*</span> דרג את המוצר:</div>
+
+                                                    <div class="rating-wrap__line">
+                                                        <span class="rating rating--big"><span class="rating__content"
+                                style="width: 80%"></span></span>
+
+                                                        <div class="rating-wrap__label rating-wrap__label--big">
+                                                            <span class="rating-wrap__min"><span class="d-md-none">לא מרוצה</span><span class="d-none d-md-inline">1</span></span>
+                                                            <span class="rating-wrap__max"><span class="d-md-none">מרוצה מאוד</span><span class="d-none d-md-inline">5</span></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="like">
+                                                    <div class="like__title"><span class="like__title-req">*</span> דרג את החנות:</div>
+
+                                                    <div class="like-progress">
+                                                        <div class="like-progress__line">
+                                                            <span class="like-progress__count" style="left: 20%;">7.8</span>
+                                                            <span class="like-progress__line-dislike" style="width: 20%;"></span>
+                                                        </div>
+
+                                                        <div class="like-progress__label">
+                                                            <div class="like-progress__label-max">56</div>
+                                                            <div class="like-progress__label-min">11</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="history-form__field">
+                                                <span class="history-form__label">חוות דעת - ההמלצה שלי:</span>
+                                                <textarea></textarea>
+                                            </div>
+
+                                            <div class="history-form__submit">
+                                                <div class="history-form__polit">
+                                                    <div class="input-check">
+                                                        <input type="checkbox" id="checkbox2">
+                                                        <label for="checkbox2" class="input-check__label"><span class="input-check__text">I’m not a
+                                robot</span><span class="input-check__mark"></span></label>
+                                                    </div>
+                                                </div>
+
+                                                <input type="submit" class="btn" value="שלח">
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="history-dispute__rule d-md-none" dir="ltr">
+                                        <p>How to Open Dispute</p>
+
+                                        <ul>
+                                            <li>
+                                                <p>First Step:</p>
+
+                                                <p>You can choose between two options: Return Goods – this means that you want to return the item and apply for a full refund, or Refund Only – this means that either you did not receive the item and you’re
+                                                    applying for a full refund or you did receive the item and you want a partial refund (without having to send the item back).</p>
+                                            </li>
+
+                                            <li>
+                                                <p>Second Step:</p>
+
+                                                <p>During the dispute process you can discuss the refund terms with the seller. If you and seller can’t come to an agreement, we will step in and help. During this time, you are still free to negotiate a deal
+                                                    with the seller.</p>
+                                            </li>
+
+                                            <li>
+                                                <p>Third Step:</p>
+
+                                                <p>You can choose to accept the seller’s or AliExpress’ proposal. After this, the dispute process is finished, and your refund will be processed.</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="line-purple">
+
+                        <div class="history-card">
+                            <div class="history-card__head">
+                                <div class="history-card__head-top">
+                                    <div class="history-card__step-wrap">
+                                        <div class="history-card__label">מס‘ ההזמנה <span class="history-card__label-num">245768461</span>
+                                        </div>
+
+                                        <div class="history-step d-md-none">
+                                            <div class="history-step__head">מעקב הזמנה:</div>
+
+                                            <div class="history-step__list">
+                                                <div class="history-step__item history-step__item--circle">
+                                                    <img src="img/ic-check.png" alt="">
+                                                    <div class="history-step__text">התקבל</div>
+                                                </div>
+
+                                                <div class="history-step__item">
+                                                    <img src="img/ic-manage-call.svg" alt="">
+                                                </div>
+
+                                                <div class="history-step__item history-step__item--circle">
+                                                    <img src="img/ic-flag.png" alt="">
+                                                    <div class="history-step__text">אישו החיוב</div>
+                                                </div>
+
+                                                <div class="history-step__item">
+                                                    <img src="img/ic-hands.png" alt="">
+                                                </div>
+
+                                                <div class="history-step__item history-step__item--circle">
+                                                    <img src="img/ic-good.png" alt="">
+                                                    <div class="history-step__text">נמסר</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="history-card__time-wrap">
+                                        <div class="history-card__date">תאריך: <span class="history-card__date-val"> 21/10/17</span></div>
+                                        <div class="history-card__time">איסוף עצמי בשעה: <span class="history-card__time-val">13:00</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="history-card__head-bottom">
+                                    <div class="history-card__info-product">
+                                        <span class="history-card__product-name">פרחי קוליברי</span>
+                                        <span class="history-card__product-address">הרא“ה 133 רמת גן</span>
+                                        <span class="history-card__product-phone">טלפון: <span
+                        class="history-card__product-phone-num">054-5669877</span></span>
+                                    </div>
+
+                                    <div class="history-card__recipient">
+                                        פרטי המקבל: <span class="history-card__recipient-val">קטיה פ.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="history-card__main">
+                                <div class="history-card__desc">
+                                    <div class="history-card__img d-sm-none">
+                                        <img src="img/search-city.png" alt="">
+
+                                        <div class="history-card__icons d-md-none">
+                                            <a href="#" class="history-card__icon history-card__icon--wish"></a>
+                                        </div>
+
+                                        <div class="sticker-wrap">
+                                            <div class="sticker__label d-none d-md-inline-block">גודל</div>
+
+                                            <div class="sticker">
+                                                <div class="sticker__label d-md-none">גודל</div>
+                                                <div class="sticker__text">רגיל</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="history-card__count d-md-none">מק“ט 65</div>
+                                    </div>
+
+                                    <div class="history-card__content">
+                                        <div class="history-card__tag-wrap d-none d-md-inline-block">
+                                            <div class="tag tag--small tag--pink">חבילה רומנטית במבצע</div>
+                                            <div class="history-card__count">מק“ט 65</div>
+                                        </div>
+
+                                        <div class="history-card__name d-md-none">אלגנטי כפרי</div>
+
+                                        <div class="history-card__text d-md-none">יתכנו שינויים במפרט הזר-במידה והפרחים לא נמצאים במלאי ישולבו פרחים אחרים בצבעים תוים התמונה להמחשה בלבד.</div>
+
+                                        <div class="search-city-set-wrap">
+                                            <div class="history-card__img d-none d-sm-block">
+                                                <img src="img/search-city.png" alt="">
+
+                                                <div class="sticker-wrap">
+                                                    <div class="sticker__label d-none d-md-inline-block">גודל</div>
+
+                                                    <div class="sticker">
+                                                        <div class="sticker__label d-md-none">גודל</div>
+                                                        <div class="sticker__text">רגיל</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="search-city-set">
+                                                <div class="search-city-set__item">
+                                                    <div class="search-city-set__name"><span class="search-city-set__plus">+</span> אגרטל</div>
+
+                                                    <div class="search-city-set__img"><img src="img/search-city-set1.jpg" alt=""></div>
+                                                </div>
+
+                                                <div class="search-city-set__item">
+                                                    <div class="search-city-set__name"><span class="search-city-set__plus">+</span> כ. ברכה</div>
+
+                                                    <div class="search-city-set__img"><img src="img/search-city-set2.jpg" alt=""></div>
+                                                </div>
+
+                                                <div class="search-city-set__item">
+                                                    <div class="search-city-set__name"><span class="search-city-set__plus">+</span> שוקולד</div>
+
+                                                    <div class="search-city-set__img"><img src="img/search-city-set3.jpg" alt=""></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="history-card__explain d-none d-md-flex">
+                                            <div class="history-card__explain-item"> * התמונה להמחשה </div>
+                                        </div>
+
+                                        <div class="history-card__mark d-none d-md-flex">
+                                            <span class="history-card__mark-item">
+                        <span class="rating-mark">4.5</span><span class="d-md-none">ציון הגולשים</span>
+                                            </span>
+
+                                            <span class="history-card__mark-item">
+                        <span class="rating"><span class="rating__content" style="width: 90%"></span></span>
+                                            </span>
+
+                                            <span class="history-card__mark-item">
+                        <a href="#">8 חוות דעת</a>
+                      </span>
+
+                                            <span class="history-card__mark-item">9 הוזמנו </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end history-card__desc 
+
+                                <div class="history-card__info">
+                                    <div class="history-card__info-content">
+                                        <div class="history-card__price-wrap">
+                                            <div class="history-card__price-label">מחיר משופר</div>
+
+                                            <div class="history-card__old-price">₪165</div>
+                                            <div class="history-card__cur-price"> ₪150<span class="history-card__price-count d-xs-none">מק”ט
+                          65</span></div>
+                                        </div>
+
+                                        <div class="history-price-step">
+                                            <div class="history-price-step__item">
+                                                <div class="history-price-step__title">+ ₪100</div>
+                                                <div class="history-price-step__text">אגרטל</div>
+                                            </div>
+
+                                            <div class="history-price-step__item">
+                                                <div class="history-price-step__title">+ ₪10</div>
+                                                <div class="history-price-step__text">כ. ברכה</div>
+                                            </div>
+
+                                            <div class="history-price-step__item">
+                                                <div class="history-price-step__title">+ ₪50</div>
+                                                <div class="history-price-step__text">שוקולד</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="history-card__pay">
+                                            <div class="history-card__delivery"><span class="history-card__delivery-title d-none d-md-inline">משלוח חינם</span><span class="history-card__delivery-subtitle">סה”כ:</span><span class="history-card__delivery-sum">₪310</span></div>
+
+                                            <div class="history-card__credit">תשלום במקום</div>
+                                            <div class="history-card__unavailable">המוצר לא זמין כרגע</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="history-dispute">
+                                <div class="history-dispute__btn">
+                                    <a href="#" class="btn">ממתין לחוות דעת</a><a href="#" class="btn btn--blue">מחלוקת</a><a href="#" class="btn btn--pink">הודעות</a>
+                                </div>
+
+                                <div class="history-dispute__content d-block">
+                                    <div class="history-chat">
+                                        <div class="history-chat__item">
+                                            <span class="history-chat__name">רומן</span>
+                                            <span class="history-chat__version">8.3.19</span>
+                                            <span class="history-chat__time">9:15</span>
+                                            <span class="history-chat__text">שלום, הזמנתי זר ורציתי לוודא שהבנת את בקשתי. אשמח לתשובה תודה
+                        רבה</span>
+
+                                            <div class="history-chat__sub-item">
+                                                <span class="history-chat__name">פרחי קוליברי</span>
+                                                <span class="history-chat__version">8.3.19</span>
+                                                <span class="history-chat__time">9:18</span>
+                                                <span class="history-chat__text">שלום, אני כבר מכין את הסרט האדום לזר כמו שביקשת.</span>
+
+                                                <div class="history-chat__sub-item">
+                                                    <span class="history-chat__name">רומן</span>
+                                                    <span class="history-chat__version">8.3.19</span>
+                                                    <span class="history-chat__time">9:30</span>
+                                                    <span class="history-chat__text">תודה רבה!</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="history-dispute__form">
+                                        <form method="get" class="history-form">
+                                            <div class="history-form__field">
+                                                <span class="history-form__label">כתוב הודעה / תשובה</span>
+                                                <textarea></textarea>
+                                            </div>
+
+                                            <div class="history-form__submit">
+                                                <div class="history-form__polit">
+                                                    <div class="input-check">
+                                                        <input type="checkbox" id="checkbox2">
+                                                        <label for="checkbox2" class="input-check__label"><span class="input-check__text">I’m not a
+                                robot</span><span class="input-check__mark"></span></label>
+                                                    </div>
+                                                </div>
+
+                                                <input type="submit" class="btn" value="שלח">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+<!-- end content__center -->
+
+
+
+                <aside class="content__left">
+
+                </aside>
+            </div>
+        </div>
+        <!-- end st-width-full -->
+    </main>
+</div>

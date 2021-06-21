@@ -1,0 +1,56 @@
+<app-header [showSlider]="true" [slider]="slider"></app-header>
+<main>
+  <div class="st-width-full">
+    <div class="nav-site d-md-none">
+      <div class="breadcrumb breadcrumb--indent">
+        <div class="breadcrumb__item">
+          <a [routerLink]="'/'">{{ "breadcrumbs.homePage" | translate }}</a>
+        </div>
+        <div class="breadcrumb__item">
+          <a [routerLink]="'/category'">{{
+            "breadcrumbs.category" | translate
+          }}</a>
+        </div>
+        <div class="breadcrumb__item">{{ category.name[curLang] }}</div>
+      </div>
+    </div>
+
+    <div class="content-head d-md-none">
+      <div class="content-head__title">
+        <h1>{{ category.seo.h1[curLang] }}</h1>
+      </div>
+      <div
+        class="content-head__text"
+        [innerHTML]="category ? category.tagline[curLang] : ''"
+      ></div>
+    </div>
+    <app-catalog-list
+      [categoryName]="category.name[curLang]"
+      [linkToItemPage]="true"
+      [items]="items | filterItemsByCategoryId: categoryID"
+    ></app-catalog-list>
+    <section
+      class="unwrap-block unwrap-block--col-3"
+      (click)="toggleText()"
+      [ngClass]="{ opened: showText }"
+    >
+      <div class="unwrap-block__head">
+        <div class="h2">{{ category.seo.keywords[curLang] }}</div>
+        <div class="unwrap-block__arr"></div>
+      </div>
+      <div class="unwrap-block__content">
+        <div
+          class="unwrap-block__text"
+          [@slideInOut]="deliveryState"
+          [innerHTML]="category ? category.description[curLang] : ''"
+        ></div>
+      </div>
+    </section>
+    <!-- end unwrap-block -->
+    <app-popular-cities></app-popular-cities>
+    <app-accelerate-sales></app-accelerate-sales>
+    <app-watched-list></app-watched-list>
+    <app-analytics-item></app-analytics-item>
+  </div>
+</main>
+<app-footer></app-footer>

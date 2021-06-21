@@ -1,0 +1,52 @@
+<app-header [showSlider]="showSlider"></app-header>
+<main>
+  <div class="st-width-full">
+    <div class="content">
+      <aside class="content__right">
+        <app-hashve-banner></app-hashve-banner>
+      </aside>
+      <div class="content__center">
+        <h1>{{ h1 }}</h1>
+        <h2>{{ "shoplistpage.sortByRegions" | translate }}</h2>
+        <section class="countries">
+          <div class="countries__item" *ngFor="let region of regions">
+            <app-regionitem [region]="region"></app-regionitem>
+          </div>
+        </section>
+        <app-city-selector></app-city-selector>
+        <div class="shop-list">
+          <div
+            *ngFor="let shop of stores"
+            [shop]="shop"
+            class="shop-list__item"
+            app-shopitem
+          ></div>
+        </div>
+        <section
+          class="unwrap-block unwrap-block--col-3 unwrap-block--indent"
+          (click)="toggleArticle()"
+          [ngClass]="{ opened: showArticle }"
+        >
+          <div class="unwrap-block__head">
+            <div class="h2">{{ article.slogan[curLang] }}</div>
+            <div class="unwrap-block__arr"></div>
+          </div>
+          <div class="unwrap-block__content">
+            <div
+              class="unwrap-block__text"
+              [@slideInOut]="deliveryState"
+              [innerHTML]="article ? article.text[curLang] : ''"
+            ></div>
+          </div>
+        </section>
+        <!-- end unwrap-block -->
+      </div>
+      <aside class="content__left">
+        <ng-container *ngFor="let item of banners">
+          <div app-notice [banner]="item" class="header-bottom__notice"></div>
+        </ng-container>
+      </aside>
+    </div>
+  </div>
+</main>
+<app-footer></app-footer>

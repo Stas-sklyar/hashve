@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr';
+
+.css-time-over{
+  font-size: 2rem;
+  color: #b00;
+  margin: 16px 20px 0px 20px;
+}
+
+.popup-product-slide {
+  margin: 0px !important;
+  height: 180px !important;
+}
+
+
+.mat-form-field-label{
+  font-size: 16px;
+}
+
+.top-0{
+  top: 0px;
+}
+
+html[dir="rtl"] .star.half:after {
+  margin-left: auto;
+  margin-right: var(--halfMargin) !important;
+}
+
+a{
+  cursor: pointer;
+}
+
+input{
+  &.ng-invalid.ng-touched{
+    border-bottom: 1px solid rgb(255, 0, 0);
+  }
+
+  &.ng-touched.ng-dirty.ng-valid{
+    border-bottom: 1px solid green;
+  }
+}
+
+textarea{
+  &.ng-invalid.ng-touched{
+    border: 1px solid rgb(255, 0, 0);
+  }
+  &.ng-touched.ng-dirty.ng-valid{
+    border-bottom: 1px solid green;
+  }
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-suffix .mat-datepicker-toggle-default-icon {
+  width: 2em !important;
+
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

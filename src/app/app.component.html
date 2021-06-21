@@ -1,0 +1,6 @@
+<ngx-loading-bar [color]="'#58B32D'" [height]="'4px'"></ngx-loading-bar>
+<div class="wrapper wrapper--img" [@routeAnimation]="getDepth(myOutlet)" >
+  <app-registration *ngIf="showRegistrationForm" [formType]="formType" (onClose)="closeRegistrationForm()"></app-registration>
+  <router-outlet #myOutlet="outlet"></router-outlet>
+</div>
+

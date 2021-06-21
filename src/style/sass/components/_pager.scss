@@ -1,0 +1,23 @@
+﻿/*----------- pager -------------*/
+.pager{
+	font-family: $font-assistant;
+	@include font(normal, bold, 15px, 14px, #868686);
+	text-align: center;
+
+	&__arr{
+		text-decoration: none;
+		color: #868686;
+	}
+
+	&__arr:hover{
+		color: $color-text;
+	}
+
+	&__arr.inactive{
+		color: #cacaca;
+	}
+
+	&__text{
+		margin: 0 13px;
+	}
+}

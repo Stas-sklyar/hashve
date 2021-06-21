@@ -1,0 +1,140 @@
+<div class="popup">
+    <div class="popup__bg" [routerLink]="link"></div>
+
+    <div class="popup__content-wrap" style="width: 655px;">
+        <div class="popup__close" [routerLink]="link">X</div>
+
+        <div class="popup__content" style="background: transparent;">
+            <div class="product-popup">
+                <div class="product-popup__top">
+                    <div class="product-popup__head">
+                        <!-- <div class="product-popup__title">הזמנה נוכחית בטלפון</div> -->
+                        <div class="product-popup__label">פניה מס' <span class="product-popup__label-num">{{ offer.orderNumber }}</span></div>
+
+                        <div class="product-popup__btn">
+                            <a (click)="nextToPayment()" class="btn btn--border">{{ "payment.creditCard"| translate }}</a>
+                            <a (click)="nextToPayment()" class="btn btn--border">{{ "payment.phone"| translate }}</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="call-shop-popup">
+                    <div class="call-shop-popup__head"><span class="call-shop-popup__icon"><span class="call-shop-popup__icon-text">
+                        {{ "orderCallPopup.iconText"| translate }}
+            </span></span>{{ "orderCallPopup.callTo"| translate }}{{ offer.store.name[curLang] }} </div>
+
+                    <div class="call-shop-popup__text">
+
+                        <form class="form-site" [formGroup]="phoneForm" (ngSubmit)="storeCall($event)">
+                            <div class="form-site__field" dir="ltr">
+                                <span class="israel-flag"></span><span class="call-shop-input__text">0</span><input style="width: 165px" type="text" formControlName="phone"><span class="call-shop-popup__call-icon"></span>
+                            </div>
+                            <!-- <div class="form-site__explan" [ngClass]="{'error': phoneForm.invalid, 'success': !phoneForm.invalid}">יש להזין מס' טלפון שלכם ללא הספרה 0 בהתחלה.</div> -->
+                            <div class="form-site__explan">{{ "orderCallPopup.writePhone"| translate }}</div>
+                            <button type="submit" *ngIf="!startAnimate" style="margin: 0; width: 100%" class="btn" [disabled]="phoneForm.invalid" [ngClass]="{'btn--disabled': phoneForm.invalid}">{{ "orderCallPopup.callNow"| translate }}</button>
+                        </form>
+
+                    </div>
+
+
+                    <div class="progress" [ngClass]="{animate: startAnimate}">
+                        <div class="sk-fading-circle">
+                            <div class="sk-circle sk-circle-1"></div>
+                            <div class="sk-circle sk-circle-2"></div>
+                            <div class="sk-circle sk-circle-3"></div>
+                            <div class="sk-circle sk-circle-4"></div>
+                            <div class="sk-circle sk-circle-5"></div>
+                            <div class="sk-circle sk-circle-6"></div>
+                            <div class="sk-circle sk-circle-7"></div>
+                            <div class="sk-circle sk-circle-8"></div>
+                            <div class="sk-circle sk-circle-9"></div>
+                            <div class="sk-circle sk-circle-10"></div>
+                            <div class="sk-circle sk-circle-11"></div>
+                            <div class="sk-circle sk-circle-12"></div>
+                        </div>
+
+                        <div class="progress__text-wrap">
+                            <div class="progress__text progress__text_1"> {{ "orderCallPopup.progressOne"| translate }}</div>
+                            <div class="progress__text progress__text_2"> {{ "orderCallPopup.progressTwo"| translate }}</div>
+                            <div class="progress__text progress__text_3"> {{ "orderCallPopup.progressThree"| translate }}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="product-popup__wait">מתבצע חיוג ... מקשר עם החנות</div> -->
+
+                <!-- <div class="product-popup__text">פרטי ההזמנה התקבלו החנות</div> -->
+
+                <div class="product-popup-invite">
+                    <div class="product-popup-invite__title">{{ "payment.orderDetail"| translate }}</div>
+                    <div class="product-popup-invite__address"><span class="product-popup-invite__address-title">{{ "payment.storePerforms"| translate }}</span> {{ offer.store.name[curLang] }}
+                        <span class="about-shop__status" *ngIf='offer.store.isOpen'>{{ "citySearch.item.open"| translate }}</span>
+                        <span class="about-shop__status close" *ngIf='!offer.store.isOpen'>{{ "citySearch.item.close"| translate }}</span>
+                    </div>
+
+                </div>
+
+                <div class="product-popup-list">
+                    <div class="product-popup-list__item">
+                        <div class="product-popup-list__desc">
+                            <div class="product-popup-list__img" [style.backgroundImage]="'url(' + host + '/assets/items/' + offer.package.baseItem.picture + ')'"></div>
+
+                            <div class="product-popup-list__name">{{ "citySearch.item.code" | translate }} {{offer.package.baseItem.code}}
+                            </div>
+                            <div class="sticker" [ngClass]="{'sticker--purple': offer.package.size === _ItemSize.extralarge, 'sticker--blue': offer.package.size === _ItemSize.large}">
+                                <div class="sticker__label">{{ "citySearch.item.size"| translate }}</div>
+                                <div class="sticker__text">{{sizeArray[offer.package.size][curLang]}}</div>
+                            </div>
+                        </div>
+
+                        <div class="product-popup-list__price"><span class="product-popup-list__currency">₪</span>{{offer.store.getPriceById(offer.package.baseItem._id) + offer.package.size + offer.store.getDeliveryPrice(offer.city._id) }}</div>
+                        <!--(offer.city._id === _deliveryType.pickup ? 0 : -->
+                    </div>
+
+                    <div class="product-popup-list__item" *ngFor="let item of additionalItems">
+                        <div class="product-popup-list__desc">
+                            <div class="product-popup-list__img" [style.backgroundImage]="'url(' + host + '/assets/items/' + item.picture + ')'"></div>
+
+                            <div class="product-popup-list__name">{{item.name[curLang]}}</div>
+                        </div>
+
+                        <div class="product-popup-list__price"><span class="product-popup-list__currency">₪</span>{{offer.store.getPrice(item)}}</div>
+                    </div>
+
+                </div>
+                <!-- end product-popup-list -->
+
+                <div class="product-popup-result">
+                    <div class="product-popup-result__item">
+
+                        <div class="product-popup-result__title">{{ "payment.sum" | translate }}</div>
+                        <div class="product-popup-result__price"><span class="product-popup-result__currency">₪</span>{{offer.store.getPriceOfPackWithoutDiscount(offer.package) + offer.store.getDeliveryPrice(offer.city._id)}}</div>
+                    </div>
+
+                    <div class="product-popup-result__item">
+                        <div class="product-popup-result__title">{{ "payment.deal" | translate }}: </div>
+                        <div class="payment-offer-result__label product-popup-result__label--color" *ngIf="offer.package.tmp && offer.package.baseItem.isPriceImproveValid()">{{ "citySearch.item.priceImprove" | translate }}</div>
+                        <div class="payment-offer-result__label product-popup-result__label--color" *ngIf="offer.package.tmp && offer.package.baseItem.isDayDeal()">{{ "citySearch.item.dayDeal" | translate }}</div>
+                        <div class="payment-offer-result__label product-popup-result__label--color" *ngIf="offer.package.tmp && offer.package.baseItem.isSale()">{{ "citySearch.item.sale" | translate }}</div>
+                        <div class="product-popup-result__price product-popup-result__price--green">₪{{offer.store.getPriceOfPackWithoutDiscountWithDelivery(offer.package, offer.city._id) - offer.store.getPackagePriceWithDelivery(offer.package, offer.city._id)}}</div>
+                    </div>
+
+                    <div class="product-popup-result__item">
+                        <div class="product-popup-result__title">{{ "payment.delivery" | translate }}</div>
+                        <div class="product-popup-result__label">{{offer.city.name[curLang]}} </div>
+                        <div class="product-popup-result__price">כולל</div>
+                    </div>
+
+                    <div class="product-popup-result__item">
+                        <div class="product-popup-result__title">{{ "payment.form.sumForPayment" | translate }}</div>
+                        <div class="product-popup-result__price"><span class="product-popup-result__currency">₪</span>{{offer.store.getPackagePriceWithDelivery(offer.package, offer.city._id)}}</div>
+                    </div>
+                </div>
+
+                <!--<div class="product-popup__auth-wrap">למעקב אחר הזמנה <span class="product-popup__auth"><a href="#">התחברות </a>/<a href="#">הרשמה</a></span></div>-->
+            </div>
+            <!-- end product-popup -->
+        </div>
+        <!-- end product-popup-wrap -->
+    </div>
+</div>

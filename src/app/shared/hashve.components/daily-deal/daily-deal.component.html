@@ -1,0 +1,42 @@
+<a
+  *ngIf="curItem && !isItemRedirect"
+  (click)="redirect()"
+  class="good-day-slider__img"
+  [style.backgroundImage]="'url(' + pic + ')'"
+></a>
+
+<a
+  *ngIf="curItem && isItemRedirect"
+  [routerLink]="'/item/' + curItem.name[curLang] | spaceToUnderscore"
+  class="good-day-slider__img"
+  [style.backgroundImage]="'url(' + pic + ')'"
+></a>
+
+<div *ngIf="curItem" class="good-day-slider__content">
+  <div class="good-day-slider__item-name">
+    <div>{{ "citySearch.item.code" | translate }} {{ curItem.code }}</div>
+  </div>
+
+  <div class="good-day-slider__rating">
+    <span class="rating-mark">{{ curItem.rating }}</span>
+    <star-rating
+      *ngIf="!serverFlag"
+      [value]="curItem.rating"
+      checkedcolor="#EBB510"
+      uncheckedcolor="#DADADA"
+      size="20px"
+      readonly="true"
+    ></star-rating>
+  </div>
+
+  <div class="good-day-slider__price">
+    <span class="good-day-slider__old-price">₪{{ minPrice }}</span>
+    <span class="good-day-slider__cur-price"
+      >₪{{ curItem.price + deliveryPrice }}</span
+    >
+  </div>
+  <div class="catalog-list__count-container">
+    <div class="catalog-list__num">נרכשו {{ curItem.saledCount }}</div>
+    <!-- <span class="delivery__text"> {{ "citySearch.item.withDelivery" | translate }}</span> -->
+  </div>
+</div>

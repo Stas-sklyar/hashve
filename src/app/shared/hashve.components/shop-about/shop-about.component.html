@@ -1,0 +1,260 @@
+<div class="about-shop d-md-none">
+  <div class="about-shop__info">
+    <div class="about-shop__head">
+      <span class="about-shop__title">{{ _store.name[curLang] }}</span>
+      <span class="about-shop__status" *ngIf="_store.isOpen">פתוח</span>
+      <span class="about-shop__status close" *ngIf="!_store.isOpen">סגור</span>
+      <span class="about-shop__address">{{ _store.address[curLang] }}</span>
+      <a (click)="scroll('comments-list')" class="about-shop__review"
+        >{{ "storepage.reviews" | translate }} {{ _store.reviewsCount }}</a
+      >
+      <!-- <a href="#" class="shop-info__text">{{ "storepage.about-text" | translate }}</a> -->
+      <a [routerLink]="" (click)="scroll('about')" class="shop-info__about">{{
+        "storepage.about-text" | translate
+      }}</a>
+      <!-- <span class="about-shop__invite">25&nbsp;הזמנות </span> -->
+    </div>
+
+    <div class="about-shop__content">
+      <div class="shop-info">
+        <div class="shop-info__item">
+          <div class="shop-info__head">
+            <div class="shop-info__img">
+              <img src="/assets/img/shop-ic-call.png" alt="" />
+            </div>
+            <div class="shop-info__text">
+              {{ "storepage.call.btn-text" | translate }}
+            </div>
+          </div>
+
+          <div class="shop-info__popup">
+            <!-- <div class="shop-info__popup-head">{{ "storepage.call.title-popup" | translate }}</div>
+            <div class="shop-info__popup-text">{{ "storepage.call.text-popup" | translate }}</div> -->
+            <a *ngIf="_store.callNumber" href="tel:{{ _store.tel }}">{{
+              _store.tel
+            }}</a
+            ><br />
+            <div *ngIf="!_store.callNumber" class="shop-info__popup-head">
+              {{ "storepage.telCall" | translate }}
+            </div>
+            <div
+              *ngIf="!_store.callNumber"
+              class="shop-info__popup-text"
+              [innerHTML]="'storepage.callText' | translate"
+            ></div>
+          </div>
+        </div>
+
+        <div class="shop-info__item">
+          <a class="shop-info__head">
+            <div class="shop-info__img">
+              <img src="/assets/img/shop-ic-delivery.png" alt="" />
+            </div>
+            <div
+              class="shop-info__text shop-info__text--green shop-info__text--arr"
+            >
+              {{ city?.name[curLang] }}
+            </div>
+            <!-- <div class="shop-info__text">{{ "storepage.about-text" | translate }}</div> -->
+          </a>
+
+          <div class="shop-info__popup">
+            <!--<div class="shop-info__popup-head">איסוף עצמי</div>-->
+            <div class="shop-info__popup-head">
+              {{ "storepage.shippingDist" | translate }}
+            </div>
+            <div class="shop-info__popup-text">
+              <div class="shop-info-popup-list">
+                <div
+                  class="shop-info-popup-list__item"
+                  *ngFor="let delcity of deliveryCities"
+                >
+                  <a (click)="changeDelivery(delcity)">{{
+                    delcity.name[curLang]
+                  }}</a>
+                </div>
+                <!--<div class="shop-info-popup-list__item"><a href="#">יעד הספקה מרשימת משלוחים</a></div>
+                    <div class="shop-info-popup-list__item"><a href="#">חובה לבחור: סוג</a></div>-->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-info__item">
+          <div class="shop-info__head">
+            <div class="shop-info__img">
+              <img src="/assets/img/shop-ic-rating.png" alt="" /><span
+                class="shop-info__img-text"
+                >{{ _store.rating }}</span
+              >
+            </div>
+            <div class="shop-info__text">
+              {{ "storepage.rating-text" | translate }}
+            </div>
+          </div>
+
+          <div class="shop-info__popup">
+            <div class="shop-info__popup-head">
+              {{ "commentList.opinion" | translate }}
+            </div>
+            <div class="shop-info__popup-text">
+              <div class="shop-info__popup-rating">
+                <span class="rating-mark">{{ _store.rating }}</span>
+                <div class="rating-wrap">
+                  <star-rating
+                    *ngIf="!serverFlag"
+                    [value]="_store.rating"
+                    checkedcolor="#EBB510"
+                    uncheckedcolor="#DADADA"
+                    size="20px"
+                    readonly="true"
+                  ></star-rating>
+                  <div class="rating-wrap__text">
+                    {{ "storepage.rating-text-popup" | translate }}
+                  </div>
+                </div>
+              </div>
+
+              <p
+                [innerHTML]="
+                  'commentList.ratingTextTwo'
+                    | translate: { rate: _store.rate?.length || '0' }
+                "
+              ></p>
+              <a (click)="scroll('comments-list')" class="shop-info__link"
+                >{{ "commentList.read" | translate }} {{ _store.reviewsCount }}
+                {{ "commentList.opinion" | translate }}</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-info__item">
+          <div class="shop-info__head">
+            <div class="shop-info__img">
+              <img src="/assets/img/shop-ic-clock.png" alt="" />
+            </div>
+            <div class="shop-info__text">
+              {{ "storepage.worktime-text" | translate }}
+            </div>
+          </div>
+
+          <div class="shop-info__popup">
+            <div
+              class="shop-info__popup-text"
+              [innerHTML]="'shopAbout.shopText' | translate"
+            ></div>
+            <div class="shop-info__popup-shedule">
+              <div class="shop-info__popup-time">
+                <ng-container *ngIf="_store.weekHours.active">
+                  {{ "shopAbout.sunday" | translate }}
+                  {{ _store.weekHours.open.hour }}:{{
+                    _store.weekHours.open.minute | number: "2.0"
+                  }}-{{ _store.weekHours.close.hour }}:{{
+                    _store.weekHours.close.minute | number: "2.0"
+                  }}<br />
+                  {{ "shopAbout.monday" | translate }}
+                  {{ _store.weekHours.open.hour }}:{{
+                    _store.weekHours.open.minute | number: "2.0"
+                  }}-{{ _store.weekHours.close.hour }}:{{
+                    _store.weekHours.close.minute | number: "2.0"
+                  }}<br />
+                  {{ "shopAbout.tuesday" | translate }}
+                  {{ _store.weekHours.open.hour }}:{{
+                    _store.weekHours.open.minute | number: "2.0"
+                  }}-{{ _store.weekHours.close.hour }}:{{
+                    _store.weekHours.close.minute | number: "2.0"
+                  }}<br />
+                  {{ "shopAbout.wednesday" | translate }}
+                  {{ _store.weekHours.open.hour }}:{{
+                    _store.weekHours.open.minute | number: "2.0"
+                  }}-{{ _store.weekHours.close.hour }}:{{
+                    _store.weekHours.close.minute | number: "2.0"
+                  }}<br />
+                  {{ "shopAbout.thursday" | translate }}
+                  {{ _store.weekHours.open.hour }}:{{
+                    _store.weekHours.open.minute | number: "2.0"
+                  }}-{{ _store.weekHours.close.hour }}:{{
+                    _store.weekHours.close.minute | number: "2.0"
+                  }}<br />
+                </ng-container>
+                <ng-container *ngIf="_store.weekEndHours.active">
+                  {{ "shopAbout.friday" | translate }}
+                  {{ _store.weekEndHours.open.hour }}:{{
+                    _store.weekEndHours.open.minute | number: "2.0"
+                  }}-{{ _store.weekEndHours.close.hour }}:{{
+                    _store.weekEndHours.close.minute | number: "2.0"
+                  }}
+                </ng-container>
+              </div>
+
+              <div
+                *ngIf="_store.shabatHours.active"
+                [innerHTML]="'shopAbout.shabatWork' | translate"
+              ></div>
+              <div *ngIf="_store.shabatHours.active">
+                {{ "shopAbout.shabatWork" | translate }}
+                {{ _store.shabatHours.open.hour }}:{{
+                  _store.shabatHours.open.minute | number: "2.0"
+                }}-{{ _store.shabatHours.close.hour }}:{{
+                  _store.shabatHours.close.minute | number: "2.0"
+                }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-shop-notice">
+        <div class="about-shop-notice__text">{{ _store.message }}</div>
+        <a
+          class="about-shop-notice__text"
+          *ngIf="_store.callNumber"
+          href="tel:{{ _store.tel }}"
+          >{{ _store.tel }}</a
+        >
+        <!--<div class="about-shop-notice__label">אופציונלי. לא מופיע אם אין הודעה</div>-->
+      </div>
+    </div>
+  </div>
+
+  <section class="about-shop-gallery__slider">
+    <div class="about-shop__info-block">
+      <swiper
+        [config]="productDayConfig"
+        [classes]="'good-day-slider js-good-day-slider'"
+        *ngIf="productDayConfig !== null"
+      >
+        <div class="swiper-wrapper">
+          <div
+            class="good-day-slider__item swiper-slide"
+            *ngFor="let item of dayDeal"
+          >
+            <div class="swiper-slide">
+              <app-store-slider
+                [store]="_store"
+                [item]="item"
+              ></app-store-slider>
+            </div>
+          </div>
+
+          <div
+            class="good-day-slider__item swiper-slide store-slider__container"
+            *ngFor="let item of _store.pic"
+          >
+            <div class="swiper-slide">
+              <img
+                class="store-slider__img about-shop-gallery__item"
+                [src]="item"
+              />
+              <!-- <div style="height: 100%" class="store-slider__img " [style.backgroundImage]="'url('+item+')'"></div> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </swiper>
+    </div>
+  </section>
+</div>

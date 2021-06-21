@@ -1,0 +1,147 @@
+﻿/*----------- last-seen -------------*/
+.last-seen{
+	margin-bottom: 55px;
+
+	h2,
+	.h2{
+		border-bottom: 1px solid #bbbbbb;
+		margin-bottom: 8px;
+		padding-bottom: 1px;
+	}
+
+	&__list{
+		font-family: $font-assistant;
+		display: flex;
+		flex-wrap: wrap;
+		padding-bottom: 30px;
+	}
+
+	&__item{
+		width: 200px;
+	}
+
+	&__img{
+		width: 100%;
+		height: 164px;
+		background-color: #fff;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+		margin-bottom: 10px;
+	}
+
+	&__head{
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__name{
+		@include font(normal, bold, 14px, 18px, $color-text);
+	}
+
+	&__delivery{
+		@include font(normal, bold, 12px, 18px, #767676);
+	}
+
+	&__price{
+		@include font(normal, normal, 12px, 18px, $color-text);
+		margin-top: -2px;
+	}
+
+	&__price-main{
+		font-size: 18px;
+		font-weight: bold;
+	}
+
+	.swiper-pagination-bullet{
+		width: 11px;
+		height: 11px;
+		background: rgba(50,50,50,0.6);
+	}
+
+	.swiper-pagination-bullet-active{
+		background: $color-text;
+	}
+
+	.swiper-pagination-bullets{
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+	}
+
+	.swiper-button-disabled{
+		display: none;
+	}
+
+	&__list.swiper-container-rtl .swiper-button-prev,
+	&__list.swiper-container-rtl .swiper-button-next{
+		width: 53px;
+		height: 53px;
+		opacity: 0.8;
+	}
+
+	&__list.swiper-container-rtl .swiper-button-next{
+		background: url(#{$path-icon}/ic-prev.svg) no-repeat center;
+	}
+
+	&__list.swiper-container-rtl .swiper-button-prev{
+		background: url(#{$path-icon}/ic-next.svg) no-repeat center;
+	}
+
+	&__list.swiper-container-rtl .swiper-button-prev:hover,
+	&__list.swiper-container-rtl .swiper-button-next:hover{
+		opacity: 1;
+	}
+
+	.search-city-products + &{
+		margin-top: 60px;
+	}
+}
+
+@media (max-width: 1530px) {
+	.last-seen{
+		&__img{
+			height: 137px;
+		}
+	}
+}
+
+@media (max-width: 991px) {
+	.last-seen{
+		&__img{
+			height: 164px;
+		}
+
+		&__list{
+			margin-left: -10px;
+			margin-right: -10px;
+			padding-left: 10px;
+			padding-right: 10px;
+			padding-bottom: 0;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.last-seen {
+		margin: 15px -10px 35px;
+		padding: 0 10px;
+
+		&__name{
+			font-size: 12px;
+		}
+
+		&__img{
+			height: 145px;
+		}
+	}
+}
+
+@media (max-width: 420px) {
+	.last-seen{
+		&__img{
+			height: 125px;
+		}
+	}
+}

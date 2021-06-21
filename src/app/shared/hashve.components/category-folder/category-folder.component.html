@@ -1,0 +1,26 @@
+<div class="category-main">
+  <ng-container *ngIf="!link; else withNav">
+    <a [routerLink]="'/category/' + category.name[curLang] | spaceToUnderscore" *ngFor="let category of _categories" class="category-main__item">
+      <div class="category-main__img-wrap">
+        <div class="category-main__img" [style.backgroundImage]="'url('+category.pic+')'"></div>
+      </div>
+      <div class="category-main__content">
+        <div class="category-main__head">{{category.name[curLang]}}</div>
+        <!--<div class="category-main__text">{{category.seo.description[curLang]}}</div>-->
+      </div>
+    </a>
+  </ng-container>
+
+  <ng-template #withNav>
+    <a [routerLink]="'/פרחים_'+link.name[curLang] + '/' + category.name[curLang] | spaceToUnderscore" *ngFor="let category of _categories" class="category-main__item">
+      <div class="category-main__img-wrap">
+        <div class="category-main__img" [style.backgroundImage]="'url('+category.pic+')'"></div>
+      </div>
+      <div class="category-main__content">
+        <div class="category-main__head">{{category.name[curLang]}}</div>
+        <!--<div class="category-main__text">{{category.seo.description[curLang]}}</div>-->
+      </div>
+    </a>
+  </ng-template>
+
+</div>

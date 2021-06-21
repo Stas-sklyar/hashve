@@ -1,0 +1,46 @@
+.header-top.open .header-user{
+  display: block;
+}
+
+.mobile-menu{
+  overflow-y: auto;
+}
+
+:host {
+  .select__list{
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  .change-addr.btn{
+    display: inline-block;
+    height: 32px;
+    background: #58b32d;
+    border: 1px solid #58b32d;
+    outline: 0;
+    font-family: "Assistant", Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 30px;
+    color: #fff;
+    padding: 0 22px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    -webkit-appearance: push-button;
+    user-select: none;
+    align-items: flex-start;
+  }
+  .change-addr.btn.btn--border{
+    background: transparent;
+    border-color: #7a7a78;
+    font-weight: 600;
+    color: #282828;
+    padding: 0 20px;
+  }
+}
+
+.display-block{
+  display: block !important;
+}

@@ -1,0 +1,117 @@
+/*----------- admin-review -------------*/
+.admin-review{
+	margin-right: 80px;
+	max-width: 1235px;
+	margin-top: 37px;
+
+	& > h2,
+	& > .h2{
+		margin-bottom: 25px;
+	}
+
+	.shop-rating{
+		padding: 42px 27px;
+	}
+}
+
+.edit-comment{
+	.form-site{
+		width: 100%;
+		padding: 25px 55px;
+	}
+
+	.form-site__btn{
+		justify-content: flex-end;
+		margin-top: 20px;
+	}
+
+	.form-site__head{
+		margin-bottom: 26px;
+	}
+
+	textarea{
+		border: 1px solid #7f7f7f;
+		padding: 16px 13px;
+		line-height: 21px;
+	}
+}
+
+@media (max-width: 991px) {
+	.admin-review{
+		margin-left: -10px;
+		margin-right: -10px;
+
+		.shop-rating{
+			background: #fff;
+			padding: 48px 0;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		& > h2,
+		& > .h2{
+			padding-right: 15px;
+		}
+
+		.comment-rating__item{
+			margin-bottom: 0;
+			border-color: rgba(0,0,0,0.3);
+			border-left: 0;
+			border-right: 0;
+			border-bottom: 0;
+			padding: 20px 10px;
+		}
+
+		.comment-rating__caption{
+			width: auto;
+			margin-top: 0;
+			order: 0;
+		}
+
+		.comment-rating__info{
+			flex-wrap: wrap;
+		}
+
+		.comment-rating__avatar{
+			margin-right: 0;
+		}
+
+	}
+}
+
+@media (max-width: 767px) {
+	.edit-comment{
+		.form-site{
+			padding: 15px;
+		}
+	}
+}
+
+@media (max-width: 479px) {
+	.admin-review{
+		.comment-rating__rating,
+		.comment-rating__caption,
+		.comment-rating-action,
+		.comment-rating__date{
+			width: 50%;
+		}
+
+		.comment-rating__caption{
+			order: 3;
+		}
+
+		.comment-rating-action{
+			justify-content: flex-end;
+			order: 4;
+			margin-right: 0;
+			margin-top: 10px;
+		}
+
+		.comment-rating__date{
+			margin-right: 0;
+			margin-top: 10px;
+			text-align: left;
+		}
+	}
+
+}

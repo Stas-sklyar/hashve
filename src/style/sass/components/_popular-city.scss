@@ -1,0 +1,127 @@
+﻿/*----------- popular-city -------------*/
+.popular-city-wrap{
+	margin: 35px -30px 55px;
+	padding: 20px 30px 33px;
+	background: #fff;
+
+	h2,
+	.h2{
+		margin-bottom: 10px;
+	}
+}
+
+.popular-city{
+	display: flex;
+	flex-wrap: wrap;
+	font-family: $font-assistant;
+	padding-bottom: 40px;
+
+	&__item{
+		width: 203px;
+	}
+
+	&__img{
+		display: inline-block;
+		width: 100%;
+		height: 165px;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+	}
+
+	&__head{
+		@include font(normal, bold, 16px, 18px, $color-text);
+		margin-top: 5px;
+		padding-right: 4px;
+	}
+
+	&__text{
+		display: flex;
+		@include font(normal, normal, 14px, 18px, $color-text);
+		padding-right: 4px;
+	}
+
+	&__usually{
+		font-weight: bold;
+		margin-right: 14px;
+	}
+
+	.swiper-pagination-bullet{
+		width: 11px;
+		height: 11px;
+		background: rgba(50,50,50,0.6);
+	}
+
+	.swiper-pagination-bullet-active{
+		background: $color-text;
+	}
+
+	.swiper-pagination-bullets{
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+	}
+
+	.swiper-button-disabled{
+		display: none;
+	}
+
+	&.swiper-container-rtl .swiper-button-prev,
+	&.swiper-container-rtl .swiper-button-next{
+		width: 53px;
+		height: 53px;
+		opacity: 0.8;
+	}
+
+	&.swiper-container-rtl .swiper-button-next{
+		background: url(#{$path-icon}/ic-prev.svg) no-repeat center;
+	}
+
+	&.swiper-container-rtl .swiper-button-prev{
+		background: url(#{$path-icon}/ic-next.svg) no-repeat center;
+	}
+
+	&.swiper-container-rtl .swiper-button-prev:hover,
+	&.swiper-container-rtl .swiper-button-next:hover{
+		opacity: 1;
+	}
+}
+
+@media (max-width: 991px) {
+	.popular-city-wrap{
+		margin-left: -10px;
+		margin-right: -10px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	.popular-city{
+		margin-left: -10px;
+		margin-right: -10px;
+		padding-left: 10px;
+		padding-right: 10px;
+		padding-bottom: 0;
+	}
+}
+
+@media (max-width: 767px) {
+	.popular-city{
+		&__img{
+			height: 140px;
+		}
+	}
+}
+
+@media (max-width: 479px) {
+	.popular-city-wrap{
+		margin-top: 0;
+		margin-bottom: 20px;
+		padding-top: 10px;
+
+		h2,
+		.h2{
+			margin-bottom: 12px;
+		}
+	}
+}

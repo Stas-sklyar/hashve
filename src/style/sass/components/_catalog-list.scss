@@ -1,0 +1,142 @@
+﻿/*----------- catalog-list -------------*/
+.catalog-list{
+	display: flex;
+	flex-wrap: wrap;
+
+	&__item-wrap{
+		width: 25%;
+		margin-bottom: 18px;
+	}
+
+	&__item{
+		width: 200px;
+		margin: 0 auto;
+		padding: 5px;
+	}
+
+	&__img{
+		display: inline-block;
+		width: 100%;
+		height: 182px;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+	}
+
+	&__item:hover{
+		background-color: rgba(0,0,0,0.05);
+	}
+
+	&__name{
+		display: flex;
+		flex-direction: column-reverse;
+		justify-content: space-between;
+		align-items: center;
+		@include font(normal, bold, 18px, 22px, $color-text);
+		margin-bottom: 5px;
+	}
+
+	&__name h2,
+	&__name .h2{
+		margin: 0;
+	}
+
+	&__name-with-star{
+		margin-top: 0;
+		margin-bottom: 5px;
+	}
+
+	&__content{
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		margin-top: -5px;
+	}
+
+	&__price{
+		display: flex;
+		align-items: flex-end;
+	}
+
+	&__old-price{
+		@include font(normal, 600, 18px, 21px, #494949);
+		text-decoration: line-through;
+		margin-left: 8px;
+	}
+
+	&__cur-price{
+		@include font(normal, bold, 25px, 25px, #000);
+	}
+
+	&__num{
+		@include font(normal, 600, 13px, 15px, #494949);
+	}
+
+	&__link{
+		@include font(normal, bold, 13px, 16px, $color-green);
+	}
+}
+
+@media (max-width: 1279px) {
+	.catalog-list{
+		&__item{
+			width: 180px;
+		}
+
+		&__item-wrap{
+			width: 33.33%;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.catalog-list{
+		&__item-wrap{
+			width: 50%;
+		}
+	}
+}
+
+@media (max-width: 479px) {
+	.catalog-list{
+		&__item-wrap{
+			margin-bottom: 5px;
+		}
+
+		&__item{
+			width: 150px;
+		}
+
+		&__img{
+			height: 120px;
+		}
+
+		&__content{
+			display: block;
+		}
+
+		&__name{
+			font-size: 15px;
+			line-height: 18px;
+			margin-top: -7px;
+		}
+
+		&__old-price{
+			margin-left: 5px;
+		}
+
+		&--count-abs &__item{
+			position: relative;
+		}
+
+		&--count-abs &__num{
+			position: absolute;
+			left: 20px;
+			top: 115px;
+		}
+
+		&--count-abs &__name{
+			margin-top: 2px;
+		}
+	}
+}

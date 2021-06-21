@@ -1,0 +1,43 @@
+<app-header [showMobileMenu]="false" [showSlider]="showSlider"></app-header>
+<div class="wrapper">
+  <main>
+    <div class="st-width-full">
+      <div class="content">
+        <aside class="content__right">
+          <!-- <app-hashve-banner></app-hashve-banner> -->
+        </aside>
+        <div class="content__center">
+          <h1>{{ "busket.busket" | translate }}</h1>
+          <ng-container *ngFor="let cityPack of packByCity">
+            <h1 class="h1mini">
+              {{ "busket.found" | translate
+              }}<span class="red">{{ cityPack.length }}</span>
+              {{ "busket.productsIn" | translate
+              }}{{ cityPack[0].city.name[curLang] }}
+            </h1>
+            <div class="basket">
+              <section class="search-city">
+                <ng-container *ngFor="let item of cityPack">
+                  <app-package-full
+                    [items]="items"
+                    [pack]="item"
+                  ></app-package-full>
+                </ng-container>
+              </section>
+            </div>
+          </ng-container>
+        </div>
+        <!-- end content__center -->
+        <aside class="content__left">
+          <div class="header-auth">
+            <!-- <div class="header-bottom__notice" app-notice>
+
+                        </div> -->
+          </div>
+        </aside>
+      </div>
+    </div>
+    <!-- end st-width-full -->
+  </main>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,40 @@
+.cee-city{
+    display: flex;
+    position: relative;
+}
+.css-confirm{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.form-site__field input{
+    width: 80%;
+    border-bottom: 1px solid #ccc;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    outline: none;
+}
+
+.form-site__label {
+    margin-left: 10px;
+}
+
+.form-site__field{
+    width: 50%;
+}
+
+.form-site input[type=text] {
+    padding-right: 20px !important;
+}
+
+@media(max-width:767px){
+    .form-site__field{
+        width: 80%;
+    }
+}
+
+@media(max-width:480px){
+    .form-site__field input{
+        width: 60%;
+    }
+}

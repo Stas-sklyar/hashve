@@ -1,0 +1,50 @@
+/*--------------------- ICONS ----------------------*/
+
+.shop__icon{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.shop__icon_item{
+  height: 30px;
+  width: 30px;
+  margin: 5px 10px;
+}
+
+.delivery-icon{
+  background-image: url("../../../../style/img/delivery.svg");
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: right top;
+}
+
+.pickup-icon{
+  background-image: url("../../../../style/img/pickup.svg");
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: right top;
+}
+
+.fastDelivery-icon{
+  background-image: url("../../../../style/img/fast-delivery.svg");
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: right top;
+}
+
+.creditCard{
+  background-image: url("../../../../style/img/credit-card.svg");
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: right top;
+}
+
+.phonePay{
+  background-image: url("../../../../style/img/smartphone.svg");
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: right top;
+}
+
+/*--------------------- ICONS END ----------------------*/

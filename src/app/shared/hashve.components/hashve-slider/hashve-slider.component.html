@@ -1,0 +1,88 @@
+<swiper [config]="config1" [classes]="'js-top-slider'" *ngIf="slider">
+  <div class="swiper-wrapper">
+    <!--new slide-->
+    <!-- <div class="top-slider__slide swiper-slide">
+            <div class="top-slider__list">
+                <div class="top-slider__item">ראש השנה בפתח - הקדימו הזמנות פרחים לחג!</div>
+            </div>
+
+            <div class="top-slider__text">ניתן לשריין הזמנה מקטגוריית.פרחים לראש השנה - למגוון הצעות בלעדיות מחנויות. "הצעות לחג"</div>
+            <a [routerLink]="'/category/פרחים_לראש_השנה'" class="btn btn--border">מבצעים לחג</a>
+        </div>
+
+        <div class="top-slider__slide swiper-slide">
+            <div class="top-slider__list">
+                <div class="top-slider__item">
+                    פרחים לראש השנה 2020 מזמינים מחנויות האיגוד בפריסה ארצית..
+                </div>
+            </div>
+
+            <div class="top-slider__text">מבצעים חמים ובלעדיים למקדימים הזמנות משלוחי פרחים לראש השנה.</div>
+            <a [routerLink]="'/category/פרחים_לראש_השנה'" class="btn btn--border">מבצעים לחג</a>
+        </div> -->
+
+    <!--new slide-->
+
+    <div
+      class="top-slider__slide swiper-slide"
+      *ngFor="let slide of slider.slides"
+    >
+      <div
+        class="top-slider__list"
+        *ngIf="slide.title[curLang].split('%sep%').length === 1"
+      >
+        <div class="top-slider__item">{{ slide.title[curLang] }}</div>
+      </div>
+
+      <div
+        class="top-slider__list"
+        *ngIf="slide.title[curLang].split('%sep%').length > 1"
+      >
+        <div
+          class="top-slider__item"
+          *ngFor="let subtitle of slide.title[curLang].split('%sep%')"
+        >
+          {{ subtitle }}
+        </div>
+      </div>
+
+      <div class="top-slider__text">
+        {{ slide.subtitle[curLang] }}
+      </div>
+      <a [routerLink]="slide.link" class="btn btn--border">
+        {{ slide.buttonText[curLang] }}
+      </a>
+    </div>
+
+    <!-- <div class="top-slider__slide swiper-slide">
+            <div class="top-slider__list">
+                <div class="top-slider__item">{{ "mainSlider.slide3.header" | translate }}</div>
+            </div>
+
+            <div class="top-slider__text">{{ "mainSlider.slide3.text" | translate }}</div>
+            <a [routerLink]="'/תמיכה'" class="btn btn--border">{{ "mainSlider.slide3.button" | translate }}</a>
+        </div>
+
+        <div class="top-slider__slide swiper-slide">
+            <div class="top-slider__list">
+                <div class="top-slider__item">{{ "mainSlider.slide2.header1" | translate }}</div>
+                <div class="top-slider__item">{{ "mainSlider.slide2.header2" | translate }}</div>
+                <div class="top-slider__item">{{ "mainSlider.slide2.header3" | translate }}</div>
+            </div>
+
+            <div class="top-slider__text">{{ "mainSlider.slide2.text" | translate }}</div>
+            <a href="/#homepage-article" class="btn btn--border">{{ "mainSlider.slide2.button" | translate }}</a>
+        </div>
+
+        <div class="top-slider__slide swiper-slide">
+            <div class="top-slider__list">
+                <div class="top-slider__item">{{ "mainSlider.slide1.header" | translate }}</div>
+            </div>
+
+            <div class="top-slider__text">{{ "mainSlider.slide1.text" | translate }}</div>
+            <a [routerLink]="'/category/מבצעים_חמים'" class="btn btn--border">{{ "mainSlider.slide1.button" | translate }}</a>
+        </div> -->
+  </div>
+
+  <div class="swiper-pagination"></div>
+</swiper>

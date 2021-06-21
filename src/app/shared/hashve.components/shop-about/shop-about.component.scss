@@ -1,0 +1,44 @@
+.about-shop-notice__text {
+    font-size: 18px;
+}
+
+.about-shop-gallery__item {
+    margin: 0 auto;
+    display: block;
+}
+
+.about-shop-gallery__slider {
+    width: 50%;
+}
+
+.about-shop__info-block {
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    position: relative;
+    background: #fff;
+    padding: 11px 10px 0;
+    font-family: "Assistant", Arial, sans-serif;
+    margin-bottom: 0;
+}
+
+.store-slider__container {
+    margin-left: 10px;
+}
+
+.store-slider__img {
+    display: block;
+    width: 100%;
+    height: 150px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    // margin-bottom: 17px;
+}
+
+.about-shop-notice__text{
+    max-width: 150px;
+}

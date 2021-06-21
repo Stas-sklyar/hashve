@@ -1,0 +1,83 @@
+<app-header [showSlider]="showSlider"></app-header>
+<main>
+  <div class="st-width-full">
+    <div class="content">
+      <aside class="content__right">
+        <div class="notice-green">
+          <div class="notice-green__list">
+            <div class="notice-green__item">השוואה</div>
+            <div class="notice-green__item">שיפור מחיר</div>
+            <div class="notice-green__item">הזמנות ומשלוחים</div>
+          </div>
+
+          <div class="notice-green__text">מצאו מוצר מתאים,<br> השוו מחירים וקבלו הצעות משופרות מחנויות</div>
+
+          <a href="#" class="btn btn--border">לפרטים נוספים</a>
+
+          <a href="#" class="notice-green__close">X</a>
+        </div>
+      </aside>
+
+      <div class="content__center">
+        <form method="get" class="rating-form">
+          <div class="rating-form__top">
+            <div class="rating-form__head">{{ "rate.rate" | translate }}</div>
+            <div class="rating-form__text">{{ "rate.notice" | translate: {
+              name: order.customerDitails.fullName.split(" ")[0],
+              date: date,
+              store: order.productOffer.store.name[curLang]
+            } }}</div>
+
+            <div *ngIf="order.rate" class="rating-form__text" style="color: red">
+              {{ "rate.rateExists" | translate }}
+            </div>
+
+            <div class="rating-wrap" *ngIf="!order.rate">
+              <div class="rating-wrap__text"><span class="rating-wrap__req">*</span>{{ "rate.rateOrder" | translate }}
+              </div>
+
+              <div class="rating-wrap__line" style="margin-top: 25px">
+                <star-rating [value]="this.rate.rate" checkedcolor="gold" uncheckedcolor="#DADADA" size="50px" readonly="false"
+                             (rate)="onRate($event)"></star-rating>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="rating-form__field" *ngIf="!order.rate">
+            <div class="rating-form__label">{{ "rate.feedback" | translate }}</div>
+            <textarea [ngModelOptions]="{standalone: true}" [(ngModel)]="rate.feedback"></textarea>
+          </div>
+
+          <div class="rating-form__submit" *ngIf="!order.rate">
+            <!-- <div class="rating-form__polit">
+              <div class="input-check">
+                <input type="checkbox" id="checkbox2">
+                <label for="checkbox2" class="input-check__label"><span class="input-check__text">I’m not a robot</span><span
+                  class="input-check__mark"></span></label>
+              </div>
+            </div> -->
+
+            <input (click)="saveRate()" type="button" class="btn" value="שלח">
+          </div>
+        </form>
+
+      </div><!-- end content__center -->
+
+      <aside class="content__left">
+        <div class="header-auth">
+          <div class="btn-auth"><a href="#">התחברות </a>/<a href="#">הרשמה</a></div>
+
+          <div class="header-bottom__notice">
+            <div class="notice-grey notice-grey--long">
+              <div class="notice-grey__title">רשמו את בית העסק שלכם</div>
+              <div class="notice-grey__label">ותרווחו לקוחות חדשים</div>
+              <a href="#" class="btn btn--white">הירשמו לשירות</a>
+              <a href="#" class="notice-grey__close">X</a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,19 @@
+.countries__item {
+    width: calc(20% - 20px);
+}
+
+.countries__city {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .countries__item {
+        width: calc(33.33% - 16px);
+    }
+}
+
+@media (max-width: 381px) {
+    .countries__item {
+        width: calc(50% - 16px);
+    }
+}

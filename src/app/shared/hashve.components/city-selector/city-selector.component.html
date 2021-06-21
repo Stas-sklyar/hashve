@@ -1,0 +1,19 @@
+<div class="cee-city">
+    <div class="form-site__field">
+        <label for="city" class="form-site__label">{{ "header.delivery_city_city" | translate}}</label>
+        <input type="text" placeholder="{{ 'components.deliveryPanel.citySearchPlaceholder' | translate }}"
+            autocomplete="off" [ngClass]="{error: showHelp}" value="{{selectedCity?selectedCity.name[curLang]:''}}"
+            (focus)="showCityList($event)" (blur)="showCityList($event)" (keyup)="filterCities($event)">
+        <span class="form-site__error" *ngIf="showHelp">{{ "components.deliveryPanel.deliveryCity" | translate }}</span>
+        <div class="select__list" [style.display]="ddlStatus" style="max-height: 250px; overflow: auto;">
+            <ng-container *ngIf="cityFilteredList">
+                <div class="select__item" [ngClass]="{active: tmpCity!==undefined?tmpCity._id === city._id: false}"
+                    (click)="selectCity(city)" *ngFor="let city of cityFilteredList">
+                    {{city.name[curLang]}}</div>
+            </ng-container>
+        </div>
+    </div>
+    <div class="css-confirm">
+        <button [disabled]="!selectedCity" (click)="confirmCity()" class="btn btn--orange change-addr"> חפש </button>
+    </div>
+</div>

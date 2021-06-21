@@ -1,0 +1,61 @@
+<ng-template [ngIf]="!withMap">
+    <div class="shop-list__info-wrap">
+        <div [ngStyle]="{height: shortOverview?'80px':'165px'}" class="shop-list__img" [style.backgroundImage]="'url(' + pic + ')'"></div>
+
+        <div class="shop-list__info">
+            <a [routerLink]="['/', _shop.link]" class="shop-list__name">{{ _shop.name[curLang] }}</a>
+            <div class="shop-list__address">{{ _shop.address[curLang] }}</div>
+
+            <!-- <div class="shop__icon">
+              <div class="shop__icon_item delivery-icon"></div>
+              <div class="shop__icon_item pickup-icon"></div>
+              <div class="shop__icon_item fastDelivery-icon"></div>
+              <div class="shop__icon_item creditCard"></div>
+              <div class="shop__icon_item phonePay"></div>
+              <div class="shop__icon_item bitPayh"></div>
+            </div> -->
+
+            <div *ngIf="!shortOverview" class="shop-list__text" [innerHTML]="_shop.description[curLang]"></div>
+
+            <div class="shop-list__count">
+                <span class="shop-list__rating"><span class="shop-list__rating-num">{{_shop.rating}}</span> {{ "productItem.rate" | translate }} </span>
+                <!--<span class="shop-list__invite"><span class="shop-list__invite-num">84</span> הזמנות</span>-->
+                <a [routerLink]="['/', _shop.link]" class="shop-list__link">{{_shop.reviewsCount}} {{ "citySearch.item.reviews" | translate }} </a>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template [ngIf]="withMap">
+    <div class="shop-map-list__info-wrap" *ngIf="withMap">
+        <div class="shop-map-list__img" [style.backgroundImage]="'url(' + pic + ')'"></div>
+
+        <div class="shop-map-list__info">
+            <div class="shop-map-list__head">
+                <a [routerLink]="['/', _shop.link]" class="shop-map-list__name">{{ _shop.name[curLang] }}</a>
+                <span>
+          <svg height="20px" width="20px" viewBox="0 0 20 10" *ngIf="_shop.color">
+          <path [attr.fill]="_shop.color" transform="scale(0.3)"
+            d="M26.85,42.47c3.37-4.67,7.02-10.28,9.5-15.71c0.55-1.2,0.96-2.45,1.24-3.75c0.28-1.29,0.42-2.63,0.42-4h0 c0-5.24-2.14-9.99-5.58-13.43C28.99,2.13,24.24,0,19,0v0C13.76,0,9.01,2.14,5.57,5.58C2.13,9.02,0,13.77,0,19.01 c0,1.37,0.14,2.71,0.42,4c0.28,1.3,0.69,2.55,1.24,3.75c1.87,4.09,4.41,8.3,6.99,12.13c4.23,6.27,8.57,11.47,10.36,13.56 C20.43,50.77,23.5,47.1,26.85,42.47L26.85,42.47z"/>
+            </svg>
+          {{ _shop.address[curLang] }}</span>
+            </div>
+
+            <div class="shop-map-list__text" [innerHTML]="_shop.description[curLang]"></div>
+
+            <div class="shop-map-list__count">
+                <span class="shop-map-list__rating"><span class="shop-map-list__rating-num">{{_shop.rating}}</span> {{ "productItem.rate" | translate }} </span>
+                <a href="#" class="shop-map-list__link">{{_shop.reviewsCount}} {{ "citySearch.item.reviews" | translate }} </a>
+            </div>
+            <!-- <div class="shop-map-list__comment">* אפשרות למשלוח מהיר</div> -->
+        </div>
+    </div>
+
+    <div class="shop-map-list__price">{{ "citySearch.item.dayDeal" | translate }} ₪{{item?.price}}</div>
+
+    <div class="search-city">
+        <div class="search-city__item" *ngIf="item && stores">
+            <app-item-search [showOffers]="false" [item]="item" [store]="stores"></app-item-search>
+        </div>
+    </div>
+</ng-template>

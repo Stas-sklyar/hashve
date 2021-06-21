@@ -1,0 +1,57 @@
+﻿/*----------- popup -------------*/
+.popup{
+	width: 100%;
+	height: 100%;
+	font-family: $font-assistant;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 105;
+
+	&__bg{
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,0.6);
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	&__content-wrap{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		position: relative;
+		max-width: 1078px;
+		position: absolute;
+		@include top-center;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		height: 90%;
+		max-height: auto;
+	}
+
+	&__content{
+		max-height: 100%;
+		overflow-y: auto;
+		background: #fff;
+	}
+
+	&__close{
+		@include font(normal, bold, 35px, 35px, #fff);
+		margin-bottom: 6px;
+		align-self: flex-end;
+		cursor: pointer;
+	}
+}
+
+@media (max-width: 767px) {
+	.popup{
+		&__content-wrap{
+			max-width: 100%;
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+	}
+}

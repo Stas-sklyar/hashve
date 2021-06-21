@@ -1,0 +1,107 @@
+﻿/*----------- rating -------------*/
+.rating-wrap{
+	&__text{
+		@include font(normal, 600, 14px, 12px, #494949);
+	}
+
+	&__req{
+		color: #f40000;
+	}
+
+	&__label{
+		display: flex;
+		justify-content: space-between;
+		width: 83px;
+		@include font(normal, 600, 12px, 14px, #494949);
+		margin-top: 2px;
+	}
+
+	&__label--big{
+		width: 244px;
+	}
+
+	&__label--superbig{
+		width: 427px;
+		font-size: 20px;
+		line-height: 20px;
+		color: #000;
+		padding: 0 27px;
+	}
+}
+
+.rating{
+	display: inline-block;
+	height: 14px;
+	width: 83px;
+	background: url(#{$path-img}/stars.png) repeat-x 0 0;
+	position: relative;
+
+	&__content{
+		display: block;
+		width: 0;
+		height: 100%;
+		background: url(#{$path-img}/stars.png) repeat-x 0 -20px;
+		position: absolute;
+		top: 0;
+		right: 1px;
+		transform: scale(-1, 1);
+	}
+
+	&--big{
+		height: 40px;
+		width: 244px;
+		background: url(#{$path-img}/stars-big.png) repeat-x 0 0;
+	}
+
+	&--big &__content{
+		background: url(#{$path-img}/stars-big.png) repeat-x 0 -50px;
+	}
+
+	&--superbig{
+		height: 61px;
+		width: 427px;
+		background: url(#{$path-img}/stars-superbig.png) repeat-x 0 0;
+	}
+
+	&--superbig &__content{
+		background: url(#{$path-img}/stars-superbig.png) repeat-x 0 -70px;
+	}
+}
+
+.rating-mark{
+	display: inline-block;
+	padding: 0 4px;
+	background: $color-green;
+	@include font(normal, bold, 14px, 16px, #fff);
+	text-align: center;
+
+	&--orange{
+		background: #dc8905;
+	}
+
+	&--red{
+		background: #dc2c05;
+	}
+}
+
+@media (max-width: 479px) {
+	.rating{
+		&--superbig{
+			height: 40px;
+			width: 244px;
+			background: url(#{$path-img}/stars-big.png) repeat-x 0 0;
+		}
+
+		&--superbig &__content{
+			background: url(#{$path-img}/stars-big.png) repeat-x 0 -50px;
+		}
+	}
+
+	.rating-wrap{
+		&__label--superbig{
+			width: 244px;
+			padding: 0 17px;
+			font-size: 18px;
+		}
+	}
+}

@@ -1,0 +1,10 @@
+<!-- <div style="position: relative">
+  <lib-ngx-image-zoom [zoomMode]="'toggle'"
+                      [thumbImage]="url"
+                      [fullImage]="url"
+  ></lib-ngx-image-zoom>
+  <div (click)="dialogRef.close()" style="position: absolute; top: 20px; right: 20px; color: wheat; font-size: 18px; cursor: pointer;"> X </div>
+</div> -->
+
+
+<img (click)="dialogRef.close()" fxFlex="100%" [src]="data.img">

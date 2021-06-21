@@ -1,0 +1,67 @@
+<a
+  *ngIf="!linkToItemPage || store"
+  (click)="onProductSelected()"
+  class="catalog-list__img"
+  [style.backgroundImage]="'url(' + pic + ')'"
+></a>
+<a
+  *ngIf="linkToItemPage && !store"
+  [routerLink]="'/item/' + curItem.name[curLang] | spaceToUnderscore"
+  class="catalog-list__img"
+  [style.backgroundImage]="'url(' + pic + ')'"
+></a>
+
+<div class="catalog-list__name">
+  <h2 [ngClass]="{ 'catalog-list__name-with-star': _ratingEnable }">
+    {{ "citySearch.item.code" | translate }} {{ curItem.code }}
+  </h2>
+</div>
+<star-rating
+  [value]="curItem.rating"
+  checkedcolor="#EBB510"
+  uncheckedcolor="#DADADA"
+  size="20px"
+  readonly="true"
+  *ngIf="_ratingEnable && !serverFlag"
+  [ngClass]="'rating'"
+></star-rating>
+
+<div class="catalog-list__content" *ngIf="curItem">
+  <div class="catalog-list__price">
+    <ng-container *ngIf="salePrice > 0 && minPrice > 0">
+      <span class="catalog-list__old-price">₪{{ minPrice }}</span>
+      <span class="catalog-list__cur-price">₪{{ salePrice }}</span>
+    </ng-container>
+
+    <ng-container
+      *ngIf="
+        salePrice === 0 &&
+        maxPrice > 0 &&
+        minPrice > 0 &&
+        !curItem.isSale() &&
+        !curItem.isDayDeal() &&
+        !stoerPrice
+      "
+    >
+      <span class="catalog-list__cur-price">₪{{ maxPrice }}</span>
+      <span class="catalog-list__cur-price"> - </span>
+      <span class="catalog-list__cur-price">₪{{ minPrice }}</span>
+    </ng-container>
+
+    <ng-container
+      *ngIf="
+        price > 0 && stoerPrice && !curItem.isSale() && !curItem.isDayDeal()
+      "
+    >
+      <span class="catalog-list__cur-price">₪{{ price }}</span>
+    </ng-container>
+
+    <ng-container *ngIf="price > 0 && salePrice > 0 && minPrice === 0">
+      <span class="catalog-list__old-price">₪{{ price }}</span>
+      <span class="catalog-list__cur-price">₪{{ salePrice }}</span>
+    </ng-container>
+  </div>
+</div>
+<div class="catalog-list__count-container">
+  <div class="catalog-list__num">נרכשו {{ curItem.saledCount }}</div>
+</div>

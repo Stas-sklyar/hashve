@@ -1,0 +1,45 @@
+<app-header [showMobileMenu]="false" [showSlider]="showSlider"></app-header>
+<div class="wrapper">
+
+    <main>
+        <div class="st-width-full">
+            <div class="content">
+                <aside class="content__right">
+                    <app-hashve-banner></app-hashve-banner>
+                </aside>
+                <ng-container>
+                    <div class="content__center">
+
+                        <h1>{{ "betterPrice.fixPrice" | translate }}</h1>
+                        <h1 class="h1mini">{{ "betterPrice.found" | translate }} <span class="red">{{WISH_LIST.length}}</span> {{ "betterPrice.choose" | translate }}{{currentCity.name[curLang]}}</h1>
+                        <div class="better-price">
+                            <section class="search-city" *ngIf="currentCity">
+                                <app-item-better-price [store]="stores" [showOffers]="false" [item]="item" *ngFor="let item of WISH_LIST"></app-item-better-price>
+                            </section>
+
+                            <app-accelerate-sales></app-accelerate-sales>
+
+                            <app-watched-list></app-watched-list>
+                        </div>
+
+                    </div>
+                    <!-- end content__center -->
+
+                </ng-container>
+                <aside class="content__left">
+                    <div class="header-auth">
+                        <div class="header-bottom__notice">
+                            <div class="notice-grey notice-grey--long">
+                                <div class="notice-grey__title">{{ "betterPrice.buissnesName" | translate }}</div>
+                                <div class="notice-grey__label">{{ "betterPrice.newCostumers" | translate }}</div>
+                                <a href="#" class="btn btn--white">{{ "betterPrice.singUp" | translate }}</a>
+                                <a href="#" class="notice-grey__close">{{ "betterPrice.x" | translate }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+        <!-- end st-width-full -->
+    </main>
+</div>

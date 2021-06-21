@@ -1,0 +1,379 @@
+<ngx-json-ld [json]="schema"></ngx-json-ld>
+<app-header
+  *ngIf="!isMobile"
+  [itemName]="pack.baseItem.name[curLang]"
+  [showSlider]="showSlider"
+></app-header>
+<app-product-header-mobile
+  *ngIf="isMobile"
+  [itemName]="pack.baseItem.code"
+></app-product-header-mobile>
+<main>
+  <div class="st-width-full">
+    <div class="nav-site d-md-none">
+      <div class="breadcrumb">
+        <div class="breadcrumb__item">
+          <a [routerLink]="'/'">{{ "breadcrumbs.homePage" | translate }}</a>
+        </div>
+        <div class="breadcrumb__item">
+          <a [routerLink]="'/category'">{{
+            "breadcrumbs.category" | translate
+          }}</a>
+        </div>
+        <div class="breadcrumb__item">{{ pack.baseItem.name[curLang] }}</div>
+      </div>
+    </div>
+    <div class="content">
+      <aside class="content__right">
+        <app-hashve-banner></app-hashve-banner>
+      </aside>
+
+      <div class="content__center">
+        <section class="product-card-wrap">
+          <!--<div class="product-action d-none d-md-flex">
+            <div class="product-action__btn">
+              <a (click)="nextToPayment()" class="btn btn&#45;&#45;middle">{{ "product.buyNow" | translate }}</a>
+              <a (click)="addToCard()" class="btn btn&#45;&#45;middle btn&#45;&#45;orange">{{ "product.addToCard" | translate }}</a>
+            </div>
+
+            <a href="#" class="product-action__shop">
+              <img src="img/ic-shop.png" alt="">
+              <span class="product-action__text">לחנות</span>
+            </a>
+          </div>-->
+
+          <div class="product-card">
+            <div class="product-card__img-wrap">
+              <div class="product-card__head d-md-none">
+                <div class="tag" *ngIf="pack.baseItem.isDayDeal()">
+                  {{ "itemPage.daylyDeal" | translate }}
+                </div>
+                <div class="tag tag--red" *ngIf="pack.baseItem.isSale()">
+                  {{ "itemPage.sale" | translate }}
+                </div>
+
+                <h2 class="product-card__name">
+                  {{ "citySearch.item.code" | translate }}
+                  {{ pack.baseItem.code }}
+                </h2>
+                <span class="product-card__count">
+                  {{ pack.baseItem.name[curLang] }}
+                </span>
+
+                <div class="product-card__icons">
+                  <a
+                    (click)="addToWishList()"
+                    [ngClass]="{ active: isWished() }"
+                    class="search-city-param__icon search-city-param__icon--wish"
+                  ></a>
+                  <!--<a href="#" class="product-card__icon product-card__icon&#45;&#45;share"></a>-->
+                </div>
+              </div>
+
+              <div
+                class="product-card__img"
+                [style.backgroundImage]="
+                  'url(' + host + '/assets/items/' + pack.baseItem.picture + ')'
+                "
+              >
+                <!-- <a [routerLink]="['/', 'product', offerID]" [queryParams]="{ callBack: true}" class="product-card__call"></a> -->
+              </div>
+            </div>
+            <div class="header-delivery d-none d-md-block">
+              <app-delivery-panel
+                [style.visibility]="!showMobileSelect ? 'hidden' : ''"
+              ></app-delivery-panel>
+            </div>
+
+            <div class="product-card__info">
+              <h2
+                class="product-card__seo d-md-none"
+                *ngIf="pack.baseItem.seo.h1"
+              >
+                {{ pack.baseItem.seo.h1[curLang] }}
+              </h2>
+
+              <div class="product-card__info-mob-top">
+                <div class="product-card__mark">
+                  <span class="product-card__mark-item">
+                    <span class="rating-mark">{{ pack.baseItem.rating }}</span>
+                    <span style="display: inline-block; margin-right: 10px">
+                      <star-rating
+                        *ngIf="!serverFlag"
+                        [value]="pack.baseItem.rating"
+                        checkedcolor="#EBB510"
+                        uncheckedcolor="#DADADA"
+                        size="20px"
+                        readonly="true"
+                      ></star-rating>
+                    </span>
+                  </span>
+                  <span class="product-card__mark-item"
+                    ><a (click)="showReview('comments-list')"
+                      >{{ pack.baseItem.reviewsCount }}
+                      {{ "itemPage.opinion" | translate }}</a
+                    ></span
+                  >
+                  <span class="product-card__count-item"> {{ "productItem.saledCount" | translate }} {{pack.baseItem.saledCount}}</span>
+                </div>
+
+                <div class="product-card__icons d-none d-md-inline-flex">
+                  <a
+                    (click)="addToWishList()"
+                    [ngClass]="{ active: isWished() }"
+                    class="product-card__icon product-card__icon--wish"
+                  ></a>
+                  <!--<a href="#" class="product-card__icon product-card__icon&#45;&#45;share"></a>-->
+                </div>
+              </div>
+
+              <div class="d-none d-md-block">
+                <div class="tag" *ngIf="pack.baseItem.isDayDeal()">
+                  {{ "itemPage.daylyDeal" | translate }}
+                </div>
+                <div class="tag tag--red" *ngIf="pack.baseItem.isSale()">
+                  {{ "itemPage.sale" | translate }}
+                </div>
+              </div>
+
+              <div class="choose-size">
+                <div class="choose-size__head">
+                  {{ "product.sizeTitle" | translate }}
+                </div>
+                <!-- <div class="choose-size__text">{{ "product.sizeSubTitle" | translate }}{{ "itemPage.big" | translate }}</div> -->
+
+                <div class="choose-size__list">
+                  <div class="choose-size__item">
+                    <div class="choose-size__label">
+                      {{ "product.size.normal" | translate }}
+                    </div>
+                    <div class="input-check">
+                      <input
+                        type="checkbox"
+                        id="checkbox-size-1"
+                        [checked]="itemSize[0]"
+                        (change)="onSizeChanged(0)"
+                      />
+                      <label for="checkbox-size-1" class="input-check__label"
+                        ><span class="input-check__mark"></span
+                      ></label>
+                    </div>
+                  </div>
+
+                  <div class="choose-size__item choose-size__item--blue">
+                    <div class="choose-size__label">
+                      {{ "product.size.large" | translate }}
+                    </div>
+                    <div class="input-check">
+                      <input
+                        type="checkbox"
+                        id="checkbox-size-2"
+                        [checked]="itemSize[1]"
+                        (change)="onSizeChanged(1)"
+                      />
+                      <label for="checkbox-size-2" class="input-check__label"
+                        ><span class="input-check__mark"></span
+                      ></label>
+                    </div>
+                  </div>
+
+                  <div class="choose-size__item choose-size__item--purple">
+                    <div class="choose-size__label">
+                      {{ "product.size.extra" | translate }}
+                    </div>
+                    <div class="input-check">
+                      <input
+                        type="checkbox"
+                        id="checkbox-size-3"
+                        [checked]="itemSize[2]"
+                        (change)="onSizeChanged(2)"
+                      />
+                      <label for="checkbox-size-3" class="input-check__label"
+                        ><span class="input-check__mark"></span
+                      ></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                *ngIf="pack.baseItem.inStock"
+                (click)="selectCity()"
+                class="product-card__select-city"
+              >
+                <div class="product-card__price-info">
+                  <div class="product-card__price-content">
+                    <div class="product-card__price-wrap">
+                      <div class="product-card__price" *ngIf="store">
+                        ₪{{ store.getPrice(pack.baseItem) + pack.size }}
+                      </div>
+                      <div
+                        class="product-card__price"
+                        *ngIf="
+                          !store &&
+                          !(pack.baseItem.isDayDeal() || pack.baseItem.isSale())
+                        "
+                      >
+                        {{ pack.baseItem.maxPrice + pack.size }} -
+                        {{ pack.baseItem.minPrice + pack.size }} ₪
+                      </div>
+                      <div
+                        class="best-price__old-price"
+                        *ngIf="
+                          !store &&
+                          (pack.baseItem.isDayDeal() || pack.baseItem.isSale())
+                        "
+                      >
+                        {{ pack.baseItem.maxPrice + pack.size }} -
+                        {{ pack.baseItem.minPrice + pack.size }} ₪
+                      </div>
+                      <div
+                        class="product-card__price"
+                        *ngIf="
+                          pack.baseItem.isDayDeal() || pack.baseItem.isSale()
+                        "
+                      >
+                        {{ pack.baseItem.price + pack.size }} ₪
+                      </div>
+                    </div>
+                    <span class="product__withoutDelivery">{{
+                      "product.withoutDelivery" | translate
+                    }}</span>
+                    <!--<ng-container *ngIf="!pack.baseItem.isSale() && !pack.baseItem.isDayDeal()">
+                      <div class="warning" *ngIf="!pack.baseItem.improvePriceRequest">
+                        <div class="warning__sticker" (click)="startImprovingPrice()">
+                          <img src="{{host}}/assets/img/icon-info.png" alt="" class="warning__img">
+
+                          <div class="warning__text">
+                            <div class="warning__title">{{ "citySearch.item.priceImprove" | translate }}</div>
+                            <div class="warning__sub-title">{{ "citySearch.item.takeOwenOffer" | translate }}</div>
+                          </div>
+                        </div>
+                        <div class="warning__popup d-md-none">
+                          {{ "citySearch.item.improvePricePopUp" | translate }}
+                          <div class="warning__close">X</div>
+                        </div>
+                      </div>
+                      <div class="warning-clock"
+                            *ngIf="pack.baseItem.improvePriceRequest && pack.baseItem.isPriceImproveValid()">
+                        <img src="{{host}}/assets/img/icon-clock.png" alt="" class="warning-clock__img">
+
+                        <div class="warning-clock__text">
+                          <div class="warning-clock__title">תוקף ההצעה תפוג בעוד</div>
+                          <div class="warning-clock__time">{{state.minutes}} דק‘ {{state.seconds}} שניות</div>
+                        </div>
+                      </div>
+
+                      <div class="warning-clock warning-clock-line&#45;&#45;red"
+                            *ngIf="pack.baseItem.improvePriceRequest && !pack.baseItem.isPriceImproveValid()">
+                        <img src="img/icon-clock.png" alt="" class="warning-clock__img">
+
+                        <div class="warning-clock-line__text">
+                          <span class="warning-clock__title">פג תוקף ההצעה </span>
+                        </div>
+                      </div>
+                    </ng-container>-->
+                  </div>
+                </div>
+
+                <div>
+                  <!-- <a (click)="selectCity()" class="btn btn--middle btn--green">{{ "product.selectCity" | translate }}</a> -->
+                  <span class="btn btn--middle btn--orange"
+                    >{{ "product.chooseDeliveryCity" | translate
+                    }}<img
+                      src="/assets/img/icons/ic-arr-left-light-white.svg"
+                      alt=""
+                      style="height: 20px; margin: 0 10px -2px -10px"
+                  /></span>
+                </div>
+                <!-- <div class="product-card__shops">מתוך <b>{{pack.baseItem.reviewsCount}}</b> הצעות</div> -->
+              </a>
+              <span
+                *ngIf="!pack.baseItem.inStock"
+                class="btn btn--middle btn--orange"
+                >{{ "product.notInStock" | translate }}</span
+              >
+
+              <div class="product-card-delivery">
+                <!--<div class="product-card-delivery__head">משלוח פרחים <a href="#"
+                                                                        class="product-card-delivery__city">ב{{city.name[curLang]}}</a>:
+                  ₪{{ store.getDeliveryPrice(city._id) }}</div>
+                <div class="product-card-delivery__desc"><span
+                  class="product-card-delivery__text">{{ "product.shippingNotice" | translate }}
+                  "{{ store.name[curLang] }}
+                  "</span></div>-->
+              </div>
+
+              <div class="h4">{{ "itemPage.more" | translate }}</div>
+              <div
+                class="product-card__desc"
+                [innerHTML]="pack.baseItem.description[curLang]"
+              ></div>
+              <p>{{ "product.vaseNotice" | translate }}</p>
+            </div>
+          </div>
+          <!-- end product-card -->
+
+          <!--<div class="add-element">
+            <div class="h2">{{ "product.additionalItemsTitle" | translate }}</div>
+            <swiper [config]="config" [classes]="'add-element__list js-add-element-list'">
+
+              <div class="swiper-wrapper">
+
+                <div class="add-element__item swiper-slide"
+                     [ngClass]="{active: pack.addItems.indexOf(addItem._id) > -1}"
+                     *ngFor="let addItem of additionalItems; let i = index">
+                  <img src="{{host + '/assets/items/' + addItem.picture}}" alt="" class="add-element__img">
+                  <div class="add-element__name">{{addItem.name[curLang]}}</div>
+                  <div class="add-element__price">₪{{ store.getPrice(addItem) }}</div>
+
+                  <div class="add-element__check">
+                    <div class="input-check input-check&#45;&#45;green">
+                      <input type="checkbox" id="checkbox{{i}}" [checked]="additionalItemFnc[i]"
+                             (change)="onAdditionalItemsChanged(addItem._id, i)">
+                      <label for="checkbox{{i}}" class="input-check__label"><span
+                        class="input-check__mark"></span></label>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+
+            </swiper>
+          </div>-->
+
+          <!-- end add-element -->
+
+          <!--<div class="product-card-wrap__btn d-md-none">
+            <a (click)="nextToPayment()" class="btn btn&#45;&#45;middle">{{ "product.buyNow" | translate }}</a>
+            <a (click)="addToCard()" class="&btn btn#45;&#45;middle btn&#45;&#45;orange">{{ "product.addToCard" | translate }}</a>
+          </div>-->
+        </section>
+
+        <app-comments-list
+          id="comments-list"
+          [type]="0"
+          [itemId]="pack.baseItem._id"
+          [rating]="pack.baseItem.rating"
+          [reviewCount]="pack.baseItem.reviewsCount"
+          [reviews]="itemRates"
+        ></app-comments-list>
+
+        <app-watched-list></app-watched-list>
+        <app-accelerate-sales></app-accelerate-sales>
+        <app-popular-cities></app-popular-cities>
+        <app-analytics-item></app-analytics-item>
+      </div>
+
+      <aside class="content__left">
+        <ng-container *ngFor="let item of banners">
+          <div class="header-bottom__notice" app-notice [banner]="item"></div>
+        </ng-container>
+      </aside>
+    </div>
+  </div>
+</main>
+<app-footer></app-footer>

@@ -1,0 +1,22 @@
+﻿/*----------- open-map -------------*/
+.open-map{
+	display: inline-block;
+	background: #fff;
+	border: 1px solid $color-green;
+	font-family: $font-assistant;
+	text-decoration: none;
+
+	&__text{
+		@include font(normal, bold, 13px, 14px, $color-text);
+		text-align: center;
+		padding: 2px 3px;
+	}
+
+	&:hover{
+		border-color: $color-green-dark;
+	}
+
+	&:hover &__text{
+		color: $color-green;
+	}
+}

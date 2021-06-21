@@ -1,0 +1,47 @@
+<app-header [showMobileMenu]="false" [showSlider]="showSlider"></app-header>
+<div class="wrapper">
+
+    <main>
+        <div class="st-width-full">
+            <div class="content">
+                <aside class="content__right">
+                    <app-hashve-banner></app-hashve-banner>
+                </aside>
+                <ng-container>
+                    <div class="content__center">
+
+                        <h1>{{ "wishList.myWishes" | translate }}</h1>
+                        <h1 class="h1mini">{{ "betterPrice.found" | translate }} <span class="red">{{WISH_LIST.length}}</span> {{ "wishList.selected" | translate }} {{currentCity.name[curLang]}}</h1>
+                        <div class="wishlist">
+                            <section class="search-city">
+                                <app-item-component [store]="stores" [showOffers]="false" [item]="item" *ngFor="let item of WISH_LIST"></app-item-component>
+
+                            </section>
+
+                            <app-accelerate-sales></app-accelerate-sales>
+
+                            <app-watched-list></app-watched-list>
+                        </div>
+
+                    </div>
+                    <!-- end content__center -->
+
+                </ng-container>
+                <aside class="content__left">
+                    <div class="header-auth">
+                        <div class="header-bottom__notice">
+                            <div class="notice-grey notice-grey--long">
+                                <div class="notice-grey__title">רשמו את בית העסק שלכם</div>
+                                <div class="notice-grey__label">ותרווחו לקוחות חדשים</div>
+                                <a href="#" class="btn btn--white">הירשמו לשירות</a>
+                                <a href="#" class="notice-grey__close">X</a>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+        <!-- end st-width-full -->
+    </main>
+</div>
+<app-footer></app-footer>

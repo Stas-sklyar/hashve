@@ -1,0 +1,150 @@
+﻿/*----------- distribution -------------*/
+.distribution{
+	background: #fff;
+	padding: 47px 22px 25px;
+
+	&__recomend{
+		@include font(normal, 600, 20px, 22px, #66c05f);
+		margin-bottom: 10px;
+	}
+
+	&__list{
+		display: flex;
+		flex-wrap: wrap;
+		margin-left: -20px;
+		margin-right: -20px;
+	}
+
+	&__item{
+		display: flex;
+		align-items: flex-end;
+		border-left: 1px solid rgba(73,73,73,0.25);
+		padding: 0 0 0 12px;
+		margin: 0 20px 52px;
+	}
+
+	&__label{
+		@include font(italic, 600, 12px, 14px, rgba(0,0,0,0.6));
+		margin-bottom: 5px;
+	}
+
+	&__close{
+		@include font(normal, 600, 20px, 22px, #c10000);
+		text-decoration: none;
+		margin-right: 10px;
+	}
+
+	.input-check{
+		margin-left: 17px;
+	}
+
+	.input-check__text{
+		margin-left: 0;
+		margin-right: 10px;
+	}
+
+	&__city{
+		margin-bottom: 75px;
+	}
+}
+
+.distribution-city{
+	display: inline-block;
+	position: relative;
+	margin-left: 10px;
+
+	&__head{
+		height: 33px;
+		padding: 0 10px;
+		background: #fff;
+		border: 1px solid rgba(40,40,40,0.16);
+		@include font(normal, 600, 17px, 30px, $color-text);
+		padding-right: 35px;
+		position: relative;
+		cursor: pointer;
+	}
+
+	&__head:after{
+		content: '';
+		display: inline-block;
+		width: 14px;
+		height: 8px;
+		background: url(#{$path-icon}/ic-arr-down.svg) no-repeat center;
+		position: absolute;
+		right: 15px;
+		@include top-center;
+	}
+
+	&__option{
+		display: none;
+		background: #fff;
+		border: 1px solid #adadad;
+		padding: 0 2px;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		margin-top: -1px;
+		z-index: 10;
+	}
+
+	&__param{
+		padding: 7px 8px 7px;
+		@include font(normal, 600, 14px, 16px, $color-text);
+		cursor: pointer;
+	}
+
+	&__param:hover,
+	&__param.active{
+		color: #b5b5b5;
+	}
+
+	&__param:not(:last-child){
+		border-bottom: 1px solid rgba(50,50,50,0.12);
+	}
+
+	&:hover &__option{
+		display: block;
+	}
+}
+
+@media (max-width: 991px) {
+	.distribution{
+		padding: 15px 10px;
+		margin-left: -10px;
+		margin-right: -10px;
+
+		&__recomend{
+			margin-bottom: 22px;
+		}
+
+		&__city{
+			margin-bottom: 45px;
+		}
+
+		&__list{
+			margin-left: -10px;
+			margin-right: -10px;
+		}
+
+		&__item{
+			margin: 0 10px 35px
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.distribution{
+		&__item{
+			width: calc(50% - 20px);
+		}
+	}
+}
+
+@media (max-width: 479px) {
+	.distribution{
+		&__item{
+			width: calc(100% - 20px);
+		}
+	}
+}

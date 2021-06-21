@@ -1,0 +1,63 @@
+﻿/*----------- notice-green -------------*/
+.notice-green{
+	background: rgba(88,179,45,0.2);
+	padding: 28px 13px 35px 10px;
+	font-family: $font-assistant;
+	position: relative;
+
+	&__item{
+		@include font(normal, bold, 24px, 24px, $color-text);
+		position: relative;
+	}
+
+	&__item::before{
+		content: '';
+		display: inline-block;
+		vertical-align: middle;
+		width: 8px;
+		height: 15px;
+		background: url(#{$path-icon}/ic-arr-right.svg) no-repeat center;
+		margin-left: 5px;
+		margin-top: -5px;
+		margin-right: 2px;
+	}
+
+	&__head{
+		@include font(normal, bold, 24px, 24px, $color-text);
+	}
+
+	&__text{
+		@include font(normal, 600, 14px, 13px, $color-text);
+		margin-top: 10px;
+	}
+
+	.btn{
+		margin-top: 20px;
+		display: table;
+		margin-left: auto;
+		margin-right: auto;
+		min-width: 148px;
+	}
+
+	&__close{
+		font-family: $font-arial;
+		@include font(normal, normal, 18px, 20px,  $color-text);
+		text-decoration: none;
+		position: absolute;
+		top: 3px;
+		left: 5px;
+		cursor: pointer;
+	}
+
+	&__close:hover{
+		color: $color-grey-main;
+	}
+}
+
+@media (max-width: 1279px) {
+	.notice-green{
+		.btn{
+			min-width: auto;
+		}
+	}
+}

@@ -1,0 +1,120 @@
+<app-header [showSlider]="showSlider"></app-header>
+<main>
+  <div class="st-width-full">
+    <div class="nav-site">
+      <div class="breadcrumb">
+        <div class="breadcrumb__item">
+          <a [routerLink]="'/'">{{ "breadcrumbs.homePage" | translate }}</a>
+        </div>
+        <div class="breadcrumb__item">
+          <a [routerLink]="['/', toCityLink]">{{ cityName }}</a>
+        </div>
+        <span class="breadcrumb__item"
+          >{{ "betterPrice.found" | translate }}
+          <span class="h-text-orange">{{ storeList.length }}</span>
+          {{ "storepage.deliveryCities" | translate }} {{ cityName }}</span
+        >
+      </div>
+    </div>
+
+    <div class="content">
+      <aside class="content__right">
+        <app-hashve-banner></app-hashve-banner>
+      </aside>
+
+      <div class="content__center">
+        <div class="content-head d-md-none">
+          <div class="content-head__title">
+            <h1>{{ article?.seo?.h1[curLang] }}</h1>
+          </div>
+
+          <div class="content-head__text">
+            {{ article.shitFromLeft[curLang] }}
+          </div>
+        </div>
+
+        <div class="shop-map">
+          <div class="shop-map__content">
+            <div #mapElement class="shop-map__map map--full"></div>
+
+            <div
+              *ngFor="let store of storeList; let i = index"
+              [item]="dalyDeal[i]"
+              [shop]="store"
+              [stores]="allStores"
+              [withMap]="true"
+              class="shop-map-list__item"
+              [ngClass]="{ active: store.isHover }"
+              app-shopitem
+              (mouseover)="mouseEnter(store.ind)"
+              (mouseout)="mouseLeave(store.ind)"
+            ></div>
+          </div>
+        </div>
+
+        <div class="shop-map">
+          <h2 class="">
+            {{ "storepage.deliveryCitiesTwo" | translate }} {{ cityName }}
+          </h2>
+          <div class="shop-map__content">
+            <div
+              *ngFor="let store of storeList2; let i = index"
+              [item]="
+                dalyDeal.length <= i
+                  ? dalyDeal[i - dalyDeal.length]
+                  : dalyDeal[i]
+              "
+              [shop]="store"
+              [stores]="storeList.concat(storeList2)"
+              [ngClass]="{ active: store.isHover }"
+              [withMap]="true"
+              class="shop-map-list__item"
+              app-shopitem
+              (mouseover)="mouseEnter(store.ind)"
+              (mouseout)="mouseLeave(store.ind)"
+            ></div>
+          </div>
+        </div>
+        <app-item-search
+          class="d-none d-md-block"
+          [showOffers]="false"
+          [item]="activeItem"
+          [store]="allStores"
+        ></app-item-search>
+      </div>
+      <aside class="content__left">
+        <ng-container *ngFor="let item of banners">
+          <div app-notice [banner]="item" class="header-bottom__notice"></div>
+        </ng-container>
+      </aside>
+    </div>
+    <div class="h1">{{ "storepage.lookAt" | translate }} {{ cityName }}</div>
+    <app-accelerate-sales></app-accelerate-sales>
+    <a [routerLink]="['/', toCityLink]" class="search-city-products__head"
+      >{{ "storepage.lookAll" | translate }} {{ city.name[curLang] }}</a
+    >
+
+    <app-watched-list></app-watched-list>
+
+    <section
+      class="unwrap-block unwrap-block--col-3 unwrap-block--indent"
+      (click)="toggleArticle()"
+      [ngClass]="{ opened: showArticle }"
+    >
+      <div class="unwrap-block__head">
+        <h2 class="h2">{{ article.slogan[curLang] }}</h2>
+        <div class="unwrap-block__arr"></div>
+      </div>
+      <div class="unwrap-block__content">
+        <div
+          class="unwrap-block__text"
+          [@slideInOut]="deliveryState"
+          [innerHTML]="article ? article.text[curLang] : ''"
+        ></div>
+      </div>
+    </section>
+    <!-- end unwrap-block -->
+
+    <app-analytics-item></app-analytics-item>
+  </div>
+</main>

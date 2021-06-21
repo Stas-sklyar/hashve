@@ -1,0 +1,13 @@
+<a *ngIf="curItem && !isItemRedirect" (click)="redirect()" class="store-slider__img" [style.backgroundImage]="'url('+pic+')'"></a>
+
+<a *ngIf="curItem && isItemRedirect" [routerLink]="'/item/' + curItem.name[curLang] | spaceToUnderscore" class="store-slider__img" [style.backgroundImage]="'url('+pic+')'"></a>
+
+<div *ngIf="curItem" class="good-day-slider__content">
+    <!-- <div class="good-day-slider__item-name">
+        <div>{{ "citySearch.item.code" | translate }} {{curItem.code}} </div>
+    </div> -->
+    <div class="good-day-slider__price">
+        <span class="good-day-slider__old-price">₪{{minPrice}}</span>
+        <span class="good-day-slider__cur-price">₪{{curItem.price + deliveryPrice}}</span>
+    </div>
+</div>

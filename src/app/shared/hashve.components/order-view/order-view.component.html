@@ -1,0 +1,196 @@
+<div class="order-history__title">{{ "orderHistory.orderThanks" | translate }}</div>
+<div class="history-step">
+    <div class="history-step__list">
+        <div class="history-step__item history-step__item--circle" [ngClass]="{ 'history-step__item--black': order.currentStatus() !== _statusType.NewOrder && order.currentStatus() !== _statusType.Payed && order.currentStatus() !== _statusType.Closed }">
+            <img src="/assets/img/ic-check.png" alt="">
+            <div class="history-step__text">{{ "orderView.newOrder" | translate }}</div>
+        </div>
+
+        <div class="history-step__item">
+            <img src="/assets/img/ic-manage-call.svg" alt="">
+        </div>
+
+        <div class="history-step__item history-step__item--circle" [ngClass]="{ 'history-step__item--black': order.currentStatus() !== _statusType.Payed && order.currentStatus() !== _statusType.Closed}">
+            <img src="/assets/img/ic-flag.png" alt="">
+            <div class="history-step__text">{{ "orderView.preparation" | translate }}</div>
+        </div>
+
+        <div class="history-step__item">
+            <img src="/assets/img/ic-hands.png" alt="">
+        </div>
+
+        <div class="history-step__item">
+            <img src="/assets/img/ic-delivery.svg" alt="">
+        </div>
+
+        <div class="history-step__item history-step__item--circle" [ngClass]="{ 'history-step__item--black': order.currentStatus() !== _statusType.Closed}">
+            <img src="/assets/img/ic-good.png" alt="">
+            <div class="history-step__text">{{ "orderView.delivered" | translate }}</div>
+        </div>
+    </div>
+</div>
+
+<div class="order-history__sub-title" *ngIf="order.currentStatus() == _statusType.NewOrder">{{"orderHistory.newOrderMessage" | translate}}</div>
+<div class="order-history__sub-title" *ngIf="order.currentStatus() == _statusType.Payed">{{"orderHistory.inProgressMessage" | translate}}</div>
+<div class="order-history__sub-title" *ngIf="order.currentStatus() == _statusType.Closed"><span>{{"orderHistory.deliveredMessage" | translate}}</span><br><span>{{"orderHistory.thanksMessage" | translate}}</span></div>
+
+<div class="history-card">
+    <div class="history-card__head">
+        <div class="history-card__head-top">
+            <div class="history-card__step-wrap">
+                <div class="history-card__label">{{ "orderView.orderNum" | translate }} <span class="history-card__label-num">{{ order._id.substring(16, 24) }}</span></div>
+            </div>
+
+            <div class="history-card__time-wrap">
+                <div class="history-card__blessing">{{ "orderView.name" | translate }} {{order.deliveryDetails.recipient.fullName}}</div>
+                <div class="history-card__blessing">{{ "orderView.telNum" | translate }} {{order.deliveryDetails.recipient.mobile}}</div>
+                <div class="history-card__date">{{ "orderView.date" | translate }} {{ order.deliveryDetails.deliveryType === _deliveryType.delivery?'משלוח':'איסוף' }}: <span class="history-card__date-val">{{ order.deliveryDetails.date | date:'dd/MM' }}</span></div>
+                <div class="history-card__time">{{ "orderView.deliveryTime" | translate }} <span class="history-card__time-val">{{ order.deliveryDetails.hours }}</span></div>
+                <div class="history-card__blessing">{{ "orderView.special" | translate }} {{order.deliveryDetails.specialRequests}}</div>
+                <div class="history-card__blessing">{{ "orderView.blessing" | translate }} {{order.deliveryDetails.blessing}}</div>
+                <div class="history-card__blessing">{{ "orderView.instructions" | translate }} {{order.deliveryAddress.instructions}}</div>
+                <div class="history-card__recipient" *ngIf="order.deliveryDetails.deliveryType === _deliveryType.delivery && city">
+                    {{ "orderView.costumerDetails" | translate }} <span class="history-card__recipient-val">{{ order.deliveryDetails.recipient.fullName + " " + order.deliveryAddress.street + " " + order.deliveryAddress.house + "/" + order.deliveryAddress.apartment + " " + city.name[curLang] }}</span>
+                </div>
+                <div class="history-card__recipient" *ngIf="order.deliveryDetails.deliveryType === _deliveryType.pickup">
+                    {{ "orderView.costumerDetails" | translate }} <span class="history-card__recipient-val"> {{ order.customerDitails.fullName }} {{ order.customerDitails.mobile }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="history-card__head-bottom">
+            <div class="history-card__info-product" *ngIf="store">
+
+                <div class="history-card__product-phone d-none d-md-inline-block">
+                    <img src="/assets/img/shop-ic-call.png" class="history-card__product-phone-num">
+                    <div class="shop-info__popup-order">
+                        <a href="tel:{{store.tel}}" dir="ltr">{{store.tel}}</a><br>
+                        <div class="shop-info__popup-label">{{ "orderView.label" | translate }}</div>
+
+                    </div>
+                </div>
+                <div class="history-card__name-container">
+                    <a href="tel:{{store.tel}}" dir="ltr">{{store.tel}}</a>
+                    <span class="history-card__product-name history-card__product-address">{{ store.name[curLang] }} </span><span class="desctop-phone desctop-phone-num" dir="ltr"> {{store.tel}} </span>
+
+                    <br>
+                    <p class="history-card__product-phone desctop-phone desctop-phone-text">{{ "orderView.label" | translate }}</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="history-card__main" *ngIf="pack">
+        <div class="history-card__desc">
+            <div class="history-card__img d-sm-none">
+                <img src="{{ host + '/assets/items/' + pack.baseItem.picture }}" alt="">
+
+                <!-- <div class="history-card__icons d-md-none">
+          <a href="#" class="history-card__icon history-card__icon&#45;&#45;wish"></a>
+        </div>-->
+
+                <div class="sticker-wrap" *ngIf="pack">
+                    <div class="sticker__label d-none d-md-inline-block">{{ "citySearch.item.size" | translate }}</div>
+
+                    <div class="sticker sticker--purple" [ngClass]="{'sticker--blue': pack.size === _itemSize.large, 'sticker--purple': pack.size === _itemSize.extralarge}">
+                        <div class="sticker__label d-md-none">{{ "citySearch.item.size" | translate }}</div>
+                        <div class="sticker__text">{{sizesName[pack.size][curLang]}}</div>
+                    </div>
+                </div>
+
+                <div class="history-card__count d-md-none">{{ "citySearch.item.code" | translate }} {{pack.baseItem.code}}</div>
+            </div>
+
+            <div class="history-card__content">
+                <div class="history-card__tag-wrap d-none d-md-inline-block">
+                    {{pack.baseItem.name[curLang]}}
+                    <div class="history-card__count">{{ "citySearch.item.code" | translate }} {{pack.baseItem.code}}</div>
+
+                </div>
+
+                <div class="history-card__name d-md-none">{{pack.baseItem.name[curLang]}}</div>
+                <div class="history-card__text " [innerHTML]="pack.baseItem.description[curLang]"></div>
+
+                <div class="search-city-set-wrap">
+                    <div class="history-card__img d-none d-sm-block">
+                        <img src="{{ host + '/assets/items/' + pack.baseItem.picture }}" alt="">
+
+                        <div class="sticker-wrap">
+                            <app-size-sticker *ngIf="pack" [size]="pack.size"></app-size-sticker>
+                        </div>
+                    </div>
+
+                    <div class="search-city-set" *ngIf="pack">
+                        <div class="search-city-set__item" style="max-width: 100px" *ngFor="let item of pack.addItems">
+                            <div class="search-city-set__name"><span class="search-city-set__plus">+</span> {{item.name[curLang]}}</div>
+                            <div class="search-city-set__img"><img src="{{host + '/assets/items/' + item.picture }}" alt=""></div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--<div class="history-card__explain d-none d-md-flex"><div class="history-card__explain-item"> * התמונה להמחשה </div></div>
+
+        <div class="history-card__mark d-none d-md-flex">
+          <span class="history-card__mark-item">
+            <span class="rating-mark">4.5</span><span class="d-md-none">ציון הגולשים</span>
+          </span>
+          <span class="history-card__mark-item">
+            <span class="rating">
+              <span class="rating__content" style="width: 90%">
+              </span>
+            </span>
+          </span>
+          <span class="history-card__mark-item"><a href="#">8 חוות דעת</a></span>
+          <span class="history-card__mark-item">9 הוזמנו </span>
+        </div>-->
+            </div>
+        </div>
+        <!-- end history-card__desc -->
+
+        <div class="history-card__info">
+            <div class="history-card__info-content">
+                <div class="history-card__price-wrap">
+                    <div class="history-card__price-label" *ngIf="order.typeOfDiscount === _discountType.ImprovePrice">{{ "citySearch.item.improvePrice2" | translate }}</div>
+                    <div class="history-card__price-label" *ngIf="order.typeOfDiscount === _discountType.DailyDeal">{{ "citySearch.item.dayDeal" | translate }}</div>
+                    <div class="history-card__price-label" *ngIf="order.typeOfDiscount === _discountType.Discount">{{ "citySearch.item.sale" | translate }}</div>
+
+                    <!--<div class="history-card__old-price">₪165</div>
+          <div class="history-card__cur-price"> ₪{{order.price}}<span class="history-card__price-count d-xs-none">מק”ט {{order.productOffer.package.baseItem.code}}</span></div>-->
+                </div>
+
+                <div class="history-price-step">
+                    <!-- <div class="history-price-step__item">
+            <div class="history-price-step__title">₪100</div>
+            <div class="history-price-step__text">אגרטל</div>
+          </div>
+
+          <div class="history-price-step__item">
+            <div class="history-price-step__title">₪10</div>
+            <div class="history-price-step__text">כ. ברכה</div>
+          </div>
+
+          <div class="history-price-step__item">
+            <div class="history-price-step__title">₪50</div>
+            <div class="history-price-step__text">שוקולד</div>
+          </div> -->
+                </div>
+
+                <div class="history-card__pay">
+                    <div class="history-card__delivery">
+                        <span class="history-card__delivery-subtitle">{{ "orderView.total" | translate }}</span>
+                        <span class="history-card__delivery-sum">₪{{order.price + order.deliveryPrice}}</span>
+                        <span class="history-card__delivery-title" *ngIf="order.deliveryDetails.deliveryType === _deliveryType.delivery && city"> {{ "citySearch.item.withDelivery" | translate }} ({{ city.name[curLang] }}) </span>
+                    </div>
+
+                    <div class="history-card__credit" *ngIf="order.paymentType === _paymentType.creditCard"> {{ "orderView.paidByCard" | translate }}</div>
+                    <div class="history-card__credit" *ngIf="order.paymentType === _paymentType.phone"> {{ "orderView.paidByPhone" | translate }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <a href="#" class="btn btn&#45;&#45;blue">הודעה לחנות</a> -->
+</div>

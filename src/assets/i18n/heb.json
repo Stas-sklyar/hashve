@@ -1,0 +1,614 @@
+{
+    "comments": {
+        "seeMore": "ראה עוד"
+    },
+    "blocks": {
+        "commonOverview": "סקירה כללית של ערים",
+        "shippingReview": "חוות דעת על משלוחי פרחים פופולריות",
+        "mostOrdered": "המוזמנים ביותר",
+        "recommendation": "לכל ההמלצות",
+        "allItems": "לכל ההצעות המוזמנים ביותר",
+        "popularStores": "חנויות הפופולריות",
+        "categoryFooter": "מצאו מוצר אידיאלי"
+    },
+    "category": {
+        "searchResult": " נמצאו <span class=\"filter__result-num\">{{count}}</span> הצעות {{categoryName}}"
+    },
+    "banners": {
+        "allOffers": {
+            "header": "מבצעים והטבות בלעדיות",
+            "subHeader": "אל תפספסו דיל יומי הזול והמשתלם ביותר",
+            "button": "ראו מבצעים"
+        },
+        "addNewShop": {
+            "header": "רשמו את בית העסק שלכם",
+            "subHeader": "ותרווחו לקוחות חדשים",
+            "button": "הירשמו לשירות"
+        },
+        "priceImprove": {
+            "header": "שיפור מחיר",
+            "subheader": "קבלו הנחה בקליק",
+            "popupText": "בלחיצה על כפתור שיפור מחיר הבקשה מופנית לחנויות לקבלת הנחה לפריט שבחרתם"
+        }
+    },
+    "header": {
+        "registration": "הרשמה",
+        "login": "התחברות",
+        "send_to": "משלוח ל",
+        "delivery_city": "עדכנו כתובת למשלוח",
+        "delivery_city_text": "ותקבלו הצעות מדויקות",
+        "delivery_city_city": "עיר האספקה:",
+        "delivery_city_street": "רחוב:",
+        "delivery_number": "מס‘:",
+        "delivery_change_address": "חפש הצעות",
+        "delivery_next": "המשך",
+        "category": "קטגוריות",
+        "menuNotLoggedIn": "שלום אורח",
+        "menu": {
+            "allItems": "כל המוצרים",
+            "category_header_mobile": "קטגוריות"
+        },
+        "notice_login": "למעקב הזמנה מומלץ להתחבר "
+    },
+    "citySearch": {
+        "map": "מפה",
+        "titleFirstPath": "משלוחי פרחים ב{{value}} - ",
+        "titleCityStore": "חנויות פרחים ב{{value}} - ",
+        "titleSecondPath": "השוואת מחירים",
+        "showOnTheMap": "הצג על המפה",
+        "show": "הצג",
+        "selectStore": "בחר חנות",
+        "searchResult": " נמצאו <span class=\"filter__result-num\">{{count}}</span> הצעות {{category}} להשוואת מחירים {{city}}",
+        "headerFilter": "סינון מוצרים לפי:",
+        "setCity": "( עדכן עיר )",
+        "filter": {
+            "sortBy": "מיין לפי:",
+            "filterBy": "סדר  לפי:"
+        },
+        "item": {
+            "itemDetail": "פרוט המוצר",
+            "liked": "אהבתי",
+            "lastSeen": "נצפו לאחרונה",
+            "from": "מאת:",
+            "open": "פתוח",
+            "close": "סגור",
+            "reviews": "ביקורות",
+            "Suggestions": "הצעות",
+            "edit": "לעדכן סל קניה",
+            "editBasket": "עריכת סל הקניה",
+            "userRate": "ציון הגולשים",
+            "reviewCount": " חוות דעת",
+            "notice": "המוצר במידה “{{size}}”",
+            "additionalDeals": "הצג דילים נוספים",
+            "countOfOffers": "מתוך {{count}} הצעות",
+            "priceImprove": "שיפור מחיר",
+            "dayDeal": "דיל יומי",
+            "withDelivery": "כולל משלוח",
+            "cheapestOffer": "ההצעה הזולה ביותר",
+            "orederNow": "הזמינו",
+            "bought": "נרכשו",
+            "sale": "במבצע",
+            "takeOwenOffer": "קבלו הצעה אישית",
+            "warningMessage": "יתכנו שינויים במפרט הזר-במידה והפרחים לא נמצאים במלאי ישולבו\n                    פרחים אחר בצבעים תואמים התמונה להמחשה בלבד.",
+            "firstNotice": "* התמונה להמחשה בגודל משודרג, מידה \"גדול\" ",
+            "secondNotice": "* המחיר אינו כולל אגרטל",
+            "thirdNotice": "* אגרטל להמחשה בלבד ולא כלול במחיר הפריט.",
+            "fourthNotice": "*במידה וחלק מפרחים לא נמצאים במלאי ישולבו פרחים תואמים.",
+            "code": "מק“ט",
+            "dayDealNotice": "דעגנו לארגן עבורכם דיל במחיר מובטח",
+            "saleNotice": "הטבה יחודית מאת הספק",
+            "size": "גודל",
+            "buttonPriceComparison": "השוואת מחירים",
+            "improvePrice": {
+                "seconds": "שניות",
+                "minutes": "דק‘"
+            },
+            "review": {
+                "reviewExplanation": "מבוסס על פי <b>{{count}} מדרגים </b>"
+            },
+            "dayDealNotice2": "דיל יומי במחיר בלעדי",
+            "saleNotice2": "הנחה בלעדית",
+            "improvePrice2": "מחיר משופר"
+        },
+        "offer": {
+            "baseItem": "מוצר במידה ”{{size}}“"
+        }
+    },
+    "product": {
+        "buyNow": "קנה עכשיו",
+        "compare": "השוואת מחירים",
+        "addToCard": "הוסף לסל",
+        "vaseNotice": "* אגרטל להמחשה בלבד ולא כלול במחיר הפריט.",
+        "size": {
+            "normal": "רגיל",
+            "large": "גדול",
+            "extra": "ענק"
+        },
+        "free": "חינם",
+        "shippingNotice": " - שירות משלוחים מתבצע על ידי ",
+        "sizeTitle": "התמונה ממחישה גודל 'גדול' ומשודרג",
+        "sizeSubTitle": "התמונה מוצגת להמחשה בגודל ",
+        "additionalItemsTitle": "הוסיפו מוצרים נלווים להזמנה:",
+        "selectCity": "בחר עיר",
+        "compareCity": "השוואת מחירים",
+        "chooseDeliveryCity": "עדכנו עיר לאספקה",
+        "notInStock": "המוצר לא במלאי",
+        "withoutDelivery": "לא כולל משלוח",
+        "bestOffer": "ההצעה הטובה ביותר:"
+    },
+    "breadcrumbs": {
+        "homePage": "ראשי",
+        "category": "קטגוריות ",
+        "offers": "הצעות"
+    },
+    "rate": {
+        "rateExists": "דירוג כבר קיים",
+        "rate": "דירוג המוצר",
+        "notice": "שלום {{name}}, בתאריך {{date}} הזמנת פרחים בחנות ”{{store}}“ דעתך חשובה לנו, המלץ/י וסייע/י לגולשי האתר לקבל החלטה.",
+        "rateOrder": " דרג את המוצר:",
+        "feedback": "חוות דעת - ההמלצה שלי: נשמח אם תוכלו תפרט יותר על החויה"
+    },
+    "priceImprove": {
+        "offerExpired": "פג תוקף ההצעה",
+        "offerWillExpired": "תוקף ההצעה תפוג בעוד ",
+        "fixStepOne": "שלחנו בקשה לשיפור מחיר.",
+        "fixStepTwo": "מחפשים את ההצעה הטובה ביותר….",
+        "fixStepThree": "התקבלו הצעות שיפור מחיר חדשות!"
+    },
+    "payment": {
+        "orderDetails": "סקירת הזמנה",
+        "orderNotice": "ניתן ליצור קשר עם בית העסק אם קבלת אישור ההזמנה.",
+        "paymentNotice": " * אין צורך בתשלום מיידי בכדי להבטיח את ההזמנה.",
+        "deliveryType": "בחרו סוג הזמנה:",
+        "offer": "תוקף ההצעה תפוג בעוד",
+        "min": "דק‘",
+        "sec": "שניות",
+        "notice": "שימו לב: הזמנות שיתקבלו לאחר השעה 18:00 יסופקו ביום שלמחרת, או במועד אחר שתציינו בהזמנה. ביום שישי וערב חג הזמנות יתקבלו עד השעה 13.00",
+        "noticeTwo": "לפי ההנחיות משרד הבריאות המשלוח יונח על מפתן הדלת",
+        "isufNotice": "עדכנו אותנו על שעת איסוף, למתי להכין את הזמנתכם וכל בקשה בנושא יש להזין בשדה: בקשות מיוחדות",
+        "offerClosed": "פג תוקף ההצעה",
+        "orderDetail": "פרטי הזמנה",
+        "storePerforms": "חנות המבצעת:",
+        "orders": "הזמנות",
+        "rating": "דירוג הגולשים",
+        "saved": "בהזמנה זו חסכת",
+        "sum": "סה\"כ:",
+        "finalSum": "חשבון סופי",
+        "deliveryBtn": "משלוח",
+        "pickup": "איסוף עצמי",
+        "check": "בחרו:",
+        "delivery": "משלוח: ",
+        "deliveryIncluded": "כולל משלוח",
+        "phone": "בטלפון",
+        "creditCard": "אשראי",
+        "phoneNotice": "השאירו פרטי התקשרות\n                    ואנו נחזור אליכם בהקדם לקבלת פרטי כרטיס אשראי.",
+        "creditCardNotice": " ערוץ המידע מוגן,\n                    מוצפן ומאובטח בטכנולוגיות מתקדמות ורכישתוכם מבוטחות על ידי חברות האשראי.",
+        "deal": "הטבה",
+        "overTime": "<span class='css-time-over'>לקוחות יקרים שימו לב!</span> להיום הסתיימה קבלת הזמנות אונליין. ניתן להזמין בטלפון' <a href='tel:+{{phone}}'>{{phone}}</a>. או בחרו תאריך משלוח למועד אחר.",
+        "storeListButton": "לרשימת חנויות בעיר",
+        "form": {
+            "validationErrors": {
+                "requiredCustomerFullName": "שדה חובה שם מלא",
+                "requiredCustomerPhone": "שדה חובה טלפון נייד",
+                "requiredCustomerMail": "שדה חובה דוא“ל",
+                "requiredDate": "תאריך איסוף/משלוח",
+                "requiredHour": "שעת איסוף/משלוח"
+            },
+            "validationText": {
+                "name": "שם המזמין",
+                "tel": "טלפון המזמין",
+                "email": "דוא“ל המזמין",
+                "blessingText": "הודעת ברכה",
+                "date": "תאריך משלוח/אסוף",
+                "recipientName": "פרטי המקבל שם מלא",
+                "recipientTel": "פרטי המקבל טלםון נייד",
+                "x": "X",
+                "v": "V",
+                "street": "כתובת המקבל מספר רחוב",
+                "house": "כתובת המקבל מספר בית",
+                "apartment": "כתובת המקבל מספר דירה"
+            },
+            "formTitle": "הכנסת פרטים",
+            "subject": "נושא הפניה:",
+            "title": "כותרת:",
+            "send": "שלח",
+            "messageDetails": "תוכן הודעה:",
+            "customerData": "פרטי המזמין",
+            "creditCardBtn": "בחרו אופן תשלום",
+            "creditCardPopup": "התשלום מתבצע בטלפון מול החנות לאחר שליחת פרטי הזמנה",
+            "payPhonePopup": "התשלום מתבצע בכרטיס אשראי אונליין דרך האתר",
+            "fullName": "שם מלא:",
+            "phone": "טלפון:",
+            "mobile": "טלפון נייד:",
+            "mail": "דוא“ל:",
+            "sendInvoice": "ברצוני לקבל חשבונית בדואר לכתובת:",
+            "companyName": "שם חברה:",
+            "address": "כתובת:",
+            "dateOfPickup": "תאריך איסוף",
+            "dateOfDelivery": "תאריך המשלוח",
+            "pickupDetails": "פרטי איסוף",
+            "additionalRequests": " בקשות מיוחדות:",
+            "pickupNotice": "* ניתן ליצור קשר עם בית העסק אם קבלת אישור ההזמנה.",
+            "additionalRequestsNotice": "(יש למלא את הבקשה עד 100 תווים) נשאר",
+            "deliveryDetails": "פרטי המשלוח",
+            "blessing": "כתבו הודעת ברכה:",
+            "blessingNotice": "(יש למלא ברכה עד 500 תווים) נשאר",
+            "receiverDetails": "פרטי המקבל",
+            "receiverAddress": "כתובת המקבל",
+            "phonePaymentNotice": "לאישור הזמנה אנו נחזור אליכם למספר הנ“ל",
+            "sumForPayment": "סה“כ לתשלום:",
+            "cardPaymentAttention": "שימו לב:",
+            "submitButton": "שלח הזמנה לחנות",
+            "deliveryAddress": {
+                "office": "משרד:",
+                "officeName": "שם המשרד",
+                "owen": "פרטי",
+                "city": "עיר:",
+                "street": "רחוב:",
+                "number": "בית מס':",
+                "floor": "קומה: ",
+                "apartment": "דירה:",
+                "additional": "הנחיות נוספות לכתובת",
+                "selectPaymentType": "בחרו אופן תשלום"
+            }
+        }
+    },
+    "orderHistory": {
+        "cardFail": "מצטערים, התשלום לא עבר בצורה תקינה.",
+        "explanation": "אפשר לנסות לשלם באמצעי תשלום אחר.",
+        "cardSuccess": "תודה, התשלום בוצע בהצלחה",
+        "orderThanks": "מעקב הזמנה מקוון",
+        "currentOrder": "פרטי הזמנה",
+        "newOrderMessage": "הזמנתך התקבלה והועברה לטיפול החנות.",
+        "inProgressMessage": "הזמנתך 'בהכנה' וטיפול החנות",
+        "deliveredMessage": "הזמנתך נמסרה למקבל!",
+        "thanksMessage": "תודה שבחרת בנו."
+    },
+    "footer": {
+        "subscribe__text": "רוצים לקבל מבצעים בלעדיים.? הירשמו לניוזלטר שלנו!",
+        "email_placeholder": "כתובת אימייל",
+        "copyright": "כל הזכויות שמורות, hashve.co.il הסיבים 18 ת.ד 6854 פתח תקווה",
+        "entranceToSuppliers": "כניסה לספקים",
+        "registarStore": "רישום בית עסק"
+    },
+    "auth": {
+        "login": {
+            "title": "Страница входа",
+            "text": "Введите свой логин и пароль",
+            "form": {
+                "email": {
+                    "label": "Электронная почта",
+                    "errors": {
+                        "required": "Email обязателен для ввода.",
+                        "email": "Неверный формат email."
+                    }
+                },
+                "password": {
+                    "label": "Пароль",
+                    "errors": {
+                        "required": "Пароль не может быть пустым.",
+                        "pattern": "Пароль слишком слабый. Используйте заглавные, строчные буквы и цифры",
+                        "minLength": "Пароль слишком короткий. Не безопасно!"
+                    }
+                }
+            }
+        },
+        "registration": {
+            "title": "יצירת חשבון",
+            "text": "Зарегистрируйтесь",
+            "form": {
+                "email": {
+                    "label": "דוא“ל",
+                    "errors": {
+                        "required": "Email обязателен для ввода.",
+                        "email": "Неверный формат email."
+                    }
+                },
+                "login": {
+                    "label": "Отображаемое имя"
+                },
+                "password": {
+                    "label": "סיסמה",
+                    "help": "מינימום 6 תווים",
+                    "errors": {
+                        "required": "Пароль не может быть пустым.",
+                        "pattern": "Пароль слишком слабый. Используйте заглавные, строчные буквы и цифры.",
+                        "minLength": "Пароль слишком короткий. Не безопасно!"
+                    }
+                },
+                "confirm": {
+                    "label": "Подтверждение пароля",
+                    "errors": {
+                        "required": "Подтверждение пароля обязательно для завершения регистрации.",
+                        "email": "Пароли не собпадают. Введите одинаковый пароль в оба поля."
+                    }
+                }
+            }
+        }
+    },
+    "homepage": {
+        "h1Note": "השוואת מחירים",
+        "h1MDNone": "H1 משלוחי פרחים בפריסה ארצית - ",
+        "dailyDealNotify": "הזר-במידה והפרחים לא נמצאים במלאי ישולבו פרחים אחרים בצבעים תואמים ",
+        "package": " להמחשה בלבד.יתכנו שינויים במפרט הזר-במידה והפרחים לא נמצאים במלאי ישולבו פרחים אחרים בצבעים תואמים ",
+        "additionalDeal": "ראו דילים נוספים",
+        "additionalSale": "ראו מבצעים נוספים",
+        "seeSale": "ראו מבצעים",
+        "all_packages": "ראו את כל החבילות",
+        "all_categories": "ראו את כל הקטגוריות",
+        "tosalecount": "מתוך {{count}} הצעות",
+        "categoryblock": "מתנות ליומולדת",
+        "recommended": "המומלצים",
+        "articles": {
+            "title": "כתבות בנושא הפרחים",
+            "allArticles": "לכל הכתבות",
+            "toArticle": "לחץ כאן"
+        },
+        "popularCities": {
+            "flowersIn": "פרחים ב{{city}}",
+            "min": "החל:",
+            "max": "עד:",
+            "stores": "{{stores}} חנויות"
+        }
+    },
+    "categorypage": {
+        "h1MDNone": "כל הקטגוריות"
+    },
+    "regionpage": {
+        "h1Note": "אזורים פופולרים",
+        "offers": "דילים ומוצרים",
+        "catTitle": "קטגוריות",
+        "offerTitle": "חבילות ומבצעים",
+        "offerName": "דילים במבצע",
+        "shopCount": "חנויות פרחים"
+    },
+    "shoplistpage": {
+        "h1Note": "החנויות הפופולריות",
+        "sortByRegions": "ריכוז סניפים לפי אזורים"
+    },
+    "components": {
+        "deliveryPanel": {
+            "citySearchPlaceholder": "לאן המשלוח",
+            "deliveryCity": "נא למלא את עיר המשלוח",
+            "selectCity": "(עדכן עיר)",
+            "selectStreet": "(עדכן רחוב)"
+        }
+    },
+    "buttons": {
+        "login": "Войти",
+        "registration": "Регистрация"
+    },
+    "country": {
+        "name": "ישראל"
+    },
+    "storepage": {
+        "lookAll": "ראה את כל המוצרים ב",
+        "lookAt": "העיפו מבט על מצורים ב",
+        "deliveryCities": "חנויות המבצעים משלוחים ב",
+        "deliveryCitiesTwo": "חנויות המספקות שירות ב",
+        "reviews": "חוות דעת",
+        "call": {
+            "btn-text": "הזמנה בטלפון",
+            "title-popup": "הזמנה מקוצרת בטלפון",
+            "text-popup": "חזרו אלי בטלפון לתשלום עבור הזמנה נוכחית"
+        },
+        "call-mobile": {
+            "title-popup": "איך מחייגים לחנות?",
+            "text-popup": "1. בחרו מוצר רצוי. 2. כנסו לדף מוצר. 3. לחצו על האייקון חייגן ירוק ותיקושרו לחנות."
+        },
+        "worktime-text": "שעות פתיחה",
+        "rating-text": "חוות דעת",
+        "rating-text-popup": "ציון הגולשים",
+        "about-text": "אודות",
+        "show-all": "ראה את כל המוצרים {{city}}",
+        "review-text": "חוות דעת",
+        "telCall": "לפניה דיגיטלית בטלפון",
+        "callText": "1. בחרו מוצר רצוי. <br>2. כנסו לדף מוצר. <br>3. לחצו על האייקון חייגן ירוק ותיקושרו לחנות.",
+        "shippingDist": "בחרו יעד למשלוח",
+        "noPaymentMethods": "לקוחות יקרים! החנות אינה זמינה לקבלת הזמנות אונליין. מס' טלפון: <span dir='ltr'>{{phone}}</span>"
+    },
+    "articledetail": {
+        "other-head": "כתבות אחרונות",
+        "other-link": "לכל הכתבות"
+    },
+    "mainSlider": {
+        "slide1": {
+            "header": "מבצעים חמים והטבות מחנויות בכל הארץ",
+            "text": "עדכנו עיר למשלוח - הקליקו על מבצעים חמים,  וקבלו הצעות במחירים בלעדיים",
+            "button": "לפרטים נוספים"
+        },
+        "slide2": {
+            "header1": "השוואת מחירים",
+            "header2": "שיפור מחיר",
+            "header3": "רכישה/משלוח",
+            "text": "מעדכנים עיר משלוח, משווים מחירים ממגוון הפריטים, הקליקו על שיפור מחיר וקבלו הנחת שיפור מחנויות",
+            "button": "לפרטים נוספים"
+        },
+        "slide3": {
+            "header": "איך זה עובד? למה כדאי להזמין דרך השווה?",
+            "text": "בחרו עיר משלוח - לחצו על מבצעים וקבלו דילים, חבילות פרחים במבצע, מוצרים במחיר בלעדי.",
+            "button": "לפרטים נוספים"
+        },
+        "slide4": {
+            "header": "שיפור מחיר - קבלו הנחת שיפור מחנויות",
+            "text": "השוואת מחירים -  שיפור מחיר  - רכישה בקליק במחירים בלעדיים",
+            "button": "לפרטים נוספים"
+        }
+    },
+    "registration": {
+        "success": {
+            "title": "ההודעה נשלחה לדואר האלקטרוני שהזנת.",
+            "content": "נא לאשר כתובת דואר אלקטרונית."
+        }
+    },
+    "seo": {
+        "citySearch": {
+            "h1": "{{category}}: הזמינו משלוח אונליין ב{{city}} - השוואת מחירים",
+            "description": "מחפשים הצעות של {{category}}: משלוח ב{{city}} ? מצאו מוצר אידיאלי ממגוון הצעות של {{category}} ב{{city}} השוו מחירים והזמינו משלוח אונליין.",
+            "h2": "הצעות {{category}}: משלוחי מוצרים ב{{city}}",
+            "shitFromLeft": "{{category}}: מחפשים להזמין משלוח אונליין ב{{city}}? הגעתם לעמוד בו ריכזנו עבורכם את כל הצעות של {{category}} הניתנים למשלוח ב{{city}}. אתר השווה מציג הצעות של {{category}} ב{{city}} מחנויות פרחים הכי מוכרים בעיר. החנויות ישמחו להציע לגולשי אתר השווה שירות השוואה ושיפור מחיר למגוון הצעות של {{category}}."
+        }
+    },
+    "messages": {
+        "userExists": "כתובת האימייל הזו כבר קיימת",
+        "diffPasswords": "סיסמות שונות",
+        "registeredWithGoogleProvider": "registeredWithGoogleProvider",
+        "registeredWithLocalProvider": "registeredWithLocalProvider",
+        "registeredWithFacebookProvider": "registeredWithFacebookProvider",
+        "unauthorized": "unauthorized"
+    },
+    "pageNotFound": {
+        "header": "מצטערים..",
+        "text": "הגעתם לעמוד לא קיים...",
+        "homeLink": "חזרה לאתר השווה >"
+    },
+    "addNewStore": {
+        "addANewStore": "הוסיפו את בית עסק שלכם",
+        "support": "תמיכה",
+        "x": "X",
+        "categories": "קטגוריות",
+        "about": "אודות השווה",
+        "faq": "שאלות ותשובות",
+        "terms": "תקנון האתר",
+        "contact": "צור קשר",
+        "addStore": "הוספת בית עסק",
+        "addBussines": "רישום בית העסק",
+        "storeNetwork": "רישום רשת חנויות",
+        "name": "שם העסק:",
+        "city": "עיר:",
+        "street": "רחוב:",
+        "house": "מס‘:",
+        "owner": "שם בעל/מנהל העסק:",
+        "tel": "נייד:",
+        "email": "דוא“ל:",
+        "password": "סיסמה:",
+        "passValidation": "הסיסמה צריכה:",
+        "words": "אותיות",
+        "oneNum": "לפחות ספרה אחת",
+        "v": "V",
+        "wordVelidation": "לפחות 8 תווים",
+        "samePass": "סיסמה דומה",
+        "next": "המשך",
+        "clear": "לאפס",
+        "NumOfStores": "מס’ סניפים:"
+    },
+    "articleDetail": {
+        "main": "ראשי",
+        "articleDirectory": "מדריך כתבות",
+        "other-head": "כתבות אחרונות",
+        "other-link": "לכל הכתבות"
+    },
+    "articlelist": {
+        "head": "מדריך כתבות",
+        "main": "ראשי",
+        "articleDirectory": "מדריך כתבות"
+    },
+    "betterPrice": {
+        "fixPrice": "שיפור מחיר",
+        "found": "נמצאו:",
+        "choose": "הצעות שיפור מחיר שבחרתי ב",
+        "buissnesName": "רשמו את בית העסק שלכם",
+        "newCostumers": "ותרווחו לקוחות חדשים",
+        "singUp": "הירשמו לשירות",
+        "x": "X"
+    },
+    "busket": {
+        "found": "נמצאו:",
+        "productsIn": "מוצרים ב",
+        "busket": "סל קניות"
+    },
+    "itemPage": {
+        "daylyDeal": "דיל יומי",
+        "sale": "במבצע",
+        "opinion": "חוות דעת",
+        "big": "”גדול“",
+        "more": "פרטים נוספים:"
+    },
+    "productItem": {
+        "products": "מוצרים",
+        "placedOrders": "ביקורות",
+        "rate": "דירוג",
+        "benefits": "ההטבות בלעדיות",
+        "orderFromSite": "למזמינים דרך האתר",
+        "orderByPhone": "הזמנה נוכחית בטלפון",
+        "dayDeal": "דיל יומי",
+        "sale": "במבצע",
+        "inStock": "קיים במלאי",
+        "outOfStock": "חסר במלאי",
+        "saledCount": "נרכשו"
+
+    },
+    "authorization": {
+        "login": "התחברות",
+        "registration": "הרשמה",
+        "accountLogin": "כניסה לחשבון",
+        "email": "דוא“ל:",
+        "pass": "סיסמה:",
+        "repeat": "הקלדו שוב:",
+        "forgotPass": "שכחתם את הסיסמה שלכם?",
+        "authPolit": "על ידי התחברות לחשבון אתם מסכימים עם <a href=\"terms\">תנאי השימוש  והצהרת הפרטיות </a>שלנו"
+    },
+    "cityPopup": {
+        "ordered": "הוזמנו"
+    },
+    "commentList": {
+        "read": "קראו",
+        "rate": "ציון",
+        "opinion": "חוות דעת",
+        "score": "ציון הגולשים",
+        "ratingText": "הדירוג מבוסס על <b>{{reviewCount}} מדרגים </b>לאחר הזמנה",
+        "ratingTextTwo": "הדירוג מבוסס על <b>{{ rate }} מדרגים </b>לאחר הזמנה",
+        "ratingTextThree": "הדירוג מבוסס על <b>{{ rate }} מדרגים </b>לאחר הזמנה",
+        "reviewCount": "קראו {{reviewCount}} חוות דעת:",
+        "itemReviews": "קראו {{review}} חוות דעת:"
+    },
+    "catalogMenu": {
+        "homeLink": "דף הבית של החנות"
+    },
+    "orderCallPopup": {
+        "iconText": "יש להזין את מס' הטלפון שלכם ובסיום לחצו על כפתור חייג אלי עכשיו. השירות ניתן למחייגים מישראל בלבד.",
+        "callTo": "חיוג מיידי ל",
+        "writePhone": "הזינו מס' טלפון שלכם ( שיחות מקומיות בלבד)",
+        "callNow": "חייג אלי עכשיו",
+        "progressOne": "מקשרים עם החנות ! המתינו לנציג החנות שיענה.",
+        "progressTwo": "פרטי הפניה שלכם הועברו התקבלו בחנות.",
+        "progressThree": "אם אין מענה בטלפון חייגו שנית או לחצו על כפתור בטלפון, מלאו פרטי הזמנה ומציג החנות תחזור אליכם לאישור הזמנה ותשלום בטלפון."
+    },
+    "orderView": {
+        "newOrder": "הזמנה חדשה",
+        "instructions": "הנחיות נוספות:",
+        "preparation": "בהכנה",
+        "delivered": "נמסר",
+        "orderNum": "מס‘ ההזמנה",
+        "name": "שם:",
+        "telNum": "מס טלפון:",
+        "date": "תאריך",
+        "deliveryTime": "שעת מסירה:",
+        "special": "בקשות מיוחדות:",
+        "blessing": "ברכה:",
+        "costumerDetails": "פרטי המקבל:",
+        "label": "לפניות בנושאים: משלוחים, אישור חיוב, תוספות, בקשות מיוחדות, עידכונים להזמנה נוכחית ובירורים חייגו לחנות.",
+        "total": "סה”כ:",
+        "paidByCard": "שולם בכרטיס אשראי",
+        "paidByPhone": "חיוב הזמנה בטלפון"
+    },
+    "shopAbout": {
+        "shopText": "הזמנתם פרחים עד שעתיים לפני סגירת החנות?<br> המשלוח יגיע באותו היום.",
+        "shabatWork": "* בערב חג ההזמנות <br> מתקבלות עד <br> השעה 12:00<br><br> שבת:",
+        "sunday": "א‘",
+        "monday": "ב’",
+        "tuesday": "ג‘",
+        "wednesday": "ד’",
+        "thursday": "ה‘",
+        "friday": "ו’",
+        "storePlaced": "מיקום החנות",
+        "goToStore": "ניווט לחנות"
+    },
+    "supportPage": {
+        "contactWithHashve": "יצירת קשר עם שירות לקוחות אתר השווה"
+    },
+    "wishList": {
+        "myWishes": "המועדפים שלי",
+        "selected": "הצעות מועדפים שבחרתי ב"
+    }
+}

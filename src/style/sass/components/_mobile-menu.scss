@@ -1,0 +1,147 @@
+﻿/*----------- mobile-menu -------------*/
+.mobile-menu{
+	display: none;
+	position: fixed;
+	top: 56px;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	background: #eee;
+	z-index: 104;
+	height: calc(100% - 56px);
+	overflow-y: auto;
+
+	&__head{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 35px 20px;
+	}
+
+	&__user{
+		display: flex;
+		align-items: center;
+	}
+
+	&__avatar{
+		display: inline-block;
+		width: 70px;
+		height: 70px;
+		background-image: url(#{$path-icon}/ic-profile-grey.svg);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+
+	&__sign-in,
+	&__sign-in a{
+		@include font(italic, bold, 30px, 30px, $color-orange);
+		text-decoration: none;
+	}
+
+	&__sign-in{
+		max-width: calc(100% - 90px);
+		margin-right: 20px;
+	}
+
+	&__user-name{
+		font-family: $font-arial;
+		@include font(italic, bold, 30px, 30px, $color-text);
+		text-decoration: none;
+		margin-right: 20px;
+	}
+
+	&__flag{
+		display: inline-block;
+		width: 43px;
+		height: 43px;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		border-radius: 50%;
+	}
+
+	&__list{
+		background: #fff;
+		border-bottom: 1px solid rgba(50,50,50,0.5);
+		padding: 37px 20px;
+		margin-bottom: 15px;
+	}
+
+	&__item{
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__item:not(:last-child){
+		margin-bottom: 38px;
+	}
+
+	&__icon{
+		display: inline-block;
+		width: 21px;
+		height: 21px;
+	}
+
+	&__icon--cart{background: url(#{$path-icon}/ic-packet.svg) no-repeat center;}
+	&__icon--price{background: url(#{$path-icon}/ic-price.svg) no-repeat center;}
+	&__icon--wish{background: url(#{$path-icon}/ic-wish.svg) no-repeat center;}
+	&__icon--profile{background: url(#{$path-icon}/ic-profile.svg) no-repeat center;}
+	&__icon--home{background: url(#{$path-icon}/ic-home.svg) no-repeat center;}
+	&__icon--shop{background: url(#{$path-icon}/ic-shop.svg) no-repeat center;}
+	&__icon--call{background: url(#{$path-icon}/ic-circle-phone.svg) no-repeat center;}
+
+	&__link{
+		display: inline-flex;
+		align-items: center;
+		text-decoration: none;
+	}
+
+	&__title{
+		@include font(italic, normal, 25px, 21px, $color-text);
+		margin-right: 30px;
+	}
+
+	&__link:hover &__title{
+		color: #3da00e;
+	}
+
+	.top-menu,
+	.header-delivery{
+		margin-left: 0;
+		margin-right: 0;
+		width: 100%;
+	}
+
+	.header-delivery__head{
+		padding: 0 10px;
+	}
+
+	.top-menu{
+		background: #fff;
+		border-bottom: 1px solid rgba(50, 50, 50, 0.5);
+		margin-bottom: 15px;
+	}
+}
+
+@media (max-width: 479px) {
+	.mobile-menu{
+		top: 50px;
+		height: calc(100% - 50px);
+
+		&__sign-in,
+		&__sign-in a{
+			font-size: 21px;
+		}
+
+		&__user-name{
+			font-size: 25px;
+		}
+
+		&__title{
+			font-size: 23px;
+		}
+	}
+}

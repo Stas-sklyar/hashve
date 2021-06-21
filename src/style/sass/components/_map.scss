@@ -1,0 +1,116 @@
+﻿/*----------- map -------------*/
+.map{
+	width: 100%;
+	height: 410px;
+	background: url(#{$path-img}/map.jpg) no-repeat center;
+	font-family: $font-arial;
+	position: relative;
+
+	&__label{
+		display: inline-block;
+		background: #282828;
+		padding: 2px;
+		border: 1px solid #fff;
+		-webkit-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.35);
+		-moz-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.35);
+		box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.35);
+		text-align: center;
+		text-decoration: none;
+		position: relative;
+	}
+
+	&__name{
+		background: rgba(255,255,255,0.17);
+		@include font(normal, bold, 12px, 16px, rgba(255,255,255,0.7));
+		padding: 1px 4px 2px;
+	}
+
+	&__price{
+		@include font(normal, bold, 14px, 18px, #fff);
+	}
+
+	&__label::before{
+		content: '';
+		display: inline-block;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 16px 8px 0 8px;
+		border-color: #fff transparent transparent transparent;
+		position: absolute;
+		bottom: -16px;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+	}
+
+	&__label::after{
+		content: '';
+		display: inline-block;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 16px 8px 0 8px;
+		border-color: #282828 transparent transparent transparent;
+		position: absolute;
+		bottom: -14px;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+	}
+
+	&__label--cheap{
+		background: #226900;
+	}
+
+	&__label--cheap::after{
+		border-color: #226900 transparent transparent transparent;
+	}
+
+	&__shadow{
+		display: inline-block;
+		width: 70px;
+		height: 24px;
+		background: url(#{$path-img}/map-labal-shadow.png) no-repeat center;
+		position: absolute;
+		bottom: -28px;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+	}
+
+	&__label:hover{
+		background: #434343;
+	}
+
+	&__label:hover::after{
+		border-color: #434343 transparent transparent transparent;
+	}
+
+	&__label--cheap:hover{
+		background: #349604;
+	}
+
+	&__label--cheap:hover::after{
+		border-color: #349604 transparent transparent transparent;
+	}
+}
+
+@media (max-width: 767px) {
+	.map{
+		&__name{
+			font-size: 10px;
+		}
+
+		&__price{
+			font-size: 11px;
+			line-height: 14px;
+		}
+	}
+}
+
+@media (max-width: 375px) {
+	.map{
+		height: 200px;
+	}
+}

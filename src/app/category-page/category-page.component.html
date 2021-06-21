@@ -1,0 +1,18 @@
+<app-header [showSlider]="showSlider"></app-header>
+<main>
+  <div class="st-width-full">
+    <div class="content">
+      <aside class="content__right"></aside>
+      <div class="content__center">
+        <h1>{{ seo.h1[curLang] }}</h1>
+        <app-category-folder [categories]="categories"></app-category-folder>
+        <app-watched-list></app-watched-list>
+        <app-accelerate-sales></app-accelerate-sales>
+        <app-popular-cities></app-popular-cities>
+        <app-analytics-item></app-analytics-item>
+      </div>
+      <aside class="content__left"></aside>
+    </div>
+  </div>
+</main>
+<app-footer></app-footer>

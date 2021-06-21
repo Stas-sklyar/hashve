@@ -1,0 +1,11 @@
+<a *ngIf="!isItemRedirect || store" (click)="onCategoryClicked()" class="gifts__link">
+  <span class="gifts__img" [style.backgroundImage]="'url('+pic+')'"></span>
+
+  <span class="gifts__name">{{curCategory.count}} {{curCategory.name[curLang]}}</span>
+</a>
+
+<a *ngIf="isItemRedirect && !store" [routerLink]="'/category/' + curCategory.name[curLang] | spaceToUnderscore" class="gifts__link">
+  <span class="gifts__img" [style.backgroundImage]="'url('+pic+')'"></span>
+
+  <span class="gifts__name">{{curCategory.count}} {{curCategory.name[curLang]}}</span>
+</a>

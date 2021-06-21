@@ -1,0 +1,89 @@
+<div class="popup">
+    <div class="popup__bg" (click)="onFormClose()"></div>
+
+    <div class="popup__content-wrap" style="width: 367px;">
+        <div class="popup__close" (click)="onFormClose()">X</div>
+
+        <div class="popup__content">
+            <div class="auth">
+                <div class="auth__tabs">
+                    <a class="auth__tabs-item" [ngClass]="{active: !showRegistration}" (click)="showRegistration = false">{{ "authorization.login" | translate }}</a>
+                    <a class="auth__tabs-item" [ngClass]="{active: showRegistration}" (click)="showRegistration = true">{{ "authorization.registration" | translate }}</a>
+                </div>
+
+                <ng-container *ngIf="showRegistration; else authForm">
+                    <div class="auth__head">{{"auth.registration.title" | translate}}</div>
+
+                    <div class="auth__content">
+                        <form (ngSubmit)="registraion()" class="form-site" [formGroup]="registrationForm">
+                            <div class="form-site__field">
+                                <span class="form-site__icon form-site__icon--mail"></span>
+                                <label for="email" class="form-site__label">{{ "auth.registration.form.email.label" | translate }}:</label>
+                                <input type="email" placeholder="" formControlName="mail" id="email">
+                            </div>
+
+                            <div class="form-site__field">
+                                <span class="form-site__icon form-site__icon--phone"></span>
+                                <label for="password" class="form-site__label">{{ "auth.registration.form.password.label" | translate }}:</label>
+                                <input type="password" id="password" formControlName="password">
+                                <span class="form-site__tooltip">{{ "auth.registration.form.password.help" | translate }}</span>
+                            </div>
+
+                            <div class="form-site__field">
+                                <span class="form-site__icon"></span>
+                                <label for="password-repeat" class="form-site__label">{{ "authorization.repeat" | translate }}</label>
+                                <input type="password" id="password-repeat" formControlName="rePassword">
+                            </div>
+
+                            <input type="submit" class="btn" value="הרשמה" [disabled]="!registrationForm.valid">
+                        </form>
+
+                        <div class="auth__line"><span>או</span></div>
+
+                        <!-- <div class="auth__social">
+                            <a (click)="signInWithFB()" class="auth__social-item">facebook<img src="/assets/img/auth-fb.png" alt=""></a>
+                            <a (click)="signInWithGoole()" class="auth__social-item">google<img src="/assets/img/auth-google.png" alt=""></a>
+                        </div> -->
+
+                        <div class="auth__polit" [innerHTML]="'authorization.authPolit' | translate">
+                        </div>
+                    </div>
+                </ng-container>
+
+                <ng-template #authForm>
+                    <div class="auth__head">{{ "authorization.accountLogin" | translate }}</div>
+
+                    <div class="auth__content">
+
+                        <!-- <div class="auth__social">
+                            <a (click)="signInWithFB()" class="auth__social-item">facebook<img src="/assets/img/auth-fb.png" alt=""></a>
+                            <a (click)="signInWithGoole()" class="auth__social-item">google<img src="/assets/img/auth-google.png" alt=""></a>
+                        </div> -->
+
+                        <div class="auth__line"><span>או</span></div>
+
+                        <form (ngSubmit)="login()" class="form-site" [formGroup]="authF">
+                            <div class="form-site__field">
+                                <span class="form-site__icon form-site__icon--mail"></span>
+                                <label for="email" class="form-site__label">{{ "auth.registration.form.email.label" | translate }}:</label>
+                                <input type="email" placeholder="" formControlName="mail" id="email">
+                            </div>
+
+                            <div class="form-site__field">
+                                <span class="form-site__icon form-site__icon--phone"></span>
+                                <label for="password" class="form-site__label">{{ "auth.registration.form.password.label" | translate }}:</label>
+                                <input type="password" id="password" formControlName="password">
+                            </div>
+
+                            <input type="submit" class="btn" value="התחברות" [disabled]="!authF.valid">
+                        </form>
+
+                        <a href="#" class="auth__foget">{{ "authorization.forgotPass" | translate }}</a>
+                        <div class="auth__polit" [innerHTML]="'authorization.authPolit' | translate">
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

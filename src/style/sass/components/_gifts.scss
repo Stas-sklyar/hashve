@@ -1,0 +1,101 @@
+﻿/*----------- gifts -------------*/
+.gifts{
+	font-family: $font-assistant;
+
+	&__head{
+		@include font(normal, bold, 20px, 24px, $color-text);
+		margin-bottom: 15px;
+	}
+
+	&__list{
+		display: flex;
+		flex-wrap: wrap;
+		padding: 0 20px;
+	}
+
+	&__item{
+		width: 25%;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+
+	&__link{
+		display: inline-block;
+		text-align: center;
+		text-decoration: none;
+	}
+
+	&__img{
+		display: inline-block;
+		width: 105px;
+		height: 105px;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+	}
+
+	&__name{
+		display: block;
+		@include font(normal, bold, 17px, 17px, #735942);
+		margin-top: -2px;
+	}
+
+	&__link:hover &__img{
+		background-color: rgba(0, 0, 0, 0.05);
+	}
+
+	&__link:hover &__name{
+		color: $color-green;
+	}
+}
+
+@media (max-width: 1279px) {
+  .gifts{
+    &__item{
+      width: 30%;
+    }
+
+    &__img{
+      height: 70px;
+    }
+
+    &__name{
+      margin-top: 2px;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+	.gifts{
+		&__item{
+			width: 50%;
+			margin-bottom: 45px;
+		}
+
+		&__img{
+			width: 170px;
+			height: 182px;
+		}
+
+		&__name{
+			margin-top: 2px;
+		}
+	}
+}
+
+@media (max-width: 479px) {
+	.gifts{
+		&__item{
+			margin-bottom: 20px;
+		}
+
+		&__img{
+			width: 140px;
+			height: 125px;
+		}
+
+		&__name{
+			margin-top: 8px;
+		}
+	}
+}
